@@ -2,12 +2,12 @@ import tkinter as tk
 from tkinter import messagebox, font
 import requests
 import threading
-from pynput import keyboard  # Benötigt zur Hotkey-Überwachung
+from pynput import keyboard
 import sys
 
-# Relative Imports
-from ..config import Style, BASE_URL, NEXT_WISH_ENDPOINT, RESET_WISHES_ENDPOINT
-from ..utils import server_log
+# KORREKTUR: Verwende absolute Imports
+from config import Style, BASE_URL, NEXT_WISH_ENDPOINT, RESET_WISHES_ENDPOINT
+from utils import server_log
 
 
 # --- Hotkey-Listener-Funktion ---
@@ -16,17 +16,14 @@ def start_hotkey_listener(is_server_running_ref):
 
     def on_press(key):
         try:
-            # Nutzt die übergebene Referenz, um den aktuellen Status abzufragen
             if key == keyboard.Key.page_down and is_server_running_ref[0]:
-                requests.post(BASE_URL.rstrip('/') + NEXT_WISH_ENDPOINT)
+                requests.post(BASE_URL.rstrip('/') + NEXT_WISH_ENDPOINT, timeout=1)
                 server_log.info("Hotkey 'Bild Runter' ausgelöst: Nächster Wunsch angefordert.")
         except requests.exceptions.RequestException:
-            # Fehler beim Erreichen des Flask-Servers ignorieren, aber loggen
             pass
         except Exception as e:
             server_log.error(f"Unerwarteter Hotkey-Fehler: {e}")
 
-    # Startet den Listener in einem Daemon-Thread, der beim Beenden der Haupt-App stirbt
     listener_thread = threading.Thread(target=lambda: keyboard.Listener(on_press=on_press).start(), daemon=True)
     listener_thread.start()
     return listener_thread
@@ -43,7 +40,6 @@ def show_toast(root, message, color=Style.SUCCESS):
     label.pack()
 
     root.update_idletasks()
-    # Positioniert die Toast-Nachricht rechts oben relativ zum Hauptfenster
     root_x = root.winfo_x()
     root_y = root.winfo_y()
     root_width = root.winfo_width()
@@ -66,6 +62,7 @@ class UIElementCard(tk.Frame):
                          highlightthickness=1, cursor="hand2")
 
         self.root = parent.winfo_toplevel()
+        # BASE_URL ist jetzt über den absoluten Import verfügbar
         self.url = BASE_URL.rstrip('/') + '/' + path.lstrip('/')
 
         self.button_style = {
@@ -92,14 +89,14 @@ class UIElementCard(tk.Frame):
                                      command=self._on_copy_click)
         self.copy_button.grid(row=0, column=3, sticky="e", padx=(5, 0))
 
-        # Reset Button (Wird für Wishlist verwendet)
-        if has_reset and reset_func:
+        # KORRIGIERTE LOGIK: Erstellt Button nur, wenn die Funktion vorhanden ist (nicht None).
+        if reset_func:
             self.reset_button = tk.Button(self, text="🗑️", fg=Style.DANGER, **self.button_style, command=reset_func)
             self.reset_button.grid(row=0, column=1, sticky="e", padx=(10, 0))
             self._bind_hover_color(self.reset_button, Style.DANGER, Style.DANGER)
 
-        # Settings Button
-        if has_settings and settings_func:
+        # KORRIGIERTE LOGIK: Erstellt Button nur, wenn die Funktion vorhanden ist (nicht None).
+        if settings_func:
             self.settings_button = tk.Button(self, text="⚙️", fg=Style.TEXT_MUTED, **self.button_style,
                                              command=settings_func)
             self.settings_button.grid(row=0, column=2, sticky="e", padx=(5, 0))
@@ -108,7 +105,6 @@ class UIElementCard(tk.Frame):
         self._bind_hover_effect_to_all()
         self._bind_hover_color(self.copy_button, Style.ACCENT_BLUE, Style.ACCENT_BLUE)
 
-    # --- Hover-Logik (unverändert) ---
     def _on_enter(self, event):
         self.config(bg=Style.WIDGET_HOVER)
         for widget in self.winfo_children():
@@ -117,7 +113,6 @@ class UIElementCard(tk.Frame):
     def _on_leave(self, event):
         self.config(bg=Style.WIDGET_BG)
         for widget in self.winfo_children():
-            # Vermeidet das Zurücksetzen von Widgets, die ihre eigene Farbe halten
             if widget not in [getattr(self, 'reset_button', None), getattr(self, 'settings_button', None),
                               self.copy_button]:
                 widget.config(bg=Style.WIDGET_BG)

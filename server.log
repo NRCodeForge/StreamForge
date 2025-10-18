@@ -1,0 +1,9 @@
+2025-10-18 16:27:03,366 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 16:27:03,366 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 16:27:03,485 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 16:27:14,565 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 16:27:14,565 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 16:27:14,651 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 16:27:14,653 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 16:27:14,653 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 16:27:14,701 - ERROR - Schwerwiegender Fehler in der GUI: cannot access local variable 'settings_func' where it is not associated with a value

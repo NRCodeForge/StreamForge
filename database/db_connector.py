@@ -1,5 +1,5 @@
 import sqlite3
-from ..config import DATABASE_PATH # relative import zum Hauptverzeichnis
+from config import DATABASE_PATH
 
 def get_db_connection():
     """Stellt eine Verbindung zur Datenbank her und setzt row_factory auf sqlite3.Row."""

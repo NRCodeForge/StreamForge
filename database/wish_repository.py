@@ -1,16 +1,18 @@
 from .db_connector import get_db_connection
 
+
 class WishRepository:
+    """Isoliert den direkten Datenbankzugriff für Killerwünsche."""
+
     def get_wishes(self, offset, limit=2):
         """Ruft eine begrenzte Anzahl von Wünschen mit Offset ab."""
         conn = get_db_connection()
         c = conn.cursor()
         c.execute("SELECT wunsch, user_name FROM killer_wuensche ORDER BY datum DESC LIMIT ? OFFSET ?",
                   (limit, offset))
-        # Konvertiert sqlite3.Row Objekte in Dictionaries
-        wishes = [dict(row) for row in c.fetchall()]
+        wuensche = [dict(row) for row in c.fetchall()]
         conn.close()
-        return wishes
+        return wuensche
 
     def count_total_wishes(self):
         """Zählt die Gesamtzahl der Wünsche."""

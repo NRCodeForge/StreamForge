@@ -1,11 +1,9 @@
 from flask import Flask, jsonify, send_from_directory, request
-import os
 
 # Importiere Service Layer
 from services.wish_service import WishService
 from services.like_challenge_service import LikeChallengeService
-# Importiere Infrastruktur
-from config import get_path, BASE_HOST, BASE_PORT, API_ROOT, WISHES_ENDPOINT, NEXT_WISH_ENDPOINT, RESET_WISHES_ENDPOINT, LIKE_CHALLENGE_ENDPOINT
+from config import get_path, BASE_HOST, BASE_PORT, BASE_URL, API_ROOT, WISHES_ENDPOINT, NEXT_WISH_ENDPOINT, RESET_WISHES_ENDPOINT, LIKE_CHALLENGE_ENDPOINT
 from utils import server_log
 
 app = Flask(__name__)
@@ -58,6 +56,9 @@ def add_killerwunsch():
     try:
         wish_service.add_new_wish(wunsch, user_name)
         return jsonify({'message': 'Wunsch erfolgreich hinzugefügt.'}), 201
+    except ValueError as e:
+        server_log.error(f'Validierungsfehler beim Hinzufügen des Wunsches: {e}')
+        return jsonify({'error': str(e)}), 400
     except Exception as e:
         server_log.error(f'Datenbank-Fehler beim Hinzufügen des Wunsches: {e}')
         return jsonify({'error': 'Fehler beim Hinzufügen des Wunsches.'}), 500
@@ -96,8 +97,3 @@ def serve_subathon_overlay(path):
 def serve_like_overlay(path):
     directory = get_path('like_overlay')
     return send_from_directory(directory, path)
-
-
-if __name__ == '__main__':
-    # Nur zum direkten Testen, Hauptstartpunkt ist main.py
-    app.run(host=BASE_HOST, port=BASE_PORT, debug=False, use_reloader=False)

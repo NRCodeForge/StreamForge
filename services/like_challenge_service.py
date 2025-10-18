@@ -1,26 +1,32 @@
+# StreamForge/services/like_challenge_service.py
+
+import numpy as np
 import json
-import numpy as numpy  # numpy muss hier importiert und bereitgestellt werden
+import sys
 from playwright.sync_api import sync_playwright
 
-# Importiere Hilfsfunktionen aus anderen Schichten
+# KORREKTUR: Verwende absolute Imports
 from external.settings_manager import SettingsManager
+from external.tikfinity_client import TikfinityClient
 from utils import server_log
 
 
 class LikeChallengeService:
+    """Verwaltet die Geschäftslogik für die Like Challenge."""
+
     def __init__(self):
-        # SettingsManager würde für settings.json zuständig sein
+        # SettingsManager wird mit dem relativen Pfad initialisiert, da get_path den Root des Projekts kennt
         self.settings_manager = SettingsManager('like_overlay/settings.json')
+        self.tikfinity_client = TikfinityClient()
 
-        # Eval ist riskant, aber aus dem Originalcode übernommen;
-
-    # es wird hier im Service Layer isoliert und mit Allowed Names abgesichert.
     def evaluate_expression_safely(self, expression, x_value):
         """Wertet den mathematischen Ausdruck sicher aus (aus app.py übernommen)."""
-        allowed_names = {"x": x_value, "numpy": numpy, "np": numpy}
+        allowed_names = {"x": x_value, "numpy": np, "np": np}
         if "__" in expression:
             raise ValueError("Ungültiger Ausdruck in der Formel.")
-        result = eval(expression, {"__builtins__": {}}, allowed_names)
+
+        # np/numpy muss im globalen Namensraum der eval-Funktion verfügbar sein.
+        result = eval(expression, {"__builtins__": None}, allowed_names)
         return int(result)
 
     def get_challenge_status(self):
@@ -28,7 +34,6 @@ class LikeChallengeService:
         try:
             settings = self.settings_manager.load_settings()
         except FileNotFoundError:
-            server_log.error("settings.json für Like Challenge nicht gefunden.")
             raise FileNotFoundError("Like Challenge settings.json fehlt.")
 
         widget_url = settings.get("widgetUrl")
@@ -39,10 +44,8 @@ class LikeChallengeService:
         if not widget_url:
             raise ValueError("widgetUrl fehlt in settings.json")
 
-        # --- Externe Integration (Web Scraping) ---
-        # Dies wird idealerweise in einer eigenen Klasse (external/tikfinity_client.py) gekapselt.
-        # Hier wird der Einfachheit halber der Originalcode aus app.py verwendet.
-        like_count = self._fetch_like_count(widget_url)
+        # Rufe externe Daten über den Client ab
+        like_count = self.tikfinity_client.fetch_like_count(widget_url)
 
         # --- Geschäftslogik zur Zielbestimmung ---
         current_goal = None
@@ -67,20 +70,3 @@ class LikeChallengeService:
             "current_goal": int(current_goal),
             "displayText": display_text
         }
-
-    def _fetch_like_count(self, widget_url):
-        # **WARNUNG:** Playwright ist hier synchron und blockiert.
-        # In einer sauberen Architektur sollte dies ausgelagert oder asynchron gemacht werden.
-        # Aber für die Refaktorierung des Originalcodes:
-        with sync_playwright() as p:
-            browser = p.firefox.launch(headless=True)
-            page = browser.new_page()
-            page.goto(widget_url, wait_until="load")
-            page.wait_for_function("window.lastPercentValue !== undefined")
-            value = page.evaluate("window.lastPercentValue")
-            browser.close()
-
-        if value is None:
-            raise ValueError("lastPercentValue nicht gefunden")
-
-        return value / 10

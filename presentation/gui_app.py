@@ -7,15 +7,13 @@ import sys
 # Importiere Komponenten aus der Präsentation und dem Service Layer
 from presentation.ui_elements import UIElementCard, show_toast, start_hotkey_listener
 from presentation.settings_windows import SubathonSettingsWindow, LikeChallengeSettingsWindow
-from services.wish_service import WishService
 
-# Importiere Infrastruktur
-from ..config import Style, BASE_HOST, BASE_PORT, BASE_URL, RESET_WISHES_ENDPOINT
-from ..utils import server_log
+# KORREKTUR: Verwende absolute Importe
+from config import Style, BASE_HOST, BASE_PORT, BASE_URL, RESET_WISHES_ENDPOINT
+from utils import server_log
 
 # Importiere die Flask-App, um sie in einem Thread zu starten
-# (api.py muss in einem separaten Schritt existieren)
-from .api import app as flask_app
+from presentation.web_api import app as flask_app
 
 # Globale Konfiguration für die UI-Elemente
 UI_ELEMENTS_CONFIG = [
@@ -38,16 +36,14 @@ class StreamForgeGUI:
         self.root.resizable(False, False)
         self.root.configure(bg=Style.BACKGROUND)
 
-        # State: Ein Array, dessen Wert im Hotkey-Listener (separater Thread) aktualisiert werden kann
         self.is_server_running = [False]
         self.flask_thread = None
 
         self.setup_ui()
         self.setup_callbacks()
 
-        # Starte Hotkey-Listener in einem Daemon-Thread
         start_hotkey_listener(self.is_server_running)
-
+        print("INIT DONE")
     def setup_ui(self):
         # --- Status Frame ---
         server_frame = tk.Frame(self.root, bg=Style.BACKGROUND)
@@ -68,10 +64,12 @@ class StreamForgeGUI:
         element_manager_frame.pack(pady=10, padx=30, fill=tk.X)
 
         for config in UI_ELEMENTS_CONFIG:
-            # Holen der Funktionen über getattr, da sie Methoden der GUI-Klasse sind
-            settings_func = getattr(self, config.get("settings_func_name"), None)
+            # Holen der Methoden-Objekte von der Instanz. None, wenn nicht definiert.
+            if config["has_settings"]:
+                settings_func = getattr(self, config.get("settings_func_name"), None)
             reset_func = self.reset_database_action if config.get("has_reset") else None
 
+            # Die UIElementCard ist nun robuster und verarbeitet None-Werte korrekt.
             card = UIElementCard(parent=element_manager_frame, name=config["name"], path=config["path"],
                                  has_settings=config.get("has_settings", False),
                                  has_reset=config.get("has_reset", False),
@@ -96,7 +94,6 @@ class StreamForgeGUI:
 
         def run_flask():
             try:
-                # Startet den Flask-Server
                 flask_app.run(host=BASE_HOST, port=BASE_PORT, debug=False, use_reloader=False)
             except Exception as e:
                 server_log.error(f"Flask Webserver crashed: {e}")
@@ -115,7 +112,7 @@ class StreamForgeGUI:
 
     # --- Action Callbacks (Interaktion mit dem Service Layer über HTTP) ---
     def reset_database_action(self):
-        """Sendet einen HTTP POST Request zum Zurücksetzen der Datenbank (WishService)."""
+        """Sendet einen HTTP POST request zum Zurücksetzen der Datenbank (WishService)."""
         if not self.is_server_running[0]:
             messagebox.showerror("Fehler", "Server ist nicht aktiv.")
             return
@@ -123,10 +120,12 @@ class StreamForgeGUI:
         if messagebox.askyesno("Bestätigen",
                                "Bist du sicher, dass du alle Killer-Wünsche unwiderruflich löschen möchtest?"):
             try:
-                response = requests.post(BASE_URL.rstrip('/') + RESET_WISHES_ENDPOINT)
+                # Nutzt RESET_WISHES_ENDPOINT aus config
+                response = requests.post(BASE_URL.rstrip('/') + RESET_WISHES_ENDPOINT, timeout=5)
                 response.raise_for_status()
-                show_toast(self.root, "Datenbank zurückgesetzt")
+                show_toast(self.root, "Datenbank zurückgesetzt", color=Style.DANGER)
             except requests.exceptions.RequestException as e:
+                server_log.error(f"Serverfehler beim Zurücksetzen: {e}")
                 messagebox.showerror("Fehler", f"Serverfehler beim Zurücksetzen: {e}")
 
     # --- Settings Window Callbacks ---
@@ -140,10 +139,5 @@ class StreamForgeGUI:
         self.status_label.config(text=message, fg=color)
 
     def start(self):
-        # Stellt sicher, dass die Datenbank-Struktur existiert, bevor der Server startet
-        from database.db_setup import setup_database
-        setup_database()
-
-        # Startet Server nach kurzer Verzögerung, um die GUI zu laden
         self.root.after(100, self.start_webserver)
         self.root.mainloop()
