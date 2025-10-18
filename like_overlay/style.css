@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+@keyframes dbd-flicker-in {
+    0% { opacity: 0; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes dbd-pulse {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(222, 11, 50, 0.4);
+        border-color: rgb(222, 11, 50);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(222, 11, 50, 0.8);
+        border-color: rgb(255, 41, 76);
+    }
+}
+
+body {
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    color: #E0E0E0;
+}
+
+.challenge-container {
+    padding: 15px 30px;
+    background-color: rgba(15, 15, 15, 0.85);
+    border: 2px solid rgb(222, 11, 50);
+    border-radius: 5px;
+    white-space: nowrap;
+    animation: dbd-flicker-in 0.7s forwards, dbd-pulse 10s infinite 1s;
+}
+
+#challenge-text {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}

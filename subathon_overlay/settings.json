@@ -1,0 +1,27 @@
+{
+    "animations_time": "3",
+    "coins": {
+        "value": "3 Seconds",
+        "active": true
+    },
+    "subscribe": {
+        "value": "500 Seconds",
+        "active": true
+    },
+    "follow": {
+        "value": "10 Seconds",
+        "active": true
+    },
+    "share": {
+        "value": "0.1 Seconds",
+        "active": true
+    },
+    "like": {
+        "value": "0.1 Seconds",
+        "active": true
+    },
+    "chat": {
+        "value": "0 Seconds",
+        "active": false
+    }
+}
