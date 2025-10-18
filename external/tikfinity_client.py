@@ -45,7 +45,6 @@ class TikfinityClient:
         # Wartet, bis der Thread "bereit" signalisiert
         # (Beim ersten Aufruf blockiert dies kurz, danach ist es sofort durch)
         self.first_value_ready.wait(timeout=5.0)
-        print(self.latest_like_count)
         with self.lock:
             return self.latest_like_count
 
@@ -70,7 +69,7 @@ class TikfinityClient:
                 while self.running:
                     try:
                         value = page.evaluate("window.lastPercentValue")
-                        like_count = float(value) / 10
+                        like_count = int(value)
 
                         if like_count != self.latest_like_count:
                             with self.lock:

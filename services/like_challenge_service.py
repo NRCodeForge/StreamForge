@@ -1,21 +1,22 @@
 import json
 import numpy as numpy
-# Playwright wird hier nicht mehr direkt benötigt
-# from playwright.sync_api import sync_playwright 
 
 # Importiere Hilfsfunktionen aus anderen Schichten
 from external.settings_manager import SettingsManager
 from utils import server_log
-from external.tikfinity_client import TikfinityClient  # <-- WICHTIG
+from external.tikfinity_client import TikfinityClient
+
+
+# KORREKTUR: Der Import von 'audio_service_instance' wird von hier entfernt,
+# um den Zirkelbezug zu durchbrechen.
 
 
 class LikeChallengeService:
     def __init__(self):
         self.settings_manager = SettingsManager('like_overlay/settings.json')
-        # Der Client wird "Lazy" initialisiert, da wir die URL erst später bekommen
         self.client = None
-
-        # ... (deine evaluate_expression_safely Methode bleibt unverändert) ...
+        # Speichert das Ziel vom letzten Aufruf, um Änderungen zu erkennen
+        self.previous_current_goal = None
 
     def evaluate_expression_safely(self, expression, x_value):
         """Wertet den mathematischen Ausdruck sicher aus (aus app.py übernommen)."""
@@ -43,14 +44,11 @@ class LikeChallengeService:
 
         # --- Externe Integration (Monitoring-Thread) ---
 
-        # Initialisiere den Client und starte den Monitor-Thread (nur beim ersten Mal)
         if self.client is None:
             server_log.info("Initialisiere Tikfinity-Monitor-Service...")
             self.client = TikfinityClient(widget_url)
             self.client.start_monitoring()
 
-
-            # Ruft den zwischengespeicherten Wert schnell ab
         like_count = self.client.get_current_like_count()
 
         # --- Geschäftslogik zur Zielbestimmung ---
@@ -60,12 +58,29 @@ class LikeChallengeService:
                 current_goal = g
                 break
 
-        # ... (Rest der Methode bleibt gleich) ...
         if current_goal is None and initial_goals:
             last_goal = initial_goals[-1]
             current_goal = self.evaluate_expression_safely(recurring_expr, last_goal)
         elif current_goal is None:
             current_goal = self.evaluate_expression_safely(recurring_expr, 0)
+
+        # --- NEU: Sound-Logik beim Erreichen eines Ziels ---
+
+        # 1. Initialisiere den Wert beim allerersten Durchlauf
+        if self.previous_current_goal is None:
+            self.previous_current_goal = current_goal
+
+        # 2. Prüfe, ob sich das 'current_goal' seit dem letzten Aufruf geändert hat
+        if self.previous_current_goal != current_goal:
+            # KORREKTUR: Importiere den Service HIER, nicht am Anfang der Datei.
+            # Dies löst den Zirkelbezug auf.
+            from services.service_provider import audio_service_instance
+
+            server_log.info(f"Neues Ziel {self.previous_current_goal} erreicht! Spiele Sound.")
+            audio_service_instance.play_goal_sound()
+            # Aktualisiere das Ziel für den nächsten Check
+            self.previous_current_goal = current_goal
+        # --- ENDE Sound-Logik ---
 
         likes_needed = int(current_goal - like_count)
         display_text = display_format.format(likes_needed=likes_needed)
@@ -76,4 +91,3 @@ class LikeChallengeService:
             "current_goal": int(current_goal),
             "displayText": display_text
         }
-

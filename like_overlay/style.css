@@ -29,12 +29,6 @@ body {
 }
 
 .challenge-container {
-    padding: 15px 30px;
-    background-color: rgba(15, 15, 15, 0.85);
-    border: 2px solid rgb(222, 11, 50);
-    border-radius: 5px;
-    white-space: nowrap;
-    animation: dbd-flicker-in 0.7s forwards, dbd-pulse 10s infinite 1s;
 }
 
 #challenge-text {

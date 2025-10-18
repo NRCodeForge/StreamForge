@@ -23,6 +23,5 @@
     "chat": {
         "value": "0 Seconds",
         "active": false
-    },
-    "timer_end_timestamp": ""
+    }
 }

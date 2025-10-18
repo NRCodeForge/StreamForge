@@ -170,3 +170,311 @@
 2025-10-18 17:48:53,086 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
 2025-10-18 17:50:41,967 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json gespeichert.
 2025-10-18 17:53:51,447 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json gespeichert.
+2025-10-18 18:12:28,353 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:12:28,354 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:12:28,354 - INFO - SubathonService initialisiert.
+2025-10-18 18:12:28,708 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:12:28,708 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:12:29,993 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:12:30,259 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:12:30,325 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:12:30,326 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:12:35,158 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:14:11,843 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Target page, context or browser has been closed
+2025-10-18 18:14:16,845 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Connection closed while reading from the driver
+2025-10-18 18:14:28,447 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:14:28,448 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:14:28,448 - INFO - SubathonService initialisiert.
+2025-10-18 18:14:28,623 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:14:28,623 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:14:29,557 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:14:29,703 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:14:29,813 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:14:29,814 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:14:33,299 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:19:15,773 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:19:15,773 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:19:15,773 - INFO - SubathonService initialisiert.
+2025-10-18 18:19:15,884 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:19:15,884 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:19:16,571 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:19:16,702 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:19:40,781 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:19:40,782 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:19:42,882 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:20:28,453 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Target page, context or browser has been closed
+2025-10-18 18:20:32,319 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:20:32,319 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:20:32,319 - INFO - SubathonService initialisiert.
+2025-10-18 18:20:32,428 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:20:32,428 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:20:33,024 - ERROR - Fehler beim Laden oder Skalieren des Logos: name 'Image' is not defined
+2025-10-18 18:20:33,026 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:20:33,136 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:20:40,776 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:20:40,776 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:20:42,938 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:21:02,230 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Target page, context or browser has been closed
+2025-10-18 18:21:05,069 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:21:05,069 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:21:05,069 - INFO - SubathonService initialisiert.
+2025-10-18 18:21:05,171 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:21:05,171 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:21:05,894 - ERROR - Fehler beim Laden oder Skalieren des Logos: name 'ImageTk' is not defined
+2025-10-18 18:21:05,897 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:21:06,012 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:21:09,027 - INFO - Anwendung StreamForge geschlossen.
+2025-10-18 18:21:35,311 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:21:35,311 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:21:35,311 - INFO - SubathonService initialisiert.
+2025-10-18 18:21:44,304 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:21:44,304 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:21:44,304 - INFO - SubathonService initialisiert.
+2025-10-18 18:21:44,406 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:21:44,406 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:21:45,042 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:21:45,163 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:22:40,778 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:22:40,779 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:22:43,292 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:25:36,059 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Target page, context or browser has been closed
+2025-10-18 18:25:38,849 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:25:38,849 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:25:38,849 - INFO - SubathonService initialisiert.
+2025-10-18 18:25:38,953 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:25:38,953 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:25:39,533 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:25:39,662 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:25:40,783 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:25:40,783 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:25:42,849 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:27:14,389 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Target page, context or browser has been closed
+2025-10-18 18:27:17,364 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:27:17,364 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:27:17,364 - INFO - SubathonService initialisiert.
+2025-10-18 18:27:17,459 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:27:17,459 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:27:18,112 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:27:18,241 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:27:34,147 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:27:34,147 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:27:34,148 - INFO - SubathonService initialisiert.
+2025-10-18 18:27:34,264 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:27:34,264 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:27:34,968 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:27:35,093 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:27:39,274 - INFO - Anwendung StreamForge geschlossen.
+2025-10-18 18:27:45,473 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:27:45,473 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:27:45,474 - INFO - SubathonService initialisiert.
+2025-10-18 18:27:45,584 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:27:45,584 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:27:46,208 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:27:46,329 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:28:12,194 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:28:12,194 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:28:12,194 - INFO - SubathonService initialisiert.
+2025-10-18 18:28:12,334 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:28:12,340 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:28:13,038 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:28:13,161 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:28:33,673 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:28:33,673 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:28:33,673 - INFO - SubathonService initialisiert.
+2025-10-18 18:28:33,798 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:28:33,799 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:28:34,452 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:28:34,578 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:28:40,780 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:28:40,781 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:28:44,311 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:29:34,576 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Target page, context or browser has been closed
+2025-10-18 18:29:37,638 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:29:37,638 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:29:37,638 - INFO - SubathonService initialisiert.
+2025-10-18 18:29:37,747 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:29:37,747 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:29:38,370 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:29:38,478 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:29:40,781 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:29:40,781 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:29:43,018 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:29:45,030 - INFO - Stoppe Tikfinity-Monitor...
+2025-10-18 18:29:45,030 - INFO - Warte auf Beendigung des Tikfinity-Monitor-Threads...
+2025-10-18 18:29:45,658 - INFO - Tikfinity-Monitor-Thread erfolgreich beendet.
+2025-10-18 18:29:45,659 - INFO - Anwendung StreamForge geschlossen.
+2025-10-18 18:29:50,319 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:29:50,319 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:29:50,319 - INFO - SubathonService initialisiert.
+2025-10-18 18:29:50,444 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:29:50,444 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:29:51,125 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:29:51,243 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:30:07,574 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:30:07,574 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:30:07,574 - INFO - SubathonService initialisiert.
+2025-10-18 18:30:07,677 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:30:07,677 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:30:08,333 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:30:08,451 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:30:40,769 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:30:40,769 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:30:43,479 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:30:54,759 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Target page, context or browser has been closed
+2025-10-18 18:30:57,661 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:30:57,661 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:30:57,661 - INFO - SubathonService initialisiert.
+2025-10-18 18:30:57,786 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:30:57,786 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:30:58,428 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:30:58,552 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:31:40,780 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:31:40,781 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:31:43,376 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:33:38,860 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Target page, context or browser has been closed
+2025-10-18 18:33:44,009 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:33:44,009 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:33:44,009 - INFO - SubathonService initialisiert.
+2025-10-18 18:33:44,113 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:33:44,113 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:33:44,823 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:33:44,949 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:34:13,758 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:34:13,758 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:34:13,758 - INFO - SubathonService initialisiert.
+2025-10-18 18:34:13,853 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:34:13,853 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:34:14,544 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:34:14,645 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:34:40,785 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:34:40,786 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:34:43,081 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:38:35,618 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Target page, context or browser has been closed
+2025-10-18 18:44:44,590 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:44:44,590 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:44:44,590 - INFO - SubathonService initialisiert.
+2025-10-18 18:44:44,694 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 18:44:44,811 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:44:44,811 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:44:45,446 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:44:45,560 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:45:40,781 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:45:40,782 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:45:42,954 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:45:56,049 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json gespeichert.
+2025-10-18 18:46:40,782 - INFO - Neues Ziel 10000 erreicht! Spiele Sound.
+2025-10-18 18:46:40,783 - INFO - AudioService: Spiele Ziel-Sound...
+2025-10-18 18:48:40,451 - INFO - Neues Ziel 133 erreicht! Spiele Sound.
+2025-10-18 18:48:40,451 - INFO - AudioService: Spiele Ziel-Sound...
+2025-10-18 18:49:10,445 - INFO - Neues Ziel 10 erreicht! Spiele Sound.
+2025-10-18 18:49:10,445 - INFO - AudioService: Spiele Ziel-Sound...
+2025-10-18 18:53:01,140 - ERROR - Fehler in der Monitor-Schleife: Page.evaluate: Target page, context or browser has been closed
+2025-10-18 18:53:04,703 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 18:53:04,704 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 18:53:04,704 - INFO - SubathonService initialisiert.
+2025-10-18 18:53:04,840 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 18:53:05,157 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:53:05,157 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 18:53:06,443 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 18:53:06,753 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 18:53:06,961 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 18:53:06,962 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 18:53:11,348 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 18:53:15,441 - INFO - Neues Ziel 10 erreicht! Spiele Sound.
+2025-10-18 18:53:15,441 - INFO - AudioService: Spiele Ziel-Sound...
+2025-10-18 18:54:15,482 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json gespeichert.
+2025-10-18 18:54:15,483 - INFO - Subathon-Einstellungen aktualisiert: {'animations_time': '3', 'coins': {'value': '3 Seconds', 'active': True}, 'subscribe': {'value': '500 Seconds', 'active': True}, 'follow': {'value': '10 Seconds', 'active': True}, 'share': {'value': '0.1 Seconds', 'active': True}, 'like': {'value': '0.1 Seconds', 'active': True}, 'chat': {'value': '0 Seconds', 'active': False}}
+2025-10-18 19:12:38,551 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 19:12:38,551 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 19:12:38,551 - INFO - SubathonService initialisiert.
+2025-10-18 19:12:38,692 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 19:12:53,640 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 19:12:53,640 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 19:12:53,640 - INFO - SubathonService initialisiert.
+2025-10-18 19:12:53,775 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 19:12:53,929 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:12:53,929 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 19:12:54,004 - WARNING - Fenster-Icon-Datei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\icon.ico
+2025-10-18 19:12:54,674 - WARNING - Logo-Datei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\icons/LOGO.png
+2025-10-18 19:12:54,676 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:12:54,790 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 19:12:58,642 - INFO - Anwendung StreamForge geschlossen.
+2025-10-18 19:13:59,151 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 19:13:59,151 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 19:13:59,151 - INFO - SubathonService initialisiert.
+2025-10-18 19:13:59,272 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 19:13:59,442 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:13:59,443 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 19:13:59,518 - WARNING - Fenster-Icon-Datei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\icon.ico
+2025-10-18 19:14:00,189 - WARNING - Logo-Datei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\icons/LOGO.png
+2025-10-18 19:14:00,190 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:14:00,297 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 19:16:55,019 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 19:16:55,020 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 19:16:55,020 - INFO - SubathonService initialisiert.
+2025-10-18 19:16:55,122 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 19:16:55,284 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:16:55,284 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 19:16:55,363 - WARNING - Fenster-Icon-Datei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\icon.ico
+2025-10-18 19:16:56,015 - WARNING - Logo-Datei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\icons/LOGO.png
+2025-10-18 19:16:56,018 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:16:56,136 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 19:16:58,631 - INFO - Anwendung StreamForge geschlossen.
+2025-10-18 19:20:42,442 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 19:20:42,442 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 19:20:42,442 - INFO - SubathonService initialisiert.
+2025-10-18 19:20:42,560 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 19:20:42,734 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:20:42,735 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 19:20:43,446 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:20:43,718 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 19:24:04,805 - INFO - Anwendung StreamForge geschlossen.
+2025-10-18 19:24:20,530 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 19:24:20,531 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 19:24:20,531 - INFO - SubathonService initialisiert.
+2025-10-18 19:24:20,630 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 19:24:20,782 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:24:20,782 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 19:24:21,408 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:24:21,595 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 19:24:26,500 - INFO - Anwendung StreamForge geschlossen.
+2025-10-18 19:26:22,113 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 19:26:22,113 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 19:26:22,113 - INFO - SubathonService initialisiert.
+2025-10-18 19:26:22,238 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 19:26:22,390 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:26:22,390 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 19:26:23,150 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:26:23,363 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 19:26:51,482 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 19:26:51,482 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 19:26:51,482 - INFO - SubathonService initialisiert.
+2025-10-18 19:26:51,621 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 19:26:51,771 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:26:51,771 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 19:26:52,386 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 19:26:52,525 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 19:27:01,210 - INFO - Anwendung StreamForge geschlossen.
+2025-10-18 21:42:51,541 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 21:42:51,544 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 21:42:51,544 - INFO - SubathonService initialisiert.
+2025-10-18 21:42:51,857 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 21:43:18,073 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay/settings.json
+2025-10-18 21:43:18,073 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay/settings.json
+2025-10-18 21:43:18,073 - INFO - SubathonService initialisiert.
+2025-10-18 21:43:18,192 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 21:43:18,423 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 21:43:18,423 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 21:43:19,771 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 21:43:19,874 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 21:43:37,039 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-18 21:43:37,039 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-18 21:43:41,587 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-18 21:44:41,119 - INFO - Neues Ziel 10 erreicht! Spiele Sound.
+2025-10-18 21:44:41,119 - INFO - AudioService: Spiele Ziel-Sound...
+2025-10-18 21:45:53,518 - INFO - Neues Ziel 20 erreicht! Spiele Sound.
+2025-10-18 21:45:53,518 - INFO - AudioService: Spiele Ziel-Sound...
+2025-10-18 21:54:26,158 - INFO - Stoppe Tikfinity-Monitor...
+2025-10-18 21:54:26,158 - INFO - Warte auf Beendigung des Tikfinity-Monitor-Threads...
+2025-10-18 21:54:26,660 - INFO - Tikfinity-Monitor-Thread erfolgreich beendet.
+2025-10-18 21:54:26,660 - INFO - Anwendung StreamForge geschlossen.
