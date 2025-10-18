@@ -1,15 +1,18 @@
 from flask import Flask, jsonify, send_from_directory, request
+import os
 
-# Importiere Service Layer
-from services.wish_service import WishService
-from services.like_challenge_service import LikeChallengeService
-from config import get_path, BASE_HOST, BASE_PORT, BASE_URL, API_ROOT, WISHES_ENDPOINT, NEXT_WISH_ENDPOINT, RESET_WISHES_ENDPOINT, LIKE_CHALLENGE_ENDPOINT
+# Importiere Service Layer (NEUER WEG)
+from services.service_provider import (
+    wish_service_instance,
+    like_service_instance,
+    subathon_service_instance
+)
+
+# Importiere Infrastruktur
+from config import get_path, BASE_HOST, BASE_PORT, API_ROOT, WISHES_ENDPOINT, NEXT_WISH_ENDPOINT, RESET_WISHES_ENDPOINT, LIKE_CHALLENGE_ENDPOINT
 from utils import server_log
 
 app = Flask(__name__)
-wish_service = WishService()
-like_service = LikeChallengeService()
-
 
 # --- Wishlist API Endpunkte ---
 
@@ -17,7 +20,7 @@ like_service = LikeChallengeService()
 def get_killer_wishes_data():
     """API-Endpunkt für die Anzeige von 2 Wünschen mit aktuellem Offset."""
     try:
-        wuensche = wish_service.get_current_wishes()
+        wuensche = wish_service_instance.get_current_wishes()
         return jsonify(wuensche)
     except Exception as e:
         server_log.error(f"Fehler beim Abrufen der Wünsche: {e}")
@@ -27,7 +30,7 @@ def get_killer_wishes_data():
 def next_killer():
     """API-Endpunkt für den Hotkey, um den nächsten Wunsch anzuzeigen."""
     try:
-        new_offset = wish_service.advance_offset()
+        new_offset = wish_service_instance.advance_offset()
         return jsonify({'message': 'Offset aktualisiert', 'new_offset': new_offset})
     except Exception as e:
         server_log.error(f"Fehler beim Weiterschalten des Offsets: {e}")
@@ -37,7 +40,7 @@ def next_killer():
 def reset_database():
     """API-Endpunkt zum Zurücksetzen der Datenbank."""
     try:
-        wish_service.reset_wishes()
+        wish_service_instance.reset_wishes()
         return jsonify({'message': 'Datenbank erfolgreich zurückgesetzt.'}), 200
     except Exception as e:
         server_log.error(f"Datenbank-Fehler beim Zurücksetzen: {e}")
@@ -54,11 +57,8 @@ def add_killerwunsch():
     user_name = request.json['user_name']
 
     try:
-        wish_service.add_new_wish(wunsch, user_name)
+        wish_service_instance.add_new_wish(wunsch, user_name)
         return jsonify({'message': 'Wunsch erfolgreich hinzugefügt.'}), 201
-    except ValueError as e:
-        server_log.error(f'Validierungsfehler beim Hinzufügen des Wunsches: {e}')
-        return jsonify({'error': str(e)}), 400
     except Exception as e:
         server_log.error(f'Datenbank-Fehler beim Hinzufügen des Wunsches: {e}')
         return jsonify({'error': 'Fehler beim Hinzufügen des Wunsches.'}), 500
@@ -69,7 +69,7 @@ def add_killerwunsch():
 def get_like_challenge_data():
     """API-Endpunkt für die Live-Daten der Like Challenge."""
     try:
-        data = like_service.get_challenge_status()
+        data = like_service_instance.get_challenge_status()
         return jsonify(data)
     except Exception as e:
         server_log.error(f"Like Challenge Fehler: {e}")

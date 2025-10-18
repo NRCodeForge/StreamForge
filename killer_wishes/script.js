@@ -1,4 +1,4 @@
-const api_url = 'http://127.0.0.1:5000/killer_wishes/data';
+const api_url = 'http://127.0.0.1:5000/api/v1/wishes';
 const wishContainer = document.querySelector('.wish-container');
 const wishTextElements = document.querySelectorAll('.wish-text');
 const wishUserElements = document.querySelectorAll('.wish-user');

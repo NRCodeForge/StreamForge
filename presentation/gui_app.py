@@ -8,7 +8,10 @@ import sys
 from presentation.ui_elements import UIElementCard, show_toast, start_hotkey_listener
 from presentation.settings_windows import SubathonSettingsWindow, LikeChallengeSettingsWindow
 
-# KORREKTUR: Verwende absolute Importe
+# Importiere die Singleton-Instanz, um den Thread zu stoppen
+from services.service_provider import like_service_instance
+
+# Importiere Infrastruktur
 from config import Style, BASE_HOST, BASE_PORT, BASE_URL, RESET_WISHES_ENDPOINT
 from utils import server_log
 
@@ -36,14 +39,16 @@ class StreamForgeGUI:
         self.root.resizable(False, False)
         self.root.configure(bg=Style.BACKGROUND)
 
+        # State: Ein Array, dessen Wert im Hotkey-Listener (separater Thread) aktualisiert werden kann
         self.is_server_running = [False]
         self.flask_thread = None
 
         self.setup_ui()
         self.setup_callbacks()
 
+        # Starte Hotkey-Listener in einem Daemon-Thread
         start_hotkey_listener(self.is_server_running)
-        print("INIT DONE")
+
     def setup_ui(self):
         # --- Status Frame ---
         server_frame = tk.Frame(self.root, bg=Style.BACKGROUND)
@@ -64,12 +69,14 @@ class StreamForgeGUI:
         element_manager_frame.pack(pady=10, padx=30, fill=tk.X)
 
         for config in UI_ELEMENTS_CONFIG:
-            # Holen der Methoden-Objekte von der Instanz. None, wenn nicht definiert.
-            if config["has_settings"]:
-                settings_func = getattr(self, config.get("settings_func_name"), None)
+            settings_func = None
+            func_name = config.get("settings_func_name")
+
+            if func_name:
+                settings_func = getattr(self, func_name, None)
+
             reset_func = self.reset_database_action if config.get("has_reset") else None
 
-            # Die UIElementCard ist nun robuster und verarbeitet None-Werte korrekt.
             card = UIElementCard(parent=element_manager_frame, name=config["name"], path=config["path"],
                                  has_settings=config.get("has_settings", False),
                                  has_reset=config.get("has_reset", False),
@@ -94,6 +101,7 @@ class StreamForgeGUI:
 
         def run_flask():
             try:
+                # Startet den Flask-Server
                 flask_app.run(host=BASE_HOST, port=BASE_PORT, debug=False, use_reloader=False)
             except Exception as e:
                 server_log.error(f"Flask Webserver crashed: {e}")
@@ -106,13 +114,18 @@ class StreamForgeGUI:
         server_log.info("Webserver erfolgreich gestartet.")
 
     def on_app_close(self):
+        # Stoppe den Monitor-Thread, falls er läuft
+        if like_service_instance.client:
+            server_log.info("Stoppe Tikfinity-Monitor...")
+            like_service_instance.client.stop_monitoring()
+
         self.is_server_running[0] = False
         server_log.info("Anwendung StreamForge geschlossen.")
         self.root.destroy()
 
     # --- Action Callbacks (Interaktion mit dem Service Layer über HTTP) ---
     def reset_database_action(self):
-        """Sendet einen HTTP POST request zum Zurücksetzen der Datenbank (WishService)."""
+        """Sendet einen HTTP POST Request zum Zurücksetzen der Datenbank (WishService)."""
         if not self.is_server_running[0]:
             messagebox.showerror("Fehler", "Server ist nicht aktiv.")
             return
@@ -120,12 +133,10 @@ class StreamForgeGUI:
         if messagebox.askyesno("Bestätigen",
                                "Bist du sicher, dass du alle Killer-Wünsche unwiderruflich löschen möchtest?"):
             try:
-                # Nutzt RESET_WISHES_ENDPOINT aus config
-                response = requests.post(BASE_URL.rstrip('/') + RESET_WISHES_ENDPOINT, timeout=5)
+                response = requests.post(BASE_URL.rstrip('/') + RESET_WISHES_ENDPOINT)
                 response.raise_for_status()
-                show_toast(self.root, "Datenbank zurückgesetzt", color=Style.DANGER)
+                show_toast(self.root, "Datenbank zurückgesetzt")
             except requests.exceptions.RequestException as e:
-                server_log.error(f"Serverfehler beim Zurücksetzen: {e}")
                 messagebox.showerror("Fehler", f"Serverfehler beim Zurücksetzen: {e}")
 
     # --- Settings Window Callbacks ---
@@ -139,5 +150,10 @@ class StreamForgeGUI:
         self.status_label.config(text=message, fg=color)
 
     def start(self):
+        # Stellt sicher, dass die Datenbank-Struktur existiert, bevor der Server startet
+        from database.db_setup import setup_database
+        setup_database()
+
+        # Startet Server nach kurzer Verzögerung, um die GUI zu laden
         self.root.after(100, self.start_webserver)
         self.root.mainloop()

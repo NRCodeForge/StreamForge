@@ -1,4 +1,4 @@
-const API_URL = 'http://127.0.0.1:5000/like_challenge_data';
+const API_URL = 'http://127.0.0.1:5000/api/v1/like_challenge';
 const challengeTextElement = document.getElementById('challenge-text');
 
 async function updateChallenge() {

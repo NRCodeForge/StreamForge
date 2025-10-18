@@ -24,30 +24,23 @@ BASE_PORT = 5000
 BASE_URL = f'http://{BASE_HOST}:{BASE_PORT}'
 
 # API Endpunkte (Wird in web_api.py verwendet)
-API_ROOT = '/api'
+API_ROOT = '/api/v1/'
 WISHES_ENDPOINT = f'{API_ROOT}/wishes'
 NEXT_WISH_ENDPOINT = f'{WISHES_ENDPOINT}/next'
 RESET_WISHES_ENDPOINT = f'{WISHES_ENDPOINT}/reset'
 LIKE_CHALLENGE_ENDPOINT = f'{API_ROOT}/like_challenge'
 
+
+# UI Design (Aus new_gui.py kopiert)
 class Style:
-    """Eine Klasse zur zentralen Verwaltung von UI-Stilkonstanten."""
-    # Farbpalette
-    BACKGROUND = "#2E2E2E"
+    BACKGROUND = "#1A1B26"
+    WIDGET_BG = "#2A2C3A"
     FOREGROUND = "#E0E0E0"
-    BORDER = "#4A4A4A"
-    SUCCESS = "#28A745"
-    DANGER = "#DC3545"
-    WARNING = "#FFC107"
-    INFO = "#17A2B8"
-    TEXT_MUTED = "#6C757D"
-    PRIMARY = "#007BFF"
-
-    # Schriftarten
-    FONT_FAMILY = "Segoe UI"
-
-# API-Endpunkte und Basiskonfiguration
-BASE_HOST = "127.0.0.1"
-BASE_PORT = 5000
-BASE_URL = f"http://{BASE_HOST}:{BASE_PORT}"
-RESET_WISHES_ENDPOINT = "/api/wishes/reset"
+    TEXT_MUTED = "#A6B0CF"
+    ACCENT_BLUE = "#33B1FF"
+    DANGER = "#FA4D56"
+    FONT_FAMILY = "Roboto"
+    BORDER = "#3A3C4A"
+    WIDGET_HOVER = "#3A3C4A"
+    ACCENT_PURPLE = "#7E57C2"
+    SUCCESS = "#4CAF50"
