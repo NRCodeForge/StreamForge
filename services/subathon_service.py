@@ -2,6 +2,7 @@ from external.settings_manager import SettingsManager
 from utils import server_log
 
 class SubathonService:
+    """Kapselt das Lesen/Schreiben der Subathon-Konfiguration über den SettingsManager."""
     def __init__(self):
         # Nutzt den SettingsManager, um die subathon_overlay/settings.json zu verwalten
         self.settings_manager = SettingsManager('subathon_overlay/settings.json')

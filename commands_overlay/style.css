@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+/* Animation für das Einblenden (Fade In) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Animation für das Ausblenden (Fade Out) */
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
+}
+
+body {
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    color: #E0E0E0;
+}
+
+.command-container {
+    padding: 15px 25px;
+    background-color: rgba(15, 15, 15, 0.75);
+    border: 2px solid rgb(222, 11, 50); /* DBD-Stil Rot */
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(222, 11, 50, 0.4);
+
+    /* WICHTIG: Standardmäßig versteckt.
+      Nichts ist zu sehen, bis der Trigger die Sequenz startet.
+    */
+    opacity: 0;
+    display: none;
+
+    /* Animationsdauer (0.5s) */
+    animation-duration: 0.5s;
+    /* Behält den Endzustand der Animation bei */
+    animation-fill-mode: forwards;
+}
+
+/* Klasse, die von JS hinzugefügt wird, um das Overlay anzuzeigen */
+.command-container.show {
+    display: block; /* Macht es sichtbar */
+    animation-name: fadeIn;
+}
+
+/* Klasse, die von JS hinzugefügt wird, um das Overlay auszublenden */
+.command-container.hide {
+    display: block; /* Muss block sein, damit die fadeOut-Animation sichtbar ist */
+    animation-name: fadeOut;
+}
+
+.command-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+#command-text {
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#command-costs {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #FFD700; /* Gold-Farbe für die Kosten */
+    margin-top: 5px;
+}

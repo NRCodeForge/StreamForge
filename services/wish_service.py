@@ -17,17 +17,31 @@ class WishService:
         return self.repository.get_wishes(self.offset_counter)
 
     def advance_offset(self):
-        """Erhöht den Offset und setzt ihn auf 0 zurück, falls das Ende erreicht ist (Hotkeys)."""
-        total_wishes = self.repository.count_total_wishes()
+        """Löscht den ältesten Wunsch, erhöht den Offset und setzt ihn ggf. zurück."""
 
-        self.offset_counter += 2
+        # NEU: Zuerst den ältesten Wunsch löschen
+        self.repository.delete_oldest_wish()
 
-        if self.offset_counter >= total_wishes and total_wishes > 0:
+        # Berechne die neue Gesamtzahl *nach* dem Löschen
+        total_wishes_after_delete = self.repository.count_total_wishes()
+
+        # Die Logik zur Offset-Erhöhung bleibt ähnlich,
+        # aber wir müssen den Offset nicht mehr explizit erhöhen,
+        # da durch das Löschen des ersten Elements die nächsten "aufrutschen".
+        # Wir müssen nur sicherstellen, dass der Offset zurückgesetzt wird,
+        # wenn er das (neue) Ende erreicht.
+
+        # Wenn der aktuelle Offset größer oder gleich der neuen Anzahl ist
+        # ODER wenn es keine Wünsche mehr gibt, setze auf 0 zurück.
+        if self.offset_counter >= total_wishes_after_delete:
             self.offset_counter = 0
-        elif total_wishes == 0:
+        # Optional: Wenn nach dem Löschen keine Wünsche mehr da sind, auch auf 0 setzen.
+        elif total_wishes_after_delete == 0:
             self.offset_counter = 0
+        # Wichtig: Wenn der Offset gültig bleibt (also nicht >= total_wishes_after_delete),
+        # dann muss er NICHT verändert werden, da der nächste Wunsch automatisch an diese Position rückt.
 
-        wishes_log.info(f'Offset aktualisiert auf: {self.offset_counter}')
+        wishes_log.info(f'Offset nach Löschen und Prüfung: {self.offset_counter}')
         return self.offset_counter
 
     def add_new_wish(self, wunsch, user_name):

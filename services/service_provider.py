@@ -10,9 +10,11 @@ from services.like_challenge_service import LikeChallengeService
 from services.subathon_service import SubathonService
 from services.wish_service import WishService
 from services.audio_service import AudioService
+from services.command_service import CommandService
 
 # Globale Singleton-Instanzen
 like_service_instance = LikeChallengeService()
 subathon_service_instance = SubathonService()
 wish_service_instance = WishService()
 audio_service_instance = AudioService()
+command_service_instance = CommandService()

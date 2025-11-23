@@ -1,12 +1,12 @@
 {
-    "widgetUrl": "https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes",
+    "widgetUrl": "https://tikfinity.zerody.one/widget/goal?cid=1420433&metric=likes",
     "displayTextFormat": "{likes_needed} Likes bis zur Nächsten 20er Geschenktüte",
-    "recurringGoalExpression": "x + 33",
+    "recurringGoalExpression": "x + 33333",
     "initialGoals": [
-        10,
-        20,
-        40,
-        80,
-        100
+        10000,
+        20000,
+        40000,
+        80000,
+        100000
     ]
 }

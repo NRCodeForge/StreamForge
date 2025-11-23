@@ -16,17 +16,25 @@ def start_hotkey_listener(is_server_running_ref):
 
     def on_press(key):
         try:
+            # Prüft, ob der Server läuft UND die richtige Taste gedrückt wurde
             if key == keyboard.Key.page_down and is_server_running_ref[0]:
+                # Sendet die Anfrage an den Server
                 requests.post(BASE_URL.rstrip('/') + NEXT_WISH_ENDPOINT, timeout=1)
                 server_log.info("Hotkey 'Bild Runter' ausgelöst: Nächster Wunsch angefordert.")
         except requests.exceptions.RequestException:
+             # Ignoriert Fehler, wenn der Server nicht erreichbar ist
             pass
         except Exception as e:
             server_log.error(f"Unerwarteter Hotkey-Fehler: {e}")
 
+    # Stellt sicher, dass der Listener im Hintergrund läuft (daemon=True)
+    # keyboard.Listener(...).start() blockiert normalerweise, daher der Thread.
     listener_thread = threading.Thread(target=lambda: keyboard.Listener(on_press=on_press).start(), daemon=True)
     listener_thread.start()
-    return listener_thread
+    # WICHTIG: .join() hier *nicht* aufrufen, sonst blockiert die GUI!
+    # Der Listener läuft jetzt im Hintergrund, bis das Hauptprogramm endet.
+    server_log.info("Hotkey-Listener-Thread gestartet.") # Log hinzugefügt
+    return listener_thread # Rückgabe ist optional, wird aktuell nicht verwendet
 
 
 # --- Toast Notification ---
@@ -106,11 +114,13 @@ class UIElementCard(tk.Frame):
         self._bind_hover_color(self.copy_button, Style.ACCENT_BLUE, Style.ACCENT_BLUE)
 
     def _on_enter(self, event):
+        """Mouse-Over-Effekt: hebt die Karte und ihre Kinder farblich hervor."""
         self.config(bg=Style.WIDGET_HOVER)
         for widget in self.winfo_children():
             widget.config(bg=Style.WIDGET_HOVER)
 
     def _on_leave(self, event):
+        """Mouse-Out-Effekt: stellt die Standardfarben wieder her."""
         self.config(bg=Style.WIDGET_BG)
         for widget in self.winfo_children():
             if widget not in [getattr(self, 'reset_button', None), getattr(self, 'settings_button', None),
@@ -118,16 +128,19 @@ class UIElementCard(tk.Frame):
                 widget.config(bg=Style.WIDGET_BG)
 
     def _bind_hover_color(self, widget, enter_fg, leave_fg):
+        """Bindet nur die Farbänderung für den Text eines Buttons an Hover-Events."""
         widget.bind("<Enter>", lambda e, w=widget, c=enter_fg: w.config(fg=c), add='+')
         widget.bind("<Leave>", lambda e, w=widget, c=leave_fg: w.config(fg=c), add='+')
 
     def _bind_hover_effect_to_all(self):
+        """Bindet die allgemeinen Hover-In/Out-Events an die Karte und alle direkten Kinder."""
         widgets = [self] + self.winfo_children()
         for widget in widgets:
             widget.bind("<Enter>", self._on_enter)
             widget.bind("<Leave>", self._on_leave)
 
     def _on_copy_click(self):
+        """Kopiert die URL des Overlays in die Zwischenablage und zeigt einen Toast an."""
         self.root.clipboard_clear()
         self.root.clipboard_append(self.url)
         show_toast(self.root, "In Zwischenablage kopiert")

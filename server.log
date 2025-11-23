@@ -478,3 +478,176 @@
 2025-10-18 21:54:26,158 - INFO - Warte auf Beendigung des Tikfinity-Monitor-Threads...
 2025-10-18 21:54:26,660 - INFO - Tikfinity-Monitor-Thread erfolgreich beendet.
 2025-10-18 21:54:26,660 - INFO - Anwendung StreamForge geschlossen.
+2025-10-18 23:53:12,883 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json
+2025-10-18 23:53:12,884 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay\settings.json
+2025-10-18 23:53:12,884 - INFO - SubathonService initialisiert.
+2025-10-18 23:53:13,003 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-18 23:53:13,242 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 23:53:13,243 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-18 23:53:14,151 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-18 23:53:14,313 - INFO - Webserver erfolgreich gestartet.
+2025-10-18 23:53:15,721 - INFO - Anwendung StreamForge geschlossen.
+2025-10-19 18:20:13,429 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json
+2025-10-19 18:20:13,431 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay\settings.json
+2025-10-19 18:20:13,431 - INFO - SubathonService initialisiert.
+2025-10-19 18:20:13,589 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-19 18:20:14,080 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-19 18:20:14,080 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-19 18:20:16,786 - INFO - Hotkey-Listener-Thread gestartet.
+2025-10-19 18:20:16,788 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-19 18:20:16,979 - INFO - Webserver erfolgreich gestartet.
+2025-10-19 18:20:38,909 - INFO - Initialisiere Tikfinity-Monitor-Service...
+2025-10-19 18:20:38,910 - INFO - Tikfinity-Monitor-Thread gestartet für: https://tikfinity.zerody.one/widget/goal?cid=2093691&metric=likes
+2025-10-19 18:20:38,910 - INFO - Suche nach ms-playwright in: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\ms-playwright
+2025-10-19 18:20:39,005 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json gespeichert.
+2025-10-19 18:20:50,069 - INFO - Starte Firefox mit executable_path='None'
+2025-10-19 18:20:52,045 - INFO - Neues Ziel 10 erreicht! Spiele Sound.
+2025-10-19 18:20:52,045 - INFO - AudioService: Spiele Ziel-Sound...
+2025-10-19 18:20:54,567 - INFO - Tikfinity-Ueberwachung (Thread) ist aktiv...
+2025-10-22 14:23:58,510 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json
+2025-10-22 14:23:58,511 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay\settings.json
+2025-10-22 14:23:58,511 - INFO - SubathonService initialisiert.
+2025-10-22 14:23:58,721 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-22 14:23:58,930 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-22 14:23:58,930 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-22 14:24:00,342 - INFO - Hotkey-Listener-Thread gestartet.
+2025-10-22 14:24:00,343 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-22 14:24:00,450 - INFO - Webserver erfolgreich gestartet.
+2025-10-22 14:24:05,922 - INFO - Anwendung StreamForge geschlossen.
+2025-10-31 23:30:07,384 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json
+2025-10-31 23:30:07,384 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay\settings.json
+2025-10-31 23:30:07,384 - INFO - SubathonService initialisiert.
+2025-10-31 23:30:07,520 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-31 23:30:07,520 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json
+2025-10-31 23:30:07,770 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-31 23:30:07,770 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-31 23:30:09,383 - INFO - Hotkey-Listener-Thread gestartet.
+2025-10-31 23:30:09,383 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-31 23:30:09,484 - INFO - Webserver erfolgreich gestartet.
+2025-10-31 23:30:18,227 - INFO - Anwendung StreamForge geschlossen.
+2025-10-31 23:30:34,836 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json
+2025-10-31 23:30:34,836 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay\settings.json
+2025-10-31 23:30:34,836 - INFO - SubathonService initialisiert.
+2025-10-31 23:30:34,932 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-31 23:30:34,932 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json
+2025-10-31 23:30:35,068 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-31 23:30:35,068 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-31 23:30:35,699 - INFO - Hotkey-Listener-Thread gestartet.
+2025-10-31 23:30:35,700 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-31 23:30:35,801 - INFO - Webserver erfolgreich gestartet.
+2025-10-31 23:33:24,992 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json
+2025-10-31 23:33:24,992 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay\settings.json
+2025-10-31 23:33:24,992 - INFO - SubathonService initialisiert.
+2025-10-31 23:33:25,101 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-10-31 23:33:25,101 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json
+2025-10-31 23:33:25,306 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-31 23:33:25,306 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-10-31 23:33:25,966 - INFO - Hotkey-Listener-Thread gestartet.
+2025-10-31 23:33:25,967 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-10-31 23:33:26,070 - INFO - Webserver erfolgreich gestartet.
+2025-10-31 23:33:31,197 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json gespeichert.
+2025-10-31 23:33:31,197 - INFO - Command a1b2c3d4-0003 aktualisiert zu: !niclas 100 Whieties
+2025-10-31 23:42:38,983 - INFO - Anwendung StreamForge geschlossen.
+2025-11-12 14:52:30,755 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json
+2025-11-12 14:52:30,755 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay\settings.json
+2025-11-12 14:52:30,755 - INFO - SubathonService initialisiert.
+2025-11-12 14:52:30,873 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-11-12 14:52:30,873 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json
+2025-11-12 14:52:30,873 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json
+2025-11-12 14:52:30,873 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\settings.json
+2025-11-12 14:52:30,874 - WARNING - commands.json nicht gefunden oder veraltet. Erstelle/Konvertiere...
+2025-11-12 14:52:30,875 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json gespeichert.
+2025-11-12 14:52:31,105 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-12 14:52:31,105 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-11-12 14:52:32,867 - INFO - Hotkey-Listener-Thread gestartet.
+2025-11-12 14:52:32,868 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-12 14:52:32,971 - INFO - Webserver erfolgreich gestartet.
+2025-11-12 14:53:05,244 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json gespeichert.
+2025-11-12 14:53:05,244 - INFO - Command 60716f66-8647-47d5-9817-1f116bcf7600 aktualisiert.
+2025-11-12 14:53:12,480 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json gespeichert.
+2025-11-12 14:53:12,480 - INFO - Command 1a313b0e-005e-4bef-a09f-0959c66f9dcd aktualisiert.
+2025-11-12 14:53:17,309 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json gespeichert.
+2025-11-12 14:53:17,309 - INFO - Command 857cf598-1f31-4d1a-8007-3edb55448f57 aktualisiert.
+2025-11-12 14:54:58,657 - INFO - Starte Command-Sequenz mit 3 Befehlen...
+2025-11-12 14:54:58,657 - INFO - Command-Loop-Thread gestartet.
+2025-11-12 14:54:58,658 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 14:55:03,660 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 14:55:04,162 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 14:55:09,163 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 14:55:09,665 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 14:55:14,667 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 14:55:15,168 - INFO - Command-Sequenz beendet.
+2025-11-12 14:55:15,169 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:01:37,889 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json
+2025-11-12 15:01:37,889 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay\settings.json
+2025-11-12 15:01:37,890 - INFO - SubathonService initialisiert.
+2025-11-12 15:01:37,982 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-11-12 15:01:37,982 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json
+2025-11-12 15:01:37,982 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json
+2025-11-12 15:01:37,982 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\settings.json
+2025-11-12 15:01:38,155 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-12 15:01:38,155 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-11-12 15:01:40,151 - INFO - Hotkey-Listener-Thread gestartet.
+2025-11-12 15:01:40,152 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-12 15:01:40,253 - INFO - Webserver erfolgreich gestartet.
+2025-11-12 15:01:46,094 - INFO - Starte Command-Sequenz mit 3 Befehlen...
+2025-11-12 15:01:46,094 - INFO - Command-Loop-Thread gestartet.
+2025-11-12 15:01:46,096 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:01:51,115 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:01:51,648 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:01:56,650 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:01:57,151 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:02:02,152 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:02:02,652 - INFO - Command-Sequenz beendet.
+2025-11-12 15:02:02,653 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:06:31,013 - INFO - Anwendung StreamForge geschlossen.
+2025-11-12 15:06:34,697 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json
+2025-11-12 15:06:34,697 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay\settings.json
+2025-11-12 15:06:34,697 - INFO - SubathonService initialisiert.
+2025-11-12 15:06:34,809 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-11-12 15:06:34,809 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json
+2025-11-12 15:06:34,809 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json
+2025-11-12 15:06:34,809 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\settings.json
+2025-11-12 15:06:34,967 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-12 15:06:34,967 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-11-12 15:06:35,569 - INFO - Hotkey-Listener-Thread gestartet.
+2025-11-12 15:06:35,570 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-12 15:06:35,718 - INFO - Webserver erfolgreich gestartet.
+2025-11-12 15:06:45,507 - INFO - Starte Command-Sequenz mit 3 Befehlen...
+2025-11-12 15:06:45,507 - INFO - Command-Loop-Thread gestartet.
+2025-11-12 15:06:45,509 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:06:50,512 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:06:51,015 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:06:56,016 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:06:56,518 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:07:01,519 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 15:07:02,020 - INFO - Command-Sequenz beendet.
+2025-11-12 15:07:02,021 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 19:44:21,515 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\like_overlay\settings.json
+2025-11-12 19:44:21,516 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\subathon_overlay\settings.json
+2025-11-12 19:44:21,516 - INFO - SubathonService initialisiert.
+2025-11-12 19:44:21,639 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-11-12 19:44:21,639 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json
+2025-11-12 19:44:21,639 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json
+2025-11-12 19:44:21,639 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\settings.json
+2025-11-12 19:44:21,907 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-12 19:44:21,907 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\killerwuensche.db
+2025-11-12 19:44:23,007 - INFO - Hotkey-Listener-Thread gestartet.
+2025-11-12 19:44:23,008 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-12 19:44:23,109 - INFO - Webserver erfolgreich gestartet.
+2025-11-12 19:45:58,818 - INFO - Starte Command-Sequenz mit 3 Befehlen...
+2025-11-12 19:45:58,818 - INFO - Command-Loop-Thread gestartet.
+2025-11-12 19:45:58,821 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 19:46:03,822 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 19:46:04,323 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 19:46:09,325 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 19:46:09,826 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 19:46:14,828 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 19:46:15,329 - INFO - Command-Sequenz beendet.
+2025-11-12 19:46:15,330 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\active.json gespeichert.
+2025-11-12 19:46:33,763 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json gespeichert.
+2025-11-12 19:46:33,763 - INFO - Command hinzugefügt: !boom
+2025-11-12 19:46:40,999 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json gespeichert.
+2025-11-12 19:46:40,999 - INFO - Command 857cf598-1f31-4d1a-8007-3edb55448f57 aktualisiert.
+2025-11-12 19:46:49,685 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\Full_UI_Element\StreamForge\commands_overlay\commands.json gespeichert.
+2025-11-12 19:46:49,685 - INFO - Command 689e1052-f8f1-463e-89c4-0e9a47cd5566 gelöscht.

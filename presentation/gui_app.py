@@ -8,7 +8,7 @@ import os
 from PIL import Image, ImageTk
 
 from presentation.ui_elements import UIElementCard, show_toast, start_hotkey_listener
-from presentation.settings_windows import SubathonSettingsWindow, LikeChallengeSettingsWindow
+from presentation.settings_windows import SubathonSettingsWindow, LikeChallengeSettingsWindow, CommandsSettingsWindow
 from services.service_provider import like_service_instance
 
 from config import Style, BASE_HOST, BASE_PORT, BASE_URL, RESET_WISHES_ENDPOINT, get_path
@@ -22,7 +22,11 @@ UI_ELEMENTS_CONFIG = [
      "settings_func_name": "open_subathon_settings_window", "has_reset": False},
     {"name": "Timer Overlay", "path": "timer_overlay/index.html", "has_settings": False, "has_reset": False},
     {"name": "Like Challenge", "path": "like_overlay/index.html", "has_settings": True,
-     "settings_func_name": "open_like_challenge_settings_window", "has_reset": False}
+     "settings_func_name": "open_like_challenge_settings_window", "has_reset": False},
+    {"name": "Commands Overlay", "path": "commands/index.html",
+     "has_settings": True,
+     "settings_func_name": "open_commands_settings_window",
+     "has_reset": False}
 ]
 
 
@@ -30,6 +34,7 @@ class StreamForgeGUI:
     """Die Haupt-GUI-Anwendung des StreamForge Managers."""
 
     def __init__(self):
+        """Initialisiert das Hauptfenster, lädt Assets und startet Hilfs-Threads (Hotkey-Listener)."""
         self.root = tk.Tk()
         self.root.title("StreamForge Overlay Manager")
         self.root.geometry("700x640")
@@ -60,6 +65,7 @@ class StreamForgeGUI:
         start_hotkey_listener(self.is_server_running)
 
     def setup_ui(self):
+        """Erzeugt alle UI-Elemente (Statuszeile, Karten, Hotkey-Hinweis, Logo)."""
         # --- Status Frame ---
         server_frame = tk.Frame(self.root, bg=Style.BACKGROUND)
         server_frame.pack(pady=(20, 10), padx=20, fill=tk.X)
@@ -122,10 +128,12 @@ class StreamForgeGUI:
             server_log.warning(f"Logo-Datei nicht gefunden: {logo_path}")
 
     def setup_callbacks(self):
+        """Bindet Fenster-Ereignisse (z. B. Schließen) an passende Handler."""
         self.root.protocol("WM_DELETE_WINDOW", self.on_app_close)
 
     # --- Server Management ---
     def start_webserver(self):
+        """Startet den Flask-Webserver in einem Hintergrund-Thread und aktualisiert den Status in der GUI."""
         if self.is_server_running[0]:
             return
 
@@ -143,6 +151,7 @@ class StreamForgeGUI:
         server_log.info("Webserver erfolgreich gestartet.")
 
     def on_app_close(self):
+        """Fährt Hintergrunddienste sauber herunter und beendet die Anwendung."""
         if like_service_instance.client:
             server_log.info("Stoppe Tikfinity-Monitor...")
             like_service_instance.client.stop_monitoring()
@@ -152,6 +161,7 @@ class StreamForgeGUI:
         self.root.destroy()
 
     def reset_database_action(self):
+        """Setzt die Wunsch-Datenbank über die API zurück (bestätigungsbasiert)."""
         if not self.is_server_running[0]:
             messagebox.showerror("Fehler", "Server ist nicht aktiv.")
             return
@@ -166,15 +176,22 @@ class StreamForgeGUI:
                 messagebox.showerror("Fehler", f"Serverfehler beim Zurücksetzen: {e}")
 
     def open_subathon_settings_window(self):
+        """Öffnet das Einstellungsfenster für den Subathon-Overlay."""
         SubathonSettingsWindow(self.root)
 
     def open_like_challenge_settings_window(self):
+        """Öffnet das Einstellungsfenster für die Like-Challenge."""
         LikeChallengeSettingsWindow(self.root)
 
+    def open_commands_settings_window(self):
+        CommandsSettingsWindow(self.root)
+
     def update_status(self, message, color):
+        """Aktualisiert die Statuszeile in der GUI mit Text und Farbe."""
         self.status_label.config(text=message, fg=color)
 
     def start(self):
+        """Initialisiert Datenbankabhängigkeiten, startet den Webserver und öffnet die GUI-Hauptschleife."""
         from database.db_setup import setup_database
         setup_database()
 

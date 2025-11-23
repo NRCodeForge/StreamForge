@@ -1,0 +1,16 @@
+/* HTML: <div class="loader"></div> */
+div {
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    padding: 20px;
+    background-color: rgba(15, 15, 15, 0.75);
+    border: 2px solid rgb(222, 11, 50);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(222, 11, 50, 0.4);
+    box-sizing: border-box;
+}
+
+@keyframes l3 {
+    100% {background-size:100%}
+}

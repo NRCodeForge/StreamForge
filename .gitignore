@@ -1,0 +1,16 @@
+# PyInstaller build artifacts
+/dist/
+/build/
+
+# Optional: PyInstaller .spec file (manchmal will man die auch nicht versionieren)
+# *.spec
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE specific files (Beispiele)
+.idea/
+.vscode/
