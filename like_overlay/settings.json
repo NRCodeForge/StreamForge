@@ -1,6 +1,6 @@
 {
     "widgetUrl": "https://tikfinity.zerody.one/widget/goal?cid=1420433&metric=likes",
-    "displayTextFormat": "{likes_needed} Likes bis zur Nächsten 20er Geschenktüte",
+    "displayTextFormat": "{likes_needed} Likes - Truhe",
     "recurringGoalExpression": "x + 33333",
     "initialGoals": [
         10000,
@@ -9,5 +9,6 @@
         60000,
         80000,
         100000
-    ]
+    ],
+    "tiktok_unique_id": "dbdstation"
 }

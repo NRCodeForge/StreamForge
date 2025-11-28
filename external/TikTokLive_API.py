@@ -69,7 +69,7 @@ class TikTokLive_API:
 
             # Kurze Pause vor Reconnect
             if self.running:
-                time.sleep(5)
+                time.sleep(1)
 
     # --- Events ---
 

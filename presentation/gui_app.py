@@ -1,293 +1,391 @@
 import threading
 import tkinter as tk
-from tkinter import messagebox, font
+from tkinter import messagebox, font, Toplevel
 import requests
 import sys
 import os
-
+import random
 from PIL import Image, ImageTk
 
-from presentation.ui_elements import UIElementCard, show_toast, start_hotkey_listener
+# Importiere Services und Config
 from presentation.settings_windows import SubathonSettingsWindow, LikeChallengeSettingsWindow, CommandsSettingsWindow
 from services.service_provider import like_service_instance
 
-from config import Style, BASE_HOST, BASE_PORT, BASE_URL, RESET_WISHES_ENDPOINT, get_path
+from config import (
+    Style, BASE_HOST, BASE_PORT, BASE_URL,
+    RESET_WISHES_ENDPOINT, WISHES_ENDPOINT,
+    get_path, COMMANDS_TRIGGER_ENDPOINT
+)
 from utils import server_log
-
 from presentation.web_api import app as flask_app
+from presentation.ui_elements import show_toast, start_hotkey_listener
 
-UI_ELEMENTS_CONFIG = [
-    {"name": "Wishlist", "path": "killer_wishes/index.html", "has_settings": False, "has_reset": True},
-    {"name": "Subathon Overlay", "path": "subathon_overlay/index.html", "has_settings": True,
-     "settings_func_name": "open_subathon_settings_window", "has_reset": False},
-    {"name": "Timer Overlay", "path": "timer_overlay/index.html", "has_settings": False, "has_reset": False},
-    {"name": "Like Challenge", "path": "like_overlay/index.html", "has_settings": True,
-     "settings_func_name": "open_like_challenge_settings_window", "has_reset": False},
-    {"name": "Like Progress Bar", "path": "like_progress_bar/index.html", "has_settings": False, "has_reset": False},
-    {"name": "Commands Overlay", "path": "commands/index.html",
-     "has_settings": True,
-     "settings_func_name": "open_commands_settings_window",
-     "has_reset": False}
-]
+# --- TEXTE FÜR INFO SCREENS ---
+INFO_TEXTS = {
+    "LIKES": "LIKE SYSTEM\n\nAutomatische Like-Challenge & Progress Bar.",
+    "TIMER": "TIMER & SUBATHON\n\nZeitsteuerung für Events und Countdowns.",
+    "WISHES": "KILLER WISHES\n\nZuschauer-Wunschliste für Killer/Survivor.",
+    "COMMANDS": "COMMAND OVERLAY\n\nGroße Medien-Einblendungen triggern."
+}
+
+
+class DashboardCard(tk.Frame):
+    """Ein einheitliches Modul für das Grid-Layout."""
+
+    def __init__(self, parent, title, items, settings_func=None, test_func=None, reset_func=None, info_key=None,
+                 test_label="TEST"):
+        # Dunkler Hintergrund für modernen Look
+        card_bg = "#1a1a1a"
+
+        super().__init__(parent, bg=card_bg, highlightbackground=Style.BORDER, highlightthickness=1)
+        self.parent_root = parent.winfo_toplevel()
+        self.info_key = info_key
+
+        # FESTE GRÖSSE für einheitliches Raster
+        self.config(width=280, height=220)
+        self.pack_propagate(False)
+
+        # --- HEADER ---
+        header = tk.Frame(self, bg=card_bg)
+        header.pack(fill=tk.X, padx=12, pady=(12, 5))
+
+        tk.Label(header, text=title, font=font.Font(family=Style.FONT_FAMILY, size=12, weight="bold"),
+                 bg=card_bg, fg=Style.ACCENT_BLUE).pack(side=tk.LEFT)
+
+        # Icons rechts
+        btn_frame = tk.Frame(header, bg=card_bg)
+        btn_frame.pack(side=tk.RIGHT)
+
+        if settings_func: self._add_icon(btn_frame, "⚙", settings_func, card_bg)
+        if reset_func: self._add_icon(btn_frame, "🗑", reset_func, card_bg, color=Style.DANGER)
+        if info_key: self._add_icon(btn_frame, "ℹ", self.show_info, card_bg, font=("Arial", 11, "italic"))
+
+        # --- CONTENT ---
+        content = tk.Frame(self, bg=card_bg)
+        content.pack(fill=tk.BOTH, expand=True, padx=15, pady=5)
+
+        for name, path in items:
+            row = tk.Frame(content, bg=card_bg)
+            row.pack(fill=tk.X, pady=4)
+
+            tk.Label(row, text=name, font=("Segoe UI", 10), bg=card_bg, fg="#cccccc").pack(side=tk.LEFT)
+
+            url = BASE_URL.rstrip('/') + '/' + path.lstrip('/')
+            tk.Button(row, text="❐", command=lambda u=url: self.copy_to_clipboard(u),
+                      bg=card_bg, fg=Style.ACCENT_PURPLE, relief=tk.FLAT, bd=0, cursor="hand2").pack(side=tk.RIGHT)
+
+        # --- FOOTER ---
+        if test_func:
+            tk.Button(self, text=f"▶ {test_label}", command=test_func,
+                      bg=Style.ACCENT_PURPLE, fg="white", relief=tk.FLAT,
+                      font=("Arial", 9, "bold"), cursor="hand2").pack(fill=tk.X, side=tk.BOTTOM, padx=15, pady=15)
+
+    def _add_icon(self, parent, text, cmd, bg_col, color="#888888", font=("Arial", 12)):
+        btn = tk.Button(parent, text=text, command=cmd, bg=bg_col, fg=color,
+                        relief=tk.FLAT, bd=0, font=font, width=3, cursor="hand2")
+        btn.pack(side=tk.LEFT)
+        btn.bind("<Enter>", lambda e: btn.config(fg="white"))
+        btn.bind("<Leave>", lambda e: btn.config(fg=color))
+
+    def copy_to_clipboard(self, text):
+        self.parent_root.clipboard_clear()
+        self.parent_root.clipboard_append(text)
+        show_toast(self.parent_root, "Link kopiert!")
+
+    def show_info(self):
+        messagebox.showinfo("Info", INFO_TEXTS.get(self.info_key, ""))
 
 
 class StreamForgeGUI:
-    """Die Haupt-GUI-Anwendung des StreamForge Managers."""
-
     def __init__(self):
-        """Initialisiert das Hauptfenster, lädt Assets und startet Hilfs-Threads (Hotkey-Listener)."""
         self.root = tk.Tk()
-        self.root.title("StreamForge Overlay Manager")
-        self.root.geometry("700x700")
-        self.root.resizable(False, False)
-        self.root.configure(bg=Style.BACKGROUND)
+        self.root.title("StreamForge Manager")
 
-        # Pfad zum Icon (im Hauptverzeichnis des Projekts)
+        # Standard: Maximiert starten
+        try:
+            self.root.state('zoomed')
+        except:
+            self.root.geometry("1200x800")
+
+        self.root.configure(bg=Style.BACKGROUND)
+        self.root.minsize(800, 600)
+
         icon_path = get_path("assets/icon.ico")
         if os.path.exists(icon_path):
             try:
                 self.root.iconbitmap(icon_path)
-            except tk.TclError as e:
-                server_log.error(
-                    f"Fehler beim Setzen des Fenster-Icons (TclError, möglicherweise falsches Format): {e}")
-            except Exception as e:
-                server_log.error(f"Unbekannter Fehler beim Setzen des Fenster-Icons: {e}")
-        else:
-            server_log.warning(f"Fenster-Icon-Datei nicht gefunden: {icon_path}")
+            except:
+                pass
 
-        # State: Ein Array, dessen Wert im Hotkey-Listener (separater Thread) aktualisiert werden kann
         self.is_server_running = [False]
-        self.flask_thread = None
+        self.cards = []
+        self.card_windows = []
+
+        # Bilder speichern um Garbage Collection zu verhindern
+        self.images = {}
 
         self.setup_ui()
         self.setup_callbacks()
-
-        # Starte Hotkey-Listener in einem Daemon-Thread
         start_hotkey_listener(self.is_server_running)
 
     def setup_ui(self):
-        """Erzeugt alle UI-Elemente (Statuszeile, Karten, Hotkey-Hinweis, Logo)."""
-        # --- Status Frame ---
-        server_frame = tk.Frame(self.root, bg=Style.BACKGROUND)
-        server_frame.pack(pady=(20, 10), padx=20, fill=tk.X)
-        tk.Label(server_frame, text="Serverstatus:", font=font.Font(family=Style.FONT_FAMILY, size=20, weight="bold"),
-                 bg=Style.BACKGROUND,
-                 fg=Style.FOREGROUND).pack(side=tk.LEFT, padx=(0, 10))
-        self.status_label = tk.Label(server_frame, text="Server: OFFLINE", fg=Style.DANGER,
-                                     font=font.Font(family=Style.FONT_FAMILY, size=20, weight="bold"),
-                                     bg=Style.BACKGROUND)
-        self.status_label.pack(side=tk.LEFT)
-
-        separator1 = tk.Frame(self.root, height=2, bg=Style.BORDER)
-        separator1.pack(fill=tk.X, padx=50, pady=(10, 10))
-
-        # --- TikTok User Input (Main GUI) ---
-        self.setup_tiktok_input()
-
-        # --- Element Manager Frame ---
-        element_manager_frame = tk.Frame(self.root, bg=Style.BACKGROUND)
-        element_manager_frame.pack(pady=5, padx=30, fill=tk.X)
-
-        for config in UI_ELEMENTS_CONFIG:
-            settings_func = None
-            func_name = config.get("settings_func_name")
-
-            if func_name:
-                settings_func = getattr(self, func_name, None)
-
-            reset_func = self.reset_database_action if config.get("has_reset") else None
-
-            card = UIElementCard(parent=element_manager_frame, name=config["name"], path=config["path"],
-                                 has_settings=config.get("has_settings", False),
-                                 has_reset=config.get("has_reset", False),
-                                 settings_func=settings_func,
-                                 reset_func=reset_func)
-            card.pack(fill=tk.X, pady=6)
-
-        # --- Hotkey Info ---
-        hotkey_frame = tk.Frame(self.root, bg=Style.BACKGROUND)
-        hotkey_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=20)
-        tk.Label(hotkey_frame, text="Hotkey: Drücke 'Bild Runter'\n für den nächsten Wunsch",
-                 font=font.Font(family=Style.FONT_FAMILY, size=11, slant="italic"), bg=Style.BACKGROUND,
-                 fg=Style.TEXT_MUTED).pack()
-
-        # --- Logo mit proportionaler Skalierung ---
         logo_path = get_path("assets/LOGO.png")
+
+        # --- 1. HEADER (Top) ---
+        header = tk.Frame(self.root, bg=Style.BACKGROUND)
+        header.pack(fill=tk.X, side=tk.TOP, padx=30, pady=20)
+
+        # Header Icon laden
         if os.path.exists(logo_path):
             try:
-                pil_image = Image.open(logo_path)
-                base_width = 150
-                w_percent = (base_width / float(pil_image.size[0]))
-                h_size = int((float(pil_image.size[1]) * float(w_percent)))
+                pil_icon = Image.open(logo_path).convert("RGBA")
+                pil_icon.thumbnail((240, 135), Image.Resampling.LANCZOS)
+                self.images['header_icon'] = ImageTk.PhotoImage(pil_icon)
+                tk.Label(header, image=self.images['header_icon'], bg=Style.BACKGROUND).pack(side=tk.LEFT, padx=(0, 15))
+            except:
+                pass
 
-                pil_image_resized = pil_image.resize((base_width, h_size), Image.Resampling.LANCZOS)
-                self.logo_image = ImageTk.PhotoImage(pil_image_resized)
+        # Titel
+        tk.Label(header, text="STREAMFORGE", font=("Impact", 32),
+                 bg=Style.BACKGROUND, fg=Style.FOREGROUND).pack(side=tk.LEFT)
 
-                logo_label = tk.Label(self.root, image=self.logo_image, bg=Style.BACKGROUND)
-                logo_label.place(relx=1.0, rely=1.0, x=-10, y=-10, anchor="se")
+        # Controls (Rechts)
+        controls = tk.Frame(header, bg=Style.BACKGROUND)
+        controls.pack(side=tk.RIGHT)
 
-            except Exception as e:
-                server_log.error(f"Fehler beim Laden oder Skalieren des Logos: {e}")
-        else:
-            server_log.warning(f"Logo-Datei nicht gefunden: {logo_path}")
+        tk.Button(controls, text="👤", command=self.open_global_settings,
+                  bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE, relief=tk.FLAT,
+                  font=("Arial", 20), bd=0, cursor="hand2").pack(side=tk.LEFT, padx=20)
 
-    def setup_tiktok_input(self):
-        """Erstellt eine designte Eingabezeile für den TikTok-User + Test Button."""
-        input_container = tk.Frame(self.root, bg=Style.BACKGROUND)
-        input_container.pack(pady=(0, 15), padx=30, fill=tk.X)
+        self.status_canvas = tk.Canvas(controls, width=18, height=18, bg=Style.BACKGROUND, highlightthickness=0)
+        self.status_canvas.pack(side=tk.LEFT)
+        self.status_indicator = self.status_canvas.create_oval(2, 2, 16, 16, fill=Style.DANGER, outline="")
 
-        card_frame = tk.Frame(input_container, bg=Style.WIDGET_BG,
-                              highlightbackground=Style.BORDER, highlightthickness=1,
-                              padx=15, pady=12)
-        card_frame.pack(fill=tk.X)
+        # --- 2. FOOTER (Bottom) ---
+        footer = tk.Frame(self.root, bg="#111111", height=40)
+        footer.pack(fill=tk.X, side=tk.BOTTOM)
 
-        # Label
-        tk.Label(card_frame, text="TikTok User:",
-                 font=font.Font(family=Style.FONT_FAMILY, size=12, weight="bold"),
-                 bg=Style.WIDGET_BG, fg=Style.FOREGROUND).pack(side=tk.LEFT, padx=(0, 10))
+        f_content = tk.Frame(footer, bg="#111111")
+        f_content.pack(fill=tk.BOTH, padx=20, pady=8)
 
-        # Input Wrapper
-        input_wrapper = tk.Frame(card_frame, bg=Style.BACKGROUND, padx=2, pady=2)
-        input_wrapper.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
+        # Links: Version & Slogan
+        tk.Label(f_content, text="v2.0  |  FORGED FOR STREAMERS", font=("Segoe UI", 10, "bold"),
+                 bg="#111111", fg="#666666").pack(side=tk.LEFT)
 
-        self.tiktok_user_var = tk.StringVar()
-        try:
-            current_settings = like_service_instance.settings_manager.load_settings()
-            self.tiktok_user_var.set(current_settings.get("tiktok_unique_id", ""))
-        except Exception:
-            self.tiktok_user_var.set("")
+        # Rechts: Logo & Credit
+        f_right = tk.Frame(f_content, bg="#111111")
+        f_right.pack(side=tk.RIGHT)
+        icon_path = get_path("assets/icon.ico")
+        if os.path.exists(icon_path):
+            try:
+                pil_f = Image.open(icon_path).convert("RGBA")
+                pil_f.thumbnail((100,100), Image.Resampling.LANCZOS)
+                self.images['footer_logo'] = ImageTk.PhotoImage(pil_f)
+                tk.Label(f_right, image=self.images['footer_logo'], bg="#111111").pack(side=tk.RIGHT, padx=(10, 0))
+            except:
+                pass
 
-        self.tiktok_entry = tk.Entry(input_wrapper, textvariable=self.tiktok_user_var,
-                                     font=font.Font(family=Style.FONT_FAMILY, size=11),
-                                     bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE,
-                                     insertbackground=Style.FOREGROUND, relief=tk.FLAT)
-        self.tiktok_entry.pack(fill=tk.BOTH, expand=True, ipadx=5, ipady=3)
+        tk.Label(f_right, text="STREAMFORGE SYSTEM", font=("Segoe UI", 9), bg="#111111", fg="#444444").pack(
+            side=tk.RIGHT)
 
-        # Save Button
-        save_btn = tk.Button(card_frame, text="💾 SAVE", command=self.save_tiktok_user,
-                             font=font.Font(family=Style.FONT_FAMILY, size=10, weight="bold"),
-                             bg=Style.ACCENT_PURPLE, fg="#FFFFFF",
-                             relief=tk.FLAT, padx=10, pady=2)
-        save_btn.pack(side=tk.LEFT, padx=(0, 5))
+        # --- 3. MAIN AREA (Scrollbar + Canvas) ---
+        main_frame = tk.Frame(self.root, bg=Style.BACKGROUND)
+        main_frame.pack(fill=tk.BOTH, expand=True)
 
-        # NEU: Test Button
-        test_btn = tk.Button(card_frame, text="🧪 TEST (+100)", command=self.send_test_likes,
-                             font=font.Font(family=Style.FONT_FAMILY, size=10, weight="bold"),
-                             bg=Style.ACCENT_BLUE, fg="#FFFFFF",
-                             relief=tk.FLAT, padx=10, pady=2)
-        test_btn.pack(side=tk.LEFT)
+        self.canvas = tk.Canvas(main_frame, bg=Style.BACKGROUND, highlightthickness=0)
 
-    def send_test_likes(self):
-        """Sendet einen Request an die eigene API, um Likes zu simulieren."""
-        if not self.is_server_running[0]:
-            messagebox.showerror("Fehler", "Bitte erst den Server starten (autom. beim Start).")
-            return
-        try:
-            requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/like_challenge/test")
-            show_toast(self.root, "+100 Test-Likes gesendet!")
-        except Exception as e:
-            server_log.error(f"Fehler beim Senden von Test-Likes: {e}")
+        # Scrollbar Design
+        self.scrollbar = tk.Scrollbar(main_frame, orient="vertical", command=self.canvas.yview)
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
 
-    def save_tiktok_user(self):
-        """Speichert den TikTok Username in die Settings."""
-        new_user = self.tiktok_user_var.get().strip()
-        if not new_user:
-            messagebox.showwarning("Warnung", "TikTok Username darf nicht leer sein.")
-            return
+        self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-        try:
-            # Lade und update Settings
-            settings = like_service_instance.settings_manager.load_settings()
-            settings["tiktok_unique_id"] = new_user
-            like_service_instance.settings_manager.save_settings(settings)
+        self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
 
-            show_toast(self.root, "TikTok User gespeichert!")
-            server_log.info(f"TikTok User geändert auf: {new_user}. Bitte starte ggf. neu.")
+        # --- MODULE HINZUFÜGEN ---
+        self.cards.append(DashboardCard(
+            self.canvas, "LIKES",
+            [("Challenge Text", "like_overlay/index.html"), ("Progress Bar", "like_progress_bar/index.html")],
+            settings_func=self.open_like_challenge_settings_window,
+            test_func=self.test_likes_action, test_label="TEST +100",
+            info_key="LIKES"
+        ))
 
-            # Fokus vom Button nehmen (rein optisch)
-            self.root.focus()
+        self.cards.append(DashboardCard(
+            self.canvas, "TIMER & SUBATHON",
+            [("Subathon", "subathon_overlay/index.html"), ("Timer", "timer_overlay/index.html")],
+            settings_func=self.open_subathon_settings_window,
+            info_key="TIMER"
+        ))
 
-        except Exception as e:
-            server_log.error(f"Fehler beim Speichern des TikTok Users: {e}")
-            messagebox.showerror("Fehler", f"Speichern fehlgeschlagen: {e}")
+        self.cards.append(DashboardCard(
+            self.canvas, "KILLER WISHES",
+            [("Wishlist Overlay", "killer_wishes/index.html")],
+            reset_func=self.reset_database_action,
+            test_func=self.test_wish_action, test_label="WUNSCH +1",
+            info_key="WISHES"
+        ))
 
-    def setup_callbacks(self):
-        """Bindet Fenster-Ereignisse (z. B. Schließen) an passende Handler."""
-        self.root.protocol("WM_DELETE_WINDOW", self.on_app_close)
+        self.cards.append(DashboardCard(
+            self.canvas, "COMMANDS",
+            [("Media Overlay", "commands/index.html")],
+            settings_func=self.open_commands_settings_window,
+            test_func=self.test_command_action, test_label="FIRE SEQUENZ",
+            info_key="COMMANDS"
+        ))
 
-    # --- Server Management ---
-    def start_webserver(self):
-        """Startet den Flask-Webserver in einem Hintergrund-Thread und aktualisiert den Status in der GUI."""
+        self.canvas.bind("<Configure>", self.on_resize)
+
+    def on_resize(self, event):
+        """Responsive Grid Positionierung."""
+        w = event.width
+
+        card_w = 280
+        card_h = 220
+        gap_x = 25
+        gap_y = 25
+
+        # Grid Berechnung
+        cols = max(1, (w - gap_x) // (card_w + gap_x))
+        total_grid_w = cols * card_w + (cols - 1) * gap_x
+        start_x = (w - total_grid_w) // 2
+        start_y = 30
+
+        # Karten platzieren
+        if not self.card_windows:
+            for card in self.cards:
+                win = self.canvas.create_window(0, 0, window=card, anchor="nw")
+                self.card_windows.append(win)
+
+        rows = 0
+        for i, win_id in enumerate(self.card_windows):
+            col_idx = i % cols
+            row_idx = i // cols
+            rows = row_idx + 1
+            x = start_x + col_idx * (card_w + gap_x)
+            y = start_y + row_idx * (card_h + gap_y)
+            self.canvas.coords(win_id, x, y)
+
+        # Scrollbereich anpassen
+        total_h = start_y + rows * (card_h + gap_y) + 50
+        self.canvas.configure(scrollregion=(0, 0, w, total_h))
+
+        # Hintergrund-Logo wurde entfernt.
+
+    def _on_mousewheel(self, event):
+        self.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+
+    # --- ACTIONS ---
+    def test_likes_action(self):
         if self.is_server_running[0]:
-            return
-
-        def run_flask():
             try:
-                flask_app.run(host=BASE_HOST, port=BASE_PORT, debug=False, use_reloader=False)
-            except Exception as e:
-                server_log.error(f"Flask Webserver crashed: {e}")
-                self.update_status("Server: FEHLER", Style.DANGER)
+                requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/like_challenge/test", timeout=0.1)
+            except:
+                pass
+            show_toast(self.root, "100 Likes gesendet!")
 
-        self.flask_thread = threading.Thread(target=run_flask, daemon=True)
-        self.flask_thread.start()
-        self.is_server_running[0] = True
-        self.update_status("Server: ONLINE", Style.SUCCESS)
-        server_log.info("Webserver erfolgreich gestartet.")
-
-    def on_app_close(self):
-        """Fährt Hintergrunddienste sauber herunter und beendet die Anwendung."""
-        # Check für den neuen API Client
-        if hasattr(like_service_instance, 'api_client') and like_service_instance.api_client:
-            server_log.info("Stoppe TikTok Live API...")
+    def test_wish_action(self):
+        if self.is_server_running[0]:
+            k = ["Trapper", "Wraith", "Billy", "Nurse", "Huntress", "Myers", "Hag", "Doctor"]
             try:
-                like_service_instance.api_client.stop()
-            except Exception as e:
-                server_log.error(f"Fehler beim Stoppen der API: {e}")
+                requests.post(BASE_URL.rstrip('/') + WISHES_ENDPOINT,
+                              json={"wunsch": random.choice(k), "user_name": "TestUser"}, timeout=0.1)
+            except:
+                pass
+            show_toast(self.root, "Wunsch hinzugefügt!")
 
-        # Fallback für alten Client (falls noch vorhanden/verwendet)
-        elif hasattr(like_service_instance, 'client') and like_service_instance.client:
-             if hasattr(like_service_instance.client, 'stop_monitoring'):
-                like_service_instance.client.stop_monitoring()
-
-        self.is_server_running[0] = False
-        server_log.info("Anwendung StreamForge geschlossen.")
-        self.root.destroy()
-        sys.exit(0)
+    def test_command_action(self):
+        from config import COMMANDS_TRIGGER_ENDPOINT
+        if self.is_server_running[0]:
+            try:
+                requests.post(BASE_URL.rstrip('/') + COMMANDS_TRIGGER_ENDPOINT, timeout=0.1)
+            except:
+                pass
+            show_toast(self.root, "Sequenz gestartet!")
 
     def reset_database_action(self):
-        """Setzt die Wunsch-Datenbank über die API zurück (bestätigungsbasiert)."""
-        if not self.is_server_running[0]:
-            messagebox.showerror("Fehler", "Server ist nicht aktiv.")
-            return
-
-        if messagebox.askyesno("Bestätigen",
-                               "Bist du sicher, dass du alle Killer-Wünsche unwiderruflich löschen möchtest?"):
+        if not self.is_server_running[0]: return
+        if messagebox.askyesno("Reset", "Alle Wünsche löschen?"):
             try:
-                response = requests.post(BASE_URL.rstrip('/') + RESET_WISHES_ENDPOINT)
-                response.raise_for_status()
-                show_toast(self.root, "Datenbank zurückgesetzt")
-            except requests.exceptions.RequestException as e:
-                messagebox.showerror("Fehler", f"Serverfehler beim Zurücksetzen: {e}")
+                requests.post(BASE_URL.rstrip('/') + RESET_WISHES_ENDPOINT, timeout=0.1)
+            except:
+                pass
+            show_toast(self.root, "Datenbank geleert")
+
+    def open_global_settings(self):
+        GlobalSettingsWindow(self.root)
 
     def open_subathon_settings_window(self):
-        """Öffnet das Einstellungsfenster für den Subathon-Overlay."""
         SubathonSettingsWindow(self.root)
 
     def open_like_challenge_settings_window(self):
-        """Öffnet das Einstellungsfenster für die Like-Challenge."""
         LikeChallengeSettingsWindow(self.root)
 
     def open_commands_settings_window(self):
         CommandsSettingsWindow(self.root)
 
-    def update_status(self, message, color):
-        """Aktualisiert die Statuszeile in der GUI mit Text und Farbe."""
-        self.status_label.config(text=message, fg=color)
+    def start_webserver(self):
+        if self.is_server_running[0]: return
+
+        def r():
+            try:
+                flask_app.run(host=BASE_HOST, port=BASE_PORT, debug=False, use_reloader=False)
+            except:
+                self.status_canvas.itemconfig(self.status_indicator, fill=Style.DANGER)
+
+        self.flask_thread = threading.Thread(target=r, daemon=True)
+        self.flask_thread.start()
+        self.is_server_running[0] = True
+        self.status_canvas.itemconfig(self.status_indicator, fill=Style.SUCCESS)
+
+    def setup_callbacks(self):
+        self.root.protocol("WM_DELETE_WINDOW", self.on_app_close)
+
+    def on_app_close(self):
+        if hasattr(like_service_instance, 'api_client') and like_service_instance.api_client:
+            try:
+                like_service_instance.api_client.stop()
+            except:
+                pass
+        self.is_server_running[0] = False
+        self.root.destroy()
+        sys.exit(0)
 
     def start(self):
-        """Initialisiert Datenbankabhängigkeiten, startet den Webserver und öffnet die GUI-Hauptschleife."""
         from database.db_setup import setup_database
         setup_database()
-
         self.root.after(100, self.start_webserver)
         self.root.mainloop()
+
+
+class GlobalSettingsWindow(tk.Toplevel):
+    def __init__(self, master):
+        super().__init__(master)
+        self.title("Settings")
+        self.geometry("400x220")
+        self.configure(bg=Style.BACKGROUND)
+        x = master.winfo_x() + 100;
+        y = master.winfo_y() + 100
+        self.geometry(f"+{x}+{y}")
+
+        tk.Label(self, text="TikTok Username (ohne @):", bg=Style.BACKGROUND, fg=Style.FOREGROUND,
+                 font=("Arial", 12)).pack(pady=(40, 5))
+        self.uv = tk.StringVar()
+        try:
+            self.uv.set(like_service_instance.settings_manager.load_settings().get("tiktok_unique_id", ""))
+        except:
+            pass
+        tk.Entry(self, textvariable=self.uv, font=("Arial", 12), bg="#333333", fg="white", insertbackground="white",
+                 relief=tk.FLAT).pack(pady=5, padx=40, fill=tk.X, ipady=3)
+        tk.Button(self, text="SPEICHERN", command=self.save, bg=Style.ACCENT_PURPLE, fg="white", relief=tk.FLAT,
+                  font=("Arial", 10, "bold")).pack(pady=20, ipadx=20)
+
+    def save(self):
+        v = self.uv.get().strip()
+        if v:
+            s = like_service_instance.settings_manager.load_settings()
+            s["tiktok_unique_id"] = v
+            like_service_instance.settings_manager.save_settings(s)
+            show_toast(self.master, "Gespeichert")
+            self.destroy()
