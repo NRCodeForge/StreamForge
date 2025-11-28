@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>Like Progress Bar</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body>
-<div>
-    <progress id="likes" max="100" value="70">70%</progress>
-</div>
-<script src="script.js"></script>
+    <div class="container" id="bar-container">
+        <div id="p5-canvas-container"></div>
+
+        <div class="info-layer">
+            <span id="percentage-text">0%</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

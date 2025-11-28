@@ -93,8 +93,22 @@ def trigger_command():
         server_log.error(f"Fehler beim Triggern der Command-Sequenz: {e}")
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/v1/like_challenge/test', methods=['POST'])
+def trigger_test_likes():
+    try:
+        # Füge pauschal z.B. 100 Likes hinzu (oder einen Wert aus dem Request)
+        like_service_instance.add_test_likes(100)
+        return jsonify({'message': '100 Test-Likes hinzugefügt.'}), 200
+    except Exception as e:
+        server_log.error(f"Test-Like Fehler: {e}")
+        return jsonify({'error': str(e)}), 500
 
 # --- Statische Datei-Endpunkte (unverändert) ---
+
+@app.route('/like_progress_bar/<path:path>')
+def serve_like_progress_bar(path):
+    directory = get_path('like_progress_bar')
+    return send_from_directory(directory, path)
 @app.route('/killer_wishes/<path:path>')
 def serve_killer_wishes(path):
     directory = get_path('killer_wishes')

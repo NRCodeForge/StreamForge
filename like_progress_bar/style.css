@@ -1,16 +1,45 @@
-/* HTML: <div class="loader"></div> */
-div {
-    bottom: 20px;
-    right: 20px;
-    width: 350px;
-    padding: 20px;
-    background-color: rgba(15, 15, 15, 0.75);
-    border: 2px solid rgb(222, 11, 50);
-    border-radius: 5px;
-    box-shadow: 0 0 15px rgba(222, 11, 50, 0.4);
-    box-sizing: border-box;
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: transparent;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@keyframes l3 {
-    100% {background-size:100%}
+.container {
+    position: relative;
+    width: 450px;
+    height: 70px;
+    margin: 20px;
+    /* Ein sehr dunkler Rahmen, fast schwarz */
+    border: 1px solid #330000;
+    background-color: rgba(5, 5, 5, 0.95);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    overflow: hidden;
+}
+
+#p5-canvas-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+}
+
+.info-layer {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+}
+
+#percentage-text {
+    color: #eeeeee;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace;
+    text-shadow: 1px 1px 2px black;
+    letter-spacing: 1px;
+    opacity: 0.8;
 }

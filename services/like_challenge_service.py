@@ -1,124 +1,118 @@
 import json
 import numpy as numpy
-import time # Hinzugefügt für time.sleep, falls benötigt (obwohl es im Client verwendet wird)
+import time
 
-# Importiere Hilfsfunktionen aus anderen Schichten
 from external.settings_manager import SettingsManager
 from utils import server_log
-from external.tikfinity_client import TikfinityClient
-
-
-# KORREKTUR: Der Import von 'audio_service_instance' wird von hier entfernt,
-# um den Zirkelbezug zu durchbrechen.
+from external.TikTokLive_API import TikTokLive_API
 
 
 class LikeChallengeService:
     def __init__(self):
         self.settings_manager = SettingsManager('like_overlay/settings.json')
-        self.client = None
-        # Speichert das Ziel vom letzten Aufruf, um Änderungen zu erkennen
+
+        self.api_client = None
+        self.current_monitored_user = None
+
+        # NEU: Test-Likes Speicher
+        self.test_likes = 0
+
         self.previous_current_goal = None
 
+    def add_test_likes(self, amount):
+        """Fügt Test-Likes hinzu, um die Animationen zu testen."""
+        self.test_likes += amount
+        server_log.info(f"Test-Modus: {amount} Likes hinzugefügt. Total Test-Likes: {self.test_likes}")
+
     def evaluate_expression_safely(self, expression, x_value):
-        """Wertet den mathematischen Ausdruck sicher aus (aus app.py übernommen)."""
+        """Wertet den mathematischen Ausdruck sicher aus."""
         allowed_names = {"x": x_value, "numpy": numpy, "np": numpy}
-        # Erlaube grundlegende mathematische Operationen sicher
         allowed_builtins = {
             'abs': abs, 'int': int, 'float': float, 'round': round,
             'pow': pow, 'min': min, 'max': max, 'sum': sum
         }
         if "__" in expression:
             raise ValueError("Ungültiger Ausdruck in der Formel.")
-        # Verwende eine eingeschränkte Umgebung für eval
         result = eval(expression, {"__builtins__": allowed_builtins}, allowed_names)
-        return int(result) # Stelle sicher, dass das Ergebnis ein Integer ist
+        return int(result)
+
+    def _ensure_api_connection(self, tiktok_user):
+        if not tiktok_user: return
+        if self.api_client is None or self.current_monitored_user != tiktok_user:
+            if self.api_client:
+                try:
+                    self.api_client.stop()
+                except:
+                    pass
+
+            server_log.info(f"Initialisiere TikTok API für: {tiktok_user}")
+            self.api_client = TikTokLive_API(tiktok_user)
+            self.api_client.start()
+            self.current_monitored_user = tiktok_user
 
     def get_challenge_status(self):
-        """Berechnet den aktuellen Status der Like Challenge."""
+        """Berechnet den Status inkl. Test-Likes."""
         try:
             settings = self.settings_manager.load_settings()
         except FileNotFoundError:
-            server_log.error("settings.json für Like Challenge nicht gefunden.")
-            raise FileNotFoundError("Like Challenge settings.json fehlt.")
+            return {"error": "Settings fehlen"}
 
-        widget_url = settings.get("widgetUrl")
+        tiktok_user = settings.get("tiktok_unique_id", "")
         display_format = settings.get("displayTextFormat", "{likes_needed} Likes bis zum nächsten Ziel")
-        initial_goals = sorted(settings.get("initialGoals", [])) # Stelle sicher, dass sie sortiert sind
+        initial_goals = sorted(settings.get("initialGoals", []))
         recurring_expr = settings.get("recurringGoalExpression", "x + 33333")
 
-        if not widget_url:
-            raise ValueError("widgetUrl fehlt in settings.json")
+        if tiktok_user:
+            self._ensure_api_connection(tiktok_user)
 
-        # --- Externe Integration (Monitoring-Thread) ---
+        # Echte Likes + Test Likes
+        real_likes = 0
+        if self.api_client:
+            real_likes = self.api_client.get_current_likes()
 
-        if self.client is None:
-            server_log.info("Initialisiere Tikfinity-Monitor-Service...")
-            self.client = TikfinityClient(widget_url)
-            self.client.start_monitoring()
+        like_count = real_likes + self.test_likes
 
-        like_count = self.client.get_current_like_count()
-
-        # --- Geschäftslogik zur Zielbestimmung (KORRIGIERT) ---
+        # --- Geschäftslogik (unverändert) ---
         current_goal = None
-        last_checked_goal = 0 # Startwert für die rekursive Berechnung
+        last_checked_goal = 0
 
-        # 1. Prüfe die initialen Ziele (die jetzt sortiert sind)
         for g in initial_goals:
-            last_checked_goal = g # Merke dir das letzte geprüfte initiale Ziel
+            last_checked_goal = g
             if like_count < g:
                 current_goal = g
-                break # Erstes passendes initiales Ziel gefunden
+                break
 
-        # 2. Wenn kein initiales Ziel gepasst hat (oder die Liste leer war)
         if current_goal is None:
-            # Beginne die rekursive Berechnung entweder bei 0 (wenn initialGoals leer war)
-            # oder beim letzten (höchsten) initialen Ziel.
             if not initial_goals:
-                 last_checked_goal = 0
+                last_checked_goal = 0
             else:
-                 # Stelle sicher, dass wir vom *höchsten* initialen Ziel starten
-                 last_checked_goal = initial_goals[-1]
+                last_checked_goal = initial_goals[-1]
 
-
-            # Wende die rekursive Formel so lange an, bis das Ziel größer als die Likes ist
-            # Initialisiere calculated_goal *vor* der Schleife mit dem ersten rekursiven Schritt
             calculated_goal = self.evaluate_expression_safely(recurring_expr, last_checked_goal)
+            loop_guard = 0
+            while like_count >= calculated_goal and loop_guard < 1000:
+                last_checked_goal = calculated_goal
+                calculated_goal = self.evaluate_expression_safely(recurring_expr, last_checked_goal)
+                if calculated_goal <= last_checked_goal:
+                    calculated_goal = like_count + 1000
+                    break
+                loop_guard += 1
+            current_goal = calculated_goal
 
-            while like_count >= calculated_goal:
-                 last_checked_goal = calculated_goal # Das erreichte Ziel wird zur Basis für die nächste Berechnung
-                 calculated_goal = self.evaluate_expression_safely(recurring_expr, last_checked_goal)
-                 # Sicherheits-Check, um Endlosschleifen zu vermeiden, falls die Formel nicht erhöht
-                 if calculated_goal <= last_checked_goal:
-                     server_log.error(f"Rekursive Formel '{recurring_expr}' erhöht das Ziel nicht! Abbruch.")
-                     # Setze ein sinnvolles nächstes Ziel, z.B. Likes + 1 oder ein fester Wert
-                     calculated_goal = like_count + 1
-                     break
-
-
-            current_goal = calculated_goal # Das erste Ziel, das GRÖSSER als die Likes ist
-
-
-        # --- NEU: Sound-Logik beim Erreichen eines Ziels ---
-
-        # 1. Initialisiere den Wert beim allerersten Durchlauf
+        # --- Sound-Logik ---
         if self.previous_current_goal is None:
             self.previous_current_goal = current_goal
 
-        # 2. Prüfe, ob sich das 'current_goal' seit dem letzten Aufruf geändert hat
-        #    UND ob die aktuelle Like-Zahl größer/gleich dem *vorherigen* Ziel ist
-        #    (um sicherzustellen, dass der Sound nur spielt, wenn ein Ziel *erreicht* wurde)
-        if self.previous_current_goal != current_goal and like_count >= self.previous_current_goal:
-            # KORREKTUR: Importiere den Service HIER, nicht am Anfang der Datei.
-            # Dies löst den Zirkelbezug auf.
+        # Spiele Sound, wenn Ziel erreicht (auch durch Test-Likes)
+        if (self.previous_current_goal != current_goal) and (like_count >= self.previous_current_goal):
             from services.service_provider import audio_service_instance
-
-            server_log.info(f"Neues Ziel {self.previous_current_goal} erreicht! Spiele Sound.")
+            server_log.info(f"Ziel {self.previous_current_goal} erreicht! (Likes: {like_count}) -> Sound")
             audio_service_instance.play_goal_sound()
-            # Aktualisiere das Ziel für den nächsten Check
             self.previous_current_goal = current_goal
-        # --- ENDE Sound-Logik ---
 
-        # Stelle sicher, dass likes_needed nie negativ ist (kann passieren, wenn Ziel genau erreicht wird)
+        if self.previous_current_goal != current_goal:
+            self.previous_current_goal = current_goal
+
         likes_needed = max(0, int(current_goal - like_count))
         display_text = display_format.format(likes_needed=likes_needed)
 

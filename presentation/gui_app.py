@@ -23,6 +23,7 @@ UI_ELEMENTS_CONFIG = [
     {"name": "Timer Overlay", "path": "timer_overlay/index.html", "has_settings": False, "has_reset": False},
     {"name": "Like Challenge", "path": "like_overlay/index.html", "has_settings": True,
      "settings_func_name": "open_like_challenge_settings_window", "has_reset": False},
+    {"name": "Like Progress Bar", "path": "like_progress_bar/index.html", "has_settings": False, "has_reset": False},
     {"name": "Commands Overlay", "path": "commands/index.html",
      "has_settings": True,
      "settings_func_name": "open_commands_settings_window",
@@ -37,7 +38,7 @@ class StreamForgeGUI:
         """Initialisiert das Hauptfenster, lädt Assets und startet Hilfs-Threads (Hotkey-Listener)."""
         self.root = tk.Tk()
         self.root.title("StreamForge Overlay Manager")
-        self.root.geometry("700x640")
+        self.root.geometry("700x700")
         self.root.resizable(False, False)
         self.root.configure(bg=Style.BACKGROUND)
 
@@ -78,11 +79,14 @@ class StreamForgeGUI:
         self.status_label.pack(side=tk.LEFT)
 
         separator1 = tk.Frame(self.root, height=2, bg=Style.BORDER)
-        separator1.pack(fill=tk.X, padx=50, pady=(10, 20))
+        separator1.pack(fill=tk.X, padx=50, pady=(10, 10))
+
+        # --- TikTok User Input (Main GUI) ---
+        self.setup_tiktok_input()
 
         # --- Element Manager Frame ---
         element_manager_frame = tk.Frame(self.root, bg=Style.BACKGROUND)
-        element_manager_frame.pack(pady=10, padx=30, fill=tk.X)
+        element_manager_frame.pack(pady=5, padx=30, fill=tk.X)
 
         for config in UI_ELEMENTS_CONFIG:
             settings_func = None
@@ -127,6 +131,86 @@ class StreamForgeGUI:
         else:
             server_log.warning(f"Logo-Datei nicht gefunden: {logo_path}")
 
+    def setup_tiktok_input(self):
+        """Erstellt eine designte Eingabezeile für den TikTok-User + Test Button."""
+        input_container = tk.Frame(self.root, bg=Style.BACKGROUND)
+        input_container.pack(pady=(0, 15), padx=30, fill=tk.X)
+
+        card_frame = tk.Frame(input_container, bg=Style.WIDGET_BG,
+                              highlightbackground=Style.BORDER, highlightthickness=1,
+                              padx=15, pady=12)
+        card_frame.pack(fill=tk.X)
+
+        # Label
+        tk.Label(card_frame, text="TikTok User:",
+                 font=font.Font(family=Style.FONT_FAMILY, size=12, weight="bold"),
+                 bg=Style.WIDGET_BG, fg=Style.FOREGROUND).pack(side=tk.LEFT, padx=(0, 10))
+
+        # Input Wrapper
+        input_wrapper = tk.Frame(card_frame, bg=Style.BACKGROUND, padx=2, pady=2)
+        input_wrapper.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
+
+        self.tiktok_user_var = tk.StringVar()
+        try:
+            current_settings = like_service_instance.settings_manager.load_settings()
+            self.tiktok_user_var.set(current_settings.get("tiktok_unique_id", ""))
+        except Exception:
+            self.tiktok_user_var.set("")
+
+        self.tiktok_entry = tk.Entry(input_wrapper, textvariable=self.tiktok_user_var,
+                                     font=font.Font(family=Style.FONT_FAMILY, size=11),
+                                     bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE,
+                                     insertbackground=Style.FOREGROUND, relief=tk.FLAT)
+        self.tiktok_entry.pack(fill=tk.BOTH, expand=True, ipadx=5, ipady=3)
+
+        # Save Button
+        save_btn = tk.Button(card_frame, text="💾 SAVE", command=self.save_tiktok_user,
+                             font=font.Font(family=Style.FONT_FAMILY, size=10, weight="bold"),
+                             bg=Style.ACCENT_PURPLE, fg="#FFFFFF",
+                             relief=tk.FLAT, padx=10, pady=2)
+        save_btn.pack(side=tk.LEFT, padx=(0, 5))
+
+        # NEU: Test Button
+        test_btn = tk.Button(card_frame, text="🧪 TEST (+100)", command=self.send_test_likes,
+                             font=font.Font(family=Style.FONT_FAMILY, size=10, weight="bold"),
+                             bg=Style.ACCENT_BLUE, fg="#FFFFFF",
+                             relief=tk.FLAT, padx=10, pady=2)
+        test_btn.pack(side=tk.LEFT)
+
+    def send_test_likes(self):
+        """Sendet einen Request an die eigene API, um Likes zu simulieren."""
+        if not self.is_server_running[0]:
+            messagebox.showerror("Fehler", "Bitte erst den Server starten (autom. beim Start).")
+            return
+        try:
+            requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/like_challenge/test")
+            show_toast(self.root, "+100 Test-Likes gesendet!")
+        except Exception as e:
+            server_log.error(f"Fehler beim Senden von Test-Likes: {e}")
+
+    def save_tiktok_user(self):
+        """Speichert den TikTok Username in die Settings."""
+        new_user = self.tiktok_user_var.get().strip()
+        if not new_user:
+            messagebox.showwarning("Warnung", "TikTok Username darf nicht leer sein.")
+            return
+
+        try:
+            # Lade und update Settings
+            settings = like_service_instance.settings_manager.load_settings()
+            settings["tiktok_unique_id"] = new_user
+            like_service_instance.settings_manager.save_settings(settings)
+
+            show_toast(self.root, "TikTok User gespeichert!")
+            server_log.info(f"TikTok User geändert auf: {new_user}. Bitte starte ggf. neu.")
+
+            # Fokus vom Button nehmen (rein optisch)
+            self.root.focus()
+
+        except Exception as e:
+            server_log.error(f"Fehler beim Speichern des TikTok Users: {e}")
+            messagebox.showerror("Fehler", f"Speichern fehlgeschlagen: {e}")
+
     def setup_callbacks(self):
         """Bindet Fenster-Ereignisse (z. B. Schließen) an passende Handler."""
         self.root.protocol("WM_DELETE_WINDOW", self.on_app_close)
@@ -152,13 +236,23 @@ class StreamForgeGUI:
 
     def on_app_close(self):
         """Fährt Hintergrunddienste sauber herunter und beendet die Anwendung."""
-        if like_service_instance.client:
-            server_log.info("Stoppe Tikfinity-Monitor...")
-            like_service_instance.client.stop_monitoring()
+        # Check für den neuen API Client
+        if hasattr(like_service_instance, 'api_client') and like_service_instance.api_client:
+            server_log.info("Stoppe TikTok Live API...")
+            try:
+                like_service_instance.api_client.stop()
+            except Exception as e:
+                server_log.error(f"Fehler beim Stoppen der API: {e}")
+
+        # Fallback für alten Client (falls noch vorhanden/verwendet)
+        elif hasattr(like_service_instance, 'client') and like_service_instance.client:
+             if hasattr(like_service_instance.client, 'stop_monitoring'):
+                like_service_instance.client.stop_monitoring()
 
         self.is_server_running[0] = False
         server_log.info("Anwendung StreamForge geschlossen.")
         self.root.destroy()
+        sys.exit(0)
 
     def reset_database_action(self):
         """Setzt die Wunsch-Datenbank über die API zurück (bestätigungsbasiert)."""
