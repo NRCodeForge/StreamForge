@@ -2,31 +2,38 @@
     "animations_time": "3.0",
     "coins": {
         "value": "3",
-        "active": true
+        "active": true,
+        "visible": true
     },
     "subscribe": {
         "value": "500",
-        "active": true
+        "active": true,
+        "visible": true
     },
     "follow": {
         "value": "10",
-        "active": true
+        "active": true,
+        "visible": true
     },
     "share": {
         "value": "0.1",
-        "active": true
+        "active": true,
+        "visible": true
     },
     "like": {
-        "value": "0.1 Seconds",
-        "active": true
+        "value": "1",
+        "active": true,
+        "visible": true
     },
     "chat": {
-        "value": "0 Seconds",
-        "active": false
+        "value": "0",
+        "active": true,
+        "visible": false
     },
     "twitch_sub": {
         "value": "300",
-        "active": true
+        "active": true,
+        "visible": true
     },
     "start_time_seconds": "3600"
 }

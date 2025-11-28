@@ -4,8 +4,10 @@ import asyncio
 from typing import Optional, Callable, List
 
 from TikTokLive import TikTokLiveClient
-from TikTokLive.events import ConnectEvent, LikeEvent, DisconnectEvent, LiveEndEvent, GiftEvent, FollowEvent, \
-    ShareEvent, SubscribeEvent
+from TikTokLive.events import (
+    ConnectEvent, LikeEvent, DisconnectEvent, LiveEndEvent,
+    GiftEvent, FollowEvent, ShareEvent, SubscribeEvent, CommentEvent
+)
 from utils import server_log
 
 
@@ -21,15 +23,14 @@ class TikTokLive_API:
         self.thread = None
         self._lock = threading.Lock()
 
-        # NEU: Liste für externe Event-Listener (z.B. Subathon Service)
         self.listeners: List[Callable[[any], None]] = []
 
     def add_listener(self, callback: Callable[[any], None]):
-        """Erlaubt anderen Services, sich auf Events zu abonnieren."""
+        """Registriert einen Listener für Events."""
         self.listeners.append(callback)
 
     def _notify_listeners(self, event):
-        """Leitet Events an alle registrierten Listener weiter."""
+        """Leitet Events an alle Listener weiter."""
         for callback in self.listeners:
             try:
                 callback(event)
@@ -59,17 +60,18 @@ class TikTokLive_API:
             try:
                 self.client = TikTokLiveClient(unique_id=self.unique_id)
 
-                # Standard Events
+                # Standard Connection Events
                 self.client.on(ConnectEvent)(self.on_connect)
                 self.client.on(DisconnectEvent)(self.on_disconnect)
                 self.client.on(LiveEndEvent)(self.on_live_end)
 
-                # Events für Subathon & Likes
+                # Interaktions-Events
                 self.client.on(LikeEvent)(self.on_like)
                 self.client.on(GiftEvent)(self.on_gift)
                 self.client.on(FollowEvent)(self.on_follow)
                 self.client.on(ShareEvent)(self.on_share)
                 self.client.on(SubscribeEvent)(self.on_subscribe)
+                self.client.on(CommentEvent)(self.on_comment)  # NEU: Chat
 
                 server_log.info(f"Verbinde zu TikTok Live @{self.unique_id}...")
                 self.client.run()
@@ -91,7 +93,6 @@ class TikTokLive_API:
 
             with self._lock:
                 if self.client.room_info:
-                    # Versuche verschiedene Pfade für Like Count
                     if isinstance(self.client.room_info, dict):
                         likes = int(self.client.room_info.get('like_count', 0))
                     else:
@@ -110,26 +111,18 @@ class TikTokLive_API:
         self.is_connected = False
         server_log.info("Stream beendet.")
 
-    # --- Events die wir weiterleiten ---
+    # --- Events Weiterleitung ---
 
     async def on_like(self, event: LikeEvent):
-        # Like Logik für Challenge
         with self._lock:
             batch = event.count if hasattr(event, 'count') else getattr(event, 'likes', 0)
             self.current_likes += batch
             if hasattr(event, 'totalLikes') and event.totalLikes > self.current_likes:
                 self.current_likes = event.totalLikes
-
-        # Weiterleiten an Subathon (falls Likes Zeit geben)
         self._notify_listeners(event)
 
     async def on_gift(self, event: GiftEvent):
-        # WICHTIG: Prüfen ob Gift "streakable" ist und nur das Ende zählen oder jeden Schritt?
-        # Für Subathon meist: 1 Coin = X Sekunden.
-        # Wir leiten das ganze Event weiter, der Service entscheidet.
-        if event.gift.streak_end:  # Nur wenn Streak zu Ende ist oder Einzelgift
-            self._notify_listeners(event)
-        elif not event.gift.streakable:
+        if event.gift.streak_end or not event.gift.streakable:
             self._notify_listeners(event)
 
     async def on_follow(self, event: FollowEvent):
@@ -139,6 +132,10 @@ class TikTokLive_API:
         self._notify_listeners(event)
 
     async def on_subscribe(self, event: SubscribeEvent):
+        self._notify_listeners(event)
+
+    async def on_comment(self, event: CommentEvent):
+        # NEU: Chat Nachrichten
         self._notify_listeners(event)
 
     def get_current_likes(self) -> int:

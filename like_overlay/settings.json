@@ -1,6 +1,6 @@
 {
     "widgetUrl": "https://tikfinity.zerody.one/widget/goal?cid=1420433&metric=likes",
-    "displayTextFormat": "{likes_needed} Likes - Truhe",
+    "displayTextFormat": "{likes_needed} Likes ",
     "recurringGoalExpression": "x + 33333",
     "initialGoals": [
         10000,
@@ -10,5 +10,5 @@
         80000,
         100000
     ],
-    "tiktok_unique_id": "dbdstation"
+    "tiktok_unique_id": "blackbraindev"
 }
