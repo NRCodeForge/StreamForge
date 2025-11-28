@@ -22,18 +22,47 @@ from presentation.ui_elements import show_toast, start_hotkey_listener
 
 # --- TEXTE FÜR INFO SCREENS ---
 INFO_TEXTS = {
-    "LIKES": "LIKE SYSTEM\n\nAutomatische Like-Challenge & Progress Bar.",
-    "TIMER": "TIMER & SUBATHON\n\nZeitsteuerung für Events und Countdowns.",
-    "WISHES": "KILLER WISHES\n\nZuschauer-Wunschliste für Killer/Survivor.",
-    "COMMANDS": "COMMAND OVERLAY\n\nGroße Medien-Einblendungen triggern."
+    "LIKES": (
+        "LIKE SYSTEM\n\n"
+        "Dieses Modul steuert die Like-Challenge und den Progress-Bar.\n\n"
+        "Funktion:\n"
+        "- Automatische Verbindung zu TikTok Live (über Username).\n"
+        "- Zählt Likes und berechnet das nächste Ziel.\n\n"
+        "Testen:\n"
+        "Drücke 'Test (+100)', um Likes zu simulieren."
+    ),
+    "TIMER": (
+        "TIMER & SUBATHON\n\n"
+        "1. Subathon:\n"
+        "Verlängert die Zeit automatisch bei Events (Coins, Follows, Subs).\n"
+        "Einstellungen über das Zahnrad.\n\n"
+        "2. Timer:\n"
+        "Ein einfacher Countdown/Stoppuhr Overlay."
+    ),
+    "WISHES": (
+        "KILLER WISHES\n\n"
+        "Zuschauer können Wünsche für Killer/Survivor abgeben.\n\n"
+        "Steuerung:\n"
+        "- Hotkey 'Bild Runter': Wählt den nächsten Wunsch & löscht ihn.\n"
+        "- Papierkorb: Löscht die gesamte Liste.\n"
+        "- Test: Fügt einen Zufallswunsch hinzu."
+    ),
+    "COMMANDS": (
+        "COMMAND OVERLAY\n\n"
+        "Zeigt große Medien-Overlays (Bilder/GIFs) im Stream an.\n\n"
+        "Integration:\n"
+        "Füge die URL in OBS ein. Nutze 'FIRE', um die Sequenz manuell zu testen."
+    )
 }
 
 
 class DashboardCard(tk.Frame):
-    """Ein einheitliches Modul für das Grid-Layout."""
+    """
+    Einheitliches Modul für das Grid-Layout.
+    """
 
     def __init__(self, parent, title, items, settings_func=None, test_func=None, reset_func=None, info_key=None,
-                 test_label="TEST"):
+                 test_label="TEST", custom_buttons=None):
         # Dunkler Hintergrund für modernen Look
         card_bg = "#1a1a1a"
 
@@ -75,10 +104,18 @@ class DashboardCard(tk.Frame):
                       bg=card_bg, fg=Style.ACCENT_PURPLE, relief=tk.FLAT, bd=0, cursor="hand2").pack(side=tk.RIGHT)
 
         # --- FOOTER ---
-        if test_func:
-            tk.Button(self, text=f"▶ {test_label}", command=test_func,
+        footer_frame = tk.Frame(self, bg=card_bg)
+        footer_frame.pack(side=tk.BOTTOM, fill=tk.X, padx=15, pady=15)
+
+        if custom_buttons:
+            for btn_text, btn_cmd, btn_col in custom_buttons:
+                tk.Button(footer_frame, text=btn_text, command=btn_cmd,
+                          bg=btn_col, fg="white", relief=tk.FLAT,
+                          font=("Arial", 8, "bold"), width=6).pack(side=tk.LEFT, padx=2, expand=True, fill=tk.X)
+        elif test_func:
+            tk.Button(footer_frame, text=f"▶ {test_label}", command=test_func,
                       bg=Style.ACCENT_PURPLE, fg="white", relief=tk.FLAT,
-                      font=("Arial", 9, "bold"), cursor="hand2").pack(fill=tk.X, side=tk.BOTTOM, padx=15, pady=15)
+                      font=("Arial", 9, "bold"), cursor="hand2").pack(fill=tk.X)
 
     def _add_icon(self, parent, text, cmd, bg_col, color="#888888", font=("Arial", 12)):
         btn = tk.Button(parent, text=text, command=cmd, bg=bg_col, fg=color,
@@ -93,7 +130,30 @@ class DashboardCard(tk.Frame):
         show_toast(self.parent_root, "Link kopiert!")
 
     def show_info(self):
-        messagebox.showinfo("Info", INFO_TEXTS.get(self.info_key, ""))
+        """Zeigt ein Custom Info-Fenster im passenden Design."""
+        info_win = tk.Toplevel(self.parent_root)
+        info_win.title("Information")
+        info_win.geometry("400x320")
+        info_win.configure(bg=Style.BACKGROUND)
+
+        # Zentrieren
+        x = self.parent_root.winfo_x() + (self.parent_root.winfo_width() // 2) - 200
+        y = self.parent_root.winfo_y() + (self.parent_root.winfo_height() // 2) - 160
+        info_win.geometry(f"+{x}+{y}")
+
+        # Titel
+        tk.Label(info_win, text="INFO", font=("Impact", 22),
+                 bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE).pack(pady=(25, 10))
+
+        # Text Inhalt
+        txt = INFO_TEXTS.get(self.info_key, "Keine Information verfügbar.")
+        tk.Label(info_win, text=txt, bg=Style.BACKGROUND, fg=Style.FOREGROUND,
+                 font=("Segoe UI", 11), justify=tk.LEFT, wraplength=340).pack(expand=True, fill=tk.BOTH, padx=30)
+
+        # Schließen Button
+        tk.Button(info_win, text="SCHLIESSEN", command=info_win.destroy,
+                  bg=Style.ACCENT_PURPLE, fg="white", relief=tk.FLAT,
+                  font=("Arial", 10, "bold")).pack(pady=25, ipadx=20)
 
 
 class StreamForgeGUI:
@@ -101,7 +161,6 @@ class StreamForgeGUI:
         self.root = tk.Tk()
         self.root.title("StreamForge Manager")
 
-        # Standard: Maximiert starten
         try:
             self.root.state('zoomed')
         except:
@@ -121,8 +180,9 @@ class StreamForgeGUI:
         self.cards = []
         self.card_windows = []
 
-        # Bilder speichern um Garbage Collection zu verhindern
+        # Bilder-Cache
         self.images = {}
+        self.logo_original = None
 
         self.setup_ui()
         self.setup_callbacks()
@@ -175,11 +235,12 @@ class StreamForgeGUI:
         # Rechts: Logo & Credit
         f_right = tk.Frame(f_content, bg="#111111")
         f_right.pack(side=tk.RIGHT)
+
         icon_path = get_path("assets/icon.ico")
         if os.path.exists(icon_path):
             try:
                 pil_f = Image.open(icon_path).convert("RGBA")
-                pil_f.thumbnail((100,100), Image.Resampling.LANCZOS)
+                pil_f.thumbnail((100, 100), Image.Resampling.LANCZOS)
                 self.images['footer_logo'] = ImageTk.PhotoImage(pil_f)
                 tk.Label(f_right, image=self.images['footer_logo'], bg="#111111").pack(side=tk.RIGHT, padx=(10, 0))
             except:
@@ -203,7 +264,10 @@ class StreamForgeGUI:
 
         self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
 
+
         # --- MODULE HINZUFÜGEN ---
+
+        # 1. LIKES
         self.cards.append(DashboardCard(
             self.canvas, "LIKES",
             [("Challenge Text", "like_overlay/index.html"), ("Progress Bar", "like_progress_bar/index.html")],
@@ -212,13 +276,20 @@ class StreamForgeGUI:
             info_key="LIKES"
         ))
 
+        # 2. TIMER (Mit Custom Buttons!)
         self.cards.append(DashboardCard(
             self.canvas, "TIMER & SUBATHON",
-            [("Subathon", "subathon_overlay/index.html"), ("Timer", "timer_overlay/index.html")],
+            [("Subathon Info", "subathon_overlay/index.html"), ("Timer Overlay", "timer_overlay/index.html")],
             settings_func=self.open_subathon_settings_window,
-            info_key="TIMER"
+            info_key="TIMER",
+            custom_buttons=[
+                ("START", lambda: self.control_timer("start"), Style.SUCCESS),
+                ("PAUSE", lambda: self.control_timer("pause"), Style.ACCENT_BLUE),
+                ("RESET", lambda: self.control_timer("reset"), Style.DANGER)
+            ]
         ))
 
+        # 3. WISHES
         self.cards.append(DashboardCard(
             self.canvas, "KILLER WISHES",
             [("Wishlist Overlay", "killer_wishes/index.html")],
@@ -227,6 +298,7 @@ class StreamForgeGUI:
             info_key="WISHES"
         ))
 
+        # 4. COMMANDS
         self.cards.append(DashboardCard(
             self.canvas, "COMMANDS",
             [("Media Overlay", "commands/index.html")],
@@ -238,7 +310,7 @@ class StreamForgeGUI:
         self.canvas.bind("<Configure>", self.on_resize)
 
     def on_resize(self, event):
-        """Responsive Grid Positionierung."""
+        """Responsive Grid & Logo Positionierung."""
         w = event.width
 
         card_w = 280
@@ -246,13 +318,11 @@ class StreamForgeGUI:
         gap_x = 25
         gap_y = 25
 
-        # Grid Berechnung
         cols = max(1, (w - gap_x) // (card_w + gap_x))
         total_grid_w = cols * card_w + (cols - 1) * gap_x
         start_x = (w - total_grid_w) // 2
         start_y = 30
 
-        # Karten platzieren
         if not self.card_windows:
             for card in self.cards:
                 win = self.canvas.create_window(0, 0, window=card, anchor="nw")
@@ -267,14 +337,33 @@ class StreamForgeGUI:
             y = start_y + row_idx * (card_h + gap_y)
             self.canvas.coords(win_id, x, y)
 
-        # Scrollbereich anpassen
         total_h = start_y + rows * (card_h + gap_y) + 50
         self.canvas.configure(scrollregion=(0, 0, w, total_h))
+        self._update_bg_logo(w, self.canvas.winfo_height())
 
-        # Hintergrund-Logo wurde entfernt.
+    def _update_bg_logo(self, view_w, view_h):
+        if not self.logo_original: return
+        self.canvas.delete("fixed_logo")
+
+        offset_y = self.canvas.canvasy(0)
+
+        logo_size = 400
+        if 'bg_logo_cache' not in self.images or self.images.get('bg_logo_size') != logo_size:
+            resized = self.logo_original.copy()
+            resized.thumbnail((logo_size, logo_size), Image.Resampling.LANCZOS)
+            self.images['bg_logo_cache'] = ImageTk.PhotoImage(resized)
+            self.images['bg_logo_size'] = logo_size
+
+        img = self.images['bg_logo_cache']
+        x = view_w - 30
+        y = offset_y + view_h - 30
+
+        self.canvas.create_image(x, y, image=img, anchor="se", tags="fixed_logo")
+        self.canvas.tag_lower("fixed_logo")
 
     def _on_mousewheel(self, event):
         self.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+        self._update_bg_logo(self.canvas.winfo_width(), self.canvas.winfo_height())
 
     # --- ACTIONS ---
     def test_likes_action(self):
@@ -303,6 +392,14 @@ class StreamForgeGUI:
             except:
                 pass
             show_toast(self.root, "Sequenz gestartet!")
+
+    def control_timer(self, action):
+        if not self.is_server_running[0]: return
+        try:
+            requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/timer/control", json={"action": action}, timeout=0.1)
+            show_toast(self.root, f"Timer: {action.upper()}")
+        except Exception as e:
+            server_log.error(f"Timer Control Error: {e}")
 
     def reset_database_action(self):
         if not self.is_server_running[0]: return

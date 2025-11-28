@@ -1,44 +1,27 @@
-/* Importiert die von Ihnen gewünschte Schriftart Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
 
 /* --- ANIMATIONEN --- */
-
-@keyframes dbd-pulse {
-    0%, 100% {
-        box-shadow: 0 0 15px rgba(222, 11, 50, 0.4);
-        border-color: rgb(222, 11, 50);
-    }
-    50% {
-        box-shadow: 0 0 25px rgba(222, 11, 50, 0.8);
-        border-color: rgb(255, 41, 76);
-    }
-}
-
-/* KORRIGIERT: Animation, die mit der Zentrierung funktioniert */
 @keyframes slide-in-from-right {
     0% {
         opacity: 0;
-        transform: translate(50%, -50%); /* Startet rechts */
+        transform: translate(50%, -50%); /* Von rechts kommend */
     }
     100% {
         opacity: 1;
-        transform: translate(-50%, -50%); /* Endet zentriert */
+        transform: translate(-50%, -50%); /* In die Mitte */
     }
 }
 
-/* KORRIGIERT: Animation, die mit der Zentrierung funktioniert */
 @keyframes slide-out-to-left {
     0% {
         opacity: 1;
-        transform: translate(-50%, -50%); /* Startet zentriert */
+        transform: translate(-50%, -50%); /* Von der Mitte */
     }
     100% {
         opacity: 0;
-        transform: translate(-150%, -50%); /* Endet links */
+        transform: translate(-150%, -50%); /* Nach links weg */
     }
 }
-
-/* --- ALLGEMEINE STILE --- */
 
 body {
     background-color: transparent;
@@ -46,75 +29,53 @@ body {
     margin: 0;
     height: 100vh;
     color: #E0E0E0;
+    overflow: hidden;
+    position: relative;
+}
 
-    /* Stellt sicher, dass der Inhalt zentriert wird */
+.main-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Ein Container, der mehrere Widgets untereinander anordnen kann */
-.main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Abstand zwischen Timer und Regeln, falls beide aktiv sind */
-}
-
-/* --- WIDGET-STILE --- */
-
-/* Stil für das Timer-Widget */
-.overlay-widget {
-    width: 300px;
-    height: 80px;
-    background-color: rgba(15, 15, 15, 0.75);
-    border: 2px solid rgb(222, 11, 50);
-    border-radius: 5px;
-    box-shadow: 0 0 15px rgba(222, 11, 50, 0.4);
-    overflow: hidden;
-    animation: dbd-pulse 10s infinite;
-}
-
-.overlay-widget iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* Container für die rotierenden Regeln */
+/* Container für die Regeln */
 .rules-container {
     position: relative;
     width: 450px;
-    height: 60px;
+    height: 80px; /* Höhe der Box */
 }
 
-/* Stil für die einzelnen Regel-Items */
+/* Stil für die einzelne Regel-Box */
 .rule-item {
     position: absolute;
-    /* KORREKTUR: Dies ist die korrekte und stabile Methode zur Zentrierung */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Exakte Mitte */
 
-    padding: 12px 25px;
-    background-color: rgba(15, 15, 15, 0.75);
+    padding: 15px 30px;
+    background-color: rgba(15, 15, 15, 0.9);
     border: 2px solid rgb(222, 11, 50);
-    border-radius: 5px;
-    box-shadow: 0 0 15px rgba(222, 11, 50, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(222, 11, 50, 0.5);
 
-    opacity: 0; /* Standardmäßig unsichtbar */
+    opacity: 0; /* Unsichtbar bis Klasse 'show' kommt */
     white-space: nowrap;
     text-align: center;
-    font-size: 1.5em;
-    font-weight: 500;
+    font-size: 1.8em; /* Große Schrift */
+    font-weight: 700;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-/* Klassen, die die Animationen auslösen */
+/* Animations-Klassen */
 .rule-item.show {
-    animation: slide-in-from-right 0.6s forwards;
+    animation: slide-in-from-right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .rule-item.hide {
-    animation: slide-out-to-left 0.6s forwards;
+    animation: slide-out-to-left 0.5s ease-in forwards;
 }

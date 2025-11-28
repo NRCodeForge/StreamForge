@@ -93,6 +93,49 @@ def trigger_command():
         server_log.error(f"Fehler beim Triggern der Command-Sequenz: {e}")
         return jsonify({'error': str(e)}), 500
 
+
+@app.route('/api/v1/timer/streamerbot', methods=['POST'])
+def trigger_streamerbot_event():
+    """
+    Endpunkt für Streamer.bot.
+    Beispiel Body: { "event": "twitch_sub", "amount": 1 }
+    Oder: { "event": "add", "seconds": 300 }
+    """
+    if not request.json:
+        return jsonify({'error': 'JSON Body fehlt'}), 400
+
+    try:
+        subathon_service_instance.handle_streamerbot_event(request.json)
+        return jsonify({'message': 'Event verarbeitet'}), 200
+    except Exception as e:
+        server_log.error(f"Streamerbot API Fehler: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/v1/timer/control', methods=['POST'])
+def timer_control():
+    """
+    Steuert den Timer.
+    Body: { "action": "start" | "pause" | "reset" }
+    """
+    if not request.json or 'action' not in request.json:
+        return jsonify({'error': 'Action fehlt'}), 400
+
+    action = request.json['action']
+
+    if action == "start":
+        subathon_service_instance.set_paused(False)
+    elif action == "pause":
+        subathon_service_instance.set_paused(True)
+    elif action == "reset":
+        subathon_service_instance.reset_timer()
+
+    return jsonify({'message': f'Timer {action} ausgeführt'}), 200
+
+@app.route('/api/v1/timer/state', methods=['GET'])
+def get_timer_state():
+    """Gibt die aktuelle Zeit für das Overlay zurück."""
+    return jsonify(subathon_service_instance.get_state())
 @app.route('/api/v1/like_challenge/test', methods=['POST'])
 def trigger_test_likes():
     try:

@@ -1,11 +1,11 @@
 import threading
 import time
 import asyncio
-from typing import Optional
+from typing import Optional, Callable, List
 
-# Bibliothek von isaackogan/TikTokLive
 from TikTokLive import TikTokLiveClient
-from TikTokLive.events import ConnectEvent, LikeEvent, DisconnectEvent, LiveEndEvent
+from TikTokLive.events import ConnectEvent, LikeEvent, DisconnectEvent, LiveEndEvent, GiftEvent, FollowEvent, \
+    ShareEvent, SubscribeEvent
 from utils import server_log
 
 
@@ -14,31 +14,39 @@ class TikTokLive_API:
         self.unique_id = unique_id
         self.client: Optional[TikTokLiveClient] = None
 
-        # Daten-Speicher
         self.current_likes = 0
         self.is_connected = False
 
-        # Threading-Kontrolle
         self.running = False
         self.thread = None
         self._lock = threading.Lock()
 
-    def start(self):
-        """Startet den Client in einem separaten Thread."""
-        if self.running:
-            return
+        # NEU: Liste für externe Event-Listener (z.B. Subathon Service)
+        self.listeners: List[Callable[[any], None]] = []
 
+    def add_listener(self, callback: Callable[[any], None]):
+        """Erlaubt anderen Services, sich auf Events zu abonnieren."""
+        self.listeners.append(callback)
+
+    def _notify_listeners(self, event):
+        """Leitet Events an alle registrierten Listener weiter."""
+        for callback in self.listeners:
+            try:
+                callback(event)
+            except Exception as e:
+                server_log.error(f"Fehler im Event-Listener: {e}")
+
+    def start(self):
+        if self.running: return
         self.running = True
         self.thread = threading.Thread(target=self._run_loop, daemon=True)
         self.thread.start()
         server_log.info(f"TikTok Live API Thread gestartet für: @{self.unique_id}")
 
     def stop(self):
-        """Stoppt den Client sauber."""
         self.running = False
         if self.client:
             try:
-                # Versuche verschiedene Methoden zum Beenden
                 if hasattr(self.client, 'stop'):
                     self.client.stop()
                 elif hasattr(self.client, 'disconnect'):
@@ -47,86 +55,91 @@ class TikTokLive_API:
                 server_log.error(f"Hinweis beim Stoppen: {e}")
 
     def _run_loop(self):
-        """Die interne Loop, die versucht, die Verbindung aufrechtzuerhalten."""
         while self.running:
             try:
-                # KORREKTUR: Parameter 'fetch_room_info_on_connect' entfernt!
                 self.client = TikTokLiveClient(unique_id=self.unique_id)
 
-                # Events registrieren
+                # Standard Events
                 self.client.on(ConnectEvent)(self.on_connect)
-                self.client.on(LikeEvent)(self.on_like)
                 self.client.on(DisconnectEvent)(self.on_disconnect)
                 self.client.on(LiveEndEvent)(self.on_live_end)
+
+                # Events für Subathon & Likes
+                self.client.on(LikeEvent)(self.on_like)
+                self.client.on(GiftEvent)(self.on_gift)
+                self.client.on(FollowEvent)(self.on_follow)
+                self.client.on(ShareEvent)(self.on_share)
+                self.client.on(SubscribeEvent)(self.on_subscribe)
 
                 server_log.info(f"Verbinde zu TikTok Live @{self.unique_id}...")
                 self.client.run()
 
             except Exception as e:
-                if self.running:
-                    server_log.error(f"TikTok Live Verbindung unterbrochen: {e}")
+                if self.running: server_log.error(f"TikTok Live Verbindung unterbrochen: {e}")
                 self.is_connected = False
 
-            # Kurze Pause vor Reconnect
-            if self.running:
-                time.sleep(1)
+            if self.running: time.sleep(5)
 
-    # --- Events ---
+    # --- Event Handlers ---
 
     async def on_connect(self, event: ConnectEvent):
         self.is_connected = True
         server_log.info(f"✅ Verbunden mit @{self.unique_id}!")
-
-        # Hole die initialen Likes manuell
         try:
-            # Versuche retrieve_room_info aufzurufen, falls vorhanden
             if hasattr(self.client, 'retrieve_room_info'):
                 await self.client.retrieve_room_info()
 
             with self._lock:
-                server_likes = 0
                 if self.client.room_info:
-                    # Sicherer Zugriff auf Like-Count
+                    # Versuche verschiedene Pfade für Like Count
                     if isinstance(self.client.room_info, dict):
-                        server_likes = int(self.client.room_info.get('like_count', 0))
+                        likes = int(self.client.room_info.get('like_count', 0))
                     else:
-                        # Objekt-Zugriff
-                        server_likes = getattr(self.client.room_info, 'like_count', 0)
-                        if server_likes == 0:
-                            # Manchmal heißt das Attribut anders
-                            server_likes = getattr(self.client.room_info, 'likes_count', 0)
+                        likes = getattr(self.client.room_info, 'like_count', 0) or getattr(self.client.room_info,
+                                                                                           'likes_count', 0)
 
-                    if server_likes > 0:
-                        self.current_likes = server_likes
-                        server_log.info(f"Start-Likes geladen: {self.current_likes}")
-        except Exception as e:
-            server_log.warning(f"Konnte Start-Likes nicht laden (nicht kritisch): {e}")
+                    if likes > 0: self.current_likes = likes
+        except Exception:
+            pass
 
     async def on_disconnect(self, event: DisconnectEvent):
         self.is_connected = False
-        server_log.warning("⚠️ Verbindung zu TikTok getrennt.")
+        server_log.warning("⚠️ Verbindung getrennt.")
 
     async def on_live_end(self, event: LiveEndEvent):
         self.is_connected = False
-        server_log.info("Stream wurde beendet.")
+        server_log.info("Stream beendet.")
+
+    # --- Events die wir weiterleiten ---
 
     async def on_like(self, event: LikeEvent):
+        # Like Logik für Challenge
         with self._lock:
-            # Dynamisches Auslesen der Likes aus dem Event
-            batch_likes = 0
-            if hasattr(event, 'count'):
-                batch_likes = event.count
-            elif hasattr(event, 'likes'):
-                batch_likes = event.likes
-
-            self.current_likes += batch_likes
-
-            # Optional: Abgleich mit Gesamt-Likes falls das Event diese liefert
+            batch = event.count if hasattr(event, 'count') else getattr(event, 'likes', 0)
+            self.current_likes += batch
             if hasattr(event, 'totalLikes') and event.totalLikes > self.current_likes:
                 self.current_likes = event.totalLikes
 
-    # --- Public Accessor ---
+        # Weiterleiten an Subathon (falls Likes Zeit geben)
+        self._notify_listeners(event)
+
+    async def on_gift(self, event: GiftEvent):
+        # WICHTIG: Prüfen ob Gift "streakable" ist und nur das Ende zählen oder jeden Schritt?
+        # Für Subathon meist: 1 Coin = X Sekunden.
+        # Wir leiten das ganze Event weiter, der Service entscheidet.
+        if event.gift.streak_end:  # Nur wenn Streak zu Ende ist oder Einzelgift
+            self._notify_listeners(event)
+        elif not event.gift.streakable:
+            self._notify_listeners(event)
+
+    async def on_follow(self, event: FollowEvent):
+        self._notify_listeners(event)
+
+    async def on_share(self, event: ShareEvent):
+        self._notify_listeners(event)
+
+    async def on_subscribe(self, event: SubscribeEvent):
+        self._notify_listeners(event)
 
     def get_current_likes(self) -> int:
-        with self._lock:
-            return self.current_likes
+        with self._lock: return self.current_likes

@@ -1,107 +1,105 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // Lade die Einstellungen von der JSON-Datei
+    // Lade die Einstellungen
     const settings = await getSettings();
     const allRules = document.querySelectorAll('.rule-item');
     const activeRules = [];
 
-    // Ein Objekt, das die Regel-Namen auf lesbare Texte abbildet.
+    // Text-Mapping für die Anzeige
     const ruleTextMapping = {
-        subscribe: "pro Abo / Super Fan",
+        subscribe: "pro TikTok Abo",
+        twitch_sub: "pro Twitch Sub",
         follow: "pro Follow",
         coins: "pro Münze",
         share: "pro Teilen",
         like: "pro Like",
-        chat: "pro Chat-Nachricht"
+        chat: "pro Nachricht"
     };
 
-    // Gehe alle möglichen Regeln durch (subscribe, follow, etc.)
+    // Gehe durch die Settings
     for (const key in settings) {
-        // Ignoriere die Animationszeit-Einstellung in dieser Schleife
-        if (key === 'animations_time' || !settings[key].active) {
+        // Ignoriere System-Keys
+        if (key === 'animations_time' || !settings[key] || !settings[key].active) {
             continue;
         }
 
-        // Finde das passende HTML-Element
+        // Finde das Element im HTML
         const ruleElement = document.querySelector(`.rule-item[data-rule="${key}"]`);
+        
         if (ruleElement) {
-            // Kombiniere den Wert aus der JSON mit dem Beschreibungstext
+            // Wert (z.B. "10 Seconds") und Text kombinieren
             const valueText = settings[key].value;
-            const descriptionText = ruleTextMapping[key] || ''; // Fallback
+            const descriptionText = ruleTextMapping[key] || key;
 
             ruleElement.textContent = `${valueText} ${descriptionText}`;
             activeRules.push(ruleElement);
         }
     }
 
-    // Entferne alle HTML-Elemente für inaktive Regeln
+    // Nicht aktive entfernen
     allRules.forEach(element => {
         if (!activeRules.includes(element)) {
-            element.remove();
+            element.style.display = 'none';
         }
     });
 
-    // Starte die Animation nur, wenn es aktive Regeln gibt
+    // Animation starten
     if (activeRules.length > 0) {
         const animationSeconds = parseFloat(settings.animations_time) || 5;
         animateRules(activeRules, animationSeconds * 1000);
+    } else {
+        // Fallback, wenn nichts aktiv ist
+        const container = document.querySelector('.rules-container');
+        if(container) container.innerHTML = '<div class="rule-item show" style="position:static">Subathon</div>';
     }
 });
 
-/**
- * Lädt die Einstellungen aus der settings.json.
- * @returns {Promise<Object>} Ein Promise, das die Einstellungen zurückgibt.
- */
 async function getSettings() {
     try {
-        const response = await fetch('settings.json');
-        if (!response.ok) {
-            console.error("settings.json nicht gefunden, verwende Standardwerte.");
-            return getDefaultSettings();
-        }
+        // Fügt Timestamp hinzu, um Caching zu verhindern
+        const response = await fetch('settings.json?t=' + new Date().getTime());
+        if (!response.ok) return getDefaultSettings();
         return await response.json();
     } catch (error) {
-        console.error("Fehler beim Laden der Einstellungen, verwende Standardwerte.", error);
+        console.error(error);
         return getDefaultSettings();
     }
 }
 
-/**
- * Gibt Standardeinstellungen zurück, falls die JSON nicht geladen werden kann.
- * @returns {Object} Die Standardeinstellungen.
- */
 function getDefaultSettings() {
     return {
         "animations_time": "5",
-        "subscribe": { "value": "Standard: +1 pro Abo", "active": true },
-        "follow": { "value": "Standard: +1 pro Follow", "active": true }
+        "follow": { "value": "+30 Sek", "active": true }
     };
 }
 
-/**
- * Animiert die Anzeige der Regeln im Wechsel.
- * @param {HTMLElement[]} rules - Ein Array der zu animierenden HTML-Elemente.
- * @param {number} displayDuration - Die Anzeigedauer pro Regel in Millisekunden.
- */
 function animateRules(rules, displayDuration) {
     let currentIndex = 0;
+
+    // Alle erst ausblenden
+    rules.forEach(r => {
+        r.classList.remove('show');
+        r.classList.add('hide');
+    });
 
     function cycle() {
         if (rules.length === 0) return;
 
-        // Verstecke die vorherige Regel
+        // Vorherigen ausblenden
         const previousIndex = (currentIndex === 0) ? rules.length - 1 : currentIndex - 1;
         rules[previousIndex].classList.remove('show');
         rules[previousIndex].classList.add('hide');
 
-        // Zeige die aktuelle Regel mit der Animation
+        // Aktuellen einblenden
         const currentRule = rules[currentIndex];
         currentRule.classList.remove('hide');
         currentRule.classList.add('show');
 
+        // Index hochzählen
         currentIndex = (currentIndex + 1) % rules.length;
 
         setTimeout(cycle, displayDuration);
     }
 
+    // Start
     cycle();
 }

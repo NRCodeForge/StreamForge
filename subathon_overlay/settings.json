@@ -1,19 +1,19 @@
 {
-    "animations_time": "3",
+    "animations_time": "3.0",
     "coins": {
-        "value": "3 Seconds",
+        "value": "3",
         "active": true
     },
     "subscribe": {
-        "value": "500 Seconds",
+        "value": "500",
         "active": true
     },
     "follow": {
-        "value": "10 Seconds",
+        "value": "10",
         "active": true
     },
     "share": {
-        "value": "0.1 Seconds",
+        "value": "0.1",
         "active": true
     },
     "like": {
@@ -23,5 +23,10 @@
     "chat": {
         "value": "0 Seconds",
         "active": false
-    }
+    },
+    "twitch_sub": {
+        "value": "300",
+        "active": true
+    },
+    "start_time_seconds": "3600"
 }
