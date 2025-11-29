@@ -9,7 +9,7 @@ body {
 .container {
     position: relative;
     width: 450px;
-    height: 70px;
+    height: 30px;
     margin: 20px;
     /* Ein sehr dunkler Rahmen, fast schwarz */
     border: 1px solid #330000;

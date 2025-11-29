@@ -1,166 +1,65 @@
-import sys
-import time
-import asyncio  # Importiert für die Hintergrund-Synchronisierung
+import logging
 from TikTokLive import TikTokLiveClient
-from TikTokLive.events import ConnectEvent, LikeEvent, DisconnectEvent
-from typing import Dict
+from TikTokLive.events import ConnectEvent, LikeEvent
+from TikTokLive.client.web.web_settings import WebDefaults
 
-# --- Ziel-Benutzer ---
-TARGET_USER = "@dbdstation"
-SYNC_INTERVAL_SECONDS = 30  # Alle 30 Sek. den offiziellen Zähler abrufen
+# --- KONFIGURATION ---
+USER_NAME = "@dbdstation"  # <--- HIER USERNAME EINTRAGEN
+EULER_KEY = "euler_ODBmYTc0ZWZjMmU0NmIyNzU4YjM3MmI4YzUwYmMxZWYwNjllNmVhZjI1MjBiN2ViMjE1YzRh"
 
-# --- Leaderboard-Speicher ---
-like_leaderboard: Dict[str, int] = {}
-total_likes_on_connect: int = 0
-# Diese Variable wird nun im Hintergrund durch die API aktualisiert
-current_total_likes_from_api: int = 0
+# Logging aktivieren
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("TiktokDebug")
 
-# --- Client-Instanz ---
-client: TikTokLiveClient = TikTokLiveClient(unique_id=TARGET_USER)
+# Key setzen
+WebDefaults.tiktok_sign_api_key = EULER_KEY
 
-
-async def sync_total_likes():
-    """
-    Diese Funktion läuft im Hintergrund (als "Task")
-    und ruft alle X Sekunden den echten Like-Zähler von der API ab.
-    """
-    global current_total_likes_from_api
-
-    while client.connected:
-        try:
-            # Rufe die Rauminformationen von der API ab
-            await client.fetch_room_info()
-
-            # Aktualisiere unsere "verlustfreie" Zählvariable
-            if client.room_info and hasattr(client.room_info, 'like_count'):
-                current_total_likes_from_api = client.room_info.like_count
-
-        except Exception as e:
-            print(f"[Sync-Fehler] Konnte Gesamt-Likes nicht abrufen: {e}")
-
-        # Warte das Intervall ab, bevor die Schleife erneut läuft
-        await asyncio.sleep(SYNC_INTERVAL_SECONDS)
+client = TikTokLiveClient(unique_id=USER_NAME)
 
 
 @client.on(ConnectEvent)
 async def on_connect(event: ConnectEvent):
-    """
-    Wird ausgelöst, wenn die Verbindung zum Livestream erfolgreich hergestellt wurde.
-    """
-    global total_likes_on_connect, current_total_likes_from_api
-    print(f"Erfolgreich verbunden mit @{event.unique_id} (Room ID: {client.room_id})")
+    logger.info(f"Verbunden mit {event.unique_id}!")
 
-    try:
-        # Lese den Startwert der Likes
-        if client.room_info and hasattr(client.room_info, 'like_count'):
-            total_likes_on_connect = client.room_info.like_count
-            current_total_likes_from_api = total_likes_on_connect
-            print(f"Info: Stream hatte beim Verbinden {total_likes_on_connect} Likes.")
-        else:
-            print("Warnung: 'like_count' konnte nicht gelesen werden. Starte bei 0.")
-            total_likes_on_connect = 0
-            current_total_likes_from_api = 0
-
-    except Exception as e:
-        print(f"Fehler beim Lesen der 'room_info': {e}")
-        total_likes_on_connect = 0
-        current_total_likes_from_api = 0
-
-    # Leaderboard für neue Events zurücksetzen
-    like_leaderboard.clear()
-
-    # --- STARTE DEN HINTERGRUND-SYNC ---
-    # Erstellt einen neuen "Task", der parallel zum Event-Listener läuft
-    asyncio.create_task(sync_total_likes())
-
-    print(f"Starte Like-Leaderboard... Sync läuft alle {SYNC_INTERVAL_SECONDS} Sek.")
-    print_leaderboard()
+    # Diagnose 1: Was steht in den Room Info? (Startwert)
+    if client.room_info:
+        logger.info("--- ROOM INFO DIAGNOSE ---")
+        # Wir geben alle Keys aus, die nach 'like' klingen
+        keys = client.room_info.keys()
+        like_keys = [k for k in keys if 'like' in k.lower()]
+        logger.info(f"Gefundene Like-Keys in RoomInfo: {like_keys}")
+        for k in like_keys:
+            logger.info(f" -> {k}: {client.room_info[k]}")
+    else:
+        logger.error("❌ client.room_info ist LEER! (Startwert fehlt)")
 
 
 @client.on(LikeEvent)
 async def on_like(event: LikeEvent):
-    """
-    Wird für jeden (verlustbehafteten) Like-Batch ausgelöst.
-    """
-    try:
-        username = event.user.nickname
-    except Exception:
-        username = "Unbekannter_Benutzer"
+    logger.info("--- LIKE EVENT DIAGNOSE ---")
 
-    likes_in_this_event = event.count
+    # Diagnose 2: Welche Attribute hat das Event wirklich?
+    # Wir filtern interne Attribute (_) raus
+    attributes = [d for d in dir(event) if not d.startswith('_')]
 
-    # Zähler im Leaderboard (nur für NEUE Events) hochzählen
-    current_likes = like_leaderboard.get(username, 0)
-    like_leaderboard[username] = current_likes + likes_in_this_event
+    # Wir suchen nach allem was wie 'total' oder 'count' aussieht
+    relevante_attribute = [a for a in attributes if 'total' in a.lower() or 'like' in a.lower() or 'count' in a.lower()]
 
-    # Leaderboard in der Konsole ausgeben
-    print_leaderboard()
+    logger.info(f"VERFÜGBARE DATEN IM EVENT: {relevante_attribute}")
 
-
-@client.on(DisconnectEvent)
-async def on_disconnect(event: DisconnectEvent):
-    """
-    Wird ausgelöst, wenn die Verbindung getrennt wird.
-    """
-    print("Verbindung getrennt. Der Sync-Task wird beendet.")
-    # Der 'sync_total_likes'-Task stoppt automatisch, da 'client.connected' False wird.
-
-
-def print_leaderboard():
-    """
-    Helferfunktion: Sortiert das Leaderboard und gibt alles formatiert aus.
-    """
-    # Konsole leeren (ANSI-Escape-Code)
-    print("\033[H\033[J")
-
-    # Neue Likes (basierend auf Events, verlustbehaftet)
-    new_likes_via_events = sum(like_leaderboard.values())
-
-    # Berechnete Summe (verlustbehaftet)
-    calculated_total = total_likes_on_connect + new_likes_via_events
-
-    # Diskrepanz (Verlust) berechnen
-    discrepancy = current_total_likes_from_api - calculated_total
-
-    print(f"--- LIVE LIKE-LEADERBOARD FÜR @{TARGET_USER} ---")
-    print("-------------------------------------------------")
-    print(f"Likes beim Verbinden:   {total_likes_on_connect}")
-    print(f"Neue Likes (Events):    {new_likes_via_events}")
-    print("-------------------------------------------------")
-    print(f"GESAMTE LIKES (API):    {current_total_likes_from_api}  <-- (Verlustfrei)")
-    print(f"Berechnete Summe:       {calculated_total}  <-- (Verlustbehaftet)")
-    print(f"Diskrepanz (Verlust):   {discrepancy if discrepancy > 0 else 0}")
-    print("-------------------------------------------------")
-    print("--- Top 10 Spender (Basierend auf Events) ---")
-
-    sorted_leaderboard = sorted(like_leaderboard.items(), key=lambda item: item[1], reverse=True)
-
-    if not sorted_leaderboard:
-        print(" Bisher keine neuen Likes...")
-
-    for i, (user, likes) in enumerate(sorted_leaderboard[:10]):
-        print(f" #{i + 1}: {user}  ->  {likes} Likes")
-
-    print("-------------------------------------------------")
-    print(f"Nächster API-Sync in max. {SYNC_INTERVAL_SECONDS} Sekunden")
-
-    sys.stdout.flush()
-
-
-if __name__ == '__main__':
-    print(f"Versuche, dauerhafte Verbindung zu @{TARGET_USER} aufzubauen...")
-
-    while True:
+    # Werte dieser Attribute ausgeben
+    for attr in relevante_attribute:
         try:
-            client.run()
+            val = getattr(event, attr)
+            if isinstance(val, (int, str)) or val is None:
+                logger.info(f" -> {attr}: {val}")
+        except:
+            pass
 
-            print("Stream beendet oder Verbindung verloren.")
+    # Stoppt nach dem ersten Like, damit du das Log lesen kannst
+    logger.info("Diagnose fertig. Du kannst das Skript stoppen.")
 
-        except ConnectionRefusedError:
-            print("[Con refuse] Verbindung abgelehnt. Server könnte down sein.")
-        except Exception as e:
-            print(f"Ein Fehler ist aufgetreten: {e}")
-            print("Möglicher Grund: Der Stream ist (noch) nicht live.")
 
-        print("Versuche in 10 Sekunden erneut...")
-        time.sleep(10)
+if __name__ == "__main__":
+    # fetch_room_info ist wichtig für den Startwert!
+    client.run(fetch_room_info=True)
