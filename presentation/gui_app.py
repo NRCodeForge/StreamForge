@@ -24,34 +24,25 @@ from presentation.ui_elements import show_toast, start_hotkey_listener
 INFO_TEXTS = {
     "LIKES": (
         "LIKE SYSTEM\n\n"
-        "Dieses Modul steuert die Like-Challenge und den Progress-Bar.\n\n"
-        "Funktion:\n"
-        "- Automatische Verbindung zu TikTok Live (über Username).\n"
-        "- Zählt Likes und berechnet das nächste Ziel.\n\n"
-        "Testen:\n"
-        "Drücke 'Test (+100)', um Likes zu simulieren."
+        "Steuert die Like-Challenge & Progress-Bar.\n"
+        "Verbindet automatisch zu TikTok.\n"
+        "Test: Sendet 100 Fake-Likes zum Testen der Animation."
     ),
     "TIMER": (
         "TIMER & SUBATHON\n\n"
-        "1. Subathon:\n"
-        "Verlängert die Zeit automatisch bei Events (Coins, Follows, Subs).\n"
-        "Einstellungen über das Zahnrad.\n\n"
-        "2. Timer:\n"
-        "Ein einfacher Countdown/Stoppuhr Overlay."
+        "Subathon: Zeit läuft ab/auf bei Events.\n"
+        "Timer: Einfaches Countdown-Overlay.\n"
+        "Gambit: Startet das 'Russisch Roulette' Event."
     ),
     "WISHES": (
         "KILLER WISHES\n\n"
-        "Zuschauer können Wünsche für Killer/Survivor abgeben.\n\n"
-        "Steuerung:\n"
-        "- Hotkey 'Bild Runter': Wählt den nächsten Wunsch & löscht ihn.\n"
-        "- Papierkorb: Löscht die gesamte Liste.\n"
-        "- Test: Fügt einen Zufallswunsch hinzu."
+        "Wünsche für Killer/Survivor.\n"
+        "Hotkey 'Bild Runter': Nächster Wunsch.\n"
+        "!place NAME: Zeigt Platzierung im Overlay."
     ),
     "COMMANDS": (
         "COMMAND OVERLAY\n\n"
-        "Zeigt große Medien-Overlays (Bilder/GIFs) im Stream an.\n\n"
-        "Integration:\n"
-        "Füge die URL in OBS ein. Nutze 'FIRE', um die Sequenz manuell zu testen."
+        "Zeigt große Medien-Overlays (Bilder/GIFs) an."
     )
 }
 
@@ -264,7 +255,6 @@ class StreamForgeGUI:
 
         self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
 
-
         # --- MODULE HINZUFÜGEN ---
 
         # 1. LIKES
@@ -276,26 +266,34 @@ class StreamForgeGUI:
             info_key="LIKES"
         ))
 
-        # 2. TIMER (Mit Custom Buttons!)
+        # 2. TIMER (MIT GAMBIT BUTTON)
         self.cards.append(DashboardCard(
             self.canvas, "TIMER & SUBATHON",
-            [("Subathon Info", "subathon_overlay/index.html"), ("Timer Overlay", "timer_overlay/index.html")],
+            [
+                ("Subathon Info", "subathon_overlay/index.html"),
+                ("Timer Overlay", "timer_overlay/index.html"),
+                ("Gambit Overlay", "gambler_overlay/index.html")
+            ],
             settings_func=self.open_subathon_settings_window,
             info_key="TIMER",
             custom_buttons=[
                 ("START", lambda: self.control_timer("start"), Style.SUCCESS),
                 ("PAUSE", lambda: self.control_timer("pause"), Style.ACCENT_BLUE),
-                ("RESET", lambda: self.control_timer("reset"), Style.DANGER)
+                ("RESET", lambda: self.control_timer("reset"), Style.DANGER),
+                ("GAMBIT", self.test_gambit_action, "#d4af37")  # NEUER TEST BUTTON
             ]
         ))
 
         # 3. WISHES
         self.cards.append(DashboardCard(
             self.canvas, "KILLER WISHES",
-            [("Wishlist Overlay", "killer_wishes/index.html")],
+            [("Wishlist Overlay", "killer_wishes/index.html"), ("Place Overlay (!place)", "place_overlay/index.html")],
             reset_func=self.reset_database_action,
-            test_func=self.test_wish_action, test_label="WUNSCH +1",
-            info_key="WISHES"
+            info_key="WISHES",
+            custom_buttons=[
+                ("ADD +1", self.test_wish_action, Style.ACCENT_PURPLE),
+                ("CHECK PLACE", self.test_place_action, Style.ACCENT_BLUE)
+            ]
         ))
 
         # 4. COMMANDS
@@ -366,6 +364,17 @@ class StreamForgeGUI:
         self._update_bg_logo(self.canvas.winfo_width(), self.canvas.winfo_height())
 
     # --- ACTIONS ---
+    def test_gambit_action(self):
+        """Führt das Russisch Roulette aus."""
+        if self.is_server_running[0]:
+            try:
+                requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/events/gambler", timeout=0.1)
+            except:
+                pass
+            show_toast(self.root, "Gambit ausgelöst!", "#d4af37")
+        else:
+            show_toast(self.root, "Server läuft nicht!", Style.DANGER)
+
     def test_likes_action(self):
         if self.is_server_running[0]:
             try:
@@ -373,6 +382,42 @@ class StreamForgeGUI:
             except:
                 pass
             show_toast(self.root, "100 Likes gesendet!")
+
+    def test_place_action(self):
+        """Robuster Test für das Place-Overlay."""
+        if not self.is_server_running[0]:
+            show_toast(self.root, "Server läuft nicht!", Style.DANGER)
+            return
+
+        def run_test():
+            try:
+                list_url = BASE_URL.rstrip('/') + WISHES_ENDPOINT
+                resp = requests.get(list_url, timeout=1)
+                current_wishes = resp.json() if resp.status_code == 200 else []
+
+                target_user = "TestUser"
+                if not current_wishes or not isinstance(current_wishes, list) or len(current_wishes) == 0:
+                    server_log.info("Liste leer für Test. Füge TestUser hinzu...")
+                    requests.post(list_url, json={"wunsch": "TestKiller", "user_name": target_user}, timeout=1)
+                    time.sleep(0.5)
+                else:
+                    if len(current_wishes) > 0 and 'user_name' in current_wishes[0]:
+                        target_user = current_wishes[0]['user_name']
+
+                check_url = f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes/check_place"
+                check_resp = requests.post(check_url, json={"user_name": target_user}, timeout=1)
+
+                if check_resp.status_code == 200:
+                    data = check_resp.json()
+                    place = data.get('place')
+                    self.root.after(0, lambda: show_toast(self.root, f"Check: {target_user} -> #{place}"))
+                else:
+                    self.root.after(0, lambda: show_toast(self.root, "User nicht gefunden", Style.DANGER))
+            except Exception as e:
+                server_log.error(f"Fehler im Place-Test: {e}")
+                self.root.after(0, lambda: show_toast(self.root, "Test-Fehler", Style.DANGER))
+
+        threading.Thread(target=run_test, daemon=True).start()
 
     def test_wish_action(self):
         if self.is_server_running[0]:

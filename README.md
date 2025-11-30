@@ -8,14 +8,14 @@ Spec run task: pyinstaller StreamForge.spec --clean --noconfirm
 
 ---
 # Todo´s
-
-QOL - PoP OUT für die Letzten 10 Killer
-
-- !command einbindung "Twitch"
-- Like Balken
-- Killer Wunsch Platz per Befehl !place zb?
-- UI Elements neues design?
-
+- nothing
+- 
+# on approval
+- nothing
+- 
+# On Check
+- nothing
+- 
  ...
 
 

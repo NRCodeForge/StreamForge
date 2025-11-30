@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    color: #E0E0E0;
+}
+
+#gambit-container {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-150%); /* Startposition: Versteckt oben */
+    width: 450px;
+
+    /* 1:1 Design Anpassung an commands_overlay */
+    background-color: rgba(15, 15, 15, 0.95);
+    border: 2px solid rgb(222, 11, 50); /* DBD Rot */
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(222, 11, 50, 0.4);
+
+    text-align: center;
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.6s;
+    padding-bottom: 25px;
+    z-index: 10;
+}
+
+#gambit-container.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.header {
+    background: rgba(222, 11, 50, 0.15);
+    color: #E0E0E0;
+    font-size: 22px;
+    padding: 15px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(222, 11, 50, 0.5);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.slot-window {
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 25px auto;
+    width: 85%;
+    border: 1px solid #333;
+    border-radius: 3px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,1);
+}
+
+.slot-reel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.slot-item {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.result-box {
+    font-size: 24px; /* Größer für bessere Lesbarkeit */
+    font-weight: 700;
+    margin-top: 15px;
+    min-height: 30px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    text-shadow: 1px 1px 5px rgba(0,0,0,1);
+}
+
+.result-box.show {
+    opacity: 1;
+}
+
+/* --- KONFETTI STYLE --- */
+.confetti {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+    z-index: 5; /* Hinter der Box, aber sichtbar */
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(800px) rotate(720deg); opacity: 0; }
+}

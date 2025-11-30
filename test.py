@@ -1,65 +1,66 @@
 import logging
 from TikTokLive import TikTokLiveClient
-from TikTokLive.events import ConnectEvent, LikeEvent
+from TikTokLive.events import ConnectEvent, CommentEvent, DisconnectEvent
 from TikTokLive.client.web.web_settings import WebDefaults
 
-# --- KONFIGURATION ---
-USER_NAME = "@dbdstation"  # <--- HIER USERNAME EINTRAGEN
+# ---------------------------------------------------------
+# KONFIGURATION
+# ---------------------------------------------------------
+TIKTOK_USERNAME = "dbdstation"
+
+# DEIN EulerStream Key (wichtig gegen 'DEVICE_BLOCKED')
 EULER_KEY = "euler_ODBmYTc0ZWZjMmU0NmIyNzU4YjM3MmI4YzUwYmMxZWYwNjllNmVhZjI1MjBiN2ViMjE1YzRh"
 
-# Logging aktivieren
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("TiktokDebug")
+# ---------------------------------------------------------
 
-# Key setzen
+# Logging einstellen (zeigt Infos in der Konsole)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("TestScript")
+
+# EulerStream aktivieren
 WebDefaults.tiktok_sign_api_key = EULER_KEY
 
-client = TikTokLiveClient(unique_id=USER_NAME)
+# Client erstellen
+client: TikTokLiveClient = TikTokLiveClient(unique_id=TIKTOK_USERNAME)
 
 
 @client.on(ConnectEvent)
 async def on_connect(event: ConnectEvent):
-    logger.info(f"Verbunden mit {event.unique_id}!")
-
-    # Diagnose 1: Was steht in den Room Info? (Startwert)
-    if client.room_info:
-        logger.info("--- ROOM INFO DIAGNOSE ---")
-        # Wir geben alle Keys aus, die nach 'like' klingen
-        keys = client.room_info.keys()
-        like_keys = [k for k in keys if 'like' in k.lower()]
-        logger.info(f"Gefundene Like-Keys in RoomInfo: {like_keys}")
-        for k in like_keys:
-            logger.info(f" -> {k}: {client.room_info[k]}")
-    else:
-        logger.error("❌ client.room_info ist LEER! (Startwert fehlt)")
+    logger.info(f"✅ Verbunden mit @{event.unique_id} (Room ID: {client.room_id})")
+    logger.info("Warte auf Kommentare... (Schreibe etwas in den Chat)")
 
 
-@client.on(LikeEvent)
-async def on_like(event: LikeEvent):
-    logger.info("--- LIKE EVENT DIAGNOSE ---")
+@client.on(CommentEvent)
+async def on_comment(event: CommentEvent):
+    try:
+        # BUGFIX: Direktzugriff auf user_info um den TypeError zu vermeiden
+        user_data = event.user_info
 
-    # Diagnose 2: Welche Attribute hat das Event wirklich?
-    # Wir filtern interne Attribute (_) raus
-    attributes = [d for d in dir(event) if not d.startswith('_')]
+        # Versuche verschiedene Namen-Felder
+        name = getattr(user_data, "nick_name", None) or \
+               getattr(user_data, "nickname", None) or \
+               getattr(user_data, "unique_id", "Unbekannt")
 
-    # Wir suchen nach allem was wie 'total' oder 'count' aussieht
-    relevante_attribute = [a for a in attributes if 'total' in a.lower() or 'like' in a.lower() or 'count' in a.lower()]
+        text = event.comment
 
-    logger.info(f"VERFÜGBARE DATEN IM EVENT: {relevante_attribute}")
+        print(f"💬 {name}: {text}")
+        if text.lower().startswith("!place"):
+            print(True)
 
-    # Werte dieser Attribute ausgeben
-    for attr in relevante_attribute:
+
+    except Exception as e:
+        logger.error(f"Fehler beim Lesen des Kommentars: {e}")
+
+
+@client.on(DisconnectEvent)
+async def on_disconnect(event: DisconnectEvent):
+    logger.warning("❌ Verbindung getrennt.")
+
+
+if __name__ == '__main__':
+    logger.info(f"Start mit EulerStream Key... Verbinde zu {TIKTOK_USERNAME}")
+    while True:
         try:
-            val = getattr(event, attr)
-            if isinstance(val, (int, str)) or val is None:
-                logger.info(f" -> {attr}: {val}")
-        except:
-            pass
-
-    # Stoppt nach dem ersten Like, damit du das Log lesen kannst
-    logger.info("Diagnose fertig. Du kannst das Skript stoppen.")
-
-
-if __name__ == "__main__":
-    # fetch_room_info ist wichtig für den Startwert!
-    client.run(fetch_room_info=True)
+            client.run(fetch_room_info=True)
+        except Exception as e:
+            logger.error(f"Kritischer Fehler: {e}")

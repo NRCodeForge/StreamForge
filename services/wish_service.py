@@ -1,59 +1,85 @@
-# StreamForge/services/wish_service.py
-
-# KORREKTUR: Verwende absolute Importe
+import json
+import os
+import time
+import threading
 from database.wish_repository import WishRepository
 from utils import wishes_log
+from config import get_path
 
 
 class WishService:
-    """Verwaltet die Geschäftslogik und den Zustand (Offset) für Killerwünsche."""
+    """Verwaltet die Geschäftslogik für Killerwünsche."""
 
     def __init__(self):
         self.repository = WishRepository()
         self.offset_counter = 0
+        self._initialize_overlay_file()
+
+    def _initialize_overlay_file(self):
+        """Erstellt die place_overlay/active.json (im Root)."""
+        try:
+            path = get_path('place_overlay/active.json')
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            self._write_place_overlay({})
+        except Exception as e:
+            wishes_log.error(f"Fehler beim Initialisieren des Place-Overlays: {e}")
 
     def get_current_wishes(self):
-        """Ruft die Wünsche für den aktuellen Offset ab."""
         return self.repository.get_wishes(self.offset_counter)
 
     def advance_offset(self):
-        """Löscht den ältesten Wunsch, erhöht den Offset und setzt ihn ggf. zurück."""
-
-        # NEU: Zuerst den ältesten Wunsch löschen
         self.repository.delete_oldest_wish()
-
-        # Berechne die neue Gesamtzahl *nach* dem Löschen
-        total_wishes_after_delete = self.repository.count_total_wishes()
-
-        # Die Logik zur Offset-Erhöhung bleibt ähnlich,
-        # aber wir müssen den Offset nicht mehr explizit erhöhen,
-        # da durch das Löschen des ersten Elements die nächsten "aufrutschen".
-        # Wir müssen nur sicherstellen, dass der Offset zurückgesetzt wird,
-        # wenn er das (neue) Ende erreicht.
-
-        # Wenn der aktuelle Offset größer oder gleich der neuen Anzahl ist
-        # ODER wenn es keine Wünsche mehr gibt, setze auf 0 zurück.
-        if self.offset_counter >= total_wishes_after_delete:
+        total = self.repository.count_total_wishes()
+        if self.offset_counter >= total:
             self.offset_counter = 0
-        # Optional: Wenn nach dem Löschen keine Wünsche mehr da sind, auch auf 0 setzen.
-        elif total_wishes_after_delete == 0:
-            self.offset_counter = 0
-        # Wichtig: Wenn der Offset gültig bleibt (also nicht >= total_wishes_after_delete),
-        # dann muss er NICHT verändert werden, da der nächste Wunsch automatisch an diese Position rückt.
-
-        wishes_log.info(f'Offset nach Löschen und Prüfung: {self.offset_counter}')
         return self.offset_counter
 
     def add_new_wish(self, wunsch, user_name):
-        """Fügt einen Wunsch hinzu und loggt den Vorgang."""
-        if not wunsch or not user_name:
-            raise ValueError("Wunsch und Benutzername dürfen nicht leer sein.")
-
         self.repository.add_wish(wunsch, user_name)
-        wishes_log.info(f'Neuer Wunsch hinzugefügt von {user_name}: {wunsch}')
+        wishes_log.info(f'Neuer Wunsch von {user_name}: {wunsch}')
 
     def reset_wishes(self):
-        """Löscht alle Wünsche und setzt den Offset zurück."""
         self.repository.delete_all_wishes()
         self.offset_counter = 0
-        wishes_log.info("Datenbank erfolgreich zurückgesetzt.")
+
+    # --- !place Logik MIT AUTO-RESET ---
+    def check_user_place(self, user_name):
+        """Ermittelt Platz, schreibt Overlay und löscht es nach 8s."""
+        all_users = self.repository.get_all_user_names()
+
+        try:
+            user_lower = user_name.lower()
+            all_users_lower = [u.lower() for u in all_users]
+            place = all_users_lower.index(user_lower) + 1
+            display_name = all_users[place - 1]  # Original Name aus DB
+        except ValueError:
+            place = -1
+            display_name = user_name
+
+        wishes_log.info(f"CHECK PLACE für '{user_name}': Platz {place}")
+
+        if place > 0:
+            overlay_data = {
+                "user_name": display_name,
+                "place": place,
+                "timestamp": time.time()
+            }
+            self._write_place_overlay(overlay_data)
+
+            # Timer starten: Nach 8 Sekunden Datei leeren
+            threading.Timer(8.0, self._clear_overlay).start()
+            return place
+        else:
+            return None
+
+    def _clear_overlay(self):
+        """Leert die active.json, damit das Overlay verschwindet."""
+        self._write_place_overlay({})
+
+    def _write_place_overlay(self, data):
+        try:
+            path = get_path('place_overlay/active.json')
+            with open(path, 'w', encoding='utf-8') as f:
+                json.dump(data, f)
+        except Exception as e:
+            wishes_log.error(f"Fehler beim Schreiben des Place-Overlays: {e}")

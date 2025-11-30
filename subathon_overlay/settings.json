@@ -1,17 +1,17 @@
 {
-    "animations_time": "3.0",
+    "animations_time": "4.0",
     "coins": {
-        "value": "3",
+        "value": "0.4",
         "active": true,
         "visible": true
     },
     "subscribe": {
-        "value": "500",
+        "value": "180",
         "active": true,
         "visible": true
     },
     "follow": {
-        "value": "10",
+        "value": "5",
         "active": true,
         "visible": true
     },
@@ -21,17 +21,17 @@
         "visible": true
     },
     "like": {
-        "value": "1",
+        "value": "0.06",
         "active": true,
         "visible": true
     },
     "chat": {
-        "value": "0",
+        "value": "0.3",
         "active": true,
         "visible": false
     },
     "twitch_sub": {
-        "value": "300",
+        "value": "180",
         "active": true,
         "visible": true
     },

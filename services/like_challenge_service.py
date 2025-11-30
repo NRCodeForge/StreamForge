@@ -50,6 +50,25 @@ class LikeChallengeService:
             self.api_client.start()
             self.current_monitored_user = tiktok_user
 
+    def start_tiktok_connection(self):
+        """Lädt den Usernamen aus den Settings und startet die Verbindung sofort."""
+        try:
+            settings = self.settings_manager.load_settings()
+            tiktok_user = settings.get("tiktok_unique_id", "")
+
+            if tiktok_user:
+                server_log.info(f"🔌 Autostart: Verbinde zu @{tiktok_user} ...")
+                self._ensure_api_connection(tiktok_user)
+            else:
+                server_log.warning("⚠️ Autostart übersprungen: Kein TikTok-Username in den Einstellungen.")
+
+        except Exception as e:
+            server_log.error(f"❌ Fehler beim Autostart der TikTok-Verbindung: {e}")
+
+    def force_start(self):
+        """Alias für start_tiktok_connection (Kompatibilität)."""
+        self.start_tiktok_connection()
+
     def get_challenge_status(self):
         """Berechnet den Status inkl. Test-Likes."""
         try:
@@ -62,6 +81,7 @@ class LikeChallengeService:
         initial_goals = sorted(settings.get("initialGoals", []))
         recurring_expr = settings.get("recurringGoalExpression", "x + 33333")
 
+        # Verbindung prüfen (falls noch nicht geschehen durch Autostart)
         if tiktok_user:
             self._ensure_api_connection(tiktok_user)
 
@@ -72,7 +92,7 @@ class LikeChallengeService:
 
         like_count = real_likes + self.test_likes
 
-        # --- Geschäftslogik (unverändert) ---
+        # --- Geschäftslogik für Ziele ---
         current_goal = None
         last_checked_goal = 0
 
@@ -99,15 +119,23 @@ class LikeChallengeService:
                 loop_guard += 1
             current_goal = calculated_goal
 
-        # --- Sound-Logik ---
+        # --- Sound-Logik & HYPE EVENT (NEU) ---
         if self.previous_current_goal is None:
             self.previous_current_goal = current_goal
 
-        # Spiele Sound, wenn Ziel erreicht (auch durch Test-Likes)
+        # Wenn Ziel erreicht (Likes >= Ziel)
         if (self.previous_current_goal != current_goal) and (like_count >= self.previous_current_goal):
-            from services.service_provider import audio_service_instance
-            server_log.info(f"Ziel {self.previous_current_goal} erreicht! (Likes: {like_count}) -> Sound")
+            from services.service_provider import audio_service_instance, subathon_service_instance
+
+            server_log.info(f"Ziel {self.previous_current_goal} erreicht! (Likes: {like_count}) -> Sound & Hype Mode")
+
+            # 1. Sound abspielen
             audio_service_instance.play_goal_sound()
+
+            # 2. HYPE MODE Trigger (Event 5) - Startet für 5 Minuten (300s)
+            # Das löst Event 5 aus: Doppelte Zeit für neue Zeit-Adds
+            subathon_service_instance.trigger_hype_mode(300)
+
             self.previous_current_goal = current_goal
 
         if self.previous_current_goal != current_goal:

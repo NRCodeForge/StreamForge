@@ -17,23 +17,23 @@ from TikTokLive.events import (
 from TikTokLive.client.web.web_settings import WebDefaults
 
 # --- KONFIGURATION EULERSTREAM ---
+# Dein Key gegen "Device Blocked" Fehler
 EULER_API_KEY = "euler_ODBmYTc0ZWZjMmU0NmIyNzU4YjM3MmI4YzUwYmMxZWYwNjllNmVhZjI1MjBiN2ViMjE1YzRh"
 WebDefaults.tiktok_sign_api_key = EULER_API_KEY
 
 # --- KONFIGURATION SPEICHERN ---
-SAVE_INTERVAL = 30  # Alle 30 Sekunden speichern
-JSON_FILENAME = "like_daten.json"  # Datei für die Daten
-LOG_FILENAME = "tiktok_live.log"  # Datei für das Protokoll
+SAVE_INTERVAL = 30
+JSON_FILENAME = "like_daten.json"
+LOG_FILENAME = "tiktok_live.log"
 
-# --- LOGGING SETUP (Erweitert) ---
-# Schreibt jetzt Zeitstempel und speichert alles zusätzlich in eine Datei
+# --- LOGGING SETUP ---
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S',
     handlers=[
-        logging.FileHandler(LOG_FILENAME, encoding='utf-8'),  # Speichert in Datei
-        logging.StreamHandler()  # Zeigt in Konsole
+        logging.FileHandler(LOG_FILENAME, encoding='utf-8'),
+        logging.StreamHandler()
     ]
 )
 server_log = logging.getLogger("TikTokAPI")
@@ -44,70 +44,75 @@ class TikTokLive_API:
         self.unique_id = unique_id
         self.client: Optional[TikTokLiveClient] = None
 
-        # --- ZÄHLER ---
+        # --- ZÄHLER & DATEN ---
         self.current_likes = 0
         self.user_likes: Dict[str, int] = {}
 
         # --- STATUS & THREADS ---
         self.is_connected = False
-        self.running = False
+        self.running = False  # Kontroll-Flag statt "True"
 
-        self.api_thread = None  # Thread für TikTok Verbindung
-        self.timer_thread = None  # Thread für Auto-Save
+        self.api_thread = None
+        self.timer_thread = None
         self._lock = threading.Lock()
 
         self.listeners: List[Callable[[any], None]] = []
 
     def add_listener(self, callback: Callable[[any], None]):
-        """Registriert einen Listener für Events."""
+        """Registriert externe Funktionen, die bei Events aufgerufen werden."""
         self.listeners.append(callback)
 
     def _notify_listeners(self, event):
-        """Leitet Events an alle Listener weiter."""
-        for callback in self.listeners:
-            try:
-                callback(event)
-            except Exception as e:
-                server_log.error(f"Fehler im Event-Listener: {e}")
+        """Leitet Events an alle registrierten Listener weiter."""
 
-    # --- START / STOP LOGIK ---
+        # Wir starten für jeden Listener einen kleinen Thread, damit der Main-Loop nicht blockiert
+        def _run_callback(cb, evt):
+            try:
+                cb(evt)
+            except Exception as e:
+                server_log.error(f"Fehler im Event-Listener Callback: {e}")
+
+        for callback in self.listeners:
+            # Echtes "Fire-and-Forget" Multithreading für Events
+            threading.Thread(target=_run_callback, args=(callback, event), daemon=True).start()
+
+    # --- START / STOP ---
 
     def start(self):
-        if self.running: return
+        if self.running:
+            return
+
+        server_log.info(f"🚀 Starte System für: @{self.unique_id}")
         self.running = True
 
-        # 1. API Thread starten (Verbindung zu TikTok)
-        self.api_thread = threading.Thread(target=self._run_loop, daemon=True)
+        # 1. API Thread (Die Verbindungsschleife)
+        self.api_thread = threading.Thread(target=self._run_connection_loop, daemon=True, name="TikTokConnectionLoop")
         self.api_thread.start()
 
-        # 2. Timer Thread starten (Automatisches Speichern)
-        self.timer_thread = threading.Thread(target=self._run_save_timer, daemon=True)
+        # 2. Timer Thread (Auto-Save)
+        self.timer_thread = threading.Thread(target=self._run_save_timer, daemon=True, name="TikTokSaveTimer")
         self.timer_thread.start()
-
-        server_log.info(f"🚀 API gestartet für: @{self.unique_id} (EulerStream aktiv)")
-        server_log.info(f"💾 Auto-Save aktiv: Alle {SAVE_INTERVAL} Sekunden in '{JSON_FILENAME}'")
 
     def stop(self):
         server_log.info("🛑 Stoppe System...")
-        self.running = False
-
-        # Ein letztes Mal speichern beim Stoppen
+        self.running = False  # Beendet die Schleifen
         self.save_data_to_file()
 
         if self.client:
             try:
-                loop = getattr(self.client, '_asyncio_loop', None) or asyncio.get_event_loop()
+                # Versuch eines sauberen Disconnects
+                loop = getattr(self.client, '_asyncio_loop', None)
                 if loop and loop.is_running():
                     asyncio.run_coroutine_threadsafe(self.client.disconnect(), loop)
                 else:
-                    self.client.stop()
-            except Exception as e:
-                server_log.error(f"Hinweis beim Stoppen: {e}")
+                    # Fallback
+                    pass
+            except Exception:
+                pass
 
-    # --- DATEN SPEICHERN (NEU) ---
+    # --- DATEN SPEICHERN ---
 
     def save_data_to_file(self):
-        """Speichert Likes und User-Daten in eine JSON Datei"""
         try:
             with self._lock:
                 data = {
@@ -116,31 +121,32 @@ class TikTokLive_API:
                     "total_room_likes": self.current_likes,
                     "user_leaderboard": self.user_likes
                 }
-
             with open(JSON_FILENAME, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=4)
-
-            # Loggt den Speichervorgang in Datei und Konsole
-            server_log.info(f"💾 [TIMER] Gespeichert. Total: {self.current_likes} | User: {len(self.user_likes)}")
-
+            # server_log.info("💾 Daten gespeichert.")
         except Exception as e:
-            server_log.error(f"❌ Fehler beim Speichern: {e}")
+            server_log.error(f"❌ Speicherfehler: {e}")
 
     def _run_save_timer(self):
-        """Hintergrund-Loop für das automatische Speichern"""
         while self.running:
             time.sleep(SAVE_INTERVAL)
             if self.running:
                 self.save_data_to_file()
 
-    # --- HAUPT LOOP ---
+    # --- HAUPTVERBINDUNGS-LOOP (ROBUST) ---
 
-    def _run_loop(self):
+    def _run_connection_loop(self):
+        """
+        Verbindet sich immer wieder neu, wenn die Verbindung abbricht oder 'Offline' gemeldet wird.
+        """
+        retry_delay = 3  # Sekunden warten vor Neustart
+
         while self.running:
             try:
+                # 1. Client frisch instanziieren
                 self.client = TikTokLiveClient(unique_id=self.unique_id)
 
-                # Event-Listener registrieren
+                # 2. Events binden
                 self.client.add_listener(ConnectEvent, self.on_connect)
                 self.client.add_listener(DisconnectEvent, self.on_disconnect)
                 self.client.add_listener(LiveEndEvent, self.on_live_end)
@@ -151,68 +157,66 @@ class TikTokLive_API:
                 self.client.add_listener(SubscribeEvent, self.on_subscribe)
                 self.client.add_listener(CommentEvent, self.on_comment)
 
-                server_log.info(f"Verbinde zu TikTok Live @{self.unique_id}...")
+                server_log.info(f"🔄 [LOOP] Verbinde zu @{self.unique_id}...")
 
-                # Room Info für Start-Likes holen
+                # 3. Starten (Blockiert, bis Fehler/Ende)
+                # fetch_room_info=True ist wichtig für Start-Likes
                 self.client.run(fetch_room_info=True)
 
             except Exception as e:
-                if self.running:
-                    server_log.error(f"TikTok Live Verbindung unterbrochen: {e}")
+                # HIER fangen wir "User Offline", "Not Found" etc. ab
                 self.is_connected = False
-                time.sleep(10)
 
-            if self.running and not self.is_connected:
-                time.sleep(2)
+                if self.running:
+                    # Logge den Fehler, aber mache weiter!
+                    server_log.warning(f"⚠️ Verbindung getrennt/fehlerhaft ({e}). Reconnect in {retry_delay}s...")
+                    time.sleep(retry_delay)
+                else:
+                    server_log.info("ℹ️ Loop wird beendet.")
+                    break
 
-    # --- Event Handlers ---
+    # --- EVENT HANDLER ---
 
     async def on_connect(self, event: ConnectEvent):
         self.is_connected = True
-        server_log.info(f"✅ Verbunden mit @{self.unique_id}!")
+        server_log.info(f"✅ VERBUNDEN mit @{self.unique_id} (RoomID: {self.client.room_id})")
 
-        # Initialisierung beim Start
+        # Start-Likes übernehmen
         with self._lock:
             if self.client.room_info:
-                r_info = self.client.room_info
-                start_likes = r_info.get('like_count', 0) or r_info.get('total_likes', 0) or r_info.get('likes_count',
-                                                                                                        0)
-
-                if int(start_likes) > self.current_likes:
-                    self.current_likes = int(start_likes)
-                    server_log.info(f"Start-Likes gesetzt auf: {self.current_likes}")
+                info = self.client.room_info
+                # Verschiedene Keys probieren
+                start = info.get('like_count') or info.get('total_likes') or info.get('likes_count') or 0
+                if int(start) > self.current_likes:
+                    self.current_likes = int(start)
+                    server_log.info(f"📊 Start-Likes erkannt: {self.current_likes}")
 
     async def on_disconnect(self, event: DisconnectEvent):
         self.is_connected = False
-        server_log.warning("⚠️ Verbindung getrennt.")
+        # Keine Panik, der Loop oben fängt das und verbindet neu!
 
     async def on_live_end(self, event: LiveEndEvent):
         self.is_connected = False
-        server_log.info("🏁 Stream beendet.")
-        self.save_data_to_file()  # Sofort speichern bei Ende
-
-    # --- Like Logik (Deine Version mit 'total') ---
+        server_log.info("🏁 Stream wurde regulär beendet.")
+        self.save_data_to_file()
 
     async def on_like(self, event: LikeEvent):
         user_id = event.user.unique_id
-        batch_count = event.count
+        count = event.count
 
         with self._lock:
-            # 1. Zuerst lokal hochzählen
-            self.current_likes += batch_count
+            self.current_likes += count
 
-            # 2. Synchronisation mit 'event.total'
-            if hasattr(event, 'total'):
-                server_total = event.total
-                if server_total >= self.current_likes:
-                    self.current_likes = server_total
+            # Sync mit Server-Total falls verfügbar
+            if hasattr(event, 'total') and event.total > self.current_likes:
+                self.current_likes = event.total
 
-            # 3. User-spezifisches Tracking
+            # User-Leaderboard
             if user_id not in self.user_likes:
                 self.user_likes[user_id] = 0
-            self.user_likes[user_id] += batch_count
+            self.user_likes[user_id] += count
 
-            # 4. Daten an das Event anhängen
+            # Daten für Overlay mitsenden
             event.custom_room_total = self.current_likes
             event.custom_user_total = self.user_likes[user_id]
 
@@ -223,17 +227,56 @@ class TikTokLive_API:
             return
         self._notify_listeners(event)
 
-    async def on_follow(self, event: FollowEvent):
-        self._notify_listeners(event)
-
-    async def on_share(self, event: ShareEvent):
-        self._notify_listeners(event)
-
-    async def on_subscribe(self, event: SubscribeEvent):
-        self._notify_listeners(event)
-
+    # --- KOMMENTARE & !PLACE ---
     async def on_comment(self, event: CommentEvent):
         self._notify_listeners(event)
+
+        # Lazy Import
+        from services.service_provider import wish_service_instance, subathon_service_instance
+
+        try:
+            # 1. Namen sicher auslesen (Bugfix für user.nickname Fehler)
+            u_info = event.user_info
+            user_name = getattr(u_info, "nick_name", None) or \
+                        getattr(u_info, "nickname", None) or \
+                        getattr(u_info, "unique_id", "Unbekannt")
+
+            text = event.comment.strip()
+            # 2. Timer Update (Optional)
+            SECONDS_PER_COMMENT = 0
+            if SECONDS_PER_COMMENT > 0:
+                try:
+                    subathon_service_instance.add_time(SECONDS_PER_COMMENT)
+                except:
+                    pass
+
+            # 3. !place Check
+            if text.lower().startswith("!place"):
+                server_log.info(f"📩 !place Befehl von {user_name}")
+                wish_service_instance.check_user_place(user_name)
+
+
+        except Exception as e:
+            server_log.error(f"Kommentar-Fehler: {e}")
+
+    # Standard Listener
+    async def on_follow(self, e):
+        self._notify_listeners(e)
+
+    async def on_share(self, e):
+        self._notify_listeners(e)
+
+    async def on_subscribe(self, event: SubscribeEvent):
+        # 1. Standard Listener
+        self._notify_listeners(event)
+
+        # 2. HYPE MODE Trigger (Event 5)
+        # Import hier, um Zirkelbezug zu vermeiden
+        from services.service_provider import subathon_service_instance
+
+        server_log.info(f"🌟 Neuer Sub von {event.user.unique_id}! Starte Hype-Mode.")
+        # Startet Hype-Mode für 5 Minuten (300 Sekunden)
+        subathon_service_instance.trigger_hype_mode(300)
 
     def get_current_likes(self) -> int:
         with self._lock:

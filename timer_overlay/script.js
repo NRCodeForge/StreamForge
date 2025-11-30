@@ -1,25 +1,39 @@
 const API_URL = '/api/v1/timer/state';
 const timerElement = document.getElementById('timer');
 
-async function updateTimer() {
-    try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
+function updateTimer() {
+    fetch('/api/v1/timer/state')
+        .then(response => response.json())
+        .then(data => {
+            // Zeit formatieren (wie gehabt)
+            // ... (dein bestehender Code für h/m/s) ...
 
-        if (timerElement) {
-            // Zeige Zeit an
-            timerElement.textContent = `${data.hours}:${data.minutes}:${data.seconds}`;
+            const h = String(data.hours).padStart(2, '0');
+            const m = String(data.minutes).padStart(2, '0');
+            const s = String(data.seconds).padStart(2, '0');
 
-            // Wenn pausiert: Blinken oder Ausgrauen
-            if (data.is_paused) {
-                timerElement.style.opacity = "0.5";
+            document.getElementById('timer').innerText = `${h}:${m}:${s}`;
+
+            // --- NEU: Event-Status prüfen ---
+            const container = document.body; // Oder dein Haupt-Div
+
+            // Blackout / Blind Mode
+            if (data.is_blind) {
+                container.classList.add('blind-mode');
             } else {
-                timerElement.style.opacity = "1.0";
+                container.classList.remove('blind-mode');
             }
-        }
-    } catch (e) {
-        console.error("Fehler beim Timer-Update:", e);
-    }
+
+            // Optional: Farben ändern bei Hype oder Freezer
+            if (data.is_frozen) {
+                document.getElementById('timer').style.color = "#00ccff"; // Eisblau
+            } else if (data.is_hype) {
+                document.getElementById('timer').style.color = "#ffcc00"; // Gold
+            } else {
+                document.getElementById('timer').style.color = "white"; // Reset
+            }
+        })
+        .catch(err => console.error(err));
 }
 
 // Jede Sekunde aktualisieren

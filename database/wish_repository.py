@@ -61,3 +61,12 @@ class WishRepository:
             conn.rollback()  # Mache Änderungen rückgängig bei Fehler
         finally:
             conn.close()
+
+    def get_all_user_names(self):
+        """Gibt eine Liste aller User-Namen in der Reihenfolge ihrer Wünsche (ID/Datum) zurück."""
+        conn = get_db_connection()
+        c = conn.cursor()
+        c.execute("SELECT user_name FROM killer_wuensche ORDER BY id ASC")
+        users = [row['user_name'] for row in c.fetchall()]
+        conn.close()
+        return users

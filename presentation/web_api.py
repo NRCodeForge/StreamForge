@@ -62,6 +62,22 @@ def add_killerwunsch():
         server_log.error(f'Datenbank-Fehler beim Hinzufügen des Wunsches: {e}')
         return jsonify({'error': 'Fehler beim Hinzufügen des Wunsches.'}), 500
 
+
+@app.route('/api/v1/wishes/check_place', methods=['POST'])
+def trigger_place_check():
+    """Löst den Check für einen User aus (z.B. durch !place)."""
+    if not request.json or 'user_name' not in request.json:
+        return jsonify({'error': 'user_name fehlt'}), 400
+
+    user_name = request.json['user_name']
+    place = wish_service_instance.check_user_place(user_name)
+
+    if place:
+        return jsonify({'message': f'User {user_name} ist auf Platz {place}', 'place': place})
+    else:
+        # Auch wenn nicht gefunden, 200 OK damit der Client bescheid weiß, oder 404
+        return jsonify({'message': 'User nicht gefunden', 'place': -1}), 404
+
 # --- Like Challenge API Endpunkt ---
 @app.route(LIKE_CHALLENGE_ENDPOINT, methods=['GET'])
 def get_like_challenge_data():
@@ -93,7 +109,17 @@ def trigger_command():
         server_log.error(f"Fehler beim Triggern der Command-Sequenz: {e}")
         return jsonify({'error': str(e)}), 500
 
-
+@app.route('/api/v1/events/gambler/next', methods=['GET'])
+def get_next_gambit():
+    """
+    Holt das nächste Gambit-Event aus der Queue und entfernt es dort.
+    Gibt {} zurück, wenn die Queue leer ist.
+    """
+    event = subathon_service_instance.pop_next_gambit_event()
+    if event:
+        return jsonify(event)
+    else:
+        return jsonify({})
 @app.route('/api/v1/timer/streamerbot', methods=['POST'])
 def trigger_streamerbot_event():
     """
@@ -171,9 +197,39 @@ def serve_subathon_overlay(path):
 def serve_like_overlay(path):
     directory = get_path('like_overlay')
     return send_from_directory(directory, path)
+@app.route('/api/v1/events/time_warp', methods=['POST'])
+def trigger_time_warp():
+    """Trigger für Event 1: Zeitraffer"""
+    subathon_service_instance.trigger_time_warp(60)
+    return jsonify({'message': 'Time Warp gestartet'}), 200
 
+@app.route('/api/v1/events/blackout', methods=['POST'])
+def trigger_blackout():
+    """Trigger für Event 2: Blackout"""
+    subathon_service_instance.trigger_blackout(120)
+    return jsonify({'message': 'Blackout gestartet'}), 200
+
+@app.route('/api/v1/events/gambler', methods=['POST'])
+def trigger_gambler():
+    """Trigger für Event 3: Russisch Roulette"""
+    result = subathon_service_instance.trigger_gambler()
+    return jsonify({'message': f'Gambler Ergebnis: {result}'}), 200
+
+@app.route('/api/v1/events/freezer', methods=['POST'])
+def trigger_freezer():
+    """Trigger für Event 4: Freezer"""
+    subathon_service_instance.trigger_freezer(180)
+    return jsonify({'message': 'Freezer gestartet'}), 200
 # NEU: Route für /commands/
 @app.route('/commands/<path:path>')
 def serve_commands_overlay(path):
     directory = get_path('commands_overlay')
+    return send_from_directory(directory, path)
+@app.route('/place_overlay/<path:path>')
+def serve_place_overlay(path):
+    directory = get_path('place_overlay')
+    return send_from_directory(directory, path)
+@app.route('/gambler_overlay/<path:path>')
+def serve_gambler_overlay(path):
+    directory = get_path('gambler_overlay')
     return send_from_directory(directory, path)

@@ -1,0 +1,87 @@
+/* Grundlegende Einstellungen */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent; /* Wichtig für OBS */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Die Karte selbst */
+#place-card {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: 350px;
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(35, 35, 35, 0.95) 100%);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border-left: 6px solid #00ffcc; /* StreamForge Cyan Akzent */
+
+    /* Startzustand: Versteckt und verschoben */
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+/* Klasse zum Einblenden (wird per JS hinzugefügt) */
+#place-card.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Header Bereich */
+.header {
+    background-color: rgba(0, 255, 204, 0.1);
+    color: #00ffcc;
+    font-size: 0.85em;
+    font-weight: bold;
+    padding: 8px 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Inhalt */
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+.user-name {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    word-wrap: break-word; /* Falls der Name sehr lang ist */
+}
+
+.info-text {
+    font-size: 0.9em;
+    color: #aaaaaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.place-number {
+    font-size: 4em;
+    font-weight: 900;
+    color: #00ffcc;
+    line-height: 1;
+    margin-top: 5px;
+    text-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+}
+
+/* Optional: Ein kleiner Ladebalken unten für die Dauer */
+.progress-bar {
+    height: 4px;
+    background-color: #00ffcc;
+    width: 0%;
+}
+
+#place-card.show .progress-bar {
+    width: 100%;
+    transition: width 5s linear; /* Muss zur Anzeigedauer im JS passen */
+}
