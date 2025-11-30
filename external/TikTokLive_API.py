@@ -2,6 +2,8 @@ import threading
 import time
 import asyncio
 import logging
+import json
+import datetime
 from typing import Optional, Callable, List, Dict
 
 # TikTokLive Importe
@@ -15,12 +17,25 @@ from TikTokLive.events import (
 from TikTokLive.client.web.web_settings import WebDefaults
 
 # --- KONFIGURATION EULERSTREAM ---
-# Dein Key (euler_...)
 EULER_API_KEY = "euler_ODBmYTc0ZWZjMmU0NmIyNzU4YjM3MmI4YzUwYmMxZWYwNjllNmVhZjI1MjBiN2ViMjE1YzRh"
 WebDefaults.tiktok_sign_api_key = EULER_API_KEY
 
-# Logging Setup
-logging.basicConfig(level=logging.INFO)
+# --- KONFIGURATION SPEICHERN ---
+SAVE_INTERVAL = 30  # Alle 30 Sekunden speichern
+JSON_FILENAME = "like_daten.json"  # Datei für die Daten
+LOG_FILENAME = "tiktok_live.log"  # Datei für das Protokoll
+
+# --- LOGGING SETUP (Erweitert) ---
+# Schreibt jetzt Zeitstempel und speichert alles zusätzlich in eine Datei
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+    handlers=[
+        logging.FileHandler(LOG_FILENAME, encoding='utf-8'),  # Speichert in Datei
+        logging.StreamHandler()  # Zeigt in Konsole
+    ]
+)
 server_log = logging.getLogger("TikTokAPI")
 
 
@@ -30,12 +45,15 @@ class TikTokLive_API:
         self.client: Optional[TikTokLiveClient] = None
 
         # --- ZÄHLER ---
-        self.current_likes = 0  # Gesamt-Likes im Raum (synchronisiert mit Server)
-        self.user_likes: Dict[str, int] = {}  # Likes pro User (für dein Leaderboard)
+        self.current_likes = 0
+        self.user_likes: Dict[str, int] = {}
 
+        # --- STATUS & THREADS ---
         self.is_connected = False
         self.running = False
-        self.thread = None
+
+        self.api_thread = None  # Thread für TikTok Verbindung
+        self.timer_thread = None  # Thread für Auto-Save
         self._lock = threading.Lock()
 
         self.listeners: List[Callable[[any], None]] = []
@@ -52,15 +70,30 @@ class TikTokLive_API:
             except Exception as e:
                 server_log.error(f"Fehler im Event-Listener: {e}")
 
+    # --- START / STOP LOGIK ---
+
     def start(self):
         if self.running: return
         self.running = True
-        self.thread = threading.Thread(target=self._run_loop, daemon=True)
-        self.thread.start()
-        server_log.info(f"API gestartet für: @{self.unique_id} (EulerStream aktiv)")
+
+        # 1. API Thread starten (Verbindung zu TikTok)
+        self.api_thread = threading.Thread(target=self._run_loop, daemon=True)
+        self.api_thread.start()
+
+        # 2. Timer Thread starten (Automatisches Speichern)
+        self.timer_thread = threading.Thread(target=self._run_save_timer, daemon=True)
+        self.timer_thread.start()
+
+        server_log.info(f"🚀 API gestartet für: @{self.unique_id} (EulerStream aktiv)")
+        server_log.info(f"💾 Auto-Save aktiv: Alle {SAVE_INTERVAL} Sekunden in '{JSON_FILENAME}'")
 
     def stop(self):
+        server_log.info("🛑 Stoppe System...")
         self.running = False
+
+        # Ein letztes Mal speichern beim Stoppen
+        self.save_data_to_file()
+
         if self.client:
             try:
                 loop = getattr(self.client, '_asyncio_loop', None) or asyncio.get_event_loop()
@@ -70,6 +103,37 @@ class TikTokLive_API:
                     self.client.stop()
             except Exception as e:
                 server_log.error(f"Hinweis beim Stoppen: {e}")
+
+    # --- DATEN SPEICHERN (NEU) ---
+
+    def save_data_to_file(self):
+        """Speichert Likes und User-Daten in eine JSON Datei"""
+        try:
+            with self._lock:
+                data = {
+                    "timestamp": str(datetime.datetime.now()),
+                    "streamer": self.unique_id,
+                    "total_room_likes": self.current_likes,
+                    "user_leaderboard": self.user_likes
+                }
+
+            with open(JSON_FILENAME, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=4)
+
+            # Loggt den Speichervorgang in Datei und Konsole
+            server_log.info(f"💾 [TIMER] Gespeichert. Total: {self.current_likes} | User: {len(self.user_likes)}")
+
+        except Exception as e:
+            server_log.error(f"❌ Fehler beim Speichern: {e}")
+
+    def _run_save_timer(self):
+        """Hintergrund-Loop für das automatische Speichern"""
+        while self.running:
+            time.sleep(SAVE_INTERVAL)
+            if self.running:
+                self.save_data_to_file()
+
+    # --- HAUPT LOOP ---
 
     def _run_loop(self):
         while self.running:
@@ -107,7 +171,7 @@ class TikTokLive_API:
         self.is_connected = True
         server_log.info(f"✅ Verbunden mit @{self.unique_id}!")
 
-        # Initialisierung beim Start (versucht verschiedene Keys, sicher ist sicher)
+        # Initialisierung beim Start
         with self._lock:
             if self.client.room_info:
                 r_info = self.client.room_info
@@ -124,41 +188,37 @@ class TikTokLive_API:
 
     async def on_live_end(self, event: LiveEndEvent):
         self.is_connected = False
-        server_log.info("Stream beendet.")
+        server_log.info("🏁 Stream beendet.")
+        self.save_data_to_file()  # Sofort speichern bei Ende
 
-    # --- WICHTIG: Korrigierte Like Logik ---
+    # --- Like Logik (Deine Version mit 'total') ---
 
     async def on_like(self, event: LikeEvent):
         user_id = event.user.unique_id
-
-        # 'count' ist die Anzahl der Likes in DIESEM Klick (Batch)
         batch_count = event.count
 
         with self._lock:
-            # 1. Zuerst lokal hochzählen (falls Server-Total mal fehlt)
+            # 1. Zuerst lokal hochzählen
             self.current_likes += batch_count
 
-            # 2. Synchronisation mit 'event.total' (das Feld aus deiner Diagnose!)
+            # 2. Synchronisation mit 'event.total'
             if hasattr(event, 'total'):
                 server_total = event.total
-                # Wir nehmen immer den höheren Wert (Server gewinnt meistens)
                 if server_total >= self.current_likes:
                     self.current_likes = server_total
 
-            # 3. User-spezifisches Tracking (für dein Like-Board)
+            # 3. User-spezifisches Tracking
             if user_id not in self.user_likes:
                 self.user_likes[user_id] = 0
             self.user_likes[user_id] += batch_count
 
-            # 4. Daten an das Event anhängen für deine Listener
-            event.custom_room_total = self.current_likes  # Gesamt-Likes im Stream
-            event.custom_user_total = self.user_likes[user_id]  # Likes von diesem User
+            # 4. Daten an das Event anhängen
+            event.custom_room_total = self.current_likes
+            event.custom_user_total = self.user_likes[user_id]
 
-        # Weiterleitung an deine App
         self._notify_listeners(event)
 
     async def on_gift(self, event: GiftEvent):
-        # Nur wenn Streak zu Ende oder nicht streakable -> Event feuern
         if event.gift.streakable and not event.repeat_end:
             return
         self._notify_listeners(event)

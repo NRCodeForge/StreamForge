@@ -1,0 +1,207 @@
+2025-11-30 08:01:02 [INFO] SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-11-30 08:01:02 [INFO] SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-11-30 08:01:02 [INFO] Pygame Mixer erfolgreich initialisiert.
+2025-11-30 08:01:02 [INFO] SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-11-30 08:01:02 [INFO] SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-11-30 08:01:02 [INFO] SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-11-30 08:01:02 [INFO] Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 08:01:02 [INFO] Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\killerwuensche.db
+2025-11-30 08:01:03 [INFO] Hotkey-Listener-Thread gestartet.
+2025-11-30 08:01:03 [INFO] Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 08:01:03 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-11-30 08:01:03 [INFO] [33mPress CTRL+C to quit[0m
+2025-11-30 08:01:03 [INFO] Initialisiere TikTok API für: dbdstation
+2025-11-30 08:01:03 [INFO] 🚀 API gestartet für: @dbdstation (EulerStream aktiv)
+2025-11-30 08:01:03 [INFO] 💾 Auto-Save aktiv: Alle 30 Sekunden in 'like_daten.json'
+2025-11-30 08:01:03 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:03] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:03 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:03] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:03 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:03] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:03 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:03] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:03 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:03] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:03 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:03] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:03 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:03] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:04 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:04] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:04 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:04] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:04 [INFO] Verbinde zu TikTok Live @dbdstation...
+2025-11-30 08:01:04 [INFO] HTTP Request: GET https://www.tiktok.com/@dbdstation/live? "HTTP/1.1 200 OK"
+2025-11-30 08:01:05 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:05] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:05 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:05] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:05 [ERROR] TikTok Live Verbindung unterbrochen: TikTokLive v6.6.5 -> UserNotFoundError
+2025-11-30 08:01:06 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:06] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:06 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:06] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:06 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:06] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:07 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:07] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:07 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:07] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:08 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:08] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:09 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:09] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:09 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:09] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:09 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:09] "POST /api/v1/timer/control HTTP/1.1" 200 -
+2025-11-30 08:01:10 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:10] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:10 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:10] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:10 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:10] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:11 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:11] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:11 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:11] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:12 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:12] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:12 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:12] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:13 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:13] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:13 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:13] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:14 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:14] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:14 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:14] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:15 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:15] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:15 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:15] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:16 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:16] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:16 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:16] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:17 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:17] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:17 [INFO] Verbinde zu TikTok Live @dbdstation...
+2025-11-30 08:01:17 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:17] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:17 [INFO] HTTP Request: GET https://www.tiktok.com/@dbdstation/live? "HTTP/1.1 200 OK"
+2025-11-30 08:01:18 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:18] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:18 [INFO] HTTP Request: GET https://webcast.tiktok.com/webcast/room/check_alive/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-JM&browser_name=Mozilla&browser_online=true&browser_platform=Win32&browser_version=5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F129.0.0.0%20Safari%2F537.36&cookie_enabled=true&device_platform=web_pc&focus_state=true&from_page=&history_len=7&is_fullscreen=false&is_page_visible=true&screen_height=1080&screen_width=1920&tz_name=America/Jamaica&channel=tiktok_web&data_collection_enabled=true&os=windows&priority_region=JM&region=JM&user_is_login=false&webcast_language=en&msToken=&referer=https://www.tiktok.com/@dbdstation/live&root_referer=https://www.tiktok.com/@dbdstation/live&device_id=98453465625516968649&room_id=7578391812654746371&room_ids=7578391812654746371 "HTTP/1.1 200 OK"
+2025-11-30 08:01:18 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:18] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:18 [INFO] HTTP Request: GET https://webcast.tiktok.com/webcast/room/info/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-JM&browser_name=Mozilla&browser_online=true&browser_platform=Win32&browser_version=5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F129.0.0.0%20Safari%2F537.36&cookie_enabled=true&device_platform=web_pc&focus_state=true&from_page=&history_len=7&is_fullscreen=false&is_page_visible=true&screen_height=1080&screen_width=1920&tz_name=America/Jamaica&channel=tiktok_web&data_collection_enabled=true&os=windows&priority_region=JM&region=JM&user_is_login=false&webcast_language=en&msToken=&referer=https://www.tiktok.com/@dbdstation/live&root_referer=https://www.tiktok.com/@dbdstation/live&device_id=71390325497670987829&room_id=7578391812654746371 "HTTP/1.1 200 OK"
+2025-11-30 08:01:19 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:19] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:19 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:19] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:20 [INFO] HTTP Request: GET https://tiktok.eulerstream.com/webcast/fetch/?client=ttlive-python&room_id=7578391812654746371&user_agent=Mozilla%2F5.0+%28Windows+NT+10.0%3B+Win64%3B+x64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F129.0.0.0+Safari%2F537.36&platform=web&client_enter=true "HTTP/1.1 200 OK"
+2025-11-30 08:01:20 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:20] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:21 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:21] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:21 [INFO] ✅ Verbunden mit @dbdstation!
+2025-11-30 08:01:21 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:21] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:22 [INFO] Ziel 10000 erreicht! (Likes: 25906) -> Sound
+2025-11-30 08:01:22 [INFO] AudioService: Spiele Ziel-Sound...
+2025-11-30 08:01:22 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:22] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:22 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:22] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:23 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:23] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:23 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:23] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:24 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:24] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:24 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:24] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:25 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:25] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:25 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:25] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:26 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:26] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:01:26 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:26] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:27 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:27] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:28 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:28] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:29 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:29] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:30 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:30] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:31 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:31] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:32 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:32] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:33 [INFO] 💾 [TIMER] Gespeichert. Total: 26137 | User: 2
+2025-11-30 08:01:33 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:33] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:34 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:34] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:35 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:35] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:36 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:36] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:37 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:37] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:38 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:38] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:39 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:39] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:40 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:40] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:41 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:41] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:42 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:42] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:43 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:43] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:44 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:44] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:45 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:45] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:46 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:46] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:47 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:47] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:49 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:49] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:49 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:49] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:50 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:50] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:51 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:51] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:52 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:52] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:54 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:54] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:55 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:55] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:56 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:56] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:57 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:57] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:58 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:58] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:01:59 [INFO] 127.0.0.1 - - [30/Nov/2025 08:01:59] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:00 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:00] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:01 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:01] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:02 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:02] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:03 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:03] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:03 [INFO] 💾 [TIMER] Gespeichert. Total: 26605 | User: 3
+2025-11-30 08:02:04 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:04] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:05 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:05] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:06 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:06] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:07 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:07] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:08 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:08] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:09 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:09] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:10 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:10] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:11 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:11] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:12 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:12] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:13 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:13] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:14 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:14] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:15 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:15] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:16 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:16] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:02:16 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:16] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:17 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:17] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:18 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:18] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:19 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:19] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:20 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:20] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:21 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:21] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:22 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:22] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:23 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:23] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:24 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:24] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:25 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:25] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:26 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:26] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:26 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:26] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:27 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:27] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:28 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:28] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:29 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:29] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:31 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:31] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:32 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:32] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:32 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:32] "POST /api/v1/timer/control HTTP/1.1" 200 -
+2025-11-30 08:02:33 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:33] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:33 [INFO] 💾 [TIMER] Gespeichert. Total: 26688 | User: 4
+2025-11-30 08:02:34 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:34] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:35 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:35] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:36 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:36] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:37 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:37] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:38 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:38] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:39 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:39] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:40 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:40] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:41 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:41] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:42 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:42] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:43 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:43] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:44 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:44] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:45 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:45] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:46 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:46] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:47 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:47] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:48 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:48] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:49 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:49] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:50 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:50] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:51 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:51] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:52 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:52] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:53 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:53] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:54 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:54] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:55 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:55] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:56 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:56] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:57 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:57] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:58 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:58] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:02:59 [INFO] 127.0.0.1 - - [30/Nov/2025 08:02:59] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:00 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:00] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:01 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:01] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:02 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:02] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:03 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:03] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:03 [INFO] 💾 [TIMER] Gespeichert. Total: 26690 | User: 4
+2025-11-30 08:03:04 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:04] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:05 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:05] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:06 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:06] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:07 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:07] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:08 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:08] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:09 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:09] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:10 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:10] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:11 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:11] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:12 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:12] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:13 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:13] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:14 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:14] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:15 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:15] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:16 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:16] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:16 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:16] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-11-30 08:03:17 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:17] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:18 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:18] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:19 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:19] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:20 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:20] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:21 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:21] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:22 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:22] "GET /api/v1/timer/state HTTP/1.1" 200 -
+2025-11-30 08:03:22 [INFO] 🛑 Stoppe System...
+2025-11-30 08:03:22 [INFO] 💾 [TIMER] Gespeichert. Total: 26876 | User: 4
+2025-11-30 08:03:22 [ERROR] Hinweis beim Stoppen: 'TikTokLiveClient' object has no attribute 'stop'
+2025-11-30 08:03:23 [INFO] 127.0.0.1 - - [30/Nov/2025 08:03:23] "GET /api/v1/timer/state HTTP/1.1" 200 -

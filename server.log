@@ -4605,3 +4605,40 @@
 2025-11-29 08:00:51,125 - INFO - Initialisiere TikTok API für: dbdstation
 2025-11-29 08:01:25,252 - INFO - Ziel 10000 erreicht! (Likes: 47706) -> Sound
 2025-11-29 08:01:25,253 - INFO - AudioService: Spiele Ziel-Sound...
+2025-11-30 07:35:08,119 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-11-30 07:35:08,119 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-11-30 07:35:08,221 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-11-30 07:35:08,221 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-11-30 07:35:08,221 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-11-30 07:35:08,221 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-11-30 07:35:08,552 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 07:35:08,552 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\killerwuensche.db
+2025-11-30 07:35:10,269 - INFO - Hotkey-Listener-Thread gestartet.
+2025-11-30 07:35:10,269 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 07:35:13,408 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-11-30 07:35:27,228 - INFO - Initialisiere TikTok API für: dbdstation
+2025-11-30 07:36:32,090 - INFO - Ziel 10000 erreicht! (Likes: 10007) -> Sound
+2025-11-30 07:36:32,090 - INFO - AudioService: Spiele Ziel-Sound...
+2025-11-30 07:46:25,951 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-11-30 07:46:25,951 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-11-30 07:46:26,066 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-11-30 07:46:26,067 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-11-30 07:46:26,067 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-11-30 07:46:26,067 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-11-30 07:46:26,289 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 07:46:26,289 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\killerwuensche.db
+2025-11-30 07:46:27,506 - INFO - Hotkey-Listener-Thread gestartet.
+2025-11-30 07:46:27,507 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 08:01:02,632 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-11-30 08:01:02,632 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-11-30 08:01:02,737 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-11-30 08:01:02,737 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-11-30 08:01:02,744 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-11-30 08:01:02,744 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-11-30 08:01:02,894 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 08:01:02,894 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\killerwuensche.db
+2025-11-30 08:01:03,410 - INFO - Hotkey-Listener-Thread gestartet.
+2025-11-30 08:01:03,410 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 08:01:03,699 - INFO - Initialisiere TikTok API für: dbdstation
+2025-11-30 08:01:22,078 - INFO - Ziel 10000 erreicht! (Likes: 25906) -> Sound
+2025-11-30 08:01:22,078 - INFO - AudioService: Spiele Ziel-Sound...
