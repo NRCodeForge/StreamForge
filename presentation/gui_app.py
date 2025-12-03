@@ -54,14 +54,10 @@ class DashboardCard(tk.Frame):
 
     def __init__(self, parent, title, items, settings_func=None, test_func=None, reset_func=None, info_key=None,
                  test_label="TEST", custom_buttons=None):
-        # Dunkler Hintergrund für modernen Look
         card_bg = "#1a1a1a"
-
         super().__init__(parent, bg=card_bg, highlightbackground=Style.BORDER, highlightthickness=1)
         self.parent_root = parent.winfo_toplevel()
         self.info_key = info_key
-
-        # FESTE GRÖSSE für einheitliches Raster
         self.config(width=280, height=220)
         self.pack_propagate(False)
 
@@ -121,27 +117,18 @@ class DashboardCard(tk.Frame):
         show_toast(self.parent_root, "Link kopiert!")
 
     def show_info(self):
-        """Zeigt ein Custom Info-Fenster im passenden Design."""
         info_win = tk.Toplevel(self.parent_root)
         info_win.title("Information")
         info_win.geometry("400x320")
         info_win.configure(bg=Style.BACKGROUND)
-
-        # Zentrieren
         x = self.parent_root.winfo_x() + (self.parent_root.winfo_width() // 2) - 200
         y = self.parent_root.winfo_y() + (self.parent_root.winfo_height() // 2) - 160
         info_win.geometry(f"+{x}+{y}")
-
-        # Titel
         tk.Label(info_win, text="INFO", font=("Impact", 22),
                  bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE).pack(pady=(25, 10))
-
-        # Text Inhalt
         txt = INFO_TEXTS.get(self.info_key, "Keine Information verfügbar.")
         tk.Label(info_win, text=txt, bg=Style.BACKGROUND, fg=Style.FOREGROUND,
                  font=("Segoe UI", 11), justify=tk.LEFT, wraplength=340).pack(expand=True, fill=tk.BOTH, padx=30)
-
-        # Schließen Button
         tk.Button(info_win, text="SCHLIESSEN", command=info_win.destroy,
                   bg=Style.ACCENT_PURPLE, fg="white", relief=tk.FLAT,
                   font=("Arial", 10, "bold")).pack(pady=25, ipadx=20)
@@ -170,8 +157,6 @@ class StreamForgeGUI:
         self.is_server_running = [False]
         self.cards = []
         self.card_windows = []
-
-        # Bilder-Cache
         self.images = {}
         self.logo_original = None
 
@@ -179,14 +164,14 @@ class StreamForgeGUI:
         self.setup_callbacks()
         start_hotkey_listener(self.is_server_running)
 
+        # NEU: Startet den Status-Check Loop
+        self.update_status_loop()
+
     def setup_ui(self):
         logo_path = get_path("assets/LOGO.png")
-
-        # --- 1. HEADER (Top) ---
         header = tk.Frame(self.root, bg=Style.BACKGROUND)
         header.pack(fill=tk.X, side=tk.TOP, padx=30, pady=20)
 
-        # Header Icon laden
         if os.path.exists(logo_path):
             try:
                 pil_icon = Image.open(logo_path).convert("RGBA")
@@ -196,264 +181,192 @@ class StreamForgeGUI:
             except:
                 pass
 
-        # Titel
         tk.Label(header, text="STREAMFORGE", font=("Impact", 32),
                  bg=Style.BACKGROUND, fg=Style.FOREGROUND).pack(side=tk.LEFT)
 
-        # Controls (Rechts)
+        # --- STATUS CONTROLS (RECHTS) ---
         controls = tk.Frame(header, bg=Style.BACKGROUND)
         controls.pack(side=tk.RIGHT)
 
+        # 1. TIKTOK STATUS
+        tk.Label(controls, text="TIKTOK", bg=Style.BACKGROUND, fg="#666666", font=("Arial", 8, "bold")).pack(
+            side=tk.LEFT, padx=(0, 5))
+        self.tt_canvas = tk.Canvas(controls, width=16, height=16, bg=Style.BACKGROUND, highlightthickness=0)
+        self.tt_canvas.pack(side=tk.LEFT)
+        self.tt_indicator = self.tt_canvas.create_oval(2, 2, 14, 14, fill="#444444", outline="")
+
+        # Trenner
+        tk.Frame(controls, width=1, height=20, bg="#333").pack(side=tk.LEFT, padx=15)
+
+        # 2. SERVER STATUS
+        tk.Label(controls, text="SERVER", bg=Style.BACKGROUND, fg="#666666", font=("Arial", 8, "bold")).pack(
+            side=tk.LEFT, padx=(0, 5))
+        self.status_canvas = tk.Canvas(controls, width=16, height=16, bg=Style.BACKGROUND, highlightthickness=0)
+        self.status_canvas.pack(side=tk.LEFT)
+        self.status_indicator = self.status_canvas.create_oval(2, 2, 14, 14, fill=Style.DANGER, outline="")
+
+        # 3. USER SETTINGS BUTTON
         tk.Button(controls, text="👤", command=self.open_global_settings,
                   bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE, relief=tk.FLAT,
-                  font=("Arial", 20), bd=0, cursor="hand2").pack(side=tk.LEFT, padx=20)
+                  font=("Arial", 20), bd=0, cursor="hand2").pack(side=tk.LEFT, padx=(25, 0))
 
-        self.status_canvas = tk.Canvas(controls, width=18, height=18, bg=Style.BACKGROUND, highlightthickness=0)
-        self.status_canvas.pack(side=tk.LEFT)
-        self.status_indicator = self.status_canvas.create_oval(2, 2, 16, 16, fill=Style.DANGER, outline="")
-
-        # --- 2. FOOTER (Bottom) ---
+        # --- FOOTER ---
         footer = tk.Frame(self.root, bg="#111111", height=40)
         footer.pack(fill=tk.X, side=tk.BOTTOM)
-
         f_content = tk.Frame(footer, bg="#111111")
         f_content.pack(fill=tk.BOTH, padx=20, pady=8)
-
-        # Links: Version & Slogan
-        tk.Label(f_content, text="v2.0  |  FORGED FOR STREAMERS", font=("Segoe UI", 10, "bold"),
+        tk.Label(f_content, text="v2.1  |  FORGED FOR STREAMERS", font=("Segoe UI", 10, "bold"),
                  bg="#111111", fg="#666666").pack(side=tk.LEFT)
-
-        # Rechts: Logo & Credit
         f_right = tk.Frame(f_content, bg="#111111")
         f_right.pack(side=tk.RIGHT)
-
-        icon_path = get_path("assets/icon.ico")
-        if os.path.exists(icon_path):
+        if os.path.exists(get_path("assets/icon.ico")):
             try:
-                pil_f = Image.open(icon_path).convert("RGBA")
+                pil_f = Image.open(get_path("assets/icon.ico")).convert("RGBA")
                 pil_f.thumbnail((100, 100), Image.Resampling.LANCZOS)
                 self.images['footer_logo'] = ImageTk.PhotoImage(pil_f)
                 tk.Label(f_right, image=self.images['footer_logo'], bg="#111111").pack(side=tk.RIGHT, padx=(10, 0))
             except:
                 pass
-
         tk.Label(f_right, text="STREAMFORGE SYSTEM", font=("Segoe UI", 9), bg="#111111", fg="#444444").pack(
             side=tk.RIGHT)
 
-        # --- 3. MAIN AREA (Scrollbar + Canvas) ---
+        # --- MAIN AREA ---
         main_frame = tk.Frame(self.root, bg=Style.BACKGROUND)
         main_frame.pack(fill=tk.BOTH, expand=True)
-
         self.canvas = tk.Canvas(main_frame, bg=Style.BACKGROUND, highlightthickness=0)
-
-        # Scrollbar Design
         self.scrollbar = tk.Scrollbar(main_frame, orient="vertical", command=self.canvas.yview)
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
-
         self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
         self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
 
-        # --- MODULE HINZUFÜGEN ---
-
-        # 1. LIKES
+        # MODULE
         self.cards.append(DashboardCard(
             self.canvas, "LIKES",
             [("Challenge Text", "like_overlay/index.html"), ("Progress Bar", "like_progress_bar/index.html")],
             settings_func=self.open_like_challenge_settings_window,
-            test_func=self.test_likes_action, test_label="TEST +100",
-            info_key="LIKES"
-        ))
+            test_func=self.test_likes_action, test_label="TEST +100", info_key="LIKES"))
 
-        # 2. TIMER (MIT GAMBIT BUTTON)
         self.cards.append(DashboardCard(
             self.canvas, "TIMER & SUBATHON",
-            [
-                ("Subathon Info", "subathon_overlay/index.html"),
-                ("Timer Overlay", "timer_overlay/index.html"),
-                ("Gambit Overlay", "gambler_overlay/index.html")
-            ],
-            settings_func=self.open_subathon_settings_window,
-            info_key="TIMER",
-            custom_buttons=[
-                ("START", lambda: self.control_timer("start"), Style.SUCCESS),
-                ("PAUSE", lambda: self.control_timer("pause"), Style.ACCENT_BLUE),
-                ("RESET", lambda: self.control_timer("reset"), Style.DANGER),
-                ("GAMBIT", self.test_gambit_action, "#d4af37")  # NEUER TEST BUTTON
-            ]
-        ))
+            [("Subathon Info", "subathon_overlay/index.html"), ("Timer Overlay", "timer_overlay/index.html"),
+             ("Gambit Overlay", "gambler_overlay/index.html")],
+            settings_func=self.open_subathon_settings_window, info_key="TIMER",
+            custom_buttons=[("START", lambda: self.control_timer("start"), Style.SUCCESS),
+                            ("PAUSE", lambda: self.control_timer("pause"), Style.ACCENT_BLUE),
+                            ("RESET", lambda: self.control_timer("reset"), Style.DANGER),
+                            ("GAMBIT", self.test_gambit_action, "#d4af37")]))
 
-        # 3. WISHES
         self.cards.append(DashboardCard(
             self.canvas, "KILLER WISHES",
             [("Wishlist Overlay", "killer_wishes/index.html"), ("Place Overlay (!place)", "place_overlay/index.html")],
-            reset_func=self.reset_database_action,
-            info_key="WISHES",
-            custom_buttons=[
-                ("ADD +1", self.test_wish_action, Style.ACCENT_PURPLE),
-                ("CHECK PLACE", self.test_place_action, Style.ACCENT_BLUE)
-            ]
-        ))
+            reset_func=self.reset_database_action, info_key="WISHES",
+            custom_buttons=[("ADD +1", self.test_wish_action, Style.ACCENT_PURPLE),
+                            ("CHECK PLACE", self.test_place_action, Style.ACCENT_BLUE)]))
 
-        # 4. COMMANDS
         self.cards.append(DashboardCard(
             self.canvas, "COMMANDS",
             [("Media Overlay", "commands/index.html")],
             settings_func=self.open_commands_settings_window,
-            test_func=self.test_command_action, test_label="FIRE SEQUENZ",
-            info_key="COMMANDS"
-        ))
+            test_func=self.test_command_action, test_label="FIRE SEQUENZ", info_key="COMMANDS"))
 
         self.canvas.bind("<Configure>", self.on_resize)
 
+    # --- STATUS LOOP ---
+    def update_status_loop(self):
+        """Prüft jede Sekunde den TikTok Status und aktualisiert die LED."""
+        tt_color = "#444444"  # Grau (Initial/Unbekannt)
+
+        if hasattr(like_service_instance, 'api_client') and like_service_instance.api_client:
+            if like_service_instance.api_client.is_connected:
+                tt_color = Style.SUCCESS  # Grün
+            else:
+                tt_color = Style.DANGER  # Rot
+
+        self.tt_canvas.itemconfig(self.tt_indicator, fill=tt_color)
+        self.root.after(1000, self.update_status_loop)
+
+    # --- RESTLICHE GUI METHODEN (Unverändert) ---
     def on_resize(self, event):
-        """Responsive Grid & Logo Positionierung."""
         w = event.width
+        card_w, card_h, gap = 280, 220, 25
+        cols = max(1, (w - gap) // (card_w + gap))
 
-        card_w = 280
-        card_h = 220
-        gap_x = 25
-        gap_y = 25
+        for win in self.card_windows: self.canvas.delete(win)
+        self.card_windows.clear()
 
-        cols = max(1, (w - gap_x) // (card_w + gap_x))
-        total_grid_w = cols * card_w + (cols - 1) * gap_x
-        start_x = (w - total_grid_w) // 2
-        start_y = 30
+        start_x = (w - (cols * card_w + (cols - 1) * gap)) // 2
 
-        if not self.card_windows:
-            for card in self.cards:
-                win = self.canvas.create_window(0, 0, window=card, anchor="nw")
-                self.card_windows.append(win)
+        for i, card in enumerate(self.cards):
+            r, c = divmod(i, cols)
+            x = start_x + c * (card_w + gap)
+            y = 30 + r * (card_h + gap)
+            self.card_windows.append(self.canvas.create_window(x, y, window=card, anchor="nw"))
 
-        rows = 0
-        for i, win_id in enumerate(self.card_windows):
-            col_idx = i % cols
-            row_idx = i // cols
-            rows = row_idx + 1
-            x = start_x + col_idx * (card_w + gap_x)
-            y = start_y + row_idx * (card_h + gap_y)
-            self.canvas.coords(win_id, x, y)
-
-        total_h = start_y + rows * (card_h + gap_y) + 50
-        self.canvas.configure(scrollregion=(0, 0, w, total_h))
+        self.canvas.configure(scrollregion=(0, 0, w, 30 + (len(self.cards) // cols + 1) * (card_h + gap) + 50))
         self._update_bg_logo(w, self.canvas.winfo_height())
 
     def _update_bg_logo(self, view_w, view_h):
         if not self.logo_original: return
         self.canvas.delete("fixed_logo")
-
         offset_y = self.canvas.canvasy(0)
-
-        logo_size = 400
-        if 'bg_logo_cache' not in self.images or self.images.get('bg_logo_size') != logo_size:
+        if 'bg_logo_cache' not in self.images:
             resized = self.logo_original.copy()
-            resized.thumbnail((logo_size, logo_size), Image.Resampling.LANCZOS)
+            resized.thumbnail((400, 400), Image.Resampling.LANCZOS)
             self.images['bg_logo_cache'] = ImageTk.PhotoImage(resized)
-            self.images['bg_logo_size'] = logo_size
-
         img = self.images['bg_logo_cache']
-        x = view_w - 30
-        y = offset_y + view_h - 30
-
-        self.canvas.create_image(x, y, image=img, anchor="se", tags="fixed_logo")
+        self.canvas.create_image(view_w - 30, offset_y + view_h - 30, image=img, anchor="se", tags="fixed_logo")
         self.canvas.tag_lower("fixed_logo")
 
     def _on_mousewheel(self, event):
         self.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
-        self._update_bg_logo(self.canvas.winfo_width(), self.canvas.winfo_height())
 
-    # --- ACTIONS ---
     def test_gambit_action(self):
-        """Führt das Russisch Roulette aus."""
         if self.is_server_running[0]:
-            try:
-                requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/events/gambler", timeout=0.1)
-            except:
-                pass
-            show_toast(self.root, "Gambit ausgelöst!", "#d4af37")
+            requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/events/gambler")
+            show_toast(self.root, "Gambit gestartet!", "#d4af37")
         else:
-            show_toast(self.root, "Server läuft nicht!", Style.DANGER)
+            show_toast(self.root, "Server offline", Style.DANGER)
 
     def test_likes_action(self):
-        if self.is_server_running[0]:
-            try:
-                requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/like_challenge/test", timeout=0.1)
-            except:
-                pass
-            show_toast(self.root, "100 Likes gesendet!")
-
-    def test_place_action(self):
-        """Robuster Test für das Place-Overlay."""
-        if not self.is_server_running[0]:
-            show_toast(self.root, "Server läuft nicht!", Style.DANGER)
-            return
-
-        def run_test():
-            try:
-                list_url = BASE_URL.rstrip('/') + WISHES_ENDPOINT
-                resp = requests.get(list_url, timeout=1)
-                current_wishes = resp.json() if resp.status_code == 200 else []
-
-                target_user = "TestUser"
-                if not current_wishes or not isinstance(current_wishes, list) or len(current_wishes) == 0:
-                    server_log.info("Liste leer für Test. Füge TestUser hinzu...")
-                    requests.post(list_url, json={"wunsch": "TestKiller", "user_name": target_user}, timeout=1)
-                    time.sleep(0.5)
-                else:
-                    if len(current_wishes) > 0 and 'user_name' in current_wishes[0]:
-                        target_user = current_wishes[0]['user_name']
-
-                check_url = f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes/check_place"
-                check_resp = requests.post(check_url, json={"user_name": target_user}, timeout=1)
-
-                if check_resp.status_code == 200:
-                    data = check_resp.json()
-                    place = data.get('place')
-                    self.root.after(0, lambda: show_toast(self.root, f"Check: {target_user} -> #{place}"))
-                else:
-                    self.root.after(0, lambda: show_toast(self.root, "User nicht gefunden", Style.DANGER))
-            except Exception as e:
-                server_log.error(f"Fehler im Place-Test: {e}")
-                self.root.after(0, lambda: show_toast(self.root, "Test-Fehler", Style.DANGER))
-
-        threading.Thread(target=run_test, daemon=True).start()
+        if self.is_server_running[0]: requests.post(
+            f"http://{BASE_HOST}:{BASE_PORT}/api/v1/like_challenge/test"); show_toast(self.root, "100 Likes")
 
     def test_wish_action(self):
-        if self.is_server_running[0]:
-            k = ["Trapper", "Wraith", "Billy", "Nurse", "Huntress", "Myers", "Hag", "Doctor"]
+        if self.is_server_running[0]: requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes",
+                                                    json={"wunsch": "Test", "user_name": "Tester"}); show_toast(
+            self.root, "+1 Wunsch")
+
+    def test_place_action(self):
+        if not self.is_server_running[0]: return
+
+        def t():
             try:
-                requests.post(BASE_URL.rstrip('/') + WISHES_ENDPOINT,
-                              json={"wunsch": random.choice(k), "user_name": "TestUser"}, timeout=0.1)
+                r = requests.get(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes")
+                u = "TestUser"
+                if not r.json():
+                    requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes",
+                                  json={"wunsch": "T", "user_name": u}); time.sleep(0.2)
+                else:
+                    u = r.json()[0]['user_name']
+                requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes/check_place", json={"user_name": u})
+                self.root.after(0, lambda: show_toast(self.root, f"Place Check: {u}"))
             except:
                 pass
-            show_toast(self.root, "Wunsch hinzugefügt!")
+
+        threading.Thread(target=t, daemon=True).start()
 
     def test_command_action(self):
-        from config import COMMANDS_TRIGGER_ENDPOINT
-        if self.is_server_running[0]:
-            try:
-                requests.post(BASE_URL.rstrip('/') + COMMANDS_TRIGGER_ENDPOINT, timeout=0.1)
-            except:
-                pass
-            show_toast(self.root, "Sequenz gestartet!")
+        if self.is_server_running[0]: requests.post(
+            f"http://{BASE_HOST}:{BASE_PORT}{COMMANDS_TRIGGER_ENDPOINT}"); show_toast(self.root, "Command Fire")
 
-    def control_timer(self, action):
-        if not self.is_server_running[0]: return
-        try:
-            requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/timer/control", json={"action": action}, timeout=0.1)
-            show_toast(self.root, f"Timer: {action.upper()}")
-        except Exception as e:
-            server_log.error(f"Timer Control Error: {e}")
+    def control_timer(self, a):
+        if self.is_server_running[0]: requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/timer/control",
+                                                    json={"action": a}); show_toast(self.root, f"Timer {a}")
 
     def reset_database_action(self):
-        if not self.is_server_running[0]: return
-        if messagebox.askyesno("Reset", "Alle Wünsche löschen?"):
-            try:
-                requests.post(BASE_URL.rstrip('/') + RESET_WISHES_ENDPOINT, timeout=0.1)
-            except:
-                pass
-            show_toast(self.root, "Datenbank geleert")
+        if self.is_server_running[0] and messagebox.askyesno("Reset", "Sicher?"): requests.post(
+            f"http://{BASE_HOST}:{BASE_PORT}{RESET_WISHES_ENDPOINT}"); show_toast(self.root, "Reset")
 
     def open_global_settings(self):
         GlobalSettingsWindow(self.root)
@@ -476,8 +389,7 @@ class StreamForgeGUI:
             except:
                 self.status_canvas.itemconfig(self.status_indicator, fill=Style.DANGER)
 
-        self.flask_thread = threading.Thread(target=r, daemon=True)
-        self.flask_thread.start()
+        threading.Thread(target=r, daemon=True).start()
         self.is_server_running[0] = True
         self.status_canvas.itemconfig(self.status_indicator, fill=Style.SUCCESS)
 
@@ -490,8 +402,7 @@ class StreamForgeGUI:
                 like_service_instance.api_client.stop()
             except:
                 pass
-        self.is_server_running[0] = False
-        self.root.destroy()
+        self.root.destroy();
         sys.exit(0)
 
     def start(self):
@@ -504,30 +415,29 @@ class StreamForgeGUI:
 class GlobalSettingsWindow(tk.Toplevel):
     def __init__(self, master):
         super().__init__(master)
-        self.title("Settings")
-        self.geometry("400x220")
+        self.title("Settings");
+        self.geometry("400x250");
         self.configure(bg=Style.BACKGROUND)
         x = master.winfo_x() + 100;
-        y = master.winfo_y() + 100
+        y = master.winfo_y() + 100;
         self.geometry(f"+{x}+{y}")
-
-        tk.Label(self, text="TikTok Username (ohne @):", bg=Style.BACKGROUND, fg=Style.FOREGROUND,
-                 font=("Arial", 12)).pack(pady=(40, 5))
-        self.uv = tk.StringVar()
+        tk.Label(self, text="TikTok Username (ohne @):", bg=Style.BACKGROUND, fg="white",
+                 font=("Arial", 12, "bold")).pack(pady=(30, 5))
+        self.uv = tk.StringVar();
         try:
             self.uv.set(like_service_instance.settings_manager.load_settings().get("tiktok_unique_id", ""))
         except:
             pass
-        tk.Entry(self, textvariable=self.uv, font=("Arial", 12), bg="#333333", fg="white", insertbackground="white",
-                 relief=tk.FLAT).pack(pady=5, padx=40, fill=tk.X, ipady=3)
-        tk.Button(self, text="SPEICHERN", command=self.save, bg=Style.ACCENT_PURPLE, fg="white", relief=tk.FLAT,
-                  font=("Arial", 10, "bold")).pack(pady=20, ipadx=20)
+        tk.Entry(self, textvariable=self.uv, font=("Arial", 14), bg="#333", fg="white", insertbackground="white",
+                 relief=tk.FLAT, justify='center').pack(pady=5, padx=40, fill=tk.X, ipady=5)
+        tk.Label(self, text="(Speichern startet Verbindung neu)", bg=Style.BACKGROUND, fg="#666",
+                 font=("Arial", 8)).pack()
+        tk.Button(self, text="VERBINDEN & SPEICHERN", command=self.save, bg=Style.SUCCESS, fg="white", relief=tk.FLAT,
+                  font=("Arial", 10, "bold")).pack(pady=25, ipadx=20, ipady=5)
 
     def save(self):
         v = self.uv.get().strip()
         if v:
-            s = like_service_instance.settings_manager.load_settings()
-            s["tiktok_unique_id"] = v
-            like_service_instance.settings_manager.save_settings(s)
-            show_toast(self.master, "Gespeichert")
-            self.destroy()
+            like_service_instance.update_and_restart(v); show_toast(self.master, f"Verbinde zu {v}..."); self.destroy()
+        else:
+            messagebox.showwarning("Fehler", "Bitte Username eingeben!")

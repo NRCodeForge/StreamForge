@@ -322,3 +322,279 @@
 2025-11-30 19:55:35,724 - INFO - Hotkey-Listener-Thread gestartet.
 2025-11-30 19:55:35,725 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
 2025-11-30 19:55:44,004 - INFO - 🎲 GAMBIT QUEUED: Kammer 3 -> + 25% ZEIT (900s)
+2025-11-30 21:43:31,970 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-11-30 21:43:31,971 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-11-30 21:43:32,062 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-11-30 21:43:32,062 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-11-30 21:43:32,062 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-11-30 21:43:32,062 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-11-30 21:43:32,307 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 21:43:32,307 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\killerwuensche.db
+2025-11-30 21:43:34,346 - INFO - Hotkey-Listener-Thread gestartet.
+2025-11-30 21:43:34,347 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 21:52:09,419 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-11-30 21:52:09,419 - INFO - !!! SUBATHON SERVICE INIT STARTET !!!
+2025-11-30 21:52:09,420 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-11-30 21:52:09,421 - INFO - Timer-Loop gestartet.
+2025-11-30 21:52:09,422 - INFO - !!! SUBATHON SERVICE INIT FERTIG !!!
+2025-11-30 21:52:09,549 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-11-30 21:52:09,549 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-11-30 21:52:09,549 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-11-30 21:52:09,549 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-11-30 21:52:09,708 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 21:52:09,708 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\killerwuensche.db
+2025-11-30 21:52:10,336 - INFO - Hotkey-Listener-Thread gestartet.
+2025-11-30 21:52:10,337 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 21:52:47,837 - INFO - Timer Status: Running
+2025-11-30 22:06:06,740 - INFO - Initialisiere TikTok API für: dbdstation
+2025-11-30 22:06:07,314 - INFO - 🔌 Subathon: Neue TikTok-API gefunden! (ID: 1807057319792)
+2025-11-30 22:06:07,314 - INFO - ✅ Subathon: Erfolgreich eingeklinkt!
+2025-11-30 22:06:11,528 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,528 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,528 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,528 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,529 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,530 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,530 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,530 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,530 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,530 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,531 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,551 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,579 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,579 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,580 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,580 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,580 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,580 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,581 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,581 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,581 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,582 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:11,583 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:06:11,583 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:06:34,418 - INFO - 🎁 Gift empfangen: 5 Coins | Settings Active: True
+2025-11-30 22:06:34,419 - INFO - TIMER ADD ACTION: +2.0s (Base: 2.0, Multi: 1.0)
+2025-11-30 22:06:34,419 - INFO - ⏰ TIMER +2.0s durch Gift (5)
+2025-11-30 22:06:49,227 - INFO - TIMER ADD ACTION: +0.24s (Base: 0.24, Multi: 1.0)
+2025-11-30 22:06:49,228 - INFO - ⏰ TIMER +0.24s durch 4 Likes
+2025-11-30 22:06:52,092 - INFO - Ziel 10000 erreicht! (Likes: 95743) -> Sound & Hype Mode
+2025-11-30 22:06:52,092 - INFO - AudioService: Spiele Ziel-Sound...
+2025-11-30 22:06:54,132 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:06:54,132 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:06:57,383 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:06:57,384 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:00,683 - INFO - TIMER ADD ACTION: +1.2s (Base: 0.6, Multi: 2.0)
+2025-11-30 22:07:00,684 - INFO - ⏰ TIMER +0.6s durch 10 Likes
+2025-11-30 22:07:08,993 - INFO - TIMER ADD ACTION: +1.56s (Base: 0.78, Multi: 2.0)
+2025-11-30 22:07:08,993 - INFO - ⏰ TIMER +0.78s durch 13 Likes
+2025-11-30 22:07:12,340 - INFO - TIMER ADD ACTION: +0.24s (Base: 0.12, Multi: 2.0)
+2025-11-30 22:07:12,341 - INFO - ⏰ TIMER +0.12s durch 2 Likes
+2025-11-30 22:07:21,369 - INFO - TIMER ADD ACTION: +1.56s (Base: 0.78, Multi: 2.0)
+2025-11-30 22:07:21,369 - INFO - ⏰ TIMER +0.78s durch 13 Likes
+2025-11-30 22:07:23,002 - INFO - TIMER ADD ACTION: +0.6s (Base: 0.3, Multi: 2.0)
+2025-11-30 22:07:23,002 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:07:24,652 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:24,652 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:27,210 - INFO - TIMER ADD ACTION: +1.44s (Base: 0.72, Multi: 2.0)
+2025-11-30 22:07:27,216 - INFO - ⏰ TIMER +0.72s durch 12 Likes
+2025-11-30 22:07:28,003 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:28,003 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:31,209 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:31,209 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:33,712 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:33,712 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:36,173 - INFO - TIMER ADD ACTION: +0.6s (Base: 0.3, Multi: 2.0)
+2025-11-30 22:07:36,173 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:07:37,029 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:37,029 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:39,556 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:39,557 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:42,827 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:42,827 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:45,335 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:45,335 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:47,016 - INFO - TIMER ADD ACTION: +0.6s (Base: 0.3, Multi: 2.0)
+2025-11-30 22:07:47,016 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:07:48,629 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:48,629 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:51,996 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:51,997 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:54,480 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:54,480 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:55,335 - INFO - TIMER ADD ACTION: +1.2s (Base: 0.6, Multi: 2.0)
+2025-11-30 22:07:55,335 - INFO - ⏰ TIMER +0.6s durch 10 Likes
+2025-11-30 22:07:57,885 - INFO - TIMER ADD ACTION: +1.7999999999999998s (Base: 0.8999999999999999, Multi: 2.0)
+2025-11-30 22:07:57,885 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:07:59,537 - INFO - TIMER ADD ACTION: +0.96s (Base: 0.48, Multi: 2.0)
+2025-11-30 22:07:59,538 - INFO - ⏰ TIMER +0.48s durch 8 Likes
+2025-11-30 22:08:00,389 - INFO - TIMER ADD ACTION: +1.68s (Base: 0.84, Multi: 2.0)
+2025-11-30 22:08:00,389 - INFO - ⏰ TIMER +0.84s durch 14 Likes
+2025-11-30 22:08:02,780 - INFO - TIMER ADD ACTION: +0.72s (Base: 0.36, Multi: 2.0)
+2025-11-30 22:08:02,780 - INFO - ⏰ TIMER +0.36s durch 6 Likes
+2025-11-30 22:08:09,838 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-11-30 22:08:09,838 - INFO - !!! SUBATHON SERVICE INIT STARTET !!!
+2025-11-30 22:08:09,838 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-11-30 22:08:09,843 - INFO - Timer-Loop gestartet.
+2025-11-30 22:08:09,843 - INFO - !!! SUBATHON SERVICE INIT FERTIG !!!
+2025-11-30 22:08:10,050 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-11-30 22:08:10,051 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-11-30 22:08:10,051 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-11-30 22:08:10,051 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-11-30 22:08:10,304 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 22:08:10,304 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\killerwuensche.db
+2025-11-30 22:08:10,304 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-11-30 22:08:10,304 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-11-30 22:08:11,057 - INFO - 🔌 Subathon: Neue TikTok-API gefunden! (ID: 1776113636016)
+2025-11-30 22:08:11,058 - INFO - ✅ Subathon: Erfolgreich eingeklinkt!
+2025-11-30 22:08:12,080 - INFO - Hotkey-Listener-Thread gestartet.
+2025-11-30 22:08:12,081 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-11-30 22:08:15,425 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:15,425 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:15,426 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:15,426 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:15,427 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:15,427 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:15,427 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:15,428 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:15,429 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:15,429 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:15,430 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:15,432 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:15,492 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:15,492 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:15,493 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:15,493 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:15,493 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:15,494 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:15,494 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:15,494 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:15,496 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:15,496 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:16,610 - INFO - Timer Status: Running
+2025-11-30 22:08:16,923 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:16,923 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:20,112 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:20,113 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:22,656 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:22,657 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:25,954 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:25,954 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:29,211 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:29,212 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:32,553 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:32,553 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:35,816 - INFO - TIMER ADD ACTION: +0.54s (Base: 0.54, Multi: 1.0)
+2025-11-30 22:08:35,816 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:35,816 - INFO - ⏰ TIMER +0.54s durch 9 Likes
+2025-11-30 22:08:35,816 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:38,364 - INFO - 🎁 Gift empfangen: 5 Coins | Settings Active: True
+2025-11-30 22:08:38,364 - INFO - TIMER ADD ACTION: +2.0s (Base: 2.0, Multi: 1.0)
+2025-11-30 22:08:38,364 - INFO - ⏰ TIMER +2.0s durch Gift (5)
+2025-11-30 22:08:39,210 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:39,210 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:42,569 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:42,570 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:45,917 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:45,917 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:49,169 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:49,170 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:50,844 - INFO - TIMER ADD ACTION: +0.1s (Base: 0.1, Multi: 1.0)
+2025-11-30 22:08:50,844 - INFO - ⏰ TIMER +0.1s durch Share
+2025-11-30 22:08:51,669 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:51,669 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:08:53,376 - INFO - TIMER ADD ACTION: +0.3s (Base: 0.3, Multi: 1.0)
+2025-11-30 22:08:53,377 - INFO - ⏰ TIMER +0.3s durch Chat
+2025-11-30 22:08:55,019 - INFO - TIMER ADD ACTION: +0.72s (Base: 0.72, Multi: 1.0)
+2025-11-30 22:08:55,019 - INFO - ⏰ TIMER +0.72s durch 12 Likes
+2025-11-30 22:08:58,373 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:08:58,373 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:09:01,724 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:09:01,725 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:09:05,076 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:09:05,076 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:09:08,426 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:09:08,426 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:09:11,687 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:09:11,687 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-11-30 22:09:14,928 - INFO - TIMER ADD ACTION: +0.8999999999999999s (Base: 0.8999999999999999, Multi: 1.0)
+2025-11-30 22:09:14,928 - INFO - ⏰ TIMER +0.8999999999999999s durch 15 Likes
+2025-12-02 17:27:27,909 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-02 17:27:27,913 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-02 17:27:28,118 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-02 17:27:28,118 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-02 17:27:28,118 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-02 17:27:28,118 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-02 17:27:28,553 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-12-02 17:27:28,553 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\killerwuensche.db
+2025-12-02 17:27:28,571 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-02 17:27:28,572 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-02 17:27:29,927 - INFO - 🔌 SubathonService: Klinke mich in neue TikTok-Verbindung ein...
+2025-12-02 17:27:31,828 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-02 17:27:31,829 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-12-02 17:28:12,884 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-02 17:28:12,885 - INFO - 🔄 Manueller Neustart für: blackbrain
+2025-12-02 17:28:12,888 - INFO - 🚀 START: TikTok API Verbindung zu @blackbrain
+2025-12-02 17:28:12,946 - INFO - 🔌 SubathonService: Klinke mich in neue TikTok-Verbindung ein...
+2025-12-02 17:28:31,309 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-02 17:28:31,309 - INFO - 🔄 Manueller Neustart für: blackbraindev
+2025-12-02 17:28:31,312 - INFO - 🚀 START: TikTok API Verbindung zu @blackbraindev
+2025-12-02 17:28:31,954 - INFO - 🔌 SubathonService: Klinke mich in neue TikTok-Verbindung ein...
+2025-12-02 17:29:19,424 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-02 17:29:19,425 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-02 17:29:19,576 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-02 17:29:19,576 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-02 17:29:19,576 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-02 17:29:19,576 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-02 17:29:19,794 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-12-02 17:29:19,794 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\killerwuensche.db
+2025-12-02 17:29:19,794 - INFO - ⚙️ Autostart gefunden für: blackbraindev
+2025-12-02 17:29:19,794 - INFO - 🚀 START: TikTok API Verbindung zu @blackbraindev
+2025-12-02 17:29:20,579 - INFO - 🔌 SubathonService: Klinke mich in neue TikTok-Verbindung ein...
+2025-12-02 17:29:20,720 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-02 17:29:20,721 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-12-02 17:30:25,766 - INFO - Timer Status: Running
+2025-12-02 17:31:24,224 - INFO - TIMER ADD: +0.4s (Base: 0.4) -> Neu: 3542s
+2025-12-02 17:31:30,732 - INFO - TIMER ADD: +0.4s (Base: 0.4) -> Neu: 3536s
+2025-12-02 17:31:43,171 - INFO - TIMER ADD: +0.4s (Base: 0.4) -> Neu: 3524s
+2025-12-02 17:31:49,226 - INFO - TIMER ADD: +39.6s (Base: 39.6) -> Neu: 3557s
+2025-12-02 17:31:49,228 - INFO - TIMER ADD: +0.4s (Base: 0.4) -> Neu: 3558s
+2025-12-02 17:32:08,901 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3539s
+2025-12-02 17:32:12,298 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3537s
+2025-12-02 17:32:14,801 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3535s
+2025-12-02 17:32:17,344 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3533s
+2025-12-02 17:32:20,709 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3531s
+2025-12-02 17:32:24,813 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3527s
+2025-12-02 17:32:28,162 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3525s
+2025-12-02 17:32:30,665 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3524s
+2025-12-02 17:32:34,012 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3521s
+2025-12-02 17:32:37,405 - INFO - TIMER ADD: +0.78s (Base: 0.78) -> Neu: 3519s
+2025-12-02 17:32:47,343 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json gespeichert.
+2025-12-02 17:32:47,343 - INFO - Subathon Settings aktualisiert.
+2025-12-02 17:32:56,626 - INFO - Timer Status: Pause
+2025-12-02 17:33:08,684 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json gespeichert.
+2025-12-02 17:33:08,684 - INFO - Subathon Settings aktualisiert.
+2025-12-02 17:33:12,306 - INFO - Timer Status: Running
+2025-12-02 17:33:20,172 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3592s
+2025-12-02 17:33:22,612 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3591s
+2025-12-02 17:33:25,915 - INFO - TIMER ADD: +0.8999999999999999s (Base: 0.8999999999999999) -> Neu: 3588s
+2025-12-02 17:33:28,474 - INFO - TIMER ADD: +0.6s (Base: 0.6) -> Neu: 3587s
+2025-12-02 17:33:52,731 - INFO - TIMER ADD: +890.0s (Base: 890) -> Neu: 4453s
+2025-12-02 17:33:52,731 - INFO - 🎲 GAMBIT: + 25% ZEIT
+2025-12-02 17:38:43,294 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-02 17:38:43,297 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-02 17:38:43,470 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-02 17:38:43,471 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-02 17:38:43,472 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-02 17:38:43,472 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-02 17:38:43,807 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-12-02 17:38:43,807 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\killerwuensche.db
+2025-12-02 17:38:43,807 - INFO - ⚙️ Autostart gefunden für: blackbraindev
+2025-12-02 17:38:43,807 - INFO - 🚀 START: TikTok API Verbindung zu @blackbraindev
+2025-12-02 17:38:44,477 - INFO - 🔌 SubathonService: Klinke mich in neue TikTok-Verbindung ein...
+2025-12-02 17:38:45,121 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-02 17:38:45,122 - INFO - Datenbank und Tabelle erfolgreich erstellt oder aktualisiert.
+2025-12-02 17:38:54,505 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-02 17:38:54,505 - INFO - 🔄 Manueller Neustart für: dbdstation
+2025-12-02 17:38:54,506 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-02 17:38:55,481 - INFO - 🔌 SubathonService: Klinke mich in neue TikTok-Verbindung ein...

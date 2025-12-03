@@ -1,84 +1,99 @@
-11:10:31 - SYSTEM: Connected to TikTok API
-11:11:05 - ADD: +15.0s | Likes (15) | Left: 3615s
-11:11:05 - ADD: +15.0s | Likes (15) | Left: 3630s
-11:11:05 - ADD: +15.0s | Likes (15) | Left: 3645s
-11:11:05 - ADD: +15.0s | Likes (15) | Left: 3660s
-11:11:06 - ADD: +11.0s | Likes (11) | Left: 3671s
-11:11:09 - ADD: +15.0s | Likes (15) | Left: 3686s
-11:11:10 - ADD: +2.0s | Likes (2) | Left: 3688s
-11:11:13 - ADD: +3.0s | Gift (1) | Left: 3691s
-11:11:13 - ADD: +15.0s | Likes (15) | Left: 3706s
-11:11:14 - ADD: +4.0s | Likes (4) | Left: 3710s
-11:11:15 - ADD: +11.0s | Likes (11) | Left: 3721s
-11:11:17 - ADD: +15.0s | Likes (15) | Left: 3736s
-11:11:20 - ADD: +15.0s | Likes (15) | Left: 3751s
-11:11:23 - ADD: +15.0s | Likes (15) | Left: 3766s
-11:11:25 - ADD: +15.0s | Likes (15) | Left: 3781s
-11:11:29 - ADD: +15.0s | Likes (15) | Left: 3796s
-11:11:32 - ADD: +15.0s | Likes (15) | Left: 3811s
-11:11:32 - ADD: +2.0s | Likes (2) | Left: 3813s
-11:11:35 - ADD: +15.0s | Likes (15) | Left: 3828s
-11:11:38 - ADD: +15.0s | Likes (15) | Left: 3843s
-11:11:41 - ADD: +15.0s | Likes (15) | Left: 3858s
-11:11:44 - ADD: +15.0s | Likes (15) | Left: 3873s
-11:11:47 - ADD: +15.0s | Likes (15) | Left: 3888s
-11:11:49 - ADD: +15.0s | Likes (15) | Left: 3903s
-11:11:53 - ADD: +15.0s | Likes (15) | Left: 3918s
-11:11:55 - ADD: +15.0s | Likes (15) | Left: 3933s
-11:11:58 - ADD: +15.0s | Likes (15) | Left: 3948s
-11:12:01 - ADD: +15.0s | Likes (15) | Left: 3963s
-11:12:03 - ADD: +15.0s | Likes (15) | Left: 3978s
-11:12:07 - ADD: +15.0s | Likes (15) | Left: 3993s
-11:12:09 - ADD: +15.0s | Likes (15) | Left: 4008s
-11:12:12 - ADD: +15.0s | Likes (15) | Left: 4023s
-11:12:13 - ADD: +15.0s | Likes (15) | Left: 4038s
-11:12:14 - ADD: +12.0s | Likes (12) | Left: 4050s
-11:12:16 - ADD: +15.0s | Likes (15) | Left: 4065s
-11:12:18 - ADD: +15.0s | Likes (15) | Left: 4080s
-11:12:21 - ADD: +15.0s | Likes (15) | Left: 4095s
-11:12:24 - ADD: +15.0s | Likes (15) | Left: 4110s
-11:12:27 - ADD: +11.0s | Likes (11) | Left: 4121s
-11:12:30 - ADD: +15.0s | Likes (15) | Left: 4136s
-11:12:33 - ADD: +15.0s | Likes (15) | Left: 4151s
-11:12:36 - ADD: +15.0s | Likes (15) | Left: 4166s
-11:12:39 - ADD: +15.0s | Likes (15) | Left: 4181s
-11:12:42 - ADD: +15.0s | Likes (15) | Left: 4196s
-11:12:43 - ADD: +8.0s | Likes (8) | Left: 4204s
-11:12:45 - ADD: +15.0s | Likes (15) | Left: 4219s
-11:12:47 - ADD: +15.0s | Likes (15) | Left: 4234s
-11:12:50 - ADD: +1.0s | Likes (1) | Left: 4235s
-11:12:51 - ADD: +15.0s | Likes (15) | Left: 4250s
-11:12:53 - ADD: +15.0s | Likes (15) | Left: 4265s
-11:12:56 - ADD: +15.0s | Likes (15) | Left: 4280s
-11:13:00 - ADD: +15.0s | Likes (15) | Left: 4295s
-11:13:02 - ADD: +15.0s | Likes (15) | Left: 4310s
-11:13:05 - ADD: +15.0s | Likes (15) | Left: 4325s
-11:13:09 - ADD: +15.0s | Likes (15) | Left: 4340s
-11:13:12 - ADD: +15.0s | Likes (15) | Left: 4355s
-11:13:15 - ADD: +15.0s | Likes (15) | Left: 4370s
-11:13:18 - ADD: +15.0s | Likes (15) | Left: 4385s
-11:13:20 - ADD: +5.0s | Likes (5) | Left: 4390s
-11:13:20 - ADD: +15.0s | Likes (15) | Left: 4405s
-11:13:23 - ADD: +15.0s | Likes (15) | Left: 4420s
-11:13:27 - ADD: +15.0s | Likes (15) | Left: 4435s
-11:13:29 - ADD: +15.0s | Likes (15) | Left: 4450s
-11:13:32 - ADD: +15.0s | Likes (15) | Left: 4465s
-11:13:35 - ADD: +9.0s | Likes (9) | Left: 4474s
-11:13:45 - ADD: +6.0s | Likes (6) | Left: 4480s
-11:13:52 - ADD: +6.0s | Likes (6) | Left: 4486s
-11:14:01 - ADD: +11.0s | Likes (11) | Left: 4497s
-11:14:15 - ADD: +1.0s | Likes (1) | Left: 4498s
-11:14:17 - ADD: +5.0s | Likes (5) | Left: 4503s
-11:14:18 - ADD: +13.0s | Likes (13) | Left: 4516s
-11:14:20 - ADD: +12.0s | Likes (12) | Left: 4528s
-11:14:44 - ADD: +15.0s | Likes (15) | Left: 4543s
-11:14:47 - ADD: +15.0s | Likes (15) | Left: 4558s
-11:14:49 - ADD: +15.0s | Likes (15) | Left: 4573s
-11:14:52 - ADD: +15.0s | Likes (15) | Left: 4588s
-11:14:55 - ADD: +12.0s | Likes (12) | Left: 4600s
-11:14:59 - ADD: +11.0s | Likes (11) | Left: 4611s
-11:15:12 - ADD: +8.0s | Likes (8) | Left: 4619s
-11:15:16 - ADD: +15.0s | Likes (15) | Left: 4634s
-11:15:17 - ADD: +9.0s | Likes (9) | Left: 4643s
-11:15:24 - ADD: +15.0s | Likes (15) | Left: 4658s
-11:15:26 - ADD: +15.0s | Likes (15) | Left: 4673s
+21:43:31 - --- SUBATHON SERVICE GESTARTET ---
+21:52:09 - Timer-Log erfolgreich initialisiert.
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:11 - EVENT: Chat -> +0.3s
+22:06:34 - EVENT: Gift (5) -> +2.0s
+22:06:49 - EVENT: 4 Likes -> +0.24s
+22:06:54 - EVENT: 15 Likes -> +0.8999999999999999s
+22:06:57 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:00 - EVENT: 10 Likes -> +0.6s
+22:07:08 - EVENT: 13 Likes -> +0.78s
+22:07:12 - EVENT: 2 Likes -> +0.12s
+22:07:21 - EVENT: 13 Likes -> +0.78s
+22:07:23 - EVENT: Chat -> +0.3s
+22:07:24 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:27 - EVENT: 12 Likes -> +0.72s
+22:07:28 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:31 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:33 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:36 - EVENT: Chat -> +0.3s
+22:07:37 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:39 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:42 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:45 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:47 - EVENT: Chat -> +0.3s
+22:07:48 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:51 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:54 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:55 - EVENT: 10 Likes -> +0.6s
+22:07:57 - EVENT: 15 Likes -> +0.8999999999999999s
+22:07:59 - EVENT: 8 Likes -> +0.48s
+22:08:00 - EVENT: 14 Likes -> +0.84s
+22:08:02 - EVENT: 6 Likes -> +0.36s
+22:08:09 - Timer-Log erfolgreich initialisiert.
+22:08:15 - EVENT: Chat -> +0.3s
+22:08:15 - EVENT: Chat -> +0.3s
+22:08:15 - EVENT: Chat -> +0.3s
+22:08:15 - EVENT: Chat -> +0.3s
+22:08:15 - EVENT: Chat -> +0.3s
+22:08:15 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:15 - EVENT: Chat -> +0.3s
+22:08:15 - EVENT: Chat -> +0.3s
+22:08:15 - EVENT: Chat -> +0.3s
+22:08:15 - EVENT: Chat -> +0.3s
+22:08:15 - EVENT: Chat -> +0.3s
+22:08:16 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:20 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:22 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:25 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:29 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:32 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:35 - EVENT: 9 Likes -> +0.54s
+22:08:35 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:38 - EVENT: Gift (5) -> +2.0s
+22:08:39 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:42 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:45 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:49 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:50 - EVENT: Share -> +0.1s
+22:08:51 - EVENT: 15 Likes -> +0.8999999999999999s
+22:08:53 - EVENT: Chat -> +0.3s
+22:08:55 - EVENT: 12 Likes -> +0.72s
+22:08:58 - EVENT: 15 Likes -> +0.8999999999999999s
+22:09:01 - EVENT: 15 Likes -> +0.8999999999999999s
+22:09:05 - EVENT: 15 Likes -> +0.8999999999999999s
+22:09:08 - EVENT: 15 Likes -> +0.8999999999999999s
+22:09:11 - EVENT: 15 Likes -> +0.8999999999999999s
+22:09:14 - EVENT: 15 Likes -> +0.8999999999999999s
+17:27:27 - --- SUBATHON SERVICE GESTARTET ---
+17:29:19 - --- SUBATHON SERVICE GESTARTET ---
+17:31:24 - EVENT: Gift (1 Coins) -> +0.4s
+17:31:30 - EVENT: Gift (1 Coins) -> +0.4s
+17:31:43 - EVENT: Gift (1 Coins) -> +0.4s
+17:31:49 - EVENT: Gift (99 Coins) -> +39.6s
+17:31:49 - EVENT: Gift (1 Coins) -> +0.4s
+17:32:08 - EVENT: 15 Likes -> +0.8999999999999999s
+17:32:12 - EVENT: 15 Likes -> +0.8999999999999999s
+17:32:14 - EVENT: 15 Likes -> +0.8999999999999999s
+17:32:17 - EVENT: 15 Likes -> +0.8999999999999999s
+17:32:20 - EVENT: 15 Likes -> +0.8999999999999999s
+17:32:24 - EVENT: 15 Likes -> +0.8999999999999999s
+17:32:28 - EVENT: 15 Likes -> +0.8999999999999999s
+17:32:30 - EVENT: 15 Likes -> +0.8999999999999999s
+17:32:34 - EVENT: 15 Likes -> +0.8999999999999999s
+17:32:37 - EVENT: 13 Likes -> +0.78s
+17:33:20 - EVENT: 15 Likes -> +0.8999999999999999s
+17:33:22 - EVENT: 15 Likes -> +0.8999999999999999s
+17:33:25 - EVENT: 15 Likes -> +0.8999999999999999s
+17:33:28 - EVENT: 10 Likes -> +0.6s
+17:38:43 - --- SUBATHON SERVICE GESTARTET ---
