@@ -14,14 +14,8 @@ from TikTokLive.events import (
 )
 from TikTokLive.client.web.web_settings import WebDefaults
 
-
-
-
-# EulerStream Key
-EULER_API_KEY = "euler_ODBmYTc0ZWZjMmU0NmIyNzU4YjM3MmI4YzUwYmMxZWYwNjllNmVhZjI1MjBiN2ViMjE1YzRh"
-
-# --- GLOBALE SETTINGS ---
-WebDefaults.tiktok_sign_api_key = EULER_API_KEY
+# Standard Fallback Key (falls der User keinen eingibt)
+DEFAULT_EULER_KEY = "euler_ODBmYTc0ZWZjMmU0NmIyNzU4YjM3MmI4YzUwYmMxZWYwNjllNmVhZjI1MjBiN2ViMjE1YzRh"
 
 SAVE_INTERVAL = 30
 JSON_FILENAME = "like_daten.json"
@@ -37,7 +31,7 @@ server_log = logging.getLogger("TikTokAPI")
 
 
 class TikTokLive_API:
-    def __init__(self, unique_id: str):
+    def __init__(self, unique_id: str, euler_key: str = None):
         self.unique_id = unique_id
         self.client: Optional[TikTokLiveClient] = None
         self.current_likes = 0
@@ -48,6 +42,17 @@ class TikTokLive_API:
         self.timer_thread = None
         self._lock = threading.Lock()
         self.listeners: List[Callable[[any], None]] = []
+
+        # --- KEY SETZEN ---
+        # Nutze den übergebenen Key, sonst den Default-Key
+        final_key = euler_key if euler_key and euler_key.strip() else DEFAULT_EULER_KEY
+
+        # Setze den Key global für WebDefaults (wichtig für Signierung)
+        WebDefaults.tiktok_sign_api_key = final_key
+
+        # Logge (maskiert), welcher Key genutzt wird
+        key_masked = final_key[:10] + "..." if final_key else "None"
+        server_log.info(f"🔑 Nutze Euler-Key: {key_masked}")
 
     def add_listener(self, callback: Callable[[any], None]):
         self.listeners.append(callback)
@@ -111,8 +116,6 @@ class TikTokLive_API:
             try:
                 self.client = TikTokLiveClient(unique_id=self.unique_id)
 
-
-
                 # Events
                 self.client.add_listener(ConnectEvent, self.on_connect)
                 self.client.add_listener(DisconnectEvent, self.on_disconnect)
@@ -127,7 +130,6 @@ class TikTokLive_API:
                 server_log.info(f"🔄 [LOOP] Verbinde zu @{self.unique_id} (Workaround aktiv)...")
 
                 # --- FIX: fetch_room_info=False ---
-                # Das verhindert den Absturz bei Age-Restricted Streams
                 self.client.run(fetch_room_info=False)
 
             except Exception as e:
@@ -142,8 +144,6 @@ class TikTokLive_API:
     async def on_connect(self, event: ConnectEvent):
         self.is_connected = True
         server_log.info(f"✅ Verbunden mit @{self.unique_id}!")
-        # Hinweis: Da fetch_room_info=False ist, haben wir hier evtl. keine Start-Likes.
-        # Das ist aber besser als gar keine Verbindung!
 
     async def on_disconnect(self, event: DisconnectEvent):
         self.is_connected = False
@@ -159,7 +159,6 @@ class TikTokLive_API:
         count = event.count
         with self._lock:
             self.current_likes += count
-            # Event.total ist evtl. nicht verfügbar bei fetch_room_info=False
             if hasattr(event, 'total') and event.total >= self.current_likes:
                 self.current_likes = event.total
             if uid not in self.user_likes: self.user_likes[uid] = 0

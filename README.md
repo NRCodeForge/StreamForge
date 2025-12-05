@@ -18,7 +18,12 @@ Spec run task: pyinstaller StreamForge.spec --clean --noconfirm
 - 
  ...
 
-
+---bits
+---ChatMessage
+---ChatMinute
+---Subs & GiftBombs
+-Spin
+-Commands-Kosten-SoundDaten 
 
 
 ---

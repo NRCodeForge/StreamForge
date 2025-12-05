@@ -25,7 +25,7 @@ def get_path(relative_path):
     return normalized_path
 
 
-# --- Funktion für schreibbare, persistente Dateien (Logs, DB, geänderte Settings) ---
+# --- Funktion für schreibbare, persistente Dateien (Logs, geänderte Settings) ---
 def get_persistent_path(relative_path):
     """
     Gibt den korrekten, *schreibbaren* Pfad für persistente Dateien zurück.
@@ -48,11 +48,25 @@ def get_persistent_path(relative_path):
 
 
 # --- Globale Konstanten ---
-DATABASE_NAME = 'killerwuensche.db'
-DATABASE_PATH = get_persistent_path(DATABASE_NAME)  # Bleibt persistent
+DATABASE_NAME = 'database.db'
 
-LOG_FILE_SERVER = get_persistent_path('server.log')  # Bleibt persistent
-LOG_FILE_WISHES = get_persistent_path('wishes.log')  # Bleibt persistent
+# --- LOGIK-ÄNDERUNG: DATENBANK IM ELTERNVERZEICHNIS ---
+# 1. Bestimme das aktuelle Verzeichnis der Anwendung (wo die EXE/das Skript liegt)
+if getattr(sys, 'frozen', False):
+    _app_dir = os.path.dirname(sys.executable)
+else:
+    _app_dir = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))
+
+# 2. Gehe einen Ordner nach oben (Parent Directory)
+_parent_dir = os.path.dirname(_app_dir)
+
+# 3. Setze den Datenbankpfad auf ../killerwuensche.db
+DATABASE_PATH = os.path.join(_parent_dir, DATABASE_NAME)
+
+
+# Logs bleiben im Anwendungs-Ordner (optional änderbar, falls gewünscht)
+LOG_FILE_SERVER = get_persistent_path('server.log')
+LOG_FILE_WISHES = get_persistent_path('wishes.log')
 
 BASE_HOST = '127.0.0.1'
 BASE_PORT = 5000

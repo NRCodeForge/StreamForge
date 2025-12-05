@@ -1,7 +1,7 @@
 let lastTimestamp = 0;
 const container = document.getElementById('gambit-container');
 const reel = document.getElementById('slot-reel');
-const resultBox = document.getElementById('result-box');
+
 
 let animationQueue = [];
 let isAnimating = false;
@@ -70,7 +70,6 @@ function playAnimation(data) {
     }, 100);
 
     setTimeout(() => {
-        resultBox.innerText = data.result;
         resultBox.style.color = data.color;
         resultBox.classList.add('show');
         container.style.borderColor = data.color;

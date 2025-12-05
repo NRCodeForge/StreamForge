@@ -3,7 +3,7 @@
         "id": "60716f66-8647-47d5-9817-1f116bcf7600",
         "text": "!chaos",
         "costs": "5000",
-        "is_superfan": false
+        "is_superfan": true
     },
     {
         "id": "1a313b0e-005e-4bef-a09f-0959c66f9dcd",
