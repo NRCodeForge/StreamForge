@@ -1,6 +1,6 @@
 {
     "widgetUrl": "https://tikfinity.zerody.one/widget/goal?cid=1420433&metric=likes",
-    "displayTextFormat": "{likes_needed} Likes ",
+    "displayTextFormat": "{likes_needed} Likes - 20 Truhe",
     "recurringGoalExpression": "x + 33333",
     "initialGoals": [
         10000,

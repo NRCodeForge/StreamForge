@@ -120,6 +120,15 @@ def get_next_gambit():
         return jsonify(event)
     else:
         return jsonify({})
+@app.route('/api/v1/gambit/options', methods=['GET'])
+def get_gambit_options():
+    """Gibt die Liste der möglichen Gambit-Ergebnisse zurück."""
+    try:
+        options = subathon_service_instance.get_gambit_options()
+        # Nur Texte zurückgeben für das Frontend-Rad
+        texts = [o.get("text", "???") for o in options]
+        return jsonify(texts)
+    except: return jsonify([])
 @app.route('/api/v1/timer/streamerbot', methods=['POST'])
 def trigger_streamerbot_event():
     """

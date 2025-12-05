@@ -67,16 +67,39 @@ LIKE_CHALLENGE_ENDPOINT = f'{API_ROOT}/like_challenge'
 COMMANDS_ENDPOINT = f'{API_ROOT}/commands'
 COMMANDS_TRIGGER_ENDPOINT = f'{COMMANDS_ENDPOINT}/trigger'
 
-# UI Design
+
+# --- DBD THEME STYLE DEFINITION ---
 class Style:
-    BACKGROUND = "#1A1B26"
-    WIDGET_BG = "#2A2C3A"
-    FOREGROUND = "#E0E0E0"
-    TEXT_MUTED = "#A6B0CF"
-    ACCENT_BLUE = "#33B1FF"
-    DANGER = "#FA4D56"
-    FONT_FAMILY = "Roboto"
-    BORDER = "#3A3C4A"
-    WIDGET_HOVER = "#3A3C4A"
-    ACCENT_PURPLE = "#7E57C2"
-    SUCCESS = "#4CAF50"
+    # --- Palette: Dead by Daylight Inspired ---
+    BG_MAIN = "#0f0f13"  # Sehr dunkles, fast schwarzes Grau (Hintergrund)
+    BG_CARD = "#1c1c24"  # UI Elemente Hintergrund (Karten)
+    BG_INPUT = "#2b2b30"  # Eingabefelder
+
+    # --- Accents ---
+    ACCENT_RED = "#c0392b"  # DBD Blutrot (Primary Action)
+    ACCENT_RED_HOVER = "#e74c3c"
+
+    ACCENT_PURPLE = "#8e44ad"  # Twitch / Ultra Rare PerkVibe
+    ACCENT_BLUE = "#2980b9"  # TikTok / Rare Perk Vibe
+
+    BORDER = "#3f3f46"  # Subtile Ränder
+
+    # --- Status Colors ---
+    SUCCESS = "#27ae60"  # Grün
+    WARNING = "#f39c12"  # Orange
+    DANGER = "#c0392b"  # Rot
+
+    # --- Typography ---
+    TEXT_MAIN = "#ecf0f1"  # Helles Grau/Weiß
+    TEXT_DIM = "#95a5a6"  # Gedimmter Text (Beschreibungen)
+
+    FONT_HEADER = ("Segoe UI", 14, "bold")
+    FONT_TITLE = ("Segoe UI", 20, "bold")
+    FONT_BODY = ("Segoe UI", 10)
+    FONT_MONO = ("Consolas", 9)
+
+    # --- Legacy Fallback (Verhindert Crashs bei altem Code) ---
+    FOREGROUND = TEXT_MAIN
+    BACKGROUND = BG_MAIN
+    CARD_BG = BG_CARD
+    ACCENT_TWITCH = ACCENT_PURPLE

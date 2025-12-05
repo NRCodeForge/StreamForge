@@ -1,461 +1,337 @@
 import tkinter as tk
-from tkinter import messagebox, font, ttk
+from tkinter import ttk, messagebox, colorchooser
 import sys
 
-from services.service_provider import (
-    like_service_instance,
-    subathon_service_instance,
-    command_service_instance
-)
-from config import Style
-from presentation.ui_elements import show_toast
-from utils import server_log
+try:
+    from services.service_provider import subathon_service_instance, like_service_instance, command_service_instance
+    from config import Style
+    from presentation.ui_elements import show_toast
+except ImportError:
+    # Fallback damit IDE nicht meckert
+    from config import Style
 
 
+    def show_toast(m, t):
+        print(t)
+
+
+# --- BASIS KLASSE (DBD Style) ---
 class BaseSettingsWindow(tk.Toplevel):
-    def __init__(self, master, title, width=550, height=450):
+    def __init__(self, master, title, width=1000, height=800):
         super().__init__(master)
         self.title(title)
         self.geometry(f"{width}x{height}")
-        self.transient(master)
-        self.grab_set()
-        self.resizable(False, False)
-        self.configure(bg=Style.BACKGROUND)
+        self.configure(bg=Style.BG_MAIN)
+        self.minsize(900, 600)
 
+        # Zentrieren
         self.update_idletasks()
         w, h = self.winfo_width(), self.winfo_height()
         x = master.winfo_x() + (master.winfo_width() // 2) - (w // 2)
         y = master.winfo_y() + (master.winfo_height() // 2) - (h // 2)
         self.geometry(f'+{x}+{y}')
 
-        self.label_style = {"bg": Style.BACKGROUND, "fg": Style.FOREGROUND,
-                            "font": font.Font(family=Style.FONT_FAMILY, size=11)}
-        self.entry_style = {"font": font.Font(family=Style.FONT_FAMILY, size=11), "bg": Style.WIDGET_BG, "fg": "white",
-                            "insertbackground": "white", "relief": tk.FLAT}
-        # Checkbox Style (Dunkel)
-        self.check_style = {"bg": "#222222", "fg": "white", "selectcolor": "#444444", "activebackground": "#222222",
-                            "activeforeground": "white", "font": font.Font(family=Style.FONT_FAMILY, size=9)}
-        self.button_style = {"font": font.Font(family=Style.FONT_FAMILY, size=11, weight="bold"), "relief": tk.FLAT,
-                             "bg": Style.ACCENT_PURPLE, "fg": "white", "activebackground": Style.WIDGET_HOVER,
-                             "pady": 8, "cursor": "hand2"}
+        # Styles
+        self.entry_conf = {
+            "bg": Style.BG_INPUT, "fg": "white", "relief": "flat",
+            "insertbackground": "white", "font": ("Segoe UI", 10)
+        }
 
-        self.protocol("WM_DELETE_WINDOW", self.on_close)
-        self.master = master
-
-    def add_title(self, text, color=Style.ACCENT_BLUE):
-        tk.Label(self, text=text, bg=Style.BACKGROUND, fg=color,
-                 font=font.Font(family=Style.FONT_FAMILY, size=16, weight="bold")).pack(pady=(15, 10))
-
-    def on_close(self):
-        self.destroy()
-        self.master.grab_release()
+    def _create_card(self, parent, title):
+        card = tk.LabelFrame(parent, text=f" {title} ", bg=Style.BG_CARD, fg=Style.TEXT_MAIN,
+                             font=Style.FONT_HEADER, relief="flat", padx=20, pady=20)
+        return card
 
 
+# --- SUBATHON SETTINGS ---
 class SubathonSettingsWindow(BaseSettingsWindow):
     def __init__(self, master):
-        super().__init__(master, "Subathon Timer Einstellungen", 650, 750)
+        super().__init__(master, "Subathon Configuration", 1100, 800)
         self.service = subathon_service_instance
-        self.add_title("Subathon Konfiguration")
+        self.settings = self.service.get_current_settings()
 
-        try:
-            self.current_settings = self.service.get_current_settings()
-        except:
-            self.current_settings = {}
+        self.gambit_map = {
+            "Zeit hinzufügen (+)": "time_add", "Zeit abziehen (-)": "time_sub",
+            "✖️ Multiplikator": "time_multi_add", "➗ Teiler": "time_multi_sub",
+            "❄️ Freezer": "event_freezer", "⏩ Warp": "event_warp",
+            "🙈 Blind": "event_blind", "🔥 Hype": "event_hype", "💬 Text": "text"
+        }
+        self.gambit_map_rev = {v: k for k, v in self.gambit_map.items()}
 
-        self.widgets = {}
+        # Styles Setup
+        style = ttk.Style()
+        style.configure("TNotebook", background=Style.BG_MAIN, borderwidth=0)
+        style.configure("TNotebook.Tab", background=Style.BG_CARD, foreground=Style.TEXT_DIM, padding=[20, 10],
+                        font=Style.FONT_HEADER)
+        style.map("TNotebook.Tab", background=[("selected", Style.ACCENT_RED)], foreground=[("selected", "white")])
 
-        main_frame = tk.Frame(self, bg=Style.BACKGROUND, padx=20, pady=10)
-        main_frame.pack(fill='both', expand=True)
+        # Header
+        header = tk.Frame(self, bg=Style.BG_MAIN, pady=20, padx=20)
+        header.pack(fill='x')
+        tk.Label(header, text="SUBATHON ENGINE", font=("Impact", 24), bg=Style.BG_MAIN, fg="white").pack(side='left')
+        tk.Label(header, text="/// CONFIGURATION", font=("Consolas", 14), bg=Style.BG_MAIN, fg=Style.ACCENT_RED).pack(
+            side='left', padx=10)
 
-        # --- BASIS ---
-        group_general = tk.LabelFrame(main_frame, text=" Basis ", bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE,
-                                      font=("Arial", 10, "bold"), bd=1, relief=tk.GROOVE)
-        group_general.pack(fill="x", pady=10, ipady=5)
+        # Tabs
+        self.notebook = ttk.Notebook(self)
+        self.notebook.pack(fill='both', expand=True, padx=20, pady=(0, 20))
 
-        self._add_general_input(group_general, "Startzeit (Sek):", "start_time_seconds", "3600", live_calc=True)
-        self._add_general_input(group_general, "Info-Wechsel (Sek):", "animations_time", "5")
+        # Tabs erstellen
+        self.tab_gen = tk.Frame(self.notebook, bg=Style.BG_MAIN);
+        self.notebook.add(self.tab_gen, text="GENERAL")
+        self.tab_gam = tk.Frame(self.notebook, bg=Style.BG_MAIN);
+        self.notebook.add(self.tab_gam, text="GAMBIT")
+        self.tab_tik = tk.Frame(self.notebook, bg=Style.BG_MAIN);
+        self.notebook.add(self.tab_tik, text="TIKTOK")
+        self.tab_twi = tk.Frame(self.notebook, bg=Style.BG_MAIN);
+        self.notebook.add(self.tab_twi, text="TWITCH")
 
-        # --- TIKTOK EVENTS ---
-        group_tiktok = tk.LabelFrame(main_frame, text=" TikTok Events ", bg=Style.BACKGROUND, fg=Style.ACCENT_PURPLE,
-                                     font=("Arial", 10, "bold"), bd=1, relief=tk.GROOVE)
-        group_tiktok.pack(fill="x", pady=10, ipady=5)
-
-        # Header Zeile mit Beschriftungen
-        self._add_header_row(group_tiktok)
-
-        self.event_keys = [
-            ("coins", "1 Coin / Rose:"),
-            ("subscribe", "TikTok Abo:"),
-            ("follow", "Neuer Follow:"),
-            ("share", "Teilen:"),
-            ("like", "1 Like:"),
-            ("chat", "1 Chat Nachricht:")
-        ]
-        self._build_event_rows(group_tiktok, self.event_keys)
-
-        # --- TWITCH / EXTERN ---
-        group_twitch = tk.LabelFrame(main_frame, text=" Twitch & Extern ", bg=Style.BACKGROUND, fg="#a970ff",
-                                     font=("Arial", 10, "bold"), bd=1, relief=tk.GROOVE)
-        group_twitch.pack(fill="x", pady=10, ipady=5)
-
-        # Auch hier Header, damit es konsistent ist
-        self._add_header_row(group_twitch)
-
-        self.twitch_keys = [("twitch_sub", "Twitch Sub:")]
-        self._build_event_rows(group_twitch, self.twitch_keys)
+        self._build_gen();
+        self._build_gam();
+        self._build_tik();
+        self._build_twi()
 
         # Footer
-        tk.Button(main_frame, text="EINSTELLUNGEN SPEICHERN", command=self.save_settings, **self.button_style).pack(
-            side=tk.BOTTOM, fill='x', pady=10)
+        footer = tk.Frame(self, bg=Style.BG_MAIN, padx=20, pady=20)
+        footer.pack(fill='x')
+        tk.Button(footer, text="SAVE CONFIGURATION", command=self.save, bg=Style.SUCCESS, fg="white",
+                  font=("Segoe UI", 11, "bold"), relief="flat", pady=10, cursor="hand2").pack(fill='x')
 
-    def _add_general_input(self, parent, label_text, key, default, live_calc=False):
-        frame = tk.Frame(parent, bg=Style.BACKGROUND)
-        frame.pack(fill="x", padx=10, pady=5)
-        tk.Label(frame, text=label_text, **self.label_style, width=20, anchor="w").pack(side=tk.LEFT)
+    def _build_gen(self):
+        container = tk.Frame(self.tab_gen, bg=Style.BG_MAIN)
+        container.pack(fill='both', expand=True, padx=20, pady=20)
+        container.columnconfigure(0, weight=1);
+        container.columnconfigure(1, weight=1)
 
-        entry = tk.Entry(frame, **self.entry_style, width=10)
-        entry.insert(0, self.current_settings.get(key, default))
-        entry.pack(side=tk.LEFT, padx=5)
+        # Timer Card
+        c1 = self._create_card(container, "TIMER SETTINGS")
+        c1.grid(row=0, column=0, sticky="nsew", padx=(0, 10))
+        tk.Label(c1, text="Startzeit (Sekunden):", bg=Style.BG_CARD, fg=Style.TEXT_DIM).pack(anchor='w', pady=(10, 5))
+        self.start_time = tk.Entry(c1, **self.entry_conf)
+        self.start_time.insert(0, self.settings.get("start_time_seconds", 3600))
+        self.start_time.pack(fill='x', ipady=5)
 
-        if live_calc:
-            self.start_time_entry = entry
-            self.calc_label = tk.Label(frame, text="", bg=Style.BACKGROUND, fg=Style.TEXT_MUTED, font=("Arial", 9))
-            self.calc_label.pack(side=tk.LEFT, padx=5)
-            entry.bind("<KeyRelease>", self._update_calc_label)
-            self._update_calc_label()
+        # Duration Card
+        c2 = self._create_card(container, "EVENT DURATIONS")
+        c2.grid(row=0, column=1, sticky="nsew", padx=(10, 0))
+        self.durations = {}
+        for i, (k, l) in enumerate(
+                [("freezer", "❄️ Freezer"), ("warp", "⏩ Warp"), ("blind", "🙈 Blind"), ("hype", "🔥 Hype")]):
+            f = tk.Frame(c2, bg=Style.BG_CARD);
+            f.pack(fill='x', pady=5)
+            tk.Label(f, text=l, width=15, anchor='w', bg=Style.BG_CARD, fg="white", font=("Segoe UI", 10, "bold")).pack(
+                side='left')
+            e = tk.Entry(f, **self.entry_conf, justify='center', width=10)
+            e.insert(0, self.settings.get(f"duration_{k}", 60))
+            e.pack(side='left', padx=10, ipady=3)
+            self.durations[k] = e
+
+    def _build_gam(self):
+        paned = tk.PanedWindow(self.tab_gam, orient='horizontal', bg=Style.BG_MAIN, sashwidth=4)
+        paned.pack(fill='both', expand=True, padx=20, pady=20)
+
+        # Liste
+        c_list = self._create_card(paned, "OUTCOMES")
+        paned.add(c_list, minsize=400)
+
+        # Treeview Style
+        style = ttk.Style()
+        style.configure("Treeview", background=Style.BG_INPUT, foreground="white", fieldbackground=Style.BG_INPUT,
+                        rowheight=25, borderwidth=0)
+        style.configure("Treeview.Heading", background=Style.BG_CARD, foreground="white", font=("Segoe UI", 10, "bold"))
+        style.map("Treeview", background=[('selected', Style.ACCENT_RED)])
+
+        self.tree = ttk.Treeview(c_list, columns=("t", "y", "v"), show='headings')
+        self.tree.heading("t", text="Text");
+        self.tree.heading("y", text="Effect");
+        self.tree.heading("v", text="Value")
+        self.tree.column("t", width=150);
+        self.tree.column("y", width=100);
+        self.tree.column("v", width=50)
+        self.tree.pack(fill='both', expand=True, pady=10)
+        self.tree.bind("<<TreeviewSelect>>", self._on_sel)
+
+        # Editor
+        c_edit = self._create_card(paned, "EDITOR")
+        paned.add(c_edit, minsize=350)
+
+        tk.Label(c_edit, text="Text:", bg=Style.BG_CARD, fg=Style.TEXT_DIM).pack(anchor='w')
+        self.g_txt = tk.Entry(c_edit, **self.entry_conf);
+        self.g_txt.pack(fill='x', pady=(0, 10), ipady=5)
+
+        tk.Label(c_edit, text="Type:", bg=Style.BG_CARD, fg=Style.TEXT_DIM).pack(anchor='w')
+        self.g_type = ttk.Combobox(c_edit, values=list(self.gambit_map.keys()), state="readonly")
+        self.g_type.pack(fill='x', pady=(0, 10), ipady=5)
+
+        tk.Label(c_edit, text="Value:", bg=Style.BG_CARD, fg=Style.TEXT_DIM).pack(anchor='w')
+        self.g_val = tk.Entry(c_edit, **self.entry_conf);
+        self.g_val.pack(fill='x', pady=(0, 10), ipady=5)
+
+        tk.Label(c_edit, text="Color:", bg=Style.BG_CARD, fg=Style.TEXT_DIM).pack(anchor='w')
+        self.g_col_btn = tk.Button(c_edit, bg="white", command=self._col, relief="flat");
+        self.g_col_btn.pack(anchor='w', ipadx=20, pady=(0, 20))
+        self.curr_col = "#FFFFFF"
+
+        tk.Button(c_edit, text="ADD / UPDATE", command=self._add, bg=Style.ACCENT_RED, fg="white", relief="flat",
+                  pady=8).pack(fill='x', pady=2)
+        tk.Button(c_edit, text="DELETE", command=self._del, bg=Style.BG_INPUT, fg="white", relief="flat", pady=8).pack(
+            fill='x', pady=2)
+
+        self._load_gam()
+
+    def _build_tik(self):
+        self._build_list(self.tab_tik, "TIKTOK TRIGGERS", "tiktok")
+
+    def _build_twi(self):
+        self._build_list(self.tab_twi, "TWITCH TRIGGERS", "twitch")
+
+    def _build_list(self, parent, title, platform):
+        c = self._create_card(parent, title)
+        c.pack(fill='both', expand=True, padx=20, pady=20)
+
+        if platform == "tiktok":
+            self.tk_w = {}
+            target = self.tk_w
+            rows = [("coins", "💰 Coin"), ("like", "❤️ Like"), ("share", "↪️ Share"), ("follow", "➕ Follow"),
+                    ("subscribe", "⭐ Sub")]
         else:
-            self.anim_time_entry = entry
+            self.tw_w = {}
+            target = self.tw_w
+            rows = [("twitch_sub", "⭐ Sub"), ("twitch_prime", "👑 Prime"), ("twitch_bits", "💎 Bits"),
+                    ("twitch_follow", "💜 Follow")]
 
-    def _add_header_row(self, parent):
-        """Fügt die Spaltenüberschriften Add | Timer | Show hinzu."""
-        row = tk.Frame(parent, bg=Style.BACKGROUND)
-        row.pack(fill='x', padx=10, pady=(5, 0))
+        for k, n in rows:
+            r = tk.Frame(c, bg=Style.BG_CARD, pady=5);
+            r.pack(fill='x')
+            tk.Label(r, text=n, width=20, anchor='w', bg=Style.BG_CARD, fg="white", font=("Segoe UI", 11)).pack(
+                side='left')
 
-        # Platzhalter für das Label links (ca. 18 chars breit)
-        tk.Label(row, text="", bg=Style.BACKGROUND, width=18).pack(side=tk.LEFT)
+            d = self.settings.get(k, {"value": "0", "active": False})
+            e = tk.Entry(r, **self.entry_conf, justify='center', width=10)
+            e.insert(0, d.get("value", 0));
+            e.pack(side='left', padx=10, ipady=3)
 
-        # Header "Add" (über dem Input Feld)
-        tk.Label(row, text="Add", bg=Style.BACKGROUND, fg="#888888", font=("Arial", 8, "bold"), width=10,
-                 anchor="c").pack(side=tk.LEFT)
+            v = tk.BooleanVar(value=d.get("active", False))
+            tk.Checkbutton(r, text="ACTIVE", variable=v, bg=Style.BG_CARD, fg="white", selectcolor=Style.BG_MAIN,
+                           activebackground=Style.BG_CARD, activeforeground="white").pack(side='left')
+            target[k] = {"e": e, "v": v}
 
-        # Header "Timer" (über Active Checkbox)
-        # width=6 passt ungefähr zur Checkbox
-        tk.Label(row, text="Timer", bg=Style.BACKGROUND, fg="#888888", font=("Arial", 8, "bold"), width=6).pack(
-            side=tk.LEFT, padx=(5, 0))
+    # Logic Helper
+    def _load_gam(self):
+        for i in self.tree.get_children(): self.tree.delete(i)
+        for o in self.settings.get("gambit_outcomes", []):
+            self.tree.insert('', 'end', values=(o.get('text'), self.gambit_map_rev.get(o.get('type'), o.get('type')),
+                                                o.get('value')))
 
-        # Header "Show" (über Visible Checkbox)
-        tk.Label(row, text="Show", bg=Style.BACKGROUND, fg="#888888", font=("Arial", 8, "bold"), width=6).pack(
-            side=tk.LEFT)
+    def _on_sel(self, e):
+        s = self.tree.selection()
+        if not s: return
+        v = self.tree.item(s[0])['values']
+        self.g_txt.delete(0, 'end');
+        self.g_txt.insert(0, v[0])
+        self.g_type.set(v[1])
+        self.g_val.delete(0, 'end');
+        self.g_val.insert(0, v[2])
 
-    def _build_event_rows(self, parent, keys):
-        for key, display_text in keys:
-            default_val = {"value": "0", "active": False, "visible": True}
-            data = self.current_settings.get(key, default_val)
-            val_str = str(data.get("value", "0")).split()[0]
+    def _col(self):
+        c = colorchooser.askcolor(color=self.curr_col)[1]
+        if c: self.curr_col = c; self.g_col_btn.config(bg=c)
 
-            row = tk.Frame(parent, bg=Style.BACKGROUND)
-            row.pack(fill='x', padx=10, pady=2)
-
-            # Label (Name)
-            tk.Label(row, text=display_text, **self.label_style, width=18, anchor="w").pack(side=tk.LEFT)
-
-            # Value Input ("Add")
-            entry = tk.Entry(row, **self.entry_style, width=6, justify="center")
-            entry.insert(0, val_str)
-            entry.pack(side=tk.LEFT)
-            tk.Label(row, text="s", bg=Style.BACKGROUND, fg="#666666").pack(side=tk.LEFT, padx=(2, 10))
-
-            # Checkboxen Container
-            chk_frame = tk.Frame(row, bg="#222222", padx=2, pady=1)
-            chk_frame.pack(side=tk.LEFT)
-
-            # 1. Timer Active Checkbox
-            var_active = tk.BooleanVar(value=data.get("active", False))
-            c1 = tk.Checkbutton(chk_frame, variable=var_active, **self.check_style)
-            c1.pack(side=tk.LEFT, padx=7)  # Padding angepasst für Header Alignment
-
-            # 2. Visible Checkbox
-            var_visible = tk.BooleanVar(value=data.get("visible", True))
-            c2 = tk.Checkbutton(chk_frame, variable=var_visible, **self.check_style)
-            c2.pack(side=tk.LEFT, padx=7)
-
-            self.widgets[key] = {"value_entry": entry, "active_var": var_active, "visible_var": var_visible}
-
-    def _update_calc_label(self, event=None):
+    def _add(self):
         try:
-            sec = int(self.start_time_entry.get())
-            if sec < 3600:
-                txt = f"= {sec / 60:.1f} Min"
-            else:
-                txt = f"= {sec / 3600:.1f} Std"
-            self.calc_label.config(text=txt, fg=Style.SUCCESS)
+            new = {"text": self.g_txt.get(), "type": self.gambit_map.get(self.g_type.get()),
+                   "value": float(self.g_val.get()), "color": self.curr_col}
+            if "gambit_outcomes" not in self.settings: self.settings["gambit_outcomes"] = []
+            self.settings["gambit_outcomes"].append(new)
+            self._load_gam()
         except:
-            self.calc_label.config(text="...", fg=Style.DANGER)
+            messagebox.showerror("Err", "Input Error")
 
-    def save_settings(self):
-        try:
-            new_s = self.current_settings.copy()
-            new_s["start_time_seconds"] = self.start_time_entry.get()
-            new_s["animations_time"] = self.anim_time_entry.get()
-
-            for key, _ in self.event_keys + self.twitch_keys:
-                w = self.widgets[key]
-                float(w["value_entry"].get())  # Validierung
-                new_s[key] = {
-                    "value": w["value_entry"].get(),
-                    "active": w["active_var"].get(),
-                    "visible": w["visible_var"].get()
-                }
-            self.service.update_settings(new_s)
-            messagebox.showinfo("Gespeichert", "Einstellungen übernommen!")
-            self.on_close()
-        except ValueError:
-            messagebox.showerror("Eingabefehler", "Bitte nur gültige Zahlen eingeben.")
-        except Exception as e:
-            messagebox.showerror("Fehler", f"Speichern fehlgeschlagen: {e}")
-
-
-# ... (LikeChallengeSettingsWindow und CommandsSettingsWindow unverändert lassen)
-class LikeChallengeSettingsWindow(BaseSettingsWindow):
-    def __init__(self, master):
-        super().__init__(master, "Like Challenge Einstellungen", 600, 400)
-        self.service = like_service_instance
-        self.add_title("Like Challenge Ziel-Konfiguration", color=Style.ACCENT_PURPLE)
-        try:
-            self.current_settings = self.service.settings_manager.load_settings()
-        except:
-            self.current_settings = {"displayTextFormat": "{likes_needed} Likes",
-                                     "recurringGoalExpression": "x + 33333", "initialGoals": []}
-        form_frame = tk.Frame(self, bg=Style.BACKGROUND, padx=20)
-        form_frame.pack(pady=10, fill='x');
-        form_frame.columnconfigure(1, weight=1)
-        fields = [("Anzeigeformat ({likes_needed}):", "displayTextFormat"),
-                  ("Rekursive Zielformel (mit 'x'):", "recurringGoalExpression")]
-        self.entries = {}
-        for i, (txt, key) in enumerate(fields):
-            tk.Label(form_frame, text=txt, **self.label_style).grid(row=i, column=0, sticky="w", pady=10);
-            e = tk.Entry(form_frame, **self.entry_style);
-            e.insert(0, self.current_settings.get(key, ""));
-            e.grid(row=i, column=1, sticky="ew", pady=10);
-            self.entries[key] = e
-        tk.Label(form_frame, text="Ziele (Kommagetrennt):", **self.label_style).grid(row=2, column=0, sticky="w",
-                                                                                     pady=10)
-        self.goals_entry = tk.Entry(form_frame, **self.entry_style);
-        self.goals_entry.insert(0, ",".join(map(str, self.current_settings.get("initialGoals", []))));
-        self.goals_entry.grid(row=2, column=1, sticky="ew", pady=10)
-        tk.Button(self, text="SPEICHERN", command=self.save, **self.button_style).pack(pady=30, fill='x', padx=20)
+    def _del(self):
+        s = self.tree.selection()
+        if s: del self.settings["gambit_outcomes"][self.tree.index(s[0])]; self._load_gam()
 
     def save(self):
         try:
-            s = self.service.settings_manager.load_settings()
-            s.update({k: self.entries[k].get() for k in self.entries})
-            s["initialGoals"] = sorted([int(x.strip()) for x in self.goals_entry.get().split(',') if x.strip()])
-            self.service.settings_manager.save_settings(s);
-            messagebox.showinfo("OK", "Gespeichert!");
-            self.on_close()
+            self.settings["start_time_seconds"] = self.start_time.get()
+            for k, e in self.durations.items(): self.settings[f"duration_{k}"] = e.get()
+            if hasattr(self, 'tk_w'):
+                for k, w in self.tk_w.items(): self.settings[k] = {"value": w["e"].get(), "active": w["v"].get()}
+            if hasattr(self, 'tw_w'):
+                for k, w in self.tw_w.items(): self.settings[k] = {"value": w["e"].get(), "active": w["v"].get()}
+            self.service.update_settings(self.settings)
+            show_toast(self.master, "Settings Saved")
+            self.destroy()
         except Exception as e:
-            messagebox.showerror("Fehler", str(e))
+            messagebox.showerror("Error", str(e))
 
 
-# --- Commands Settings Window ---
+# --- COMMANDS & LIKE WINDOWS (Kurzfassung im neuen Style) ---
+class LikeChallengeSettingsWindow(BaseSettingsWindow):
+    def __init__(self, master):
+        super().__init__(master, "Like Challenge", 600, 500)
+        self.service = like_service_instance
+        c = self._create_card(self, "CONFIGURATION")
+        c.pack(fill='both', expand=True, padx=20, pady=20)
+
+        try:
+            cs = self.service.settings_manager.load_settings()
+        except:
+            cs = {}
+
+        self.ents = {}
+        for i, (l, k) in enumerate([("Format:", "displayTextFormat"), ("Formula:", "recurringGoalExpression")]):
+            tk.Label(c, text=l, bg=Style.BG_CARD, fg="white").pack(anchor='w', pady=(10, 0))
+            e = tk.Entry(c, **self.entry_conf);
+            e.insert(0, cs.get(k, ""));
+            e.pack(fill='x', ipady=5)
+            self.ents[k] = e
+
+        tk.Label(c, text="Initial Goals (comma sep):", bg=Style.BG_CARD, fg="white").pack(anchor='w', pady=(10, 0))
+        self.goals = tk.Entry(c, **self.entry_conf);
+        self.goals.insert(0, ",".join(map(str, cs.get("initialGoals", []))));
+        self.goals.pack(fill='x', ipady=5)
+
+        tk.Button(c, text="SAVE", command=self.save, bg=Style.ACCENT_RED, fg="white", relief="flat", pady=10).pack(
+            fill='x', pady=20)
+
+    def save(self):
+        s = self.service.settings_manager.load_settings()
+        s.update({k: self.ents[k].get() for k in self.ents})
+        val = self.goals.get().strip()
+        s["initialGoals"] = sorted([int(x.strip()) for x in val.split(',') if x.strip()]) if val else []
+        self.service.settings_manager.save_settings(s)
+        self.destroy()
+
+
 class CommandsSettingsWindow(BaseSettingsWindow):
     def __init__(self, master):
-        super().__init__(master, "Command Overlay Einstellungen", 750, 600)
+        super().__init__(master, "Command Overlay", 800, 600)
         self.service = command_service_instance
-        self.add_title("Command Overlay Konfiguration")
+        c = self._create_card(self, "COMMANDS LIST")
+        c.pack(fill='both', expand=True, padx=20, pady=20)
 
-        self.selected_command_id = None
+        self.tree = ttk.Treeview(c, columns=("t", "c"), show='headings')
+        self.tree.heading("t", text="Trigger");
+        self.tree.heading("c", text="Cost")
+        self.tree.pack(fill='both', expand=True)
 
-        # Hauptcontainer
-        main_frame = tk.Frame(self, bg=Style.BACKGROUND, padx=20, pady=10)
-        main_frame.pack(fill='both', expand=True)
-        main_frame.columnconfigure(0, weight=1)
-        main_frame.columnconfigure(1, weight=1)
+        f = tk.Frame(c, bg=Style.BG_CARD);
+        f.pack(fill='x', pady=10)
+        self.t = tk.Entry(f, **self.entry_conf);
+        self.t.pack(side='left', fill='x', expand=True, padx=5, ipady=5)
+        self.v = tk.Entry(f, **self.entry_conf, width=10);
+        self.v.pack(side='left', padx=5, ipady=5)
+        tk.Button(f, text="+", command=self.add, bg=Style.ACCENT_RED, fg="white", relief="flat").pack(side='left')
 
-        # --- SEKTION 1: DAUER ---
-        settings_frame = tk.Frame(main_frame, bg=Style.BACKGROUND)
-        settings_frame.grid(row=0, column=0, columnspan=2, sticky="ew", pady=(0, 15))
+        self.load()
 
-        tk.Label(settings_frame, text="Anzeigedauer pro Command (Sek.):", **self.label_style).pack(side=tk.LEFT,
-                                                                                                   padx=(0, 10))
+    def load(self):
+        for i in self.tree.get_children(): self.tree.delete(i)
+        for c in self.service.get_all_commands(): self.tree.insert('', 'end', values=(c.get('text'), c.get('costs')))
 
+    def add(self):
         try:
-            self.settings = self.service.get_settings()
-        except Exception as e:
-            server_log.error(f"Settings Fehler: {e}")
-            self.settings = {"display_duration_seconds": 5}
-
-        self.duration_var = tk.StringVar(value=self.settings.get("display_duration_seconds", 5))
-        tk.Entry(settings_frame, textvariable=self.duration_var, **self.entry_style, width=10).pack(side=tk.LEFT)
-
-        tk.Button(settings_frame, text="Speichern", command=self.save_duration_settings, **self.button_style).pack(
-            side=tk.LEFT, padx=(10, 0))
-
-        # Trennlinie
-        tk.Frame(main_frame, height=1, bg="#444444").grid(row=1, column=0, columnspan=2, sticky="ew", pady=(10, 15))
-
-        # --- SEKTION 2: TABELLE (Treeview) ---
-        tree_frame = tk.Frame(main_frame, bg=Style.BACKGROUND)
-        tree_frame.grid(row=2, column=0, columnspan=2, sticky="nsew", pady=(5, 10))
-        tree_frame.rowconfigure(0, weight=1)
-        tree_frame.columnconfigure(0, weight=1)
-
-        # Style für dunkle Tabelle
-        style = ttk.Style()
-        style.theme_use("default")
-        style.configure("Treeview",
-                        background="#222222",
-                        foreground="white",
-                        fieldbackground="#222222",
-                        borderwidth=0,
-                        rowheight=25)
-        style.configure("Treeview.Heading",
-                        background="#333333",
-                        foreground="white",
-                        font=("Arial", 10, "bold"),
-                        borderwidth=1,
-                        relief="flat")
-        style.map("Treeview", background=[('selected', Style.ACCENT_PURPLE)])
-
-        self.tree = ttk.Treeview(tree_frame, columns=('Command', 'Kosten'), show='headings', selectmode='browse')
-        self.tree.heading('Command', text='Trigger (Text)')
-        self.tree.heading('Kosten', text='Kosten')
-        self.tree.column('Command', anchor='w', width=450)
-        self.tree.column('Kosten', anchor='e', width=100)
-
-        scrollbar = ttk.Scrollbar(tree_frame, orient="vertical", command=self.tree.yview)
-        self.tree.configure(yscrollcommand=scrollbar.set)
-
-        self.tree.grid(row=0, column=0, sticky="nsew")
-        scrollbar.grid(row=0, column=1, sticky="ns")
-
-        self.tree.bind('<<TreeviewSelect>>', self.on_item_select)
-
-        main_frame.rowconfigure(2, weight=1)  # Tabelle füllt den Platz
-
-        # --- SEKTION 3: EINGABE (CRUD) ---
-        entry_frame = tk.Frame(main_frame, bg=Style.BACKGROUND)
-        entry_frame.grid(row=3, column=0, columnspan=2, sticky="ew", pady=(10, 10))
-        entry_frame.columnconfigure(0, weight=1)
-
-        # Text
-        tk.Label(entry_frame, text="Command Text:", **self.label_style).grid(row=0, column=0, sticky="w")
-        self.entry_text_var = tk.StringVar()
-        tk.Entry(entry_frame, textvariable=self.entry_text_var, **self.entry_style).grid(row=1, column=0, sticky="ew",
-                                                                                         padx=(0, 10), ipady=3)
-
-        # Kosten
-        tk.Label(entry_frame, text="Kosten:", **self.label_style).grid(row=0, column=1, sticky="w")
-        self.entry_costs_var = tk.StringVar()
-        tk.Entry(entry_frame, textvariable=self.entry_costs_var, **self.entry_style, width=15).grid(row=1, column=1,
-                                                                                                    sticky="w", ipady=3)
-
-        # --- SEKTION 4: BUTTONS ---
-        btn_frame = tk.Frame(main_frame, bg=Style.BACKGROUND)
-        btn_frame.grid(row=4, column=0, columnspan=2, sticky="ew", pady=(10, 0))
-
-        # Add Button (Grün)
-        add_style = self.button_style.copy()
-        add_style['bg'] = Style.SUCCESS
-        tk.Button(btn_frame, text="HINZUFÜGEN", command=self.add_command, **add_style).pack(side=tk.LEFT, padx=(0, 5))
-
-        # Edit Button
-        self.edit_button = tk.Button(btn_frame, text="ÄNDERN", command=self.edit_command, **self.button_style,
-                                     state="disabled")
-        self.edit_button.pack(side=tk.LEFT, padx=5)
-
-        # Delete Button (Rot)
-        del_style = self.button_style.copy()
-        del_style['bg'] = Style.DANGER
-        self.delete_button = tk.Button(btn_frame, text="LÖSCHEN", command=self.delete_command, **del_style,
-                                       state="disabled")
-        self.delete_button.pack(side=tk.LEFT, padx=5)
-
-        # Fire Button (Rechts, Blau)
-        fire_style = self.button_style.copy()
-        fire_style['bg'] = Style.ACCENT_BLUE
-        tk.Button(btn_frame, text="▶ FIRE SEQUENZ", command=self.fire_command, **fire_style).pack(side=tk.RIGHT)
-
-        # Initiale Daten laden
-        self.load_commands()
-
-    def save_duration_settings(self):
-        try:
-            duration = int(self.duration_var.get())
-            if duration <= 0: raise ValueError
-            self.service.save_settings({"display_duration_seconds": duration})
-            show_toast(self, "Dauer gespeichert!")
+            self.service.add_command(self.t.get(), self.v.get(), False); self.load()
         except:
-            messagebox.showerror("Fehler", "Bitte eine gültige Zahl für die Dauer eingeben.")
-
-    def load_commands(self):
-        for item in self.tree.get_children():
-            self.tree.delete(item)
-        try:
-            for cmd in self.service.get_all_commands():
-                self.tree.insert('', 'end', iid=cmd['id'], values=(cmd.get('text', ''), cmd.get('costs', '')))
-            self.clear_selection()
-        except Exception as e:
-            messagebox.showerror("Fehler", f"Ladefehler: {e}")
-
-    def on_item_select(self, event):
-        selected_items = self.tree.selection()
-        if not selected_items: return
-
-        self.selected_command_id = selected_items[0]
-        item_values = self.tree.item(self.selected_command_id, 'values')
-
-        if item_values:
-            self.entry_text_var.set(item_values[0])
-            self.entry_costs_var.set(item_values[1])
-            self.edit_button.config(state="normal")
-            self.delete_button.config(state="normal")
-
-    def clear_selection(self):
-        if self.tree.selection():
-            self.tree.selection_remove(self.tree.selection())
-        self.selected_command_id = None
-        self.entry_text_var.set("")
-        self.entry_costs_var.set("")
-        self.edit_button.config(state="disabled")
-        self.delete_button.config(state="disabled")
-
-    def add_command(self):
-        text = self.entry_text_var.get()
-        costs = self.entry_costs_var.get()
-        if not text or not costs:
-            messagebox.showwarning("Fehler", "Text und Kosten dürfen nicht leer sein.")
-            return
-        try:
-            self.service.add_command(text, costs)
-            self.load_commands()
-        except Exception as e:
-            messagebox.showerror("Fehler", str(e))
-
-    def edit_command(self):
-        if not self.selected_command_id: return
-        text = self.entry_text_var.get()
-        costs = self.entry_costs_var.get()
-        if not text or not costs: return
-        try:
-            self.service.update_command(self.selected_command_id, text, costs)
-            self.load_commands()
-        except Exception as e:
-            messagebox.showerror("Fehler", str(e))
-
-    def delete_command(self):
-        if not self.selected_command_id: return
-        if not messagebox.askyesno("Bestätigen", "Soll dieser Befehl wirklich gelöscht werden?"): return
-        try:
-            self.service.delete_command(self.selected_command_id)
-            self.load_commands()
-        except Exception as e:
-            messagebox.showerror("Fehler", str(e))
-
-    def fire_command(self):
-        if not messagebox.askyesno("Bestätigen", "Soll die gesamte Command-Sequenz jetzt gestartet werden?"): return
-        try:
-            requests.post(BASE_URL.rstrip('/') + COMMANDS_TRIGGER_ENDPOINT, timeout=3)
-            show_toast(self.master, "Command-Sequenz gestartet!")
-        except Exception as e:
-            messagebox.showerror("Fehler", f"Trigger Fehler: {e}")
+            pass

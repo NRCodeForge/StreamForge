@@ -1,17 +1,68 @@
 [
     {
-        "id": "6afd2a3a-5795-4180-b640-1710b1974417",
-        "text": "!boom 100 Whieties",
-        "costs": "100"
+        "id": "60716f66-8647-47d5-9817-1f116bcf7600",
+        "text": "!chaos",
+        "costs": "5000",
+        "is_superfan": false
     },
     {
-        "id": "b6e29dd4-843d-458b-a955-0f2b7bf21cb2",
-        "text": "!mimimi 100 Whieties",
-        "costs": "100"
+        "id": "1a313b0e-005e-4bef-a09f-0959c66f9dcd",
+        "text": "!wish",
+        "costs": "300",
+        "is_superfan": false
     },
     {
-        "id": "c98909fd-cde4-417f-b677-c0211ff3e5b8",
-        "text": "!niclas 100 Whieties",
-        "costs": "100"
+        "id": "857cf598-1f31-4d1a-8007-3edb55448f57",
+        "text": "!niclas",
+        "costs": "100",
+        "is_superfan": false
+    },
+    {
+        "id": "ea603ed4-3a33-4b4e-8900-f6283885833f",
+        "text": "!moin",
+        "costs": "100",
+        "is_superfan": false
+    },
+    {
+        "id": "d58760a6-aada-4f25-9e1a-56f870d7fab0",
+        "text": "!mimimi",
+        "costs": "100",
+        "is_superfan": false
+    },
+    {
+        "id": "66c85108-e503-410e-81d1-51af78c4a664",
+        "text": "!boom",
+        "costs": "100",
+        "is_superfan": false
+    },
+    {
+        "id": "74037b3a-30a7-4b3a-b082-f4c21703a9ca",
+        "text": "!commands",
+        "costs": "0",
+        "is_superfan": false
+    },
+    {
+        "id": "03f6b627-5c2b-40d5-b0d6-93be1219836e",
+        "text": "!abo",
+        "costs": "0",
+        "is_superfan": false
+    },
+    {
+        "id": "998201f4-fa75-4b9f-b6ce-43c3e55f9f99",
+        "text": "!freewish",
+        "costs": "0",
+        "is_superfan": true
+    },
+    {
+        "id": "d9be58b5-13c0-4382-b596-15331df09ccc",
+        "text": "!superspin",
+        "costs": "0",
+        "is_superfan": true
+    },
+    {
+        "id": "4bf852f5-6644-4b61-83b3-11ab2a8309b3",
+        "text": "!blind",
+        "costs": "500",
+        "is_superfan": false
     }
 ]

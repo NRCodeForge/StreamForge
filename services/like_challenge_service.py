@@ -1,6 +1,7 @@
 import json
 import numpy as numpy
 import time
+import threading
 
 from external.settings_manager import SettingsManager
 from utils import server_log
@@ -14,78 +15,164 @@ class LikeChallengeService:
         self.current_monitored_user = None
         self.test_likes = 0
         self.previous_current_goal = None
+        self.connect_lock = threading.Lock()
 
     def add_test_likes(self, amount):
         self.test_likes += amount
-        server_log.info(f"Test-Modus: {amount} Likes hinzugefügt. Total: {self.test_likes}")
+        server_log.info(f"TEST: {amount} Likes hinzugefügt. Total: {self.test_likes}")
 
     def evaluate_expression_safely(self, expression, x_value):
-        allowed = {"x": x_value, "numpy": numpy, "np": numpy}
-        if "__" in expression: raise ValueError("Ungültig")
-        return int(eval(expression, {"__builtins__": {}}, allowed))
+        """
+        Wertet die Formel aus. Akzeptiert jetzt 'x' UND 'X'.
+        Loggt Fehler, statt sie zu verschlucken.
+        """
+        # Erlaube x und X
+        allowed_names = {"x": x_value, "X": x_value, "numpy": numpy, "np": numpy}
+
+        if "__" in expression:
+            server_log.warning(f"Sicherheitswarnung: Ungültige Formel '{expression}'")
+            return x_value + 1000
+
+        try:
+            # Berechnung durchführen
+            result = eval(expression, {"__builtins__": {}}, allowed_names)
+            return int(result)
+        except Exception as e:
+            # WICHTIG: Fehler ins Log schreiben!
+            server_log.error(f"❌ FORMEL-FEHLER bei '{expression}': {e}. Nutze Fallback (+1000).")
+            return x_value + 1000
 
     def _ensure_api_connection(self, tiktok_user):
         if not tiktok_user: return
-        # Nur neu verbinden, wenn User anders ist oder Client fehlt
-        if self.api_client is None or self.current_monitored_user != tiktok_user:
-            if self.api_client:
-                try:
-                    self.api_client.stop()
-                except:
-                    pass
-
-            server_log.info(f"🚀 START: TikTok API Verbindung zu @{tiktok_user}")
-            self.api_client = TikTokLive_API(tiktok_user)
-            self.api_client.start()
-            self.current_monitored_user = tiktok_user
-        else:
-            # Falls Client da ist aber nicht läuft -> Starten
-            if not self.api_client.running:
+        with self.connect_lock:
+            if self.api_client is None or self.current_monitored_user != tiktok_user:
+                self._restart_client(tiktok_user)
+            elif not self.api_client.running:
+                server_log.warning(f"⚠️ TikTok-Client für {tiktok_user} war gestoppt. Starte neu...")
                 self.api_client.start()
 
-    # --- WICHTIG: DIESE METHODE WIRD VOM HAUPTPROGRAMM GERUFEN ---
+    def _restart_client(self, tiktok_user):
+        if self.api_client:
+            try:
+                self.api_client.stop()
+            except:
+                pass
+        server_log.info(f"🚀 START: TikTok API Verbindung zu @{tiktok_user}")
+        self.api_client = TikTokLive_API(tiktok_user)
+        self.api_client.start()
+        self.current_monitored_user = tiktok_user
+
     def start_tiktok_connection(self):
-        """Lädt Settings und startet Verbindung."""
         try:
             s = self.settings_manager.load_settings()
             user = s.get("tiktok_unique_id", "").strip()
-
             if user:
                 server_log.info(f"⚙️ Autostart gefunden für: {user}")
                 self._ensure_api_connection(user)
             else:
-                server_log.warning(
-                    "⚠️ KEIN TIKTOK USERNAME in den Einstellungen gefunden! Bitte im Dashboard eingeben.")
+                server_log.warning("⚠️ Autostart: Kein TikTok-User in Settings gefunden.")
         except Exception as e:
             server_log.error(f"Fehler beim API Start: {e}")
 
-    # --- NEU: Für die GUI zum Neustarten ---
     def update_and_restart(self, new_user):
-        """Speichert neuen User und erzwingt Reconnect."""
         s = self.settings_manager.load_settings()
         s["tiktok_unique_id"] = new_user
         self.settings_manager.save_settings(s)
-
-        server_log.info(f"🔄 Manueller Neustart für: {new_user}")
-        # Erzwinge neue Verbindung
-        self.current_monitored_user = None
-        self._ensure_api_connection(new_user)
+        server_log.info(f"🔄 Manueller Neustart via GUI für: {new_user}")
+        with self.connect_lock:
+            self.current_monitored_user = None
+            self._ensure_api_connection(new_user)
 
     def get_challenge_status(self):
-        # (Hier dein bestehender Code für get_challenge_status - gekürzt für Übersicht)
-        # Wichtig: Auch hier sicherstellen, dass Verbindung steht
         try:
-            s = self.settings_manager.load_settings()
-            user = s.get("tiktok_unique_id", "")
-            if user: self._ensure_api_connection(user)
+            # 1. Settings laden
+            settings = self.settings_manager.load_settings()
+            tiktok_user = settings.get("tiktok_unique_id", "").strip()
+            if tiktok_user:
+                self._ensure_api_connection(tiktok_user)
+            else:
+                return {"error": "Kein TikTok-Name", "displayText": "Setup in Dashboard"}
 
-            real = self.api_client.get_current_likes() if self.api_client else 0
-            total = real + self.test_likes
+            # 2. Likes holen
+            real_likes = self.api_client.get_current_likes() if self.api_client else 0
+            total_likes = real_likes + self.test_likes
 
-            # ... (Deine Logik für Goals) ...
-            # Platzhalter Logik:
-            needed = 1000 - (total % 1000)
-            return {"like_count": total, "likes_needed": needed, "current_goal": total + needed,
-                    "displayText": f"{needed} to go"}
-        except:
-            return {"error": "Init..."}
+            # 3. Ziel-Berechnung
+            display_format = settings.get("displayTextFormat", "{likes_needed} to go")
+            initial_goals = sorted(settings.get("initialGoals", []))
+
+            # Formel laden & prüfen
+            recurring_expr = settings.get("recurringGoalExpression", "")
+            if not recurring_expr or not recurring_expr.strip():
+                recurring_expr = "x + 1000"  # Default wenn leer
+
+            current_goal = None
+
+            # A) Initial Goals prüfen
+            for g in initial_goals:
+                if total_likes < g:
+                    current_goal = g
+                    break
+
+            # B) Wenn Initial Goals durch sind -> Formel anwenden
+            if current_goal is None:
+                # Startpunkt: Letztes Initial-Ziel oder 0
+                calc = initial_goals[-1] if initial_goals else 0
+
+                # Loop-Limit auf 2 Millionen erhöht für Sicherheit
+                limit = 2000000
+                found = False
+
+                # Wir simulieren die Reihe: 0 -> 5000 -> 10000 ...
+                # Bis wir über den aktuellen Likes sind.
+                for _ in range(limit):
+                    new_calc = self.evaluate_expression_safely(recurring_expr, calc)
+
+                    # Sicherheits-Check: Wenn Formel den Wert nicht erhöht (Endlosschleife)
+                    if new_calc <= calc:
+                        server_log.error(
+                            f"❌ KRITISCH: Formel '{recurring_expr}' erhöht den Wert nicht! (Von {calc} auf {new_calc})")
+                        calc = total_likes + 33333  # Not-Ausstieg
+                        found = True
+                        break
+
+                    calc = new_calc
+
+                    if calc > total_likes:
+                        found = True
+                        break
+
+                current_goal = calc
+
+                # Falls Loop-Limit erreicht wurde (z.B. bei x+1 und 1M Likes)
+                if not found:
+                    server_log.warning("⚠️ Loop-Limit bei Zielberechnung erreicht. Nutze Fallback auf aktuelle Likes.")
+                    current_goal = self.evaluate_expression_safely(recurring_expr, total_likes)
+
+            # 4. Events & Sound
+            if self.previous_current_goal is None:
+                self.previous_current_goal = current_goal
+
+            if (self.previous_current_goal != current_goal) and (total_likes >= self.previous_current_goal):
+                from services.service_provider import audio_service_instance, subathon_service_instance
+                server_log.info(f"🎉 ZIEL ERREICHT: {self.previous_current_goal} (Likes: {total_likes})")
+                audio_service_instance.play_goal_sound()
+                subathon_service_instance.trigger_hype_mode(300)
+                self.previous_current_goal = current_goal
+
+            if self.previous_current_goal != current_goal:
+                self.previous_current_goal = current_goal
+
+            likes_needed = max(0, int(current_goal - total_likes))
+            display_text = display_format.format(likes_needed=likes_needed)
+
+            return {
+                "like_count": int(total_likes),
+                "likes_needed": likes_needed,
+                "current_goal": int(current_goal),
+                "displayText": display_text
+            }
+
+        except Exception as e:
+            server_log.error(f"Fehler im Like-Service: {e}")
+            return {"error": "Interner Fehler", "displayText": "Server Error"}
