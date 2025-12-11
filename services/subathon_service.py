@@ -277,47 +277,48 @@ class SubathonService:
         elif d.get("event") == "sub":
             self.trigger_hype_mode()
 
-        # --- TWITCH EVENTS (NEU) ---
-        def on_twitch_message(self, username):
-            """Wird bei jeder Chat-Nachricht aufgerufen."""
-            s = self.get_current_settings()
+    # --- TWITCH EVENTS (NEU & KORRIGIERT) ---
+    def on_twitch_message(self, username):
+        """Wird bei jeder Chat-Nachricht aufgerufen."""
+        s = self.get_current_settings()
 
-            # Check ob aktiv
-            if not s.get("twitch_msg_active", False): return
+        # Check ob aktiv
+        if not s.get("twitch_msg_active", False): return
 
-            val = float(s.get("twitch_msg_value", 0))
-            if val > 0:
-                self._add_time(val, f"Twitch Msg: {username}")
+        val = float(s.get("twitch_msg_value", 0))
+        if val > 0:
+            self.add_time(val)
+            self.timer_logger.info(f"TWITCH: Msg ({username}) -> +{val}s")
 
-        def on_twitch_sub(self, username, is_gift=False):
-            """Wird bei Sub oder Gift-Sub aufgerufen."""
-            s = self.get_current_settings()
+    def on_twitch_sub(self, username, is_gift=False):
+        """Wird bei Sub oder Gift-Sub aufgerufen."""
+        s = self.get_current_settings()
 
-            if is_gift:
-                # Gift Sub
-                if s.get("twitch_gift_active", False):
-                    val = float(s.get("twitch_gift_value", 0))
-                    self._add_time(val, f"Twitch Gift: {username}")
-            else:
-                # Normaler Sub (Prime, Tier 1-3)
-                if s.get("twitch_sub_active", False):
-                    val = float(s.get("twitch_sub_value", 0))
-                    self._add_time(val, f"Twitch Sub: {username}")
+        if is_gift:
+            # Gift Sub
+            if s.get("twitch_gift_active", False):
+                val = float(s.get("twitch_gift_value", 0))
+                self.add_time(val)
+                self.timer_logger.info(f"TWITCH: Gift Sub ({username}) -> +{val}s")
+        else:
+            # Normaler Sub (Prime, Tier 1-3)
+            if s.get("twitch_sub_active", False):
+                val = float(s.get("twitch_sub_value", 0))
+                self.add_time(val)
+                self.timer_logger.info(f"TWITCH: Sub ({username}) -> +{val}s")
 
-        def on_twitch_bits(self, username, amount):
-            """Wird bei Bits aufgerufen."""
-            # Optional: Logik für Bits pro X Zeit (z.B. 1 Sekunde pro 10 Bits)
-            # Hier vereinfacht: Settings könnten "Sekunden pro 100 Bits" sein?
-            # Wir machen es einfach: 1 Bit = X Sekunden (einstellbar 0.1 etc)
-            s = self.get_current_settings()
-            if s.get("twitch_bits_active", False):
-                factor = float(s.get("twitch_bits_value", 0))  # Zeit pro 1 Bit
-                total_time = amount * factor
-                if total_time > 0:
-                    self._add_time(total_time, f"Twitch Bits: {amount}")
+    def on_twitch_bits(self, username, amount):
+        """Wird bei Bits aufgerufen."""
+        s = self.get_current_settings()
+        if s.get("twitch_bits_active", False):
+            factor = float(s.get("twitch_bits_value", 0))  # Zeit pro 1 Bit
+            total_time = amount * factor
+            if total_time > 0:
+                self.add_time(total_time)
+                self.timer_logger.info(f"TWITCH: {amount} Bits ({username}) -> +{total_time}s")
 
-        def get_time_string(self):
-            # Helper für Overlay
-            m, s = divmod(int(self.current_time), 60)
-            h, m = divmod(m, 60)
-            return f"{h:02d}:{m:02d}:{s:02d}"
+    def get_time_string(self):
+        # Helper für Overlay
+        m, s = divmod(int(self.timer_seconds), 60)
+        h, m = divmod(m, 60)
+        return f"{h:02d}:{m:02d}:{s:02d}"

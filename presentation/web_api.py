@@ -17,7 +17,7 @@ from config import (
     LIKE_CHALLENGE_ENDPOINT, COMMANDS_ENDPOINT, COMMANDS_TRIGGER_ENDPOINT
 )
 from utils import server_log
-
+from services.service_provider import wheel_service_instance
 app = Flask(__name__)
 
 
@@ -286,6 +286,17 @@ def trigger_freezer():
     subathon_service_instance.trigger_freezer(180)
     return jsonify({'message': 'Freezer gestartet'}), 200
 
+@app.route('/api/v1/wheel/state', methods=['GET'])
+def get_wheel_state():
+    state = wheel_service_instance.get_current_state()
+    if state:
+        return jsonify(state)
+    return jsonify({}) # Leeres JSON wenn inaktiv
+
+@app.route('/wheel_overlay/<path:path>')
+def serve_wheel_overlay(path):
+    directory = get_path('wheel_overlay')
+    return send_from_directory(directory, path)
 
 # --- Statische Datei-Endpunkte ---
 @app.route('/like_progress_bar/<path:path>')

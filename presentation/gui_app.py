@@ -9,13 +9,14 @@ import webbrowser
 from PIL import Image, ImageTk
 
 # Importiere Services und Config
-# WICHTIG: CurrencySettingsWindow muss hier importiert werden
+# WICHTIG: TwitchSubathonSettingsWindow hinzugefügt
 from presentation.settings_windows import (
     SubathonSettingsWindow,
     LikeChallengeSettingsWindow,
     CommandsSettingsWindow,
     TimerGambitSettingsWindow,
-    CurrencySettingsWindow
+    CurrencySettingsWindow,
+    TwitchSubathonSettingsWindow
 )
 from services.service_provider import like_service_instance, twitch_service_instance
 
@@ -37,9 +38,17 @@ INFO_TEXTS = {
         "Test: Sendet 100 Fake-Likes zum Testen der Animation."
     ),
     "SUBATHON": (
-        "SUBATHON TRIGGER\n\n"
+        "SUBATHON TRIGGER (TIKTOK)\n\n"
         "Hier definieren Sie die Trigger für TikTok:\n"
         "Coins, Likes, Follows -> Zeit.\n"
+        "Link: .../index.html?platform=tiktok\n"
+        "Einstellungen: Zahnrad klicken."
+    ),
+    "SUBATHON_TWITCH": (
+        "SUBATHON TRIGGER (TWITCH)\n\n"
+        "Hier definieren Sie die Trigger für Twitch:\n"
+        "Subs, Bits, Chat -> Zeit.\n"
+        "Link: .../index.html?platform=twitch\n"
         "Einstellungen: Zahnrad klicken."
     ),
     "TIMER": (
@@ -185,6 +194,8 @@ class StreamForgeGUI:
         self.windows_general = []
         self.cards_tiktok = []
         self.windows_tiktok = []
+        self.cards_twitch = [] # Liste für Twitch Karten
+        self.windows_twitch = [] # Liste für Twitch Fenster
 
         self.images = {}
 
@@ -297,19 +308,33 @@ class StreamForgeGUI:
 
         self.cards_tiktok.append(DashboardCard(
             self.canvas_tiktok, "SUBATHON TRIGGER",
-            [("Subathon Info", "subathon_overlay/index.html")],
+            [("Subathon Info", "subathon_overlay/index.html?platform=tiktok")], # Link angepasst
             settings_func=self.open_subathon_settings_window,
             info_key="SUBATHON"))
 
         # --- POPULATE TWITCH TAB ---
-        # Währungssystem
-        DashboardCard(
+        # 1. Währungssystem
+        self.cards_twitch.append(DashboardCard(
             self.canvas_twitch, "TWITCH WÄHRUNG",
-            [("Commands: !score, !send", "")],  # Kein Web-Link nötig vorerst
+            [("Commands: !score, !send", "")],
             settings_func=self.open_currency_settings,
             info_key="CURRENCY"
-        ).pack(padx=25, pady=30, anchor="nw")  # Direkt packen da nur 1 Item bisher
+        ))
 
+        # 2. Subathon Trigger (NEU)
+        self.cards_twitch.append(DashboardCard(
+            self.canvas_twitch, "SUBATHON TRIGGER",
+            [("Overlay (Twitch)", "subathon_overlay/index.html?platform=twitch")], # Link angepasst
+            settings_func=self.open_twitch_subathon_settings_window,
+            info_key="SUBATHON_TWITCH"
+        ))
+        # 2. Spin
+        self.cards_twitch.append(DashboardCard(
+            self.canvas_twitch, "Spin",
+            [("Overlay (Twitch)", "wheel_overlay/index.html")],  # Link angepasst
+            settings_func=self.open_twitch_spin_settings_window,
+            info_key="None"
+        ))
         # --- POPULATE GENERAL TAB ---
         self.cards_general.append(DashboardCard(
             self.canvas_general, "TIMER & GAMBIT",
@@ -335,10 +360,13 @@ class StreamForgeGUI:
             settings_func=self.open_commands_settings_window,
             test_func=self.test_command_action, test_label="FIRE SEQUENZ", info_key="COMMANDS"))
 
+        # Binds für automatisches Resizing der Karten
         self.tab_general.bind("<Configure>", lambda e: self.on_resize(e, self.canvas_general, self.cards_general,
                                                                       self.windows_general))
         self.tab_tiktok.bind("<Configure>",
                              lambda e: self.on_resize(e, self.canvas_tiktok, self.cards_tiktok, self.windows_tiktok))
+        self.tab_twitch.bind("<Configure>",
+                             lambda e: self.on_resize(e, self.canvas_twitch, self.cards_twitch, self.windows_twitch))
 
     def create_scrollable_tab(self, parent_frame, tag):
         canvas = tk.Canvas(parent_frame, bg=Style.BACKGROUND, highlightthickness=0)
@@ -448,12 +476,16 @@ class StreamForgeGUI:
     def open_subathon_settings_window(self):
         SubathonSettingsWindow(self.root)
 
+    def open_twitch_subathon_settings_window(self):
+        TwitchSubathonSettingsWindow(self.root)
+
     def open_timer_gambit_settings(self):
         TimerGambitSettingsWindow(self.root)
 
     def open_like_challenge_settings_window(self):
         LikeChallengeSettingsWindow(self.root)
-
+    def open_twitch_spin_settings_window(self):
+        WheelSettingsWindow(self.root)
     def open_commands_settings_window(self):
         CommandsSettingsWindow(self.root)
 

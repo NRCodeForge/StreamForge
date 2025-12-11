@@ -1,7 +1,6 @@
 import threading
 import asyncio
 import logging
-import time
 from twitchio.ext import commands
 from config import LOG_FILE_TWITCH
 
@@ -30,7 +29,7 @@ class TwitchBot(commands.Bot):
         username = message.author.name
         content = message.content
 
-        # 1. Normale Nachricht (für Timer)
+        # 1. Normale Nachricht (für Timer & Subathon Logik)
         self.parent_api.notify_message(username)
 
         # 2. BITS
@@ -42,12 +41,19 @@ class TwitchBot(commands.Bot):
             except:
                 pass
 
-        # 3. COMMANDS (!place)
+        # 3. COMMANDS
         if content.startswith('!'):
-            cmd = content.split(' ')[0].lower()
+            parts = content.split(' ')
+            cmd = parts[0].lower()
+            args = parts[1:] if len(parts) > 1 else []
+
             if cmd == "!place":
                 twitch_log.info(f"❗ Command !place von {username}")
                 self.parent_api.handle_place_command(username)
+
+            elif cmd == "!spin":
+                twitch_log.info(f"🎰 Command !spin von {username} (Args: {args})")
+                self.parent_api.handle_spin_command(username, args)
 
     async def event_usernotice(self, message):
         """Behandelt Subs, Resubs, GiftBombs."""
@@ -97,13 +103,43 @@ class Twitch_API_Wrapper:
         except Exception as e:
             twitch_log.error(f"Twitch Bot abgestürzt: {e}")
 
+    # --- ACTION METHODS ---
+
+    def send_message(self, message):
+        """Sendet eine Nachricht in den Chat."""
+        if self.bot and self.bot.loop and self.running:
+            try:
+                # Wir holen den Channel aus dem Cache oder erstellen ihn
+                chan = self.bot.get_channel(self.channel)
+                if chan:
+                    asyncio.run_coroutine_threadsafe(chan.send(message), self.bot.loop)
+                else:
+                    twitch_log.warning("Konnte Channel nicht finden zum Senden.")
+            except Exception as e:
+                twitch_log.error(f"Fehler beim Senden der Nachricht: {e}")
+
     # --- SERVICE CALLS ---
+
     def handle_place_command(self, username):
         try:
             from services.service_provider import wish_service_instance
             wish_service_instance.check_user_place(username)
         except Exception as e:
             twitch_log.error(f"Fehler bei !place: {e}")
+
+    def handle_spin_command(self, username, args):
+        try:
+            from services.service_provider import wheel_service_instance
+
+            # Logik ausführen
+            success, error_msg = wheel_service_instance.handle_spin(username, args)
+
+            # Falls ein Fehler auftrat (z.B. zu wenig Geld), Nachricht senden
+            if not success and error_msg:
+                self.send_message(error_msg)
+
+        except Exception as e:
+            twitch_log.error(f"Fehler bei !spin: {e}")
 
     def notify_message(self, username):
         try:

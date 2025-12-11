@@ -11,7 +11,7 @@ from services.audio_service import AudioService
 from services.command_service import CommandService
 from services.twitch_service import TwitchService
 from services.currency_service import CurrencyService
-
+from services.wheel_service import WheelService
 # Globale Singleton-Instanzen
 like_service_instance = LikeChallengeService()
 subathon_service_instance = SubathonService()
@@ -20,3 +20,4 @@ audio_service_instance = AudioService()
 command_service_instance = CommandService()
 twitch_service_instance = TwitchService()
 currency_service_instance = CurrencyService()
+wheel_service_instance = WheelService()

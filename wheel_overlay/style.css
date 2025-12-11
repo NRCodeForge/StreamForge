@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#wheel-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s;
+    opacity: 1;
+    transform: scale(1);
+}
+
+#wheel-container.hidden {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.pointer {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    color: #e74c3c;
+    z-index: 10;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+}
+
+#winner-msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.8);
+    color: #f1c40f;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    border: 3px solid #f1c40f;
+    z-index: 20;
+    text-align: center;
+}
+
+#winner-msg.hidden {
+    display: none;
+}
