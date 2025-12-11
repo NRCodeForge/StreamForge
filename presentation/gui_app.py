@@ -16,7 +16,8 @@ from presentation.settings_windows import (
     CommandsSettingsWindow,
     TimerGambitSettingsWindow,
     CurrencySettingsWindow,
-    TwitchSubathonSettingsWindow
+    TwitchSubathonSettingsWindow,
+    WheelSettingsWindow
 )
 from services.service_provider import like_service_instance, twitch_service_instance
 

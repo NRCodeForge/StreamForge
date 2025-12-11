@@ -2487,3 +2487,69 @@ durch den Hostcomputer abgebrochen
 2025-12-11 16:22:02,107 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
 2025-12-11 16:22:04,715 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
 2025-12-11 16:22:04,936 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 17:15:11,968 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:15:11,969 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:15:12,072 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:15:12,073 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:15:12,073 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:15:12,073 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:15:12,074 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:15:12,075 - INFO - SettingsManager für wheel_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:15:12,075 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:17:46,470 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:17:46,470 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:17:46,592 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:17:46,592 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:17:46,593 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:17:46,593 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:17:46,594 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:17:46,595 - INFO - SettingsManager für wheel_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:17:46,595 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:18:13,366 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:18:13,366 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:18:13,478 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:18:13,478 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:18:13,478 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:18:13,478 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:18:13,480 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:18:13,480 - INFO - SettingsManager für wheel_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:18:13,481 - ERROR - Fehler beim Parsen der JSON-Datei C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json: Expecting value: line 1 column 1 (char 0)
+2025-12-11 17:18:23,720 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:18:23,720 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:18:23,824 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:18:23,824 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:18:23,824 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:18:23,824 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:18:23,825 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:18:23,826 - INFO - SettingsManager für wheel_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:18:23,827 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json gespeichert.
+2025-12-11 17:18:24,034 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:18:24,034 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 17:18:24,034 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 17:18:24,035 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 17:18:24,035 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:18:24,036 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:18:24,828 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 17:18:24,859 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 17:18:24,861 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:19:16,969 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:19:21,117 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:19:21,352 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 17:20:47,913 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:20:47,913 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:20:47,999 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:20:47,999 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:20:47,999 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:20:47,999 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:20:48,000 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:20:48,001 - INFO - SettingsManager für wheel_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:20:48,138 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:20:48,138 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 17:20:48,138 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 17:20:48,139 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 17:20:48,140 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:20:48,140 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:20:48,722 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 17:20:48,722 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:20:49,002 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 17:21:02,936 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json gespeichert.

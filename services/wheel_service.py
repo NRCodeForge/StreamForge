@@ -4,7 +4,6 @@ import threading
 import requests
 import logging
 from external.settings_manager import SettingsManager
-from services.service_provider import currency_service_instance, twitch_service_instance
 
 logger = logging.getLogger("WheelService")
 
@@ -48,10 +47,22 @@ class WheelService:
 
     def _get_pfp(self, username):
         """Holt das Profilbild via Twitch Helix API."""
+        # --- LAZY IMPORT (verhindert Circular Import) ---
+        from services.service_provider import twitch_service_instance
+        # ------------------------------------------------
+
         try:
-            ts = twitch_service_instance.get_settings()
+            # HINWEIS: Stelle sicher, dass TwitchService eine get_settings() Methode hat,
+            # oder greife direkt auf twitch_service_instance.settings zu.
+            # Hier nehme ich an, du hast get_settings() implementiert.
+            if hasattr(twitch_service_instance, 'get_settings'):
+                ts = twitch_service_instance.get_settings()
+            else:
+                ts = twitch_service_instance.settings  # Fallback auf Attribut
+
             token = ts.get("oauth_token")
-            client_id = ts.get("client_id", "")  # Falls vorhanden, sonst über Header probieren
+            # Prüfen ob der Key in deinen Settings 'client_id' oder 'twitch_client_id' heißt
+            client_id = ts.get("client_id", ts.get("twitch_client_id", ""))
 
             if not token:
                 return ""
@@ -59,22 +70,24 @@ class WheelService:
             headers = {
                 "Authorization": f"Bearer {token}",
                 "Client-Id": client_id if client_id else "gp762nuuoqcoxypju8c569th9wz7q5"
-                # Fallback Client ID (oft public)
             }
-            # Falls Client-ID fehlt, muss sie validiert werden, hier vereinfacht:
-            # Wir nutzen requests um das Bild zu holen
+
             url = f"https://api.twitch.tv/helix/users?login={username}"
             r = requests.get(url, headers=headers)
             if r.status_code == 200:
                 data = r.json()
-                if data["data"]:
+                if data.get("data"):
                     return data["data"][0]["profile_image_url"]
         except Exception as e:
             logger.error(f"Fehler beim PFP laden: {e}")
-        return ""  # Fallback (Overlay nutzt dann Default)
+        return ""
 
     def handle_spin(self, user_name, args):
         """Hauptlogik für !spin"""
+        # --- LAZY IMPORT ---
+        from services.service_provider import currency_service_instance
+        # -------------------
+
         if self.active_spin:
             return False, "Das Rad dreht sich bereits!"
 
@@ -91,11 +104,8 @@ class WheelService:
         except ValueError:
             amount = min_bet
 
-        # Logik: Kleiner als Min -> Min. Größer als Max -> Max.
-        if amount < min_bet:
-            amount = min_bet
-        if amount > max_bet:
-            amount = max_bet
+        if amount < min_bet: amount = min_bet
+        if amount > max_bet: amount = max_bet
 
         # 2. Guthaben prüfen
         balance = currency_service_instance.get_balance(user_name)
@@ -106,8 +116,11 @@ class WheelService:
             # 3. Einsatz abziehen
             currency_service_instance.add_points(user_name, -amount)
 
-            # 4. Ergebnis berechnen (Gewichtet)
+            # 4. Ergebnis berechnen
             segments = settings.get("segments", [])
+            if not segments:
+                return False, "Fehler: Keine Segmente konfiguriert."
+
             weights = [s.get("weight", 10) for s in segments]
             result_segment = random.choices(segments, weights=weights, k=1)[0]
             result_index = segments.index(result_segment)
@@ -118,7 +131,7 @@ class WheelService:
             # 5. PFP holen
             pfp_url = self._get_pfp(user_name)
 
-            # 6. Status setzen (für Overlay)
+            # 6. Status setzen
             self.active_spin = {
                 "user": user_name,
                 "pfp": pfp_url,
@@ -129,14 +142,18 @@ class WheelService:
                 "timestamp": time.time()
             }
 
-            # 7. Thread starten, der nach Animation den Gewinn gutschreibt
+            # 7. Thread starten
             threading.Thread(target=self._finish_spin_later, args=(user_name, win_amount), daemon=True).start()
 
-            return True, None  # Kein direkter Chat-Response nötig, Rad erscheint
+            return True, None
 
     def _finish_spin_later(self, user_name, win_amount):
         """Wartet auf Animation und schreibt Gewinn gut."""
-        time.sleep(8)  # Wartezeit ca. Animationsdauer (5s spin + puffer)
+        # --- LAZY IMPORT ---
+        from services.service_provider import currency_service_instance, twitch_service_instance
+        # -------------------
+
+        time.sleep(8)
 
         if win_amount > 0:
             currency_service_instance.add_points(user_name, win_amount)
@@ -144,10 +161,8 @@ class WheelService:
         else:
             msg = f"@{user_name} Leider nichts gewonnen. Viel Glück beim nächsten Mal!"
 
-        # Chat Nachricht senden
         twitch_service_instance.send_message(msg)
 
-        # Reset Spin State
         time.sleep(2)
         self.active_spin = None
 
