@@ -5,12 +5,19 @@ from tkinter import messagebox, font, ttk
 import requests
 import sys
 import os
+import webbrowser
 from PIL import Image, ImageTk
 
 # Importiere Services und Config
-from presentation.settings_windows import SubathonSettingsWindow, LikeChallengeSettingsWindow, CommandsSettingsWindow, \
-    TimerGambitSettingsWindow
-from services.service_provider import like_service_instance
+# WICHTIG: CurrencySettingsWindow muss hier importiert werden
+from presentation.settings_windows import (
+    SubathonSettingsWindow,
+    LikeChallengeSettingsWindow,
+    CommandsSettingsWindow,
+    TimerGambitSettingsWindow,
+    CurrencySettingsWindow
+)
+from services.service_provider import like_service_instance, twitch_service_instance
 
 from config import (
     Style, BASE_HOST, BASE_PORT, BASE_URL,
@@ -50,6 +57,12 @@ INFO_TEXTS = {
     "COMMANDS": (
         "COMMAND OVERLAY\n\n"
         "Zeigt große Medien-Overlays (Bilder/GIFs) an."
+    ),
+    "CURRENCY": (
+        "TWITCH WÄHRUNG\n\n"
+        "Verwaltet Punkte für Chat-Aktivität, Bits und Subs.\n"
+        "Commands: !score (Stand), !send (Überweisen).\n"
+        "Einstellungen: Zahnrad klicken."
     )
 }
 
@@ -94,9 +107,10 @@ class DashboardCard(tk.Frame):
 
             tk.Label(row, text=name, font=("Segoe UI", 10), bg=card_bg, fg="#cccccc").pack(side=tk.LEFT)
 
-            url = BASE_URL.rstrip('/') + '/' + path.lstrip('/')
-            tk.Button(row, text="❐", command=lambda u=url: self.copy_to_clipboard(u),
-                      bg=card_bg, fg=Style.ACCENT_PURPLE, relief=tk.FLAT, bd=0, cursor="hand2").pack(side=tk.RIGHT)
+            if path:  # Nur anzeigen wenn Pfad vorhanden
+                url = BASE_URL.rstrip('/') + '/' + path.lstrip('/')
+                tk.Button(row, text="❐", command=lambda u=url: self.copy_to_clipboard(u),
+                          bg=card_bg, fg=Style.ACCENT_PURPLE, relief=tk.FLAT, bd=0, cursor="hand2").pack(side=tk.RIGHT)
 
         # --- FOOTER ---
         footer_frame = tk.Frame(self, bg=card_bg)
@@ -171,10 +185,8 @@ class StreamForgeGUI:
         self.windows_general = []
         self.cards_tiktok = []
         self.windows_tiktok = []
-        self.cards_twitch = []  # Placeholder
 
         self.images = {}
-        self.logo_original = None
 
         self.setup_ui()
         self.setup_callbacks()
@@ -200,7 +212,7 @@ class StreamForgeGUI:
                   foreground=[("selected", "white"), ("active", "white")])
 
     def setup_ui(self):
-        # --- HEADER (Unverändert) ---
+        # --- HEADER ---
         logo_path = get_path("assets/LOGO.png")
         header = tk.Frame(self.root, bg=Style.BACKGROUND)
         header.pack(fill=tk.X, side=tk.TOP, padx=30, pady=20)
@@ -228,17 +240,25 @@ class StreamForgeGUI:
         self.tt_canvas.pack(side=tk.LEFT)
         self.tt_indicator = self.tt_canvas.create_oval(2, 2, 14, 14, fill="#444444", outline="")
 
-        # Trenner
-        tk.Frame(controls, width=1, height=20, bg="#333").pack(side=tk.LEFT, padx=15)
+        tk.Frame(controls, width=1, height=20, bg="#333").pack(side=tk.LEFT, padx=10)
 
-        # 2. SERVER STATUS
+        # 2. TWITCH STATUS (NEU)
+        tk.Label(controls, text="TWITCH", bg=Style.BACKGROUND, fg="#666666", font=("Arial", 8, "bold")).pack(
+            side=tk.LEFT, padx=(0, 5))
+        self.tw_canvas = tk.Canvas(controls, width=16, height=16, bg=Style.BACKGROUND, highlightthickness=0)
+        self.tw_canvas.pack(side=tk.LEFT)
+        self.tw_indicator = self.tw_canvas.create_oval(2, 2, 14, 14, fill="#444444", outline="")
+
+        tk.Frame(controls, width=1, height=20, bg="#333").pack(side=tk.LEFT, padx=10)
+
+        # 3. SERVER STATUS
         tk.Label(controls, text="SERVER", bg=Style.BACKGROUND, fg="#666666", font=("Arial", 8, "bold")).pack(
             side=tk.LEFT, padx=(0, 5))
         self.status_canvas = tk.Canvas(controls, width=16, height=16, bg=Style.BACKGROUND, highlightthickness=0)
         self.status_canvas.pack(side=tk.LEFT)
         self.status_indicator = self.status_canvas.create_oval(2, 2, 14, 14, fill=Style.DANGER, outline="")
 
-        # 3. USER SETTINGS BUTTON
+        # 4. USER SETTINGS BUTTON
         tk.Button(controls, text="👤", command=self.open_global_settings,
                   bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE, relief=tk.FLAT,
                   font=("Arial", 20), bd=0, cursor="hand2").pack(side=tk.LEFT, padx=(25, 0))
@@ -247,7 +267,6 @@ class StreamForgeGUI:
         self.notebook = ttk.Notebook(self.root)
         self.notebook.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0, 10))
 
-        # Frames für die Tabs
         self.tab_general = tk.Frame(self.notebook, bg=Style.BACKGROUND)
         self.tab_tiktok = tk.Frame(self.notebook, bg=Style.BACKGROUND)
         self.tab_twitch = tk.Frame(self.notebook, bg=Style.BACKGROUND)
@@ -261,45 +280,37 @@ class StreamForgeGUI:
         footer.pack(fill=tk.X, side=tk.BOTTOM)
         f_content = tk.Frame(footer, bg="#111111")
         f_content.pack(fill=tk.BOTH, padx=20, pady=8)
-        tk.Label(f_content, text="v2.2  |  FORGED FOR STREAMERS", font=("Segoe UI", 10, "bold"),
+        tk.Label(f_content, text="v2.3  |  FORGED FOR STREAMERS", font=("Segoe UI", 10, "bold"),
                  bg="#111111", fg="#666666").pack(side=tk.LEFT)
-        f_right = tk.Frame(f_content, bg="#111111")
-        f_right.pack(side=tk.RIGHT)
-        if os.path.exists(get_path("assets/icon.ico")):
-            try:
-                pil_f = Image.open(get_path("assets/icon.ico")).convert("RGBA")
-                pil_f.thumbnail((100, 100), Image.Resampling.LANCZOS)
-                self.images['footer_logo'] = ImageTk.PhotoImage(pil_f)
-                tk.Label(f_right, image=self.images['footer_logo'], bg="#111111").pack(side=tk.RIGHT, padx=(10, 0))
-            except:
-                pass
-        tk.Label(f_right, text="STREAMFORGE SYSTEM", font=("Segoe UI", 9), bg="#111111", fg="#444444").pack(
-            side=tk.RIGHT)
 
         # --- SETUP CONTENT FOR TABS ---
         self.canvas_general = self.create_scrollable_tab(self.tab_general, "general")
         self.canvas_tiktok = self.create_scrollable_tab(self.tab_tiktok, "tiktok")
-        # Twitch vorerst leer / Platzhalter
-        tk.Label(self.tab_twitch, text="TWITCH MODULE COMING SOON", font=("Impact", 24),
-                 bg=Style.BACKGROUND, fg="#333").pack(expand=True)
+        self.canvas_twitch = self.create_scrollable_tab(self.tab_twitch, "twitch")  # Scrollbarer Twitch Tab
 
         # --- POPULATE TIKTOK TAB ---
-        # 1. Likes
         self.cards_tiktok.append(DashboardCard(
             self.canvas_tiktok, "LIKES",
             [("Challenge Text", "like_overlay/index.html"), ("Progress Bar", "like_progress_bar/index.html")],
             settings_func=self.open_like_challenge_settings_window,
             test_func=self.test_likes_action, test_label="TEST +100", info_key="LIKES"))
 
-        # 2. Subathon (getrennt von Timer)
         self.cards_tiktok.append(DashboardCard(
             self.canvas_tiktok, "SUBATHON TRIGGER",
             [("Subathon Info", "subathon_overlay/index.html")],
             settings_func=self.open_subathon_settings_window,
             info_key="SUBATHON"))
 
+        # --- POPULATE TWITCH TAB ---
+        # Währungssystem
+        DashboardCard(
+            self.canvas_twitch, "TWITCH WÄHRUNG",
+            [("Commands: !score, !send", "")],  # Kein Web-Link nötig vorerst
+            settings_func=self.open_currency_settings,
+            info_key="CURRENCY"
+        ).pack(padx=25, pady=30, anchor="nw")  # Direkt packen da nur 1 Item bisher
+
         # --- POPULATE GENERAL TAB ---
-        # 1. Timer & Gambit (ohne Subathon)
         self.cards_general.append(DashboardCard(
             self.canvas_general, "TIMER & GAMBIT",
             [("Timer Overlay", "timer_overlay/index.html"),
@@ -311,7 +322,6 @@ class StreamForgeGUI:
                             ("RESET", lambda: self.control_timer("reset"), Style.DANGER),
                             ("GAMBIT", self.test_gambit_action, "#d4af37")]))
 
-        # 2. Wishes
         self.cards_general.append(DashboardCard(
             self.canvas_general, "KILLER WISHES",
             [("Wishlist Overlay", "killer_wishes/index.html"), ("Place Overlay (!place)", "place_overlay/index.html")],
@@ -319,72 +329,71 @@ class StreamForgeGUI:
             custom_buttons=[("ADD +1", self.test_wish_action, Style.ACCENT_PURPLE),
                             ("CHECK PLACE", self.test_place_action, Style.ACCENT_BLUE)]))
 
-        # 3. Commands
         self.cards_general.append(DashboardCard(
             self.canvas_general, "COMMANDS",
             [("Media Overlay", "commands/index.html")],
             settings_func=self.open_commands_settings_window,
             test_func=self.test_command_action, test_label="FIRE SEQUENZ", info_key="COMMANDS"))
 
-        # Initial Layout Calculation
         self.tab_general.bind("<Configure>", lambda e: self.on_resize(e, self.canvas_general, self.cards_general,
                                                                       self.windows_general))
         self.tab_tiktok.bind("<Configure>",
                              lambda e: self.on_resize(e, self.canvas_tiktok, self.cards_tiktok, self.windows_tiktok))
 
     def create_scrollable_tab(self, parent_frame, tag):
-        """Erstellt einen Scrollbaren Canvas in einem Tab-Frame."""
         canvas = tk.Canvas(parent_frame, bg=Style.BACKGROUND, highlightthickness=0)
         scrollbar = tk.Scrollbar(parent_frame, orient="vertical", command=canvas.yview)
         canvas.configure(yscrollcommand=scrollbar.set)
-
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
-        # Mousewheel nur binden, wenn Maus über diesem Tab ist
         canvas.bind("<Enter>", lambda _: canvas.bind_all("<MouseWheel>", lambda e: self._on_mousewheel(e, canvas)))
         canvas.bind("<Leave>", lambda _: canvas.unbind_all("<MouseWheel>"))
-
         return canvas
 
-    # --- STATUS LOOP ---
+    # --- STATUS LOOP (NEU MIT TWITCH) ---
     def update_status_loop(self):
-        """Prüft jede Sekunde den TikTok Status und aktualisiert die LED."""
-        tt_color = "#444444"  # Grau (Initial/Unbekannt)
-
+        # 1. TikTok Status
+        tt_color = "#444444"
         if hasattr(like_service_instance, 'api_client') and like_service_instance.api_client:
             if like_service_instance.api_client.is_connected:
-                tt_color = Style.SUCCESS  # Grün
+                tt_color = Style.SUCCESS
             else:
-                tt_color = Style.DANGER  # Rot
-
+                tt_color = Style.DANGER
         self.tt_canvas.itemconfig(self.tt_indicator, fill=tt_color)
+
+        # 2. Twitch Status
+        tw_color = "#444444"
+        try:
+            ts = twitch_service_instance.get_status()
+            if ts.get("connected"):
+                tw_color = "#9146FF"  # Twitch Purple
+            else:
+                tw_color = "#444444"
+        except:
+            pass
+        self.tw_canvas.itemconfig(self.tw_indicator, fill=tw_color)
+
         self.root.after(1000, self.update_status_loop)
 
-    # --- GUI RESIZE LOGIC ---
     def on_resize(self, event, canvas, cards, windows_list):
         w = event.width
-        if w < 10: return  # Verhindert Fehler beim Start
+        if w < 10: return
         card_w, card_h, gap = 280, 220, 25
         cols = max(1, (w - gap) // (card_w + gap))
-
         for win in windows_list: canvas.delete(win)
         windows_list.clear()
-
         start_x = (w - (cols * card_w + (cols - 1) * gap)) // 2
-
         for i, card in enumerate(cards):
             r, c = divmod(i, cols)
             x = start_x + c * (card_w + gap)
             y = 30 + r * (card_h + gap)
             windows_list.append(canvas.create_window(x, y, window=card, anchor="nw"))
-
         canvas.configure(scrollregion=(0, 0, w, 30 + (len(cards) // cols + 1) * (card_h + gap) + 50))
 
     def _on_mousewheel(self, event, canvas):
         canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
 
-    # --- ACTIONS (Unverändert) ---
+    # --- ACTIONS ---
     def test_gambit_action(self):
         if self.is_server_running[0]:
             requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/events/gambler")
@@ -448,6 +457,10 @@ class StreamForgeGUI:
     def open_commands_settings_window(self):
         CommandsSettingsWindow(self.root)
 
+    # NEU: Währungseinstellungen
+    def open_currency_settings(self):
+        CurrencySettingsWindow(self.root)
+
     def start_webserver(self):
         if self.is_server_running[0]: return
 
@@ -480,65 +493,109 @@ class StreamForgeGUI:
         self.root.mainloop()
 
 
+# --- GLOBAL SETTINGS WINDOW (MIT STATUS UPDATE FIX) ---
 class GlobalSettingsWindow(tk.Toplevel):
     def __init__(self, master):
         super().__init__(master)
-        self.title("Global Settings & API")
-        self.geometry("400x350")
+        self.title("Global Settings & Accounts")
+        self.geometry("500x650")
         self.configure(bg=Style.BACKGROUND)
-        x = master.winfo_x() + 100
-        y = master.winfo_y() + 100
-        self.geometry(f"+{x}+{y}")
 
-        # --- TIKTOK USERNAME ---
-        tk.Label(self, text="TikTok Username (ohne @):", bg=Style.BACKGROUND, fg="white",
-                 font=("Arial", 12, "bold")).pack(pady=(20, 5))
-        self.uv = tk.StringVar()
+        self.update_idletasks()
+        w, h = self.winfo_width(), self.winfo_height()
+        x = master.winfo_x() + (master.winfo_width() // 2) - (w // 2)
+        y = master.winfo_y() + (master.winfo_height() // 2) - (h // 2)
+        self.geometry(f'+{x}+{y}')
 
-        # Einstellungen laden
-        self.current_settings = like_service_instance.settings_manager.load_settings()
+        self.settings_mgr = like_service_instance.settings_manager
+        self.current_settings = self.settings_mgr.load_settings()
+
+        notebook = ttk.Notebook(self)
+        notebook.pack(fill='both', expand=True, padx=10, pady=10)
+
+        self.tab_tiktok = tk.Frame(notebook, bg=Style.BACKGROUND)
+        self.tab_twitch = tk.Frame(notebook, bg=Style.BACKGROUND)
+
+        notebook.add(self.tab_tiktok, text="TikTok Live")
+        notebook.add(self.tab_twitch, text="Twitch Bot")
+
+        self._build_tiktok_tab()
+        self._build_twitch_tab()
+
+    def _build_tiktok_tab(self):
+        f = self.tab_tiktok
+        tk.Label(f, text="TikTok Konfiguration", bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE,
+                 font=("Segoe UI", 12, "bold")).pack(pady=20)
+        tk.Label(f, text="Username:", bg=Style.BACKGROUND, fg="white").pack(anchor='w', padx=20)
+        self.tt_user = tk.Entry(f, font=("Segoe UI", 10), bg="#333", fg="white", relief=tk.FLAT)
+        self.tt_user.insert(0, self.current_settings.get("tiktok_unique_id", ""))
+        self.tt_user.pack(fill='x', padx=20, pady=5)
+        tk.Button(f, text="💾 TikTok Speichern", command=self.save_tiktok, bg=Style.SUCCESS, fg="white",
+                  relief=tk.FLAT).pack(pady=20, fill='x', padx=20)
+
+    def _build_twitch_tab(self):
+        f = self.tab_twitch
+        tk.Label(f, text="Twitch Authentifizierung", bg=Style.BACKGROUND, fg="#9146FF",
+                 font=("Segoe UI", 12, "bold")).pack(pady=20)
+
+        info = ("1. Erstelle eine App auf dev.twitch.tv (Name: StreamForge).\n"
+                "2. Setze Redirect URI auf: http://localhost:5000/auth/twitch/callback\n"
+                "3. Kopiere die Client ID hier rein.")
+        tk.Label(f, text=info, bg=Style.BACKGROUND, fg="#aaa", justify="left").pack(pady=(0, 15))
+
+        tk.Label(f, text="Client ID:", bg=Style.BACKGROUND, fg="white").pack(anchor='w', padx=20)
+        self.client_id_var = tk.StringVar(value=self.current_settings.get("twitch_client_id", ""))
+        tk.Entry(f, textvariable=self.client_id_var, bg="#333", fg="white", relief=tk.FLAT).pack(fill='x', padx=20,
+                                                                                                 pady=5)
+
+        tk.Button(f, text="🔑 Login mit Twitch", command=self.do_twitch_login,
+                  bg="#9146FF", fg="white", font=("Segoe UI", 10, "bold"), relief=tk.FLAT).pack(pady=15, fill='x',
+                                                                                                padx=20)
+
+        # STATUS LABEL (LIVE)
+        self.status_frame = tk.Frame(f, bg=Style.BACKGROUND, highlightbackground="#333", highlightthickness=1)
+        self.status_frame.pack(fill='x', padx=20, pady=10)
+
+        self.status_lbl = tk.Label(self.status_frame, text="Lade Status...", bg=Style.BACKGROUND, fg="#aaa",
+                                   font=("Segoe UI", 10))
+        self.status_lbl.pack(pady=10)
+
+        # Startet den Loop, der alle 1s den Status prüft
+        self.update_status_loop()
+
+    def update_status_loop(self):
+        if not self.winfo_exists(): return
 
         try:
-            self.uv.set(self.current_settings.get("tiktok_unique_id", ""))
-        except:
-            pass
+            status = twitch_service_instance.get_status()
+            if status.get("connected"):
+                self.status_lbl.config(text=f"✅ VERBUNDEN als: {status.get('username')}", fg=Style.SUCCESS)
+            else:
+                self.status_lbl.config(text="❌ NICHT VERBUNDEN", fg=Style.DANGER)
+        except Exception as e:
+            # Fehler abfangen, aber GUI nicht crashen lassen
+            self.status_lbl.config(text="⚠️ Service lädt...", fg="#ffaa00")
 
-        tk.Entry(self, textvariable=self.uv, font=("Arial", 12), bg="#333", fg="white", insertbackground="white",
-                 relief=tk.FLAT, justify='center').pack(pady=5, padx=40, fill=tk.X, ipady=5)
+        self.after(1000, self.update_status_loop)
 
-        # --- EULER KEY ---
-        tk.Label(self, text="Euler Key (Optional):", bg=Style.BACKGROUND, fg="white",
-                 font=("Arial", 12, "bold")).pack(pady=(20, 5))
-        self.euler_key_var = tk.StringVar()
-        try:
-            self.euler_key_var.set(self.current_settings.get("euler_key", ""))
-        except:
-            pass
+    def save_tiktok(self):
+        self.current_settings["tiktok_unique_id"] = self.tt_user.get()
+        self.settings_mgr.save_settings(self.current_settings)
+        like_service_instance.update_and_restart(self.tt_user.get())
+        show_toast(self.master, "TikTok gespeichert!")
 
-        # Passwort-Feld für den Key
-        tk.Entry(self, textvariable=self.euler_key_var, font=("Arial", 12), bg="#333", fg="white",
-                 insertbackground="white",
-                 relief=tk.FLAT, justify='center', show="*").pack(pady=5, padx=40, fill=tk.X, ipady=5)
+    def do_twitch_login(self):
+        cid = self.client_id_var.get().strip()
+        if not cid:
+            messagebox.showerror("Fehler", "Bitte Client ID eingeben!")
+            return
+        self.current_settings["twitch_client_id"] = cid
+        self.settings_mgr.save_settings(self.current_settings)
 
-        tk.Label(self, text="(Speichern startet Verbindung neu)", bg=Style.BACKGROUND, fg="#666",
-                 font=("Arial", 8)).pack(pady=(20, 5))
+        redirect = "http://localhost:5000/auth/twitch/callback"
+        scope = "chat:read+chat:edit"
+        url = (f"https://id.twitch.tv/oauth2/authorize?response_type=token"
+               f"&client_id={cid}&redirect_uri={redirect}&scope={scope}")
 
-        tk.Button(self, text="VERBINDEN & SPEICHERN", command=self.save, bg=Style.SUCCESS, fg="white", relief=tk.FLAT,
-                  font=("Arial", 10, "bold")).pack(pady=20, ipadx=20, ipady=5)
-
-    def save(self):
-        tiktok_name = self.uv.get().strip()
-        euler_key = self.euler_key_var.get().strip()
-
-        if tiktok_name:
-            # Speichern
-            self.current_settings["tiktok_unique_id"] = tiktok_name
-            self.current_settings["euler_key"] = euler_key
-            like_service_instance.settings_manager.save_settings(self.current_settings)
-
-            # Restart
-            like_service_instance.update_and_restart(tiktok_name)
-            show_toast(self.master, f"Gespeichert! Verbinde zu {tiktok_name}...")
-            self.destroy()
-        else:
-            messagebox.showwarning("Fehler", "Bitte Username eingeben!")
+        webbrowser.open(url)
+        show_toast(self.master, "Browser geöffnet! Bitte einloggen.")

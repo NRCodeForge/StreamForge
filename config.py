@@ -51,22 +51,19 @@ def get_persistent_path(relative_path):
 DATABASE_NAME = 'database.db'
 
 # --- LOGIK-ÄNDERUNG: DATENBANK IM ELTERNVERZEICHNIS ---
-# 1. Bestimme das aktuelle Verzeichnis der Anwendung (wo die EXE/das Skript liegt)
 if getattr(sys, 'frozen', False):
     _app_dir = os.path.dirname(sys.executable)
 else:
     _app_dir = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))
 
-# 2. Gehe einen Ordner nach oben (Parent Directory)
 _parent_dir = os.path.dirname(_app_dir)
-
-# 3. Setze den Datenbankpfad auf ../killerwuensche.db
 DATABASE_PATH = os.path.join(_parent_dir, DATABASE_NAME)
 
-
-# Logs bleiben im Anwendungs-Ordner (optional änderbar, falls gewünscht)
+APP_VERSION = "v2.13"
+# Logs
 LOG_FILE_SERVER = get_persistent_path('server.log')
 LOG_FILE_WISHES = get_persistent_path('wishes.log')
+LOG_FILE_TWITCH = get_persistent_path('twitch.log') # NEU
 
 BASE_HOST = '127.0.0.1'
 BASE_PORT = 5000

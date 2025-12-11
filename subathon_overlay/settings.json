@@ -72,5 +72,13 @@
     "duration_freezer": "180",
     "duration_warp": "60",
     "duration_blind": "120",
-    "duration_hype": "300"
+    "duration_hype": "300",
+    "twitch_msg_value": "0.1",
+    "twitch_msg_active": true,
+    "twitch_sub_value": "180",
+    "twitch_sub_active": true,
+    "twitch_gift_value": "180",
+    "twitch_gift_active": true,
+    "twitch_bits_value": "0.4",
+    "twitch_bits_active": true
 }

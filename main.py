@@ -34,6 +34,18 @@ if __name__ == '__main__':
     except Exception as e:
         server_log.error(f"FATAL: Konnte TikTok Service nicht starten: {e}")
         print(f"ERROR: {e}")
+     # Twitch Auto-Start
+    from services.service_provider import twitch_service_instance
+    from external.settings_manager import SettingsManager
+
+    try:
+        sm = SettingsManager("settings.json")  # Pfad prüfen
+        s = sm.load_settings()
+        if s.get("twitch_token") and s.get("twitch_username"):
+            print(f">>> Starte Twitch Bot als {s['twitch_username']}...")
+        twitch_service_instance.update_credentials(s['twitch_username'], s['twitch_token'])
+    except Exception as e:
+        print(f"Twitch Autostart Fehler: {e}")
 
     # 3. GUI
     try:

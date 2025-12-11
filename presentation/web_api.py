@@ -1,23 +1,112 @@
-from flask import Flask, jsonify, send_from_directory, request
+from flask import Flask, jsonify, send_from_directory, request, render_template_string
 import os
 
-# Importiere Service Layer (NEUER WEG)
+# Importiere Service Layer
 from services.service_provider import (
     wish_service_instance,
     like_service_instance,
     subathon_service_instance,
-    command_service_instance # NEU
+    command_service_instance,
+    twitch_service_instance  # WICHTIG: Auch den Twitch Service importieren
 )
 
 # Importiere Infrastruktur
 from config import (
     get_path, BASE_HOST, BASE_PORT, API_ROOT,
     WISHES_ENDPOINT, NEXT_WISH_ENDPOINT, RESET_WISHES_ENDPOINT,
-    LIKE_CHALLENGE_ENDPOINT, COMMANDS_ENDPOINT, COMMANDS_TRIGGER_ENDPOINT # NEU
+    LIKE_CHALLENGE_ENDPOINT, COMMANDS_ENDPOINT, COMMANDS_TRIGGER_ENDPOINT
 )
 from utils import server_log
 
 app = Flask(__name__)
+
+
+# --- TWITCH AUTH CALLBACK (NEU & KORRIGIERT) ---
+@app.route('/auth/twitch/callback')
+def twitch_callback():
+    """
+    Twitch leitet hierher um. Das Token steht im URL Hash (#).
+    Wir senden eine kleine HTML-Seite, die das Token per JS extrahiert und an /save sendet.
+    """
+    return render_template_string("""
+    <html>
+        <head>
+            <title>Authorizing...</title>
+            <style>body { font-family: sans-serif; background: #1a1a1a; color: white; text-align: center; padding-top: 50px; }</style>
+        </head>
+        <body>
+            <h1>StreamForge: Authorizing...</h1>
+            <p id="status">Verarbeite Token...</p>
+            <script>
+                // Hash auslesen (#access_token=...&scope=...)
+                const hash = window.location.hash.substring(1); 
+                const params = new URLSearchParams(hash);
+                const token = params.get('access_token');
+
+                if (token) {
+                    document.getElementById("status").innerText = "Token gefunden, speichere...";
+                    fetch('/api/v1/auth/twitch/save', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({access_token: token})
+                    }).then(res => res.json()).then(data => {
+                        if(data.status === "ok") {
+                            document.body.innerHTML = "<h1>✅ Erfolgreich verbunden!</h1><p>Verbunden als: " + data.user + "</p><p>Du kannst dieses Fenster schließen.</p>";
+                        } else {
+                            document.body.innerHTML = "<h1>❌ Fehler beim Speichern.</h1><p>" + (data.message || "Unbekannter Fehler") + "</p>";
+                        }
+                    }).catch(err => {
+                        document.body.innerHTML = "<h1>❌ Netzwerkfehler.</h1><p>" + err + "</p>";
+                    });
+                } else {
+                    document.body.innerHTML = "<h1>❌ Kein Token gefunden.</h1><p>Bitte versuche den Login erneut.</p>";
+                }
+            </script>
+        </body>
+    </html>
+    """)
+
+
+@app.route('/api/v1/auth/twitch/save', methods=['POST'])
+def save_twitch_token():
+    data = request.json
+    token = data.get('access_token')
+    if token:
+        # 1. User Info von Twitch holen, um den Namen zu bekommen
+        import requests
+
+        # Versuche Client-ID aus Settings zu laden
+        settings = like_service_instance.settings_manager.load_settings()
+        client_id = settings.get("twitch_client_id", "")
+
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "Client-Id": client_id
+        }
+        try:
+            r = requests.get("https://api.twitch.tv/helix/users", headers=headers)
+            if r.status_code == 200:
+                user_data = r.json()['data'][0]
+                username = user_data['login']
+
+                # 2. Speichern & Service starten
+                settings["twitch_token"] = token
+                settings["twitch_username"] = username
+                like_service_instance.settings_manager.save_settings(settings)
+
+                # Service updaten
+                twitch_service_instance.update_credentials(username, token)
+
+                return jsonify({"status": "ok", "user": username})
+            else:
+                server_log.error(f"Twitch API Fehler: {r.text}")
+                return jsonify({"status": "error", "message": "Twitch API validierung fehlgeschlagen"}), 400
+        except Exception as e:
+            server_log.error(f"Twitch Validation Error: {e}")
+            return jsonify({"status": "error", "message": str(e)}), 500
+
+    return jsonify({"status": "error", "message": "Kein Token"}), 400
+
 
 # --- Wishlist API Endpunkte ---
 @app.route(WISHES_ENDPOINT, methods=['GET'])
@@ -29,15 +118,16 @@ def get_killer_wishes_data():
         server_log.error(f"Fehler beim Abrufen der Wünsche: {e}")
         return jsonify({'error': 'Fehler beim Abrufen der Wünsche.'}), 500
 
+
 @app.route(NEXT_WISH_ENDPOINT, methods=['POST'])
 def next_killer():
     try:
-        # HINWEIS: Hier war deine Löschlogik. Stelle sicher, dass wish_service_instance.advance_offset() das Löschen korrekt durchführt.
         new_offset = wish_service_instance.advance_offset()
         return jsonify({'message': 'Offset aktualisiert', 'new_offset': new_offset})
     except Exception as e:
         server_log.error(f"Fehler beim Weiterschalten des Offsets: {e}")
         return jsonify({'error': 'Fehler beim Aktualisieren des Offsets.'}), 500
+
 
 @app.route(RESET_WISHES_ENDPOINT, methods=['POST'])
 def reset_database():
@@ -47,6 +137,7 @@ def reset_database():
     except Exception as e:
         server_log.error(f"Datenbank-Fehler beim Zurücksetzen: {e}")
         return jsonify({'error': 'Fehler beim Zurücksetzen der Datenbank.'}), 500
+
 
 @app.route(WISHES_ENDPOINT, methods=['POST'])
 def add_killerwunsch():
@@ -75,8 +166,8 @@ def trigger_place_check():
     if place:
         return jsonify({'message': f'User {user_name} ist auf Platz {place}', 'place': place})
     else:
-        # Auch wenn nicht gefunden, 200 OK damit der Client bescheid weiß, oder 404
         return jsonify({'message': 'User nicht gefunden', 'place': -1}), 404
+
 
 # --- Like Challenge API Endpunkt ---
 @app.route(LIKE_CHALLENGE_ENDPOINT, methods=['GET'])
@@ -88,10 +179,10 @@ def get_like_challenge_data():
         server_log.error(f"Like Challenge Fehler: {e}")
         return jsonify({"error": str(e)}), 500
 
-# --- COMMANDS API (MODIFIZIERT) ---
+
+# --- COMMANDS API ---
 @app.route(COMMANDS_ENDPOINT, methods=['GET'])
 def get_commands_data():
-    """API-Endpunkt, der den *aktuell aktiven* Command zurückgibt (aus active.json)."""
     try:
         active_command = command_service_instance.get_active_command()
         return jsonify(active_command)
@@ -99,46 +190,41 @@ def get_commands_data():
         server_log.error(f"Fehler beim Abrufen des aktiven Commands: {e}")
         return jsonify({'error': 'Fehler beim Abrufen des aktiven Commands.'}), 500
 
+
 @app.route(COMMANDS_TRIGGER_ENDPOINT, methods=['POST'])
 def trigger_command():
-    """(Webhook) Startet die *gesamte* Command-Sequenz."""
     try:
-        command_service_instance.trigger_command_loop() # Ruft die Loop-Funktion auf
+        command_service_instance.trigger_command_loop()
         return jsonify({'message': 'Command-Sequenz erfolgreich gestartet.'}), 200
     except Exception as e:
         server_log.error(f"Fehler beim Triggern der Command-Sequenz: {e}")
         return jsonify({'error': str(e)}), 500
 
+
+# --- SUBATHON & GAMBIT ---
 @app.route('/api/v1/events/gambler/next', methods=['GET'])
 def get_next_gambit():
-    """
-    Holt das nächste Gambit-Event aus der Queue und entfernt es dort.
-    Gibt {} zurück, wenn die Queue leer ist.
-    """
     event = subathon_service_instance.pop_next_gambit_event()
     if event:
         return jsonify(event)
     else:
         return jsonify({})
+
+
 @app.route('/api/v1/gambit/options', methods=['GET'])
 def get_gambit_options():
-    """Gibt die Liste der möglichen Gambit-Ergebnisse zurück."""
     try:
         options = subathon_service_instance.get_gambit_options()
-        # Nur Texte zurückgeben für das Frontend-Rad
         texts = [o.get("text", "???") for o in options]
         return jsonify(texts)
-    except: return jsonify([])
+    except:
+        return jsonify([])
+
+
 @app.route('/api/v1/timer/streamerbot', methods=['POST'])
 def trigger_streamerbot_event():
-    """
-    Endpunkt für Streamer.bot.
-    Beispiel Body: { "event": "twitch_sub", "amount": 1 }
-    Oder: { "event": "add", "seconds": 300 }
-    """
     if not request.json:
         return jsonify({'error': 'JSON Body fehlt'}), 400
-
     try:
         subathon_service_instance.handle_streamerbot_event(request.json)
         return jsonify({'message': 'Event verarbeitet'}), 200
@@ -149,95 +235,101 @@ def trigger_streamerbot_event():
 
 @app.route('/api/v1/timer/control', methods=['POST'])
 def timer_control():
-    """
-    Steuert den Timer.
-    Body: { "action": "start" | "pause" | "reset" }
-    """
     if not request.json or 'action' not in request.json:
         return jsonify({'error': 'Action fehlt'}), 400
-
     action = request.json['action']
-
     if action == "start":
         subathon_service_instance.set_paused(False)
     elif action == "pause":
         subathon_service_instance.set_paused(True)
     elif action == "reset":
         subathon_service_instance.reset_timer()
-
     return jsonify({'message': f'Timer {action} ausgeführt'}), 200
+
 
 @app.route('/api/v1/timer/state', methods=['GET'])
 def get_timer_state():
-    """Gibt die aktuelle Zeit für das Overlay zurück."""
     return jsonify(subathon_service_instance.get_state())
+
+
 @app.route('/api/v1/like_challenge/test', methods=['POST'])
 def trigger_test_likes():
     try:
-        # Füge pauschal z.B. 100 Likes hinzu (oder einen Wert aus dem Request)
         like_service_instance.add_test_likes(100)
         return jsonify({'message': '100 Test-Likes hinzugefügt.'}), 200
     except Exception as e:
         server_log.error(f"Test-Like Fehler: {e}")
         return jsonify({'error': str(e)}), 500
 
-# --- Statische Datei-Endpunkte (unverändert) ---
 
+# --- EVENTS ---
+@app.route('/api/v1/events/time_warp', methods=['POST'])
+def trigger_time_warp():
+    subathon_service_instance.trigger_time_warp(60)
+    return jsonify({'message': 'Time Warp gestartet'}), 200
+
+
+@app.route('/api/v1/events/blackout', methods=['POST'])
+def trigger_blackout():
+    subathon_service_instance.trigger_blackout(120)
+    return jsonify({'message': 'Blackout gestartet'}), 200
+
+
+@app.route('/api/v1/events/gambler', methods=['POST'])
+def trigger_gambler():
+    result = subathon_service_instance.trigger_gambler()
+    return jsonify({'message': f'Gambler Ergebnis: {result}'}), 200
+
+
+@app.route('/api/v1/events/freezer', methods=['POST'])
+def trigger_freezer():
+    subathon_service_instance.trigger_freezer(180)
+    return jsonify({'message': 'Freezer gestartet'}), 200
+
+
+# --- Statische Datei-Endpunkte ---
 @app.route('/like_progress_bar/<path:path>')
 def serve_like_progress_bar(path):
     directory = get_path('like_progress_bar')
     return send_from_directory(directory, path)
+
+
 @app.route('/killer_wishes/<path:path>')
 def serve_killer_wishes(path):
     directory = get_path('killer_wishes')
     return send_from_directory(directory, path)
+
 
 @app.route('/timer_overlay/<path:path>')
 def timer_overlay_index(path):
     directory = get_path('timer_overlay')
     return send_from_directory(directory, path)
 
+
 @app.route('/subathon_overlay/<path:path>')
 def serve_subathon_overlay(path):
     directory = get_path('subathon_overlay')
     return send_from_directory(directory, path)
 
+
 @app.route('/like_overlay/<path:path>')
 def serve_like_overlay(path):
     directory = get_path('like_overlay')
     return send_from_directory(directory, path)
-@app.route('/api/v1/events/time_warp', methods=['POST'])
-def trigger_time_warp():
-    """Trigger für Event 1: Zeitraffer"""
-    subathon_service_instance.trigger_time_warp(60)
-    return jsonify({'message': 'Time Warp gestartet'}), 200
 
-@app.route('/api/v1/events/blackout', methods=['POST'])
-def trigger_blackout():
-    """Trigger für Event 2: Blackout"""
-    subathon_service_instance.trigger_blackout(120)
-    return jsonify({'message': 'Blackout gestartet'}), 200
 
-@app.route('/api/v1/events/gambler', methods=['POST'])
-def trigger_gambler():
-    """Trigger für Event 3: Russisch Roulette"""
-    result = subathon_service_instance.trigger_gambler()
-    return jsonify({'message': f'Gambler Ergebnis: {result}'}), 200
-
-@app.route('/api/v1/events/freezer', methods=['POST'])
-def trigger_freezer():
-    """Trigger für Event 4: Freezer"""
-    subathon_service_instance.trigger_freezer(180)
-    return jsonify({'message': 'Freezer gestartet'}), 200
-# NEU: Route für /commands/
 @app.route('/commands/<path:path>')
 def serve_commands_overlay(path):
     directory = get_path('commands_overlay')
     return send_from_directory(directory, path)
+
+
 @app.route('/place_overlay/<path:path>')
 def serve_place_overlay(path):
     directory = get_path('place_overlay')
     return send_from_directory(directory, path)
+
+
 @app.route('/gambler_overlay/<path:path>')
 def serve_gambler_overlay(path):
     directory = get_path('gambler_overlay')

@@ -10,6 +10,16 @@
         80000,
         100000
     ],
-    "tiktok_unique_id": "blackbraindev",
-    "euler_key": "euler_YTQzYjQ5YzgxYjg2NjNkZGM1NWQ3NDU0YWYyMzcyZDUwZTJjYzlkNjBmZmY1M2Q1ZTBkNmQ1"
+    "tiktok_unique_id": "dbdstation",
+    "euler_key": "euler_YTQzYjQ5YzgxYjg2NjNkZGM1NWQ3NDU0YWYyMzcyZDUwZTJjYzlkNjBmZmY1M2Q1ZTBkNmQ1",
+    "twitch_client_id": "0j9rhxzwiibho0c4hc1rnki8jm0kdb",
+    "twitch_token": "gnhl4ehft2f4mbs5f0tv5alwmkp4st",
+    "twitch_username": "scriptedbynic",
+    "currency_name": "Whieties",
+    "currency_per_message": "1",
+    "currency_per_bit": "40",
+    "currency_per_sub": "500",
+    "currency_per_minute": "1",
+    "currency_cmd_score_active": true,
+    "currency_cmd_send_active": false
 }
