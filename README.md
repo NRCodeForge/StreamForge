@@ -8,13 +8,13 @@ Spec run task: pyinstaller StreamForge.spec --clean --noconfirm
 
 ---
 # Todo´s
-- nothing
+- Blackout verbessen
 - 
 # on approval
-- nothing
+- Steve
 - 
 # On Check
-- Steve
+- 
 - 
  ...
 

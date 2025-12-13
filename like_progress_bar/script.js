@@ -1,4 +1,4 @@
-const API_URL = '/api/v1/like_challenge';
+const API_URL = 'http://127.0.0.1:5000/api/v1/like_challenge';
 const percentageText = document.getElementById('percentage-text');
 const container = document.getElementById('bar-container');
 
@@ -8,7 +8,7 @@ let displayedPercent = 0;
 
 // --- EINSTELLUNGEN ---
 let roadSpeed = 3;       // Geschwindigkeit der Straße
-let scaleFactor = 1.0;   // ZURÜCK AUF ORIGINALGRÖSSE (1.0)
+let scaleFactor = 1.0;   // Originalgröße
 
 // --- API Polling ---
 async function fetchData() {
@@ -16,8 +16,9 @@ async function fetchData() {
         const response = await fetch(API_URL);
         const data = await response.json();
         if (!data.error) {
-            currentLikes = data.like_count;
-            currentGoal = data.current_goal;
+            // ANPASSUNG: Keys passend zum Python-Backend (current_likes, goal)
+            currentLikes = data.current_likes || 0;
+            currentGoal = data.goal || 1;
         }
     } catch (e) { console.error("API Error", e); }
 }
@@ -27,22 +28,24 @@ fetchData();
 // --- LOGGING ---
 setInterval(() => {
     const time = new Date().toLocaleTimeString();
-    console.log(`[${time}] Status-Check: ${currentLikes} Likes von ${currentGoal} (Ziel)`);
+    // Debug-Ausgabe in der Konsole
+    // console.log(`[${time}] Status-Check: ${currentLikes} Likes von ${currentGoal} (Ziel)`);
 }, 20000);
 
 
-// --- ROAD & SCRATCH ANIMATION ---
+// --- ROAD & SCRATCH ANIMATION (p5.js) ---
 
 let scratches = [];
 let roadOffset = 0;
 
 function setup() {
+  // Canvas an Container anpassen
   let w = container.offsetWidth;
   let h = container.offsetHeight;
   let cnv = createCanvas(w, h);
   cnv.parent('p5-canvas-container');
 
-  // Initial: Keine Kratzer oder nur wenige zufällige, damit es nicht leer aussieht
+  // Initial: Ein paar Kratzer, damit es nicht leer ist
   for(let i = 0; i < 50; i++) {
       spawnRoadScratch(random(-width, 0));
   }
@@ -51,14 +54,16 @@ function setup() {
 function draw() {
   clear();
 
-  // 1. Fortschritt berechnen
+  // 1. Fortschritt berechnen (Lerp für weiche Animation)
   let targetPercent = (currentLikes / currentGoal) * 100;
   if (targetPercent > 100) targetPercent = 100;
   displayedPercent = lerp(displayedPercent, targetPercent, 0.1);
 
-  if (percentageText) percentageText.innerText = Math.floor(displayedPercent) + "%";
+  if (percentageText) {
+      percentageText.innerText = Math.floor(displayedPercent) + "%";
+  }
 
-  // Die Position des roten Strichs auf dem Bildschirm
+  // Position des roten Strichs
   let progressX = map(displayedPercent, 0, 100, 0, width);
 
   // 2. Straße bewegen
@@ -81,35 +86,32 @@ function draw() {
   let gridSpacing = 40;
   let gridShift = roadOffset % gridSpacing;
 
-  // Gitterlinien
+  // Gitterlinien vertikal (bewegt)
   for (let x = -gridShift; x < width; x += gridSpacing) {
       line(x, 0, x, height);
   }
+  // Gitterlinien horizontal (statisch)
   for (let y = 0; y < height; y += 20) {
       line(0, y, width, y);
   }
 
-  // C) SPAWN LOGIK (NEU: Auf dem Strich!)
-  // Wir spawnen Kratzer genau an der aktuellen "Welt-Position" des roten Strichs.
-  // Welt-Position = Bildschirmposition (progressX) + Wie weit die Straße schon gefahren ist (roadOffset)
-
-  // Nur spawnen, wenn der Balken überhaupt sichtbar ist (> 1 Pixel)
+  // C) SPAWN LOGIK (Kratzer entstehen am Fortschrittsbalken)
+  // Nur spawnen, wenn der Balken sichtbar ist
   if (progressX > 1) {
-      let density = 2; // Anzahl pro Frame
+      let density = 2; // Kratzer pro Frame
       for(let k=0; k<density; k++) {
-          // Wir addieren roadOffset, damit der Kratzer an der Stelle auf der Straße "kleben" bleibt
-          // Random Y für die Höhe, Random Offset X für leichtes Streuen um den Strich herum
+          // Kratzer "kleben" auf der Straße (roadOffset addieren)
           let spawnWorldX = roadOffset + progressX + random(-5, 2);
           spawnRoadScratch(spawnWorldX);
       }
   }
 
-  // Update & Draw Scratches
+  // Kratzer zeichnen und verwalten
   for (let i = scratches.length - 1; i >= 0; i--) {
     scratches[i].update();
     scratches[i].display(roadOffset);
 
-    // Löschen wenn komplett verblasst oder weit links raus
+    // Löschen wenn unsichtbar oder aus dem Bild
     if (scratches[i].isDead(roadOffset)) {
         scratches.splice(i, 1);
     }
@@ -117,7 +119,7 @@ function draw() {
 
   drawingContext.restore();
 
-  // 3. Rote Linie (Spitze)
+  // 3. Rote Linie (Spitze des Balkens)
   if (displayedPercent > 0.5) {
       stroke(255, 0, 0);
       strokeWeight(2);
@@ -137,13 +139,12 @@ function spawnRoadScratch(worldX) {
     scratches.push(new RoadScratch(worldX, y));
 }
 
-// --- KLASSEN (Originalgrößen) ---
+// --- KLASSEN ---
 
 class RoadScratch {
   constructor(worldX, y) {
     this.worldX = worldX;
     this.y = y;
-    // Originalgröße: 15 bis 50
     this.len = random(15, 50);
     this.ang = random(TWO_PI);
     this.opacity = 255;
@@ -153,11 +154,11 @@ class RoadScratch {
 
   update() {
     let age = millis() - this.born;
-    // Sie verblassen und schrumpfen, während sie nach links wandern
+    // Verblassen und schrumpfen beim Nach-Links-Wandern
     this.opacity = map(age, 0, 4000, 255, 0);
-    this.len *= 0.98; // Schrumpfeffekt (Original war 0.99 oder 0.95)
+    this.len *= 0.98;
 
-    // Fragmente erzeugen
+    // Zufällig Fragmente abwerfen
     if (random(1) < 0.1 && this.opacity > 50) {
       let r = random(this.len);
       let fx = this.worldX + cos(this.ang) * r;
@@ -184,7 +185,7 @@ class RoadScratch {
     rotate(this.ang);
 
     stroke(200, 20, 20, this.opacity);
-    strokeWeight(1.5); // Originale Dicke
+    strokeWeight(1.5);
     line(0, 0, this.len, 0);
     pop();
 
@@ -201,13 +202,13 @@ class RoadFragment {
     this.dx = random(-1, 1);
     this.dy = random(-1, 1);
     this.opacity = 200;
-    this.size = random(1, 3); // Originalgröße
+    this.size = random(1, 3);
   }
 
   update() {
     this.worldX += this.dx;
     this.y += this.dy;
-    this.opacity -= 8; // Schnellerer Fade für Fragmente
+    this.opacity -= 8;
   }
 
   display(currentRoadOffset) {

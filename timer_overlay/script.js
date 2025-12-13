@@ -1,41 +1,32 @@
 const API_URL = '/api/v1/timer/state';
-const timerElement = document.getElementById('timer');
+const timerElement = document.getElementById('timer'); // Stelle sicher, dass du ein Element mit id="timer" in der HTML hast
 
-function updateTimer() {
-    fetch('/api/v1/timer/state')
-        .then(response => response.json())
-        .then(data => {
-            // Zeit formatieren (wie gehabt)
-            // ... (dein bestehender Code für h/m/s) ...
+async function updateTimer() {
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
 
-            const h = String(data.hours).padStart(2, '0');
-            const m = String(data.minutes).padStart(2, '0');
-            const s = String(data.seconds).padStart(2, '0');
+        // Zeit formatieren
+        const h = String(data.hours).padStart(2, '0');
+        const m = String(data.minutes).padStart(2, '0');
+        const s = String(data.seconds).padStart(2, '0');
 
-            document.getElementById('timer').innerText = `${h}:${m}:${s}`;
+        // Anzeige setzen
+        if (timerElement) {
+            timerElement.textContent = `${h}:${m}:${s}`;
 
-            // --- NEU: Event-Status prüfen ---
-            const container = document.body; // Oder dein Haupt-Div
+            // Klassen für Effekte hinzufügen (Hype Train, Frozen etc.)
+            document.body.classList.toggle('hype-mode', data.is_hype);
+            document.body.classList.toggle('frozen-mode', data.is_frozen);
+            document.body.classList.toggle('blind-mode', data.is_blind);
+            document.body.classList.toggle('paused', data.is_paused);
+        }
 
-            // Blackout / Blind Mode
-            if (data.is_blind) {
-                container.classList.add('blind-mode');
-            } else {
-                container.classList.remove('blind-mode');
-            }
-
-            // Optional: Farben ändern bei Hype oder Freezer
-            if (data.is_frozen) {
-                document.getElementById('timer').style.color = "#00ccff"; // Eisblau
-            } else if (data.is_hype) {
-                document.getElementById('timer').style.color = "#ffcc00"; // Gold
-            } else {
-                document.getElementById('timer').style.color = "white"; // Reset
-            }
-        })
-        .catch(err => console.error(err));
+    } catch (error) {
+        console.error("Timer API Fehler:", error);
+    }
 }
 
-// Jede Sekunde aktualisieren
-setInterval(updateTimer, 1000);
+// Schnell aktualisieren (jede Sekunde oder öfter für flüssige Anzeige)
+setInterval(updateTimer, 500);
 updateTimer();

@@ -33195,3 +33195,1068 @@ Traceback (most recent call last):
     self._ov.cancel()
     ~~~~~~~~~~~~~~~^^
 OSError: [WinError 6] Das Handle ist ungültig
+2025-12-13 18:44:48 [INFO] Pygame Mixer erfolgreich initialisiert.
+2025-12-13 18:44:48 [INFO] Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 18:44:48 [INFO] Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 18:44:48 [INFO] Starte TikTok-Verbindung zu @dbdstation...
+2025-12-13 18:44:48 [INFO] 🔑 Nutze Euler-Key: euler_ODBm...
+2025-12-13 18:44:48 [INFO] 🚀 API gestartet für: @dbdstation
+2025-12-13 18:44:48 [INFO] Twitch Auto-Login gefunden für: scriptedbynic
+2025-12-13 18:44:48 [INFO] Twitch Einstellungen gespeichert.
+2025-12-13 18:44:48 [INFO] Twitch Connected als scriptedbynic
+2025-12-13 18:44:49 [INFO] 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 18:44:49 [INFO] 🔄 [LOOP] Verbinde zu @dbdstation (Workaround aktiv)...
+2025-12-13 18:44:49 [INFO] Hotkey-Listener-Thread gestartet.
+2025-12-13 18:44:49 [INFO] Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 18:44:49 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-13 18:44:49 [INFO] [33mPress CTRL+C to quit[0m
+2025-12-13 18:44:50 [INFO] HTTP Request: GET https://www.tiktok.com/@dbdstation/live? "HTTP/1.1 200 OK"
+2025-12-13 18:44:50 [WARNING] ⚠️ Verbindung getrennt (TikTokLive v6.6.5 -> The requested TikTok LIVE user '@dbdstation' is offline.). Reconnect in 3s...
+2025-12-13 18:44:53 [INFO] 🔄 [LOOP] Verbinde zu @dbdstation (Workaround aktiv)...
+2025-12-13 18:44:54 [INFO] HTTP Request: GET https://www.tiktok.com/@dbdstation/live? "HTTP/1.1 200 OK"
+2025-12-13 18:44:54 [WARNING] ⚠️ Verbindung getrennt (TikTokLive v6.6.5 -> The requested TikTok LIVE user '@dbdstation' is offline.). Reconnect in 3s...
+2025-12-13 18:44:57 [INFO] 🔄 [LOOP] Verbinde zu @dbdstation (Workaround aktiv)...
+2025-12-13 18:44:58 [INFO] HTTP Request: GET https://www.tiktok.com/@dbdstation/live? "HTTP/1.1 200 OK"
+2025-12-13 18:44:58 [WARNING] ⚠️ Verbindung getrennt (TikTokLive v6.6.5 -> The requested TikTok LIVE user '@dbdstation' is offline.). Reconnect in 3s...
+2025-12-13 18:45:01 [INFO] 🛑 Stoppe System...
+2025-12-13 18:45:01 [INFO] 💾 [TIMER] Gespeichert. Likes: 0
+2025-12-13 18:45:02 [INFO] Starte TikTok-Verbindung zu @p33t25...
+2025-12-13 18:45:02 [INFO] 🔑 Nutze Euler-Key: euler_ODBm...
+2025-12-13 18:45:02 [INFO] 🚀 API gestartet für: @p33t25
+2025-12-13 18:45:02 [INFO] 🔄 [LOOP] Verbinde zu @p33t25 (Workaround aktiv)...
+2025-12-13 18:45:03 [INFO] 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 18:45:03 [INFO] 🛑 Stoppe System...
+2025-12-13 18:45:03 [INFO] 💾 [TIMER] Gespeichert. Likes: 0
+2025-12-13 18:45:03 [INFO] HTTP Request: GET https://www.tiktok.com/@p33t25/live? "HTTP/1.1 200 OK"
+2025-12-13 18:45:03 [INFO] HTTP Request: GET https://webcast.tiktok.com/webcast/room/check_alive/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-IE&browser_name=Mozilla&browser_online=true&browser_platform=Win32&browser_version=5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%3B%20rv%3A130.0%29%20Gecko%2F20100101%20Firefox%2F130.0&cookie_enabled=true&device_platform=web_pc&focus_state=true&from_page=&history_len=13&is_fullscreen=false&is_page_visible=true&screen_height=7680&screen_width=4320&tz_name=Europe/Dublin&channel=tiktok_web&data_collection_enabled=true&os=windows&priority_region=IE&region=IE&user_is_login=false&webcast_language=en&msToken=&referer=https://www.tiktok.com/@p33t25/live&root_referer=https://www.tiktok.com/@p33t25/live&device_id=24295260192494244179&room_id=7583395257074240278&room_ids=7583395257074240278 "HTTP/1.1 200 OK"
+2025-12-13 18:45:04 [INFO] Starte TikTok-Verbindung zu @p33t25...
+2025-12-13 18:45:04 [INFO] 🔑 Nutze Euler-Key: euler_ODBm...
+2025-12-13 18:45:04 [INFO] 🚀 API gestartet für: @p33t25
+2025-12-13 18:45:04 [INFO] 🔄 [LOOP] Verbinde zu @p33t25 (Workaround aktiv)...
+2025-12-13 18:45:05 [INFO] HTTP Request: GET https://www.tiktok.com/@p33t25/live? "HTTP/1.1 200 OK"
+2025-12-13 18:45:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:45:05 [INFO] 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 18:45:06 [INFO] HTTP Request: GET https://webcast.tiktok.com/webcast/room/check_alive/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-IE&browser_name=Mozilla&browser_online=true&browser_platform=Win32&browser_version=5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%3B%20rv%3A130.0%29%20Gecko%2F20100101%20Firefox%2F130.0&cookie_enabled=true&device_platform=web_pc&focus_state=true&from_page=&history_len=13&is_fullscreen=false&is_page_visible=true&screen_height=7680&screen_width=4320&tz_name=Europe/Dublin&channel=tiktok_web&data_collection_enabled=true&os=windows&priority_region=IE&region=IE&user_is_login=false&webcast_language=en&msToken=&referer=https://www.tiktok.com/@p33t25/live&root_referer=https://www.tiktok.com/@p33t25/live&device_id=30602060886988944550&room_id=7583395257074240278&room_ids=7583395257074240278 "HTTP/1.1 200 OK"
+2025-12-13 18:45:08 [INFO] HTTP Request: GET https://tiktok.eulerstream.com/webcast/fetch/?client=ttlive-python&room_id=7583395257074240278&user_agent=Mozilla%2F5.0+%28Windows+NT+10.0%3B+Win64%3B+x64%3B+rv%3A130.0%29+Gecko%2F20100101+Firefox%2F130.0&platform=web&client_enter=true "HTTP/1.1 200 OK"
+2025-12-13 18:45:08 [INFO] ✅ Verbunden mit @p33t25!
+2025-12-13 18:45:08 [INFO] 💬 p33t25: @Vanessa👀🤍 du hast soeben Level 47 erreicht!
+2025-12-13 18:45:08 [INFO] 💬 SCHILDMAID: ❤️❤️
+2025-12-13 18:45:08 [INFO] 💬 👀Bianca Christians👀: @Vanessa👀🤍 😍😍😍😍😍
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] 💬 bloddy_wolves_🦋FusselMaus🦋: Miau
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] 💬 Vanessa👀🤍: Danke🫶🏻👀
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] 💬 Kanarion: miau
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] 💬 p33t25: @Vanessa👀🤍 du hast soeben Level 47 erreicht!
+2025-12-13 18:45:08 [INFO] 💬 SCHILDMAID: ❤️❤️
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] 💬 👀Bianca Christians👀: @Vanessa👀🤍 😍😍😍😍😍
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] 💬 bloddy_wolves_🦋FusselMaus🦋: Miau
+2025-12-13 18:45:08 [INFO] 💬 Vanessa👀🤍: Danke🫶🏻👀
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] 💬 Kanarion: miau
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:11 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:12 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Wow Echt Mega 🦁♥️🤣🤣🤣
+2025-12-13 18:45:12 [INFO] 💬 👀Bianca Christians👀: Ein Baby miau 😍
+2025-12-13 18:45:12 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:12 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:12 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:12 [INFO] HTTP Request: GET https://tiktok.eulerstream.com/webcast/fetch/?client=ttlive-python&room_id=7583395257074240278&user_agent=Mozilla%2F5.0+%28Windows+NT+10.0%3B+Win64%3B+x64%3B+rv%3A130.0%29+Gecko%2F20100101+Firefox%2F130.0&platform=web&client_enter=true "HTTP/1.1 500 Internal Server Error"
+2025-12-13 18:45:13 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:13] "[36mGET /like_overlay/index.html HTTP/1.1[0m" 304 -
+2025-12-13 18:45:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:14] "[36mGET /like_overlay/style.css HTTP/1.1[0m" 304 -
+2025-12-13 18:45:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:14] "[36mGET /like_overlay/script.js HTTP/1.1[0m" 304 -
+2025-12-13 18:45:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:14] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:14] "[36mGET /like_overlay/index.html HTTP/1.1[0m" 304 -
+2025-12-13 18:45:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:14] "[36mGET /like_overlay/style.css HTTP/1.1[0m" 304 -
+2025-12-13 18:45:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:14] "[36mGET /like_overlay/script.js HTTP/1.1[0m" 304 -
+2025-12-13 18:45:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:14] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:14 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:15 [INFO] 💬 👀leni👀: wow😊
+2025-12-13 18:45:15 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:18 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:19 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:19] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:20 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:20] "[36mGET /like_overlay/style.css HTTP/1.1[0m" 304 -
+2025-12-13 18:45:21 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:22 [INFO] 💬 bloddy_wolves_🦋FusselMaus🦋: 👀👀👀👀
+2025-12-13 18:45:22 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:23 [INFO] ADD: +0.7s (Base:0.6599999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:24 [INFO] 💬 👀leni👀: 👀👀👀👀👀
+2025-12-13 18:45:24 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:24 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:24] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:25 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:28 [INFO] 💬 SCHILDMAID: 👀👀👀👀
+2025-12-13 18:45:28 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:28 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:30 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:30] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:31 [INFO] 💬 Kanarion: 👀
+2025-12-13 18:45:31 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Miau 🦁🤣😹
+2025-12-13 18:45:31 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:31 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:32 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:33 [INFO] 💬 Vanessa👀🤍: Kein Problem 🫶🏻👀
+2025-12-13 18:45:33 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:34 [INFO] 💾 [TIMER] Gespeichert. Likes: 5115
+2025-12-13 18:45:34 [INFO] 💬 Thomas Schefcheck: 💚💚💚💚💚💚💚💚💚🙉🙉🙉🙉🙉🙉🙉
+2025-12-13 18:45:34 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:35 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:35] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:35 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:36 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:38 [INFO] 💬 Vanessa👀🤍: Du hast es verdient 🫶🏻
+2025-12-13 18:45:38 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:39 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:39 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:39] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:41 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: 👀👀👀
+2025-12-13 18:45:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:42 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:43 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:44 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:44] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:46 [INFO] 💬 🇰🇿ДЕН 👻🇩🇪: 
+2025-12-13 18:45:46 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:46 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:47 [INFO] ADD: +0.7s (Base:0.6599999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:49 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:49] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:50 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:51 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:53 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:54 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:54 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:54] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:57 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:57] "[36mGET /like_overlay/index.html HTTP/1.1[0m" 304 -
+2025-12-13 18:45:57 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:57] "[36mGET /like_overlay/style.css HTTP/1.1[0m" 304 -
+2025-12-13 18:45:57 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:57] "[36mGET /like_overlay/script.js HTTP/1.1[0m" 304 -
+2025-12-13 18:45:57 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:57] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:45:57 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:45:58 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:58] "[36mGET /like_overlay/index.html HTTP/1.1[0m" 304 -
+2025-12-13 18:45:58 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:58] "[36mGET /like_overlay/style.css HTTP/1.1[0m" 304 -
+2025-12-13 18:45:58 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:58] "[36mGET /like_overlay/script.js HTTP/1.1[0m" 304 -
+2025-12-13 18:45:58 [INFO] 127.0.0.1 - - [13/Dec/2025 18:45:58] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:00 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:00 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:01 [INFO] 💬 👀Bianca Christians👀: Du freust dich wie ein kleines Baby 🤣🤣🤣
+2025-12-13 18:46:01 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:03 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:04 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:04] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:04 [INFO] 💾 [TIMER] Gespeichert. Likes: 5427
+2025-12-13 18:46:05 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:46:08 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:08 [INFO] 💬 Vanessa👀🤍: Habe es dir ja versprochen 🫶🏻
+2025-12-13 18:46:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:09 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:09] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:10 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:12 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:14 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:14] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:15 [INFO] 💬 bloddy_wolves_🦋FusselMaus🦋: Die Community ist nur so gut wie sein Streamer 🫶
+2025-12-13 18:46:15 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:15 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:17 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:19 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:19] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:19 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:20 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:23 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:24 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:24] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:26 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:26 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:29 [INFO] 💬 jens187: die schaut mit brille noch geiler aus 😅
+2025-12-13 18:46:29 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:29 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:29] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:29 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:30 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:33 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:34 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:34 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:34] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:34 [INFO] 💾 [TIMER] Gespeichert. Likes: 5848
+2025-12-13 18:46:35 [INFO] 💬 bloddy_wolves_🦋FusselMaus🦋: @👀Bianca Christians👀 das ist ja auch sein Herz Geschenk
+2025-12-13 18:46:35 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:36 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:38 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:39 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:39 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:39] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:41 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:42 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:44 [INFO] ADD: +0.5s (Base:0.48, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:44 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:44] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:44 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:48 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:49 [INFO] ADD: +119.6s (Base:119.60000000000001, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:49 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:49] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:50 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:52 [INFO] 💬 p33t25: @Vanessa👀🤍 du hast soeben Level 48 erreicht!
+2025-12-13 18:46:52 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:53 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:54 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:54] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:55 [INFO] ADD: +0.7s (Base:0.72, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:56 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:46:59 [INFO] 127.0.0.1 - - [13/Dec/2025 18:46:59] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:46:59 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:03 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:04 [INFO] 127.0.0.1 - - [13/Dec/2025 18:47:04] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:47:04 [INFO] 💾 [TIMER] Gespeichert. Likes: 6198
+2025-12-13 18:47:04 [INFO] 💬 jens187: 😏😏😏
+2025-12-13 18:47:04 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:47:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:47:06 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:07 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: 🤣😹
+2025-12-13 18:47:07 [INFO] 💬 Vanessa👀🤍: 😂👀
+2025-12-13 18:47:07 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:07 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:08 [INFO] ADD: +0.7s (Base:0.6599999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:09 [INFO] 127.0.0.1 - - [13/Dec/2025 18:47:09] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:47:11 [INFO] ADD: +5.0s (Base:5.0, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:13 [INFO] ADD: +39.6s (Base:39.6, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:13 [INFO] 127.0.0.1 - - [13/Dec/2025 18:47:13] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:47:19 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:20 [INFO] 127.0.0.1 - - [13/Dec/2025 18:47:20] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:47:21 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: 🤣
+2025-12-13 18:47:21 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:22 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:24 [INFO] 127.0.0.1 - - [13/Dec/2025 18:47:24] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:47:25 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:26 [INFO] ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:29 [INFO] 127.0.0.1 - - [13/Dec/2025 18:47:29] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:47:30 [INFO] 💬 👀Bianca Christians👀: @bloddy_wolves_🦋FusselMaus🦋 ohja das is es auch
+2025-12-13 18:47:30 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:34 [INFO] 💾 [TIMER] Gespeichert. Likes: 6319
+2025-12-13 18:47:34 [INFO] 💬 bloddy_wolves_🦋FusselMaus🦋: 👀
+2025-12-13 18:47:34 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:36 [INFO] 💬 🇰🇿ДЕН 👻🇩🇪: Ich weiß, ist ein interessanter Abschnitt hier
+2025-12-13 18:47:36 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:37 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Haaalllooo 👀😹🤣
+2025-12-13 18:47:37 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:43 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:46 [INFO] 💬 jens187: raus mit de viecher
+2025-12-13 18:47:46 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:47 [INFO] ADD: +39.6s (Base:39.6, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:51 [INFO] 💬 p33t25: @🇰🇿ДЕН 👻🇩🇪 du hast soeben Level 35 erreicht!
+2025-12-13 18:47:51 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:53 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:56 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:57 [INFO] ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:58 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @🇰🇿ДЕН 👻🇩🇪 🤣😹
+2025-12-13 18:47:58 [INFO] ADD: +200.0s (Base:200.0, Hype:x1.0, LS:x1.0)
+2025-12-13 18:47:58 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:01 [INFO] 💬 p33t25: @SCHILDMAID du hast soeben Level 28 erreicht!
+2025-12-13 18:48:01 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:04 [INFO] 💬 🇰🇿ДЕН 👻🇩🇪: 😁
+2025-12-13 18:48:04 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:04 [INFO] 💾 [TIMER] Gespeichert. Likes: 6368
+2025-12-13 18:48:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:11 [INFO] ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:15 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:18 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:20 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:24 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:26 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:29 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:29 [INFO] ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:32 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:38 [INFO] Pygame Mixer erfolgreich initialisiert.
+2025-12-13 18:48:39 [INFO] Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 18:48:39 [INFO] Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 18:48:39 [INFO] Starte TikTok-Verbindung zu @p33t25...
+2025-12-13 18:48:39 [INFO] 🔑 Nutze Euler-Key: euler_ODBm...
+2025-12-13 18:48:39 [INFO] 🚀 API gestartet für: @p33t25
+2025-12-13 18:48:39 [INFO] Twitch Auto-Login gefunden für: scriptedbynic
+2025-12-13 18:48:39 [INFO] Twitch Einstellungen gespeichert.
+2025-12-13 18:48:39 [INFO] Twitch Connected als scriptedbynic
+2025-12-13 18:48:39 [INFO] 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 18:48:40 [INFO] 🔄 [LOOP] Verbinde zu @p33t25 (Workaround aktiv)...
+2025-12-13 18:48:40 [INFO] Hotkey-Listener-Thread gestartet.
+2025-12-13 18:48:40 [INFO] Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 18:48:40 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-13 18:48:40 [INFO] [33mPress CTRL+C to quit[0m
+2025-12-13 18:48:41 [INFO] HTTP Request: GET https://www.tiktok.com/@p33t25/live? "HTTP/1.1 200 OK"
+2025-12-13 18:48:41 [INFO] HTTP Request: GET https://webcast.tiktok.com/webcast/room/check_alive/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-NZ&browser_name=Mozilla&browser_online=true&browser_platform=Win32&browser_version=5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F129.0.0.0%20Safari%2F537.36%20Edg%2F128.0.2739.79&cookie_enabled=true&device_platform=web_pc&focus_state=true&from_page=&history_len=5&is_fullscreen=false&is_page_visible=true&screen_height=7680&screen_width=4320&tz_name=Pacific/Auckland&channel=tiktok_web&data_collection_enabled=true&os=windows&priority_region=NZ&region=NZ&user_is_login=false&webcast_language=en&msToken=&referer=https://www.tiktok.com/@p33t25/live&root_referer=https://www.tiktok.com/@p33t25/live&device_id=20396973076047301263&room_id=7583395257074240278&room_ids=7583395257074240278 "HTTP/1.1 200 OK"
+2025-12-13 18:48:43 [INFO] HTTP Request: GET https://tiktok.eulerstream.com/webcast/fetch/?client=ttlive-python&room_id=7583395257074240278&user_agent=Mozilla%2F5.0+%28Windows+NT+10.0%3B+Win64%3B+x64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F129.0.0.0+Safari%2F537.36+Edg%2F128.0.2739.79&platform=web&client_enter=true "HTTP/1.1 200 OK"
+2025-12-13 18:48:44 [INFO] ✅ Verbunden mit @p33t25!
+2025-12-13 18:48:44 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @🇰🇿ДЕН 👻🇩🇪 🤣😹
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] 💬 p33t25: @SCHILDMAID du hast soeben Level 28 erreicht!
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] 💬 🇰🇿ДЕН 👻🇩🇪: 😁
+2025-12-13 18:48:44 [INFO] 💬 p33t25: @Vanessa👀🤍 du hast soeben Level 60 erreicht!
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] 💬 p33t25: @Vanessa👀🤍 du hast soeben Level 55 erreicht!
+2025-12-13 18:48:44 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: 🤣🤣🤣
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @🇰🇿ДЕН 👻🇩🇪 🤣😹
+2025-12-13 18:48:44 [INFO] ADD: +0.8s (Base:0.78, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] 💬 p33t25: @SCHILDMAID du hast soeben Level 28 erreicht!
+2025-12-13 18:48:44 [INFO] 💬 🇰🇿ДЕН 👻🇩🇪: 😁
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] 💬 p33t25: @Vanessa👀🤍 du hast soeben Level 60 erreicht!
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] 💬 p33t25: @Vanessa👀🤍 du hast soeben Level 55 erreicht!
+2025-12-13 18:48:44 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: 🤣🤣🤣
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:44 [INFO] ADD: +0.8s (Base:0.78, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:45 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:45] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:45 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:45] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:46 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:46] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:48 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:48] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:49 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:49 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:49] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:50 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:50] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:51 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:51] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:51 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:52 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:52] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:52 [INFO] 💬 Vanessa👀🤍: Alo
+2025-12-13 18:48:52 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:53 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:53] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:54 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:54] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:54 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:56 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:56] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:56 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:56] "[36mGET /like_overlay/index.html HTTP/1.1[0m" 304 -
+2025-12-13 18:48:57 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:57] "[36mGET /like_overlay/style.css HTTP/1.1[0m" 304 -
+2025-12-13 18:48:57 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:48:57 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:57] "GET /like_overlay/script.js HTTP/1.1" 200 -
+2025-12-13 18:48:57 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:57] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:48:58 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:58] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:59 [INFO] 127.0.0.1 - - [13/Dec/2025 18:48:59] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:48:59 [INFO] ADD: +0.4s (Base:0.42, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:00 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:00] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:00 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:00] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:01 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:01] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:01 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:01] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:02 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:02] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:03 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:03] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:03 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:03] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:03 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:04 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:04] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:06 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:06] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:06 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:06] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:06 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Alo
+2025-12-13 18:49:06 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:07 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:07] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:08 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:08] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:08 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:08] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:09 [INFO] 💾 [TIMER] Gespeichert. Likes: 6785
+2025-12-13 18:49:09 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:09] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:09 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: 🤣😹
+2025-12-13 18:49:09 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:10 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:10] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:10 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:10] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:11 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:11] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:12 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:12] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:12 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:12] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:13 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:13] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:14] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:14] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:15 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:15] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:15 [INFO] ADD: +119.6s (Base:119.60000000000001, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:16 [INFO] ADD: +0.4s (Base:0.36, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:16 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:16] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:16 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:16] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:17 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:17] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:18 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:18] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:18 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:18] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:18 [INFO] 💬 Vanessa👀🤍: Eyy Peet???
+2025-12-13 18:49:18 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:18 [INFO] 💬 p33t25: @🇰🇿ДЕН 👻🇩🇪 du hast soeben Level 37 erreicht!
+2025-12-13 18:49:18 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:19 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:19] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:19 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:20 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:20] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:20 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:20] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:21 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:21] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:21 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:22 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:22] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:22 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:22] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:23 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:23] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:24 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:24] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:24 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:24] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:24 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:25 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:25] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:26 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:26] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:26 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:26] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:27 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:27] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:27 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:28 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:28] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:28 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:28] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:29 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:29] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:30 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:30 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:30] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:30 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:30] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:31 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:31] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:31 [INFO] 💬 Vanessa👀🤍: Mach mal kurz Pause
+2025-12-13 18:49:31 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:32 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:32] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:32 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:32] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:32 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:33 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:33] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:34 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:34] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:34 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:34] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:35 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:35 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:35] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:36 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:36] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:36 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:36] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:37 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:37] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:38 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:38] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:38 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:38] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:38 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:39 [INFO] 💾 [TIMER] Gespeichert. Likes: 7136
+2025-12-13 18:49:39 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:39] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:40 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:40] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:40 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:40] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:41 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:41 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:41] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:42 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:42] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:42 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:42] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:42 [INFO] ADD: +0.5s (Base:0.48, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:43 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:43] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:44 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:44] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:44 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:44] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:45 [INFO] 💬 Vanessa👀🤍: Ich habe Level up bei dir gemacht von Level 30 auf 31
+2025-12-13 18:49:45 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:45 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:45] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:46 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:46 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Oje Der Arme Peet 👀🤭🤣
+2025-12-13 18:49:46 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:46 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:46] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:49:46 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:46] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:48 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:48] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:49 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:50 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:50] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:51 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:52 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:52] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:54 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:54] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:55 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:56 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:56] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:57 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:49:58 [INFO] 127.0.0.1 - - [13/Dec/2025 18:49:58] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:49:58 [INFO] ADD: +0.1s (Base:0.06, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:00 [INFO] 127.0.0.1 - - [13/Dec/2025 18:50:00] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:50:02 [INFO] 127.0.0.1 - - [13/Dec/2025 18:50:02] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:50:02 [INFO] ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:04 [INFO] 127.0.0.1 - - [13/Dec/2025 18:50:04] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:50:04 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:50:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:50:05 [INFO] 💬 Vanessa👀🤍: Ist mir jetzt erst aufgefallen 😂😂
+2025-12-13 18:50:05 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:06 [INFO] 127.0.0.1 - - [13/Dec/2025 18:50:06] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:50:06 [INFO] ADD: +0.4s (Base:0.42, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:09 [INFO] 💾 [TIMER] Gespeichert. Likes: 7524
+2025-12-13 18:50:11 [INFO] 💬 DJ_Reittier🐝: Du hast da so n bisschen Heilung 🤓
+2025-12-13 18:50:11 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:13 [INFO] ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:14 [INFO] ADD: +0.4s (Base:0.42, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:45 [INFO] Pygame Mixer erfolgreich initialisiert.
+2025-12-13 18:50:45 [INFO] Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 18:50:45 [INFO] Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 18:50:45 [INFO] Starte TikTok-Verbindung zu @p33t25...
+2025-12-13 18:50:45 [INFO] 🔑 Nutze Euler-Key: euler_ODBm...
+2025-12-13 18:50:45 [INFO] 🚀 API gestartet für: @p33t25
+2025-12-13 18:50:45 [INFO] Twitch Auto-Login gefunden für: scriptedbynic
+2025-12-13 18:50:45 [INFO] Twitch Einstellungen gespeichert.
+2025-12-13 18:50:46 [INFO] Twitch Connected als scriptedbynic
+2025-12-13 18:50:46 [INFO] 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 18:50:46 [INFO] 🔄 [LOOP] Verbinde zu @p33t25 (Workaround aktiv)...
+2025-12-13 18:50:46 [INFO] Hotkey-Listener-Thread gestartet.
+2025-12-13 18:50:46 [INFO] Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 18:50:47 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-13 18:50:47 [INFO] [33mPress CTRL+C to quit[0m
+2025-12-13 18:50:47 [INFO] HTTP Request: GET https://www.tiktok.com/@p33t25/live? "HTTP/1.1 200 OK"
+2025-12-13 18:50:48 [INFO] HTTP Request: GET https://webcast.tiktok.com/webcast/room/check_alive/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-JM&browser_name=Mozilla&browser_online=true&browser_platform=Win32&browser_version=5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F129.0.0.0%20Safari%2F537.36%20Edg%2F128.0.2739.79&cookie_enabled=true&device_platform=web_pc&focus_state=true&from_page=&history_len=14&is_fullscreen=false&is_page_visible=true&screen_height=2160&screen_width=4096&tz_name=America/Jamaica&channel=tiktok_web&data_collection_enabled=true&os=windows&priority_region=JM&region=JM&user_is_login=false&webcast_language=en&msToken=&referer=https://www.tiktok.com/@p33t25/live&root_referer=https://www.tiktok.com/@p33t25/live&device_id=78367192422969810624&room_id=7583395257074240278&room_ids=7583395257074240278 "HTTP/1.1 200 OK"
+2025-12-13 18:50:50 [INFO] HTTP Request: GET https://tiktok.eulerstream.com/webcast/fetch/?client=ttlive-python&room_id=7583395257074240278&user_agent=Mozilla%2F5.0+%28Windows+NT+10.0%3B+Win64%3B+x64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F129.0.0.0+Safari%2F537.36+Edg%2F128.0.2739.79&platform=web&client_enter=true "HTTP/1.1 200 OK"
+2025-12-13 18:50:50 [INFO] ✅ Verbunden mit @p33t25!
+2025-12-13 18:50:50 [INFO] 💬 Vanessa👀🤍: Ich habe Level up bei dir gemacht von Level 30 auf 31
+2025-12-13 18:50:50 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Oje Der Arme Peet 👀🤭🤣
+2025-12-13 18:50:50 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:50 [INFO] 💬 Vanessa👀🤍: Ist mir jetzt erst aufgefallen 😂😂
+2025-12-13 18:50:50 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:50 [INFO] 💬 DJ_Reittier🐝: Du hast da so n bisschen Heilung 🤓
+2025-12-13 18:50:50 [INFO] 💬 Lady_In_Pink💕🦋: Huhu Großer
+2025-12-13 18:50:50 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:50 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:50 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @Lady_In_Pink💕🦋 hi
+2025-12-13 18:50:50 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:50 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:51 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:51 [INFO] 💬 Vanessa👀🤍: Ich habe Level up bei dir gemacht von Level 30 auf 31
+2025-12-13 18:50:51 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Oje Der Arme Peet 👀🤭🤣
+2025-12-13 18:50:51 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:51 [INFO] 💬 Vanessa👀🤍: Ist mir jetzt erst aufgefallen 😂😂
+2025-12-13 18:50:51 [INFO] 💬 DJ_Reittier🐝: Du hast da so n bisschen Heilung 🤓
+2025-12-13 18:50:51 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:51 [INFO] 💬 Lady_In_Pink💕🦋: Huhu Großer
+2025-12-13 18:50:51 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:51 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:51 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @Lady_In_Pink💕🦋 hi
+2025-12-13 18:50:51 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:51 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:51 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:51 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:51 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:54 [INFO] 💬 Lady_In_Pink💕🦋: Geht's dir gut Schnuggi??
+2025-12-13 18:50:54 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:54 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:55 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:57 [INFO] ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:57 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:57 [INFO] 127.0.0.1 - - [13/Dec/2025 18:50:57] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:50:57 [INFO] 127.0.0.1 - - [13/Dec/2025 18:50:57] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:50:57 [INFO] 💬 Vanessa👀🤍: So jetzt bin ich arm 😂😂
+2025-12-13 18:50:57 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:50:58 [INFO] 127.0.0.1 - - [13/Dec/2025 18:50:58] "[36mGET /subathon_overlay/index.html?platform=twitch HTTP/1.1[0m" 304 -
+2025-12-13 18:50:58 [INFO] 127.0.0.1 - - [13/Dec/2025 18:50:58] "[36mGET /subathon_overlay/style.css HTTP/1.1[0m" 304 -
+2025-12-13 18:50:58 [INFO] 127.0.0.1 - - [13/Dec/2025 18:50:58] "GET /subathon_overlay/script.js HTTP/1.1" 200 -
+2025-12-13 18:51:00 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:02 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:03 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:51:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:51:06 [INFO] ADD: +0.5s (Base:0.48, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:07 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:07 [INFO] ADD: +119.6s (Base:119.60000000000001, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:10 [INFO] ADD: +0.5s (Base:0.54, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:11 [INFO] 💬 p33t25: @🇰🇿ДЕН 👻🇩🇪 du hast soeben Level 39 erreicht!
+2025-12-13 18:51:11 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:11 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:15 [INFO] ADD: +0.4s (Base:0.42, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:15 [INFO] 💬 Lady_In_Pink💕🦋: Mir geht's auch gut
+2025-12-13 18:51:15 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:51:15 [INFO] 💾 [TIMER] Gespeichert. Likes: 8652
+2025-12-13 18:51:16 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:36 [INFO] Pygame Mixer erfolgreich initialisiert.
+2025-12-13 18:53:36 [INFO] Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 18:53:36 [INFO] Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 18:53:36 [INFO] Starte TikTok-Verbindung zu @p33t25...
+2025-12-13 18:53:36 [INFO] 🔑 Nutze Euler-Key: euler_ODBm...
+2025-12-13 18:53:36 [INFO] 🚀 API gestartet für: @p33t25
+2025-12-13 18:53:36 [INFO] Twitch Auto-Login gefunden für: scriptedbynic
+2025-12-13 18:53:36 [INFO] Twitch Einstellungen gespeichert.
+2025-12-13 18:53:37 [INFO] Twitch Connected als scriptedbynic
+2025-12-13 18:53:37 [INFO] 🔄 [LOOP] Verbinde zu @p33t25 (Workaround aktiv)...
+2025-12-13 18:53:37 [INFO] 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 18:53:37 [INFO] Hotkey-Listener-Thread gestartet.
+2025-12-13 18:53:37 [INFO] Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 18:53:37 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-13 18:53:37 [INFO] [33mPress CTRL+C to quit[0m
+2025-12-13 18:53:37 [INFO] HTTP Request: GET https://www.tiktok.com/@p33t25/live? "HTTP/1.1 200 OK"
+2025-12-13 18:53:38 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:38] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:38 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:38] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:38 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:38] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:38 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:38] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:38 [INFO] HTTP Request: GET https://www.tiktok.com/api-live/user/room/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-ZA&browser_name=Mozilla&browser_online=true&browser_platform=MacIntel&browser_version=5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2014_7%29%20AppleWebKit%2F605.1.15%20%28KHTML%2C%20like%20Gecko%29%20Version%2F17.6%20Safari%2F605.1.15&cookie_enabled=true&device_platform=web_pc&focus_state=true&from_page=&history_len=5&is_fullscreen=false&is_page_visible=true&screen_height=2880&screen_width=5120&tz_name=Africa/Johannesburg&channel=tiktok_web&data_collection_enabled=true&os=mac&priority_region=ZA&region=ZA&user_is_login=false&webcast_language=en&msToken=&referer=https://www.tiktok.com/@p33t25/live&root_referer=https://www.tiktok.com/@p33t25/live&device_id=93118654866106990711&uniqueId=p33t25&sourceType=54 "HTTP/1.1 200 OK"
+2025-12-13 18:53:38 [INFO] HTTP Request: GET https://webcast.tiktok.com/webcast/room/check_alive/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-ZA&browser_name=Mozilla&browser_online=true&browser_platform=MacIntel&browser_version=5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2014_7%29%20AppleWebKit%2F605.1.15%20%28KHTML%2C%20like%20Gecko%29%20Version%2F17.6%20Safari%2F605.1.15&cookie_enabled=true&device_platform=web_pc&focus_state=true&from_page=&history_len=5&is_fullscreen=false&is_page_visible=true&screen_height=2880&screen_width=5120&tz_name=Africa/Johannesburg&channel=tiktok_web&data_collection_enabled=true&os=mac&priority_region=ZA&region=ZA&user_is_login=false&webcast_language=en&msToken=&referer=https://www.tiktok.com/@p33t25/live&root_referer=https://www.tiktok.com/@p33t25/live&device_id=34681813738112128607&room_id=7583395257074240278&room_ids=7583395257074240278 "HTTP/1.1 200 OK"
+2025-12-13 18:53:39 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:39] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:40 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:40] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:41 [INFO] HTTP Request: GET https://tiktok.eulerstream.com/webcast/fetch/?client=ttlive-python&room_id=7583395257074240278&user_agent=Mozilla%2F5.0+%28Macintosh%3B+Intel+Mac+OS+X+14_7%29+AppleWebKit%2F605.1.15+%28KHTML%2C+like+Gecko%29+Version%2F17.6+Safari%2F605.1.15&platform=web&client_enter=true "HTTP/1.1 200 OK"
+2025-12-13 18:53:41 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:41] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:41 [INFO] ✅ Verbunden mit @p33t25!
+2025-12-13 18:53:41 [INFO] 💬 Tjark Schröder199: Feierabend und Wochenende[congrat]
+2025-12-13 18:53:41 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀leni👀 hay hoo
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] 💬 Vanessa👀🤍: Das ist mein Weihnachtsgeschenk an dich Peet 🫶🏻
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓 Jo. Es Geht Und Selbst
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] 💬 👀leni👀: @𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓 Guten Abend😊
+2025-12-13 18:53:41 [INFO] 💬 jens187: ivh muss arbeiten
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] 💬 Tjark Schröder199: Feierabend und Wochenende[congrat]
+2025-12-13 18:53:41 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀leni👀 hay hoo
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] 💬 Vanessa👀🤍: Das ist mein Weihnachtsgeschenk an dich Peet 🫶🏻
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓 Jo. Es Geht Und Selbst
+2025-12-13 18:53:41 [INFO] 💬 👀leni👀: @𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓 Guten Abend😊
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] 💬 jens187: ivh muss arbeiten
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:41 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:42 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:42] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:42 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:43 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:43] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:44 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:44] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:44 [INFO] ADD: +0.1s (Base:0.06, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:45 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:45] "GET /like_progress_bar/index.html HTTP/1.1" 200 -
+2025-12-13 18:53:45 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:45] "GET /like_progress_bar/style.css HTTP/1.1" 200 -
+2025-12-13 18:53:45 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:45 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:45] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:45 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:45] "GET /like_progress_bar/script.js HTTP/1.1" 200 -
+2025-12-13 18:53:45 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:45] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:46 [INFO] 💬 👀Bianca Christians👀: @DJ_Reittier🐝 danke für die kiste
+2025-12-13 18:53:46 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:46 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:46] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:46 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:46] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:47 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:47] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:47 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:47] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:47 [INFO] ADD: +0.1s (Base:0.1, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:47 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:48 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:48] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:48 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:48] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:49 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:49] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:49 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:49] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:49 [INFO] ADD: +79.6s (Base:79.60000000000001, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:50 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:50 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:50] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:50 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:50] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:51 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:51] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:51 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:51] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:51 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:52 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:52] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:53:52 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:52] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:52 [INFO] 💬 p33t25: @🖤💛🐝😈Sabrina36.🦁Stitch💙💖 du hast soeben Level 17 erreicht!
+2025-12-13 18:53:52 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:53 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:53] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:53 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:53 [INFO] 💬 jens187: asozial🤣🤣🥰
+2025-12-13 18:53:53 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:54 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:54] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:55 [INFO] ADD: +0.4s (Base:0.42, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:55 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:55] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:56 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:56 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:56] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:57 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:57] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:58 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:53:59 [INFO] 127.0.0.1 - - [13/Dec/2025 18:53:59] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:53:59 [INFO] 💬 jens187: liebs
+2025-12-13 18:53:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:00 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:00] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:00 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:00] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:01 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:01] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:01 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:02 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:02] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:03 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:03] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:03 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀Bianca Christians👀 na du 😀
+2025-12-13 18:54:03 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:03 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:03] "[36mGET /like_progress_bar/style.css HTTP/1.1[0m" 304 -
+2025-12-13 18:54:04 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:04] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:04 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:54:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:05] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:06 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:06 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:06] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:06 [INFO] 💬 Tjark Schröder199: Das ist nicht mehr village oder?
+2025-12-13 18:54:06 [INFO] 💬 👀leni👀: @DJ_Reittier🐝 Danke schön für die kiste😊
+2025-12-13 18:54:06 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:06 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Bitte Schön 😉😉😉👀😇
+2025-12-13 18:54:06 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:06 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:06 [INFO] 💾 [TIMER] Gespeichert. Likes: 11207
+2025-12-13 18:54:07 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:07] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:07 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:08 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:08] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:09 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:09] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:10 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:10 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:10] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:11 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:11] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:12 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:12] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:13 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:13] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:13 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:14 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:14] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:15 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:15] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:16 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:16] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:16 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:17 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:17] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:17 [INFO] ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:18 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:18] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:19 [INFO] ADD: +0.7s (Base:0.72, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:19 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:19] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:20 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:20 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:20] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:20 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:20] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:22 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:22] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:22 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:22 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: verständlich
+2025-12-13 18:54:22 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:23 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:23] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:23 [INFO] 💬 TroEditss: Alles okay bro weil schwarzer bildschirm
+2025-12-13 18:54:23 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:23 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:24 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:24] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:24 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:24] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:24 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:25 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:25] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:26 [INFO] 127.0.0.1 - - [13/Dec/2025 18:54:26] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:54:26 [INFO] 💬 👀Bianca Christians👀: @𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓 naa
+2025-12-13 18:54:26 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:27 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:28 [INFO] ADD: +0.1s (Base:0.12, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:30 [INFO] 💬 Tjark Schröder199: Hast geschafft die challenge?
+2025-12-13 18:54:30 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:31 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:34 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:36 [INFO] 💾 [TIMER] Gespeichert. Likes: 11690
+2025-12-13 18:54:37 [INFO] 💬 jens187: village nicht gut?
+2025-12-13 18:54:37 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:38 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:39 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀Bianca Christians👀 wie war dein tag ☺️
+2025-12-13 18:54:39 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:41 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:41 [INFO] 💬 👀Bianca Christians👀: Nee is kein schwarzes bild
+2025-12-13 18:54:41 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:43 [INFO] 💬 Vanessa👀🤍: Also ich sehe dich
+2025-12-13 18:54:43 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:43 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:46 [INFO] 💬 👀Bianca Christians👀: @𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓 supi deiner
+2025-12-13 18:54:46 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:47 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:48 [INFO] 💬 DJ_Reittier🐝: Reicht wieder mit Teil 4, können wir den Anfang von Village nochmal sehen 🤓
+2025-12-13 18:54:48 [INFO] ADD: +0.8s (Base:0.78, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:48 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:50 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:53 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:55 [INFO] ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:57 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:54:59 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:55:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:55:06 [INFO] 💾 [TIMER] Gespeichert. Likes: 12094
+2025-12-13 18:55:07 [INFO] 💬 Vanessa👀🤍: @DJ_Reittier🐝 😂😂😂
+2025-12-13 18:55:07 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:07 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:07 [INFO] 💬 Tjark Schröder199: Duck und ich bin pennen gegangen😖
+2025-12-13 18:55:07 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:07 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:08 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:09 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:10 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀Bianca Christians👀 auch bis auf den Zug [laughcry]3h für 35min weg gebraucht [thumb]
+2025-12-13 18:55:10 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:11 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:12 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:14 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:16 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:18 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:19 [INFO] ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:21 [INFO] ADD: +0.1s (Base:0.1, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:21 [INFO] ADD: +0.6s (Base:0.6, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:23 [INFO] 💬 jens187: ah ok glaube ich ja
+2025-12-13 18:55:23 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:24 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:25 [INFO] 💬 👀Bianca Christians👀: @𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓 heftig 🤣🤣
+2025-12-13 18:55:25 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:27 [INFO] 💬 Vanessa👀🤍: 
+2025-12-13 18:55:27 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:27 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:28 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:29 [INFO] ADD: +0.1s (Base:0.1, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:29 [INFO] ADD: +0.1s (Base:0.1, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:31 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:31 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:33 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:36 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:36 [INFO] 💾 [TIMER] Gespeichert. Likes: 12845
+2025-12-13 18:55:37 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:38 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀Bianca Christians👀 sind durchgefroren [laughcry]
+2025-12-13 18:55:38 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:38 [INFO] ADD: +0.5s (Base:0.54, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:38 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:39 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Danke für die Münze 😇😇😇
+2025-12-13 18:55:39 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:41 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:42 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:44 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:45 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:47 [INFO] ADD: +0.7s (Base:0.6599999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:47 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:54 [INFO] Pygame Mixer erfolgreich initialisiert.
+2025-12-13 18:55:54 [INFO] Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 18:55:54 [INFO] Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 18:55:54 [INFO] Starte TikTok-Verbindung zu @p33t25...
+2025-12-13 18:55:54 [INFO] 🔑 Nutze Euler-Key: euler_ODBm...
+2025-12-13 18:55:54 [INFO] 🚀 API gestartet für: @p33t25
+2025-12-13 18:55:54 [INFO] Twitch Auto-Login gefunden für: scriptedbynic
+2025-12-13 18:55:54 [INFO] Twitch Einstellungen gespeichert.
+2025-12-13 18:55:55 [INFO] Twitch Connected als scriptedbynic
+2025-12-13 18:55:55 [INFO] 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 18:55:55 [INFO] 🔄 [LOOP] Verbinde zu @p33t25 (Workaround aktiv)...
+2025-12-13 18:55:56 [INFO] Hotkey-Listener-Thread gestartet.
+2025-12-13 18:55:56 [INFO] Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 18:55:56 [INFO] HTTP Request: GET https://www.tiktok.com/@p33t25/live? "HTTP/1.1 200 OK"
+2025-12-13 18:55:56 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-13 18:55:56 [INFO] [33mPress CTRL+C to quit[0m
+2025-12-13 18:55:56 [INFO] HTTP Request: GET https://www.tiktok.com/api-live/user/room/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-CA&browser_name=Mozilla&browser_online=true&browser_platform=MacIntel&browser_version=5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2014_7%29%20AppleWebKit%2F605.1.15%20%28KHTML%2C%20like%20Gecko%29%20Version%2F17.6%20Safari%2F605.1.15&cookie_enabled=true&device_platform=web_pc&focus_state=true&from_page=&history_len=13&is_fullscreen=false&is_page_visible=true&screen_height=1080&screen_width=1920&tz_name=America/Toronto&channel=tiktok_web&data_collection_enabled=true&os=mac&priority_region=CA&region=CA&user_is_login=false&webcast_language=en&msToken=&referer=https://www.tiktok.com/@p33t25/live&root_referer=https://www.tiktok.com/@p33t25/live&device_id=88177830100863509757&uniqueId=p33t25&sourceType=54 "HTTP/1.1 200 OK"
+2025-12-13 18:55:56 [INFO] HTTP Request: GET https://webcast.tiktok.com/webcast/room/check_alive/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-CA&browser_name=Mozilla&browser_online=true&browser_platform=MacIntel&browser_version=5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2014_7%29%20AppleWebKit%2F605.1.15%20%28KHTML%2C%20like%20Gecko%29%20Version%2F17.6%20Safari%2F605.1.15&cookie_enabled=true&device_platform=web_pc&focus_state=true&from_page=&history_len=13&is_fullscreen=false&is_page_visible=true&screen_height=1080&screen_width=1920&tz_name=America/Toronto&channel=tiktok_web&data_collection_enabled=true&os=mac&priority_region=CA&region=CA&user_is_login=false&webcast_language=en&msToken=&referer=https://www.tiktok.com/@p33t25/live&root_referer=https://www.tiktok.com/@p33t25/live&device_id=95026485265699291272&room_id=7583395257074240278&room_ids=7583395257074240278 "HTTP/1.1 200 OK"
+2025-12-13 18:55:59 [INFO] HTTP Request: GET https://tiktok.eulerstream.com/webcast/fetch/?client=ttlive-python&room_id=7583395257074240278&user_agent=Mozilla%2F5.0+%28Macintosh%3B+Intel+Mac+OS+X+14_7%29+AppleWebKit%2F605.1.15+%28KHTML%2C+like+Gecko%29+Version%2F17.6+Safari%2F605.1.15&platform=web&client_enter=true "HTTP/1.1 200 OK"
+2025-12-13 18:55:59 [INFO] ✅ Verbunden mit @p33t25!
+2025-12-13 18:55:59 [INFO] 💬 Vanessa👀🤍: 
+2025-12-13 18:55:59 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀Bianca Christians👀 sind durchgefroren [laughcry]
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Danke für die Münze 😇😇😇
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] 💬 👀Bianca Christians👀: Danke für die Münze 😊
+2025-12-13 18:55:59 [INFO] 💬 Vanessa👀🤍: Danke für die Münze🫶🏻
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @DJ_Reittier🐝 merci für 1
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] 💬 Vanessa👀🤍: 
+2025-12-13 18:55:59 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀Bianca Christians👀 sind durchgefroren [laughcry]
+2025-12-13 18:55:59 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: Danke für die Münze 😇😇😇
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] 💬 👀Bianca Christians👀: Danke für die Münze 😊
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] 💬 Vanessa👀🤍: Danke für die Münze🫶🏻
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @DJ_Reittier🐝 merci für 1
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:55:59 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:02 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:56:05 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:07 [INFO] 💬 TroEditss: Wie geht es dir heute so bro
+2025-12-13 18:56:07 [INFO] ADD: +0.4s (Base:0.42, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:07 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:07 [INFO] 💬 👀Bianca Christians👀: @𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓 glaube ich 🤣
+2025-12-13 18:56:07 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:08 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:11 [INFO] ADD: +0.1s (Base:0.06, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:12 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:12 [INFO] ADD: +5.0s (Base:5.0, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:12 [INFO] 💬 SCHILDMAID: danke für die Münze🤗
+2025-12-13 18:56:12 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:15 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:17 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:19 [INFO] ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:21 [INFO] 💬 TroEditss: Auch gut
+2025-12-13 18:56:21 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:21 [INFO] 💬 DJ_Reittier🐝: Bitte gerne Kinners 🫶🏽
+2025-12-13 18:56:21 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:21 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:24 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:24 [INFO] 💾 [TIMER] Gespeichert. Likes: 14020
+2025-12-13 18:56:26 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:27 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:27 [INFO] ADD: +5.0s (Base:5.0, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:29 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:29 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:29] "[36mGET /like_overlay/index.html HTTP/1.1[0m" 304 -
+2025-12-13 18:56:29 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:29] "[36mGET /like_overlay/style.css HTTP/1.1[0m" 304 -
+2025-12-13 18:56:29 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:29] "[36mGET /like_overlay/script.js HTTP/1.1[0m" 304 -
+2025-12-13 18:56:29 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:29] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:30 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:30] "[36mGET /like_overlay/index.html HTTP/1.1[0m" 304 -
+2025-12-13 18:56:30 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:30] "[36mGET /like_overlay/style.css HTTP/1.1[0m" 304 -
+2025-12-13 18:56:30 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:30] "[36mGET /like_overlay/script.js HTTP/1.1[0m" 304 -
+2025-12-13 18:56:31 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:31 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:31] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:32 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀Bianca Christians👀 zumal kleine und ich waren ohne Jacke [laughcry]
+2025-12-13 18:56:32 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:32 [INFO] ADD: +0.8s (Base:0.84, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:33 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:33] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:34 [INFO] ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:34 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:35 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:35] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:36 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @DJ_Reittier🐝 😇
+2025-12-13 18:56:36 [INFO] ADD: +400.0s (Base:400.0, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:36 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:37 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:38 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:38] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:39 [INFO] 💬 p33t25: @SCHILDMAID du hast soeben Level 36 erreicht!
+2025-12-13 18:56:39 [INFO] ADD: +0.1s (Base:0.12, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:39 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:40 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:40] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:42 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:42] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:42 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:44 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:44] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:45 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:46 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: 🤣🤣🤣
+2025-12-13 18:56:46 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:46 [INFO] 💬 👀Bianca Christians👀: @SCHILDMAID danke 😍
+2025-12-13 18:56:46 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:46 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:46] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:46 [INFO] 💬 TroEditss: Hast du das nd gestern schon gespuelt
+2025-12-13 18:56:46 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:47 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:48 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:48] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:49 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:50 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:50] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:50 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:52 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:52] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:53 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:54 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:54] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:54 [INFO] 💾 [TIMER] Gespeichert. Likes: 14619
+2025-12-13 18:56:56 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:56 [INFO] 💬 Vanessa👀🤍: Heute eskalieren alle 😂😂
+2025-12-13 18:56:56 [INFO] ADD: +0.1s (Base:0.1, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:56 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:56 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:56] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:57 [INFO] 💬 SCHILDMAID: 🤗👍🏻Gerne
+2025-12-13 18:56:57 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:56:58 [INFO] 127.0.0.1 - - [13/Dec/2025 18:56:58] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:56:59 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:00 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:00] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:02 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:02] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:02 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:04 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:04] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:57:06 [INFO] ADD: +0.4s (Base:0.36, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:06 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:06 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:06] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:08 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:08] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:08 [INFO] 💬 DJ_Reittier🐝: Das ist Duke noch in gesunden Jahren xD
+2025-12-13 18:57:08 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:08 [INFO] ADD: +0.4s (Base:0.42, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:09 [INFO] 💬 TroEditss: Ach so ja da war was
+2025-12-13 18:57:09 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:10 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:10] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:11 [INFO] ADD: +0.8s (Base:0.78, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:11 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:12 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:12] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:12 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:14 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:14] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:14 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:16 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:16 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:16] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:16 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:18 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:18] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:19 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:20 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:20 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:20] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:20 [INFO] ADD: +0.1s (Base:0.06, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:22 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:22] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:22 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:24 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:24] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:24 [INFO] 💾 [TIMER] Gespeichert. Likes: 15169
+2025-12-13 18:57:25 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:26 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:26] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:26 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀Bianca Christians👀 sind um 14:45 mit dem Taxi zum Zug um 17:25 den Zug bekommen   um 18 uhr zuha
+2025-12-13 18:57:26 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:27 [INFO] ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:28 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:28] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:29 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:30 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:30] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:32 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:32] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:32 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:33 [INFO] ADD: +0.8s (Base:0.84, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:34 [INFO] 127.0.0.1 - - [13/Dec/2025 18:57:34] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:57:35 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:38 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:40 [INFO] 💬 👀Bianca Christians👀: @𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓 oh
+2025-12-13 18:57:40 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:42 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:44 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:47 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀Bianca Christians👀 zuhause rein dann noch fixx einkaufen
+2025-12-13 18:57:47 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:47 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:49 [INFO] ADD: +0.4s (Base:0.36, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:52 [INFO] ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:53 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:55 [INFO] 💾 [TIMER] Gespeichert. Likes: 15961
+2025-12-13 18:57:56 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:58 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:57:59 [INFO] ADD: +0.8s (Base:0.84, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:02 [INFO] 💬 eloremi: guten abend
+2025-12-13 18:58:02 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:02 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:04 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:58:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:58:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:58:05] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:58:05 [INFO] 💬 👀Bianca Christians👀: @👀leni👀 leni bin gleich wieder da muss kleine eben hin legen 😊
+2025-12-13 18:58:05 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:07 [INFO] ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:07 [INFO] 💬 𝕶𝖔𝖊𝖓𝖎𝖌𝖉𝖊𝖗𝖑𝖔𝖊𝖜𝖊𝖓: @👀Bianca Christians👀 gibt morgen wieder leckeres advents Frühstück
+2025-12-13 18:58:07 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:07 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:08 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:10 [INFO] ADD: +0.1s (Base:0.06, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:11 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:12 [INFO] ADD: +0.4s (Base:0.36, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:13 [INFO] 💬 TroEditss: Du streams morgen bestimmt auch wieder
+2025-12-13 18:58:13 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:13 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:15 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:16 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @eloremi hi
+2025-12-13 18:58:16 [INFO] 💬 Vanessa👀🤍: Peet und seine Ordnung
+2025-12-13 18:58:16 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:16 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:17 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:18 [INFO] 💬 🅾🆂🅺🅰🆁👀🅃🄴🄰🄼🌸Blümchen: Gude 🫰🏻
+2025-12-13 18:58:18 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:18 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:20 [INFO] ADD: +0.8s (Base:0.78, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:22 [INFO] 💬 👀leni👀: @👀Bianca Christians👀 Okay mach das 🥰
+2025-12-13 18:58:22 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:22 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:22 [INFO] ADD: +39.6s (Base:39.6, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:25 [INFO] 💾 [TIMER] Gespeichert. Likes: 16490
+2025-12-13 18:58:25 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:26 [INFO] 💬 p33t25: @🇰🇿ДЕН 👻🇩🇪 du hast soeben Level 40 erreicht!
+2025-12-13 18:58:26 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:27 [INFO] ADD: +0.1s (Base:0.06, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:28 [INFO] ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:30 [INFO] ADD: +0.5s (Base:0.48, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:32 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:33 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:35 [INFO] 💬 👀leni👀: @eloremi Guten Abend😊
+2025-12-13 18:58:35 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:35 [INFO] ADD: +0.4s (Base:0.36, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:39 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:39 [INFO] ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:42 [INFO] ADD: +0.5s (Base:0.48, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:46 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:47 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:49 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:50 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:51 [INFO] 💬 Benny: Moinsen Freunde 😃
+2025-12-13 18:58:51 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:51 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:52 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:54 [INFO] ADD: +5.0s (Base:5.0, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:55 [INFO] 💾 [TIMER] Gespeichert. Likes: 16837
+2025-12-13 18:58:55 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:55 [INFO] 💬 TroEditss: Du bist echt gut im snipen
+2025-12-13 18:58:55 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:58 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:58:59 [INFO] ADD: +0.5s (Base:0.48, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:00 [INFO] 💬 Passy: schreib doch nicht so gaha
+2025-12-13 18:59:00 [INFO] ADD: +0.4s (Base:0.36, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:00 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:00 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:01 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @Benny hi
+2025-12-13 18:59:01 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:02 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:03 [INFO] ADD: +0.4s (Base:0.42, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:03 [INFO] 💬 bloddy_wolves_🦋FusselMaus🦋: Dsf 1
+2025-12-13 18:59:03 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:59:05] "GET /api/v1/like_challenge HTTP/1.1" 200 -
+2025-12-13 18:59:05 [INFO] 127.0.0.1 - - [13/Dec/2025 18:59:05] "GET /api/v1/wheel/state HTTP/1.1" 200 -
+2025-12-13 18:59:05 [INFO] 💬 👀leni👀: @Benny Hey😊
+2025-12-13 18:59:05 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:05 [INFO] ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:05 [INFO] ADD: +0.5s (Base:0.54, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:09 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:10 [INFO] 💬 Passy: schrei doch nicht so haha
+2025-12-13 18:59:10 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:14 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:17 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:19 [INFO] ADD: +0.1s (Base:0.06, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:20 [INFO] 💬 Benny: @🖤💛🐝😈Sabrina36.🦁Stitch💙💖 Hello
+2025-12-13 18:59:20 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:21 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:21 [INFO] ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:23 [INFO] ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:23 [INFO] 💬 🖤💛🐝😈Sabrina36.🦁Stitch💙💖: @Passy 😅
+2025-12-13 18:59:23 [INFO] ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-13 18:59:25 [INFO] 💾 [TIMER] Gespeichert. Likes: 17417
+2025-12-13 18:59:26 [INFO] ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)

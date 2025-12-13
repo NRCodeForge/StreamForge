@@ -6,17 +6,32 @@ async function updateChallenge() {
         const response = await fetch(API_URL);
         const data = await response.json();
 
+        // Fehlerbehandlung vom Server
         if (data.error) {
             challengeTextElement.textContent = data.error;
-        } else {
-            challengeTextElement.textContent = data.displayText;
+            return;
         }
+
+        // KORREKTUR: Daten aus den richtigen Feldern lesen
+        // Python sendet: { "current_likes": 123, "goal": 10000, ... }
+        const currentLikes = data.current_likes || 0;
+        const goal = data.goal || 10000;
+
+        // Anzeige aktualisieren (Format: "150 / 10000 Likes")
+        challengeTextElement.textContent = `${currentLikes} / ${goal} Likes`;
+
+        // Falls du eine Progress-Bar hast, kannst du hier die Breite setzen:
+        // const percent = Math.min((currentLikes / goal) * 100, 100);
+        // document.getElementById('deine-bar-id').style.width = percent + "%";
 
     } catch (error) {
         console.error("Fehler beim Abrufen der Challenge-Daten:", error);
-        challengeTextElement.textContent = 'Verbindung fehlgeschlagen';
+        // Bei Fehler nichts überschreiben oder "Offline" anzeigen
     }
 }
 
+// Initialer Aufruf
 updateChallenge();
-setInterval(updateChallenge, 5000); // Alle 5 Sekunden aktualisieren
+
+// Alle 2 Sekunden aktualisieren (5s ist für Likes oft etwas langsam)
+setInterval(updateChallenge, 2000);
