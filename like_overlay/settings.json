@@ -1,5 +1,13 @@
 {
     "channel_name": "scriptedbynic",
     "oauth_token": "dxm3gwn2zvktux5stjzuh4xk3zaxb2",
-    "twitch_client_id": "0j9rhxzwiibho0c4hc1rnki8jm0kdb"
+    "twitch_client_id": "0j9rhxzwiibho0c4hc1rnki8jm0kdb",
+    "tiktok_unique_id": "dbdstation",
+    "currency_name": "Whieties",
+    "currency_per_message": "1",
+    "currency_per_bit": "4",
+    "currency_per_sub": "500",
+    "currency_per_minute": "4",
+    "currency_cmd_score_active": true,
+    "currency_cmd_send_active": false
 }

@@ -2,6 +2,12 @@
     "channel_name": "scriptedbynic",
     "oauth_token": "t4ejn03x9otd7n782zuapbqsyx7z5e",
     "twitch_client_id": "0j9rhxzwiibho0c4hc1rnki8jm0kdb",
-    "twitch_token": "7zvvz75covdohmshwf6joy57ovuj5i",
-    "twitch_username": "scriptedbynic"
+    "twitch_token": "oauth:7zvvz75covdohmshwf6joy57ovuj5i",
+    "twitch_username": "scriptedbynic",
+    "currency_name": "Whieties",
+    "currency_per_message": "1",
+    "currency_per_bit": "4",
+    "currency_per_sub": "500",
+    "currency_cmd_score_active": true,
+    "currency_cmd_send_active": false
 }

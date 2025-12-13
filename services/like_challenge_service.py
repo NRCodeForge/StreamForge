@@ -1,6 +1,7 @@
 import threading
 import time
-from external.TikTokLive_API import TikTokLiveClientWrapper
+# ÄNDERUNG: Importiere TikTokLive_API statt TikTokLiveClientWrapper
+from external.TikTokLive_API import TikTokLive_API
 from external.settings_manager import SettingsManager
 from utils import server_log
 
@@ -19,7 +20,8 @@ class LikeChallengeService:
 
         if tiktok_id:
             server_log.info(f"Starte TikTok-Verbindung zu @{tiktok_id}...")
-            self.api_client = TikTokLiveClientWrapper(tiktok_id)
+            # ÄNDERUNG: Instanziierung der korrekten Klasse TikTokLive_API
+            self.api_client = TikTokLive_API(tiktok_id)
             self.api_client.start()
             self.is_running = True
         else:

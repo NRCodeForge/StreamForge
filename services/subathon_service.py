@@ -41,7 +41,7 @@ class SubathonService:
     # --- SETUP & HELPERS ---
     def _setup_timer_logger(self):
         logger = logging.getLogger("TimerLog")
-        logger.setLevel(logging.INFO);
+        logger.setLevel(logging.INFO)
         logger.propagate = False
         if not logger.handlers:
             try:
@@ -55,7 +55,11 @@ class SubathonService:
     def _load_initial_state(self):
         try:
             s = self.settings_manager.load_settings()
-            self.timer_seconds = int(s.get("initial_seconds", 3600))
+
+            # FIX: Nutze denselben Key wie die GUI ("start_time_seconds")
+            # Falls nicht vorhanden, Fallback auf "initial_seconds" (alt) oder 3600
+            val = s.get("start_time_seconds", s.get("initial_seconds", 3600))
+            self.timer_seconds = int(float(val))
 
             # Initiale Gambit-Werte setzen, falls leer
             if not s.get("gambit_outcomes"):
@@ -69,8 +73,24 @@ class SubathonService:
                 ]
                 self.settings_manager.save_settings(s)
 
-        except:
+        except Exception as e:
+            server_log.error(f"Fehler beim Laden der Startzeit: {e}")
             self.timer_seconds = 3600
+
+    # --- HELPER: SICHERE ZAHLEN ---
+    def _safe_float(self, value, default=0.0):
+        """Wandelt Strings sicher in Floats um."""
+        try:
+            return float(str(value).strip().replace(',', '.'))
+        except (ValueError, TypeError):
+            return default
+
+    def _safe_int(self, value, default=0):
+        """Wandelt Strings sicher in Ints um."""
+        try:
+            return int(float(str(value).strip().replace(',', '.')))
+        except (ValueError, TypeError):
+            return default
 
     # --- API HOOK (Unverändert wichtig) ---
     def _ensure_api_hook(self):
@@ -96,40 +116,35 @@ class SubathonService:
             def get_cfg(key):
                 return settings.get(key, {"value": "0", "active": False})
 
-            def parse_val(v):
-                try:
-                    return float(str(v).split()[0])
-                except:
-                    return 0.0
-
+            # Nutze jetzt die sichere Parse-Funktion
             if isinstance(event, GiftEvent):
                 c = get_cfg("coins")
                 if c.get("active"):
-                    added = event.gift.diamond_count * parse_val(c["value"])
+                    added = event.gift.diamond_count * self._safe_float(c["value"])
                     reason = f"Gift ({event.gift.diamond_count})"
 
             elif isinstance(event, FollowEvent):
                 c = get_cfg("follow")
-                if c.get("active"): added = parse_val(c["value"]); reason = "Follow"
+                if c.get("active"): added = self._safe_float(c["value"]); reason = "Follow"
 
             elif isinstance(event, ShareEvent):
                 c = get_cfg("share")
-                if c.get("active"): added = parse_val(c["value"]); reason = "Share"
+                if c.get("active"): added = self._safe_float(c["value"]); reason = "Share"
 
             elif isinstance(event, SubscribeEvent):
                 c = get_cfg("subscribe")
-                if c.get("active"): added = parse_val(c["value"]); reason = "Sub"
+                if c.get("active"): added = self._safe_float(c["value"]); reason = "Sub"
 
             elif isinstance(event, LikeEvent):
                 c = get_cfg("like")
                 if c.get("active"):
-                    added = event.count * parse_val(c["value"])
+                    added = event.count * self._safe_float(c["value"])
                     if added > 0: reason = f"{event.count} Likes"
 
             elif isinstance(event, CommentEvent):
                 if not event.comment.startswith("!"):
                     c = get_cfg("chat")
-                    if c.get("active"): added = parse_val(c["value"]); reason = "Chat"
+                    if c.get("active"): added = self._safe_float(c["value"]); reason = "Chat"
 
             if added > 0:
                 self.add_time(added)
@@ -154,7 +169,7 @@ class SubathonService:
 
         result_text = choice.get("text", "???")
         rtype = choice.get("type", "text")
-        rval = float(choice.get("value", 0))
+        rval = self._safe_float(choice.get("value", 0))
         color = choice.get("color", "#FFFFFF")
 
         # Effekt anwenden
@@ -182,8 +197,8 @@ class SubathonService:
         # In Queue packen
         self.gambit_queue.append({
             "title": "GAMBIT ROULETTE",
-            "chamber": result_text,  # Wird im Rad angezeigt (eigentlich 'result', aber Frontend nutzt chamber für Rad)
-            "result": result_text,  # Wird unten angezeigt
+            "chamber": result_text,
+            "result": result_text,
             "color": color,
             "timestamp": time.time()
         })
@@ -199,7 +214,7 @@ class SubathonService:
 
     def _process_gambit_queue(self):
         while True:
-            if self.gambit_queue: pass
+            # Einfaches Polling - Queue wird von Frontend via pop_next_gambit_event geleert
             time.sleep(0.5)
 
     def pop_next_gambit_event(self):
@@ -216,7 +231,8 @@ class SubathonService:
     # --- TRIGGER METHODEN FÜR EVENTS (Konfigurierbar) ---
     def _get_duration(self, key, default):
         s = self.get_current_settings()
-        return int(s.get(f"duration_{key}", default))
+        # FIX: Sicheres Int-Parsing für Strings aus GUI
+        return self._safe_int(s.get(f"duration_{key}", default), default)
 
     def trigger_time_warp(self, d=None):
         dur = d if d else self._get_duration("warp", 60)
@@ -245,7 +261,8 @@ class SubathonService:
         return self.settings_manager.load_settings()
 
     def update_settings(self, s):
-        self.settings_manager.save_settings(s); server_log.info("Settings saved.")
+        self.settings_manager.save_settings(s);
+        server_log.info("Settings saved.")
 
     def set_paused(self, p):
         self.is_paused = p
@@ -254,7 +271,8 @@ class SubathonService:
         self._load_initial_state()
 
     def _reset_event(self, a, d, k):
-        setattr(self, a, d); server_log.info(f"Event {k} end.")
+        setattr(self, a, d);
+        server_log.info(f"Event {k} end.")
 
     def _start_event_timer(self, a, v, d, dur, k):
         setattr(self, a, v)
@@ -285,7 +303,7 @@ class SubathonService:
         # Check ob aktiv
         if not s.get("twitch_msg_active", False): return
 
-        val = float(s.get("twitch_msg_value", 0))
+        val = self._safe_float(s.get("twitch_msg_value", 0))
         if val > 0:
             self.add_time(val)
             self.timer_logger.info(f"TWITCH: Msg ({username}) -> +{val}s")
@@ -297,13 +315,13 @@ class SubathonService:
         if is_gift:
             # Gift Sub
             if s.get("twitch_gift_active", False):
-                val = float(s.get("twitch_gift_value", 0))
+                val = self._safe_float(s.get("twitch_gift_value", 0))
                 self.add_time(val)
                 self.timer_logger.info(f"TWITCH: Gift Sub ({username}) -> +{val}s")
         else:
             # Normaler Sub (Prime, Tier 1-3)
             if s.get("twitch_sub_active", False):
-                val = float(s.get("twitch_sub_value", 0))
+                val = self._safe_float(s.get("twitch_sub_value", 0))
                 self.add_time(val)
                 self.timer_logger.info(f"TWITCH: Sub ({username}) -> +{val}s")
 
@@ -311,7 +329,7 @@ class SubathonService:
         """Wird bei Bits aufgerufen."""
         s = self.get_current_settings()
         if s.get("twitch_bits_active", False):
-            factor = float(s.get("twitch_bits_value", 0))  # Zeit pro 1 Bit
+            factor = self._safe_float(s.get("twitch_bits_value", 0))  # Zeit pro 1 Bit
             total_time = amount * factor
             if total_time > 0:
                 self.add_time(total_time)

@@ -96,9 +96,9 @@ class SubathonSettingsWindow(BaseSettingsWindow):
 class TwitchSubathonSettingsWindow(BaseSettingsWindow):
     def __init__(self, master):
         super().__init__(master, "Twitch Konfiguration", 600, 600)
+
         self.service = subathon_service_instance
         self.twitch_service = twitch_service_instance
-
         # Lade frische Settings
         self.settings = self.service.get_current_settings()
         self.twitch_settings = self.twitch_service.get_settings()
@@ -166,16 +166,6 @@ class TwitchSubathonSettingsWindow(BaseSettingsWindow):
                 current[f"{k}_active"] = w["var"].get()
             self.service.update_settings(current)
 
-            # 2. Credentials speichern (in twitch_settings.json)
-            tw_s = {
-                "channel_name": self.tw_channel.get().strip(),
-                "oauth_token": self.tw_token.get().strip()
-            }
-            self.twitch_service.save_settings(tw_s)
-
-            # 3. Twitch Service neu starten mit neuen Daten
-            if tw_s["channel_name"] and tw_s["oauth_token"]:
-                self.twitch_service.start_twitch()
 
             show_toast(self.master, "✅ Twitch & Trigger gespeichert!")
             self.destroy()
@@ -243,24 +233,45 @@ class CurrencySettingsWindow(BaseSettingsWindow):
 
     def save(self):
         try:
-            # Werte sammeln
+            # 1. Lokale Werte sammeln (für GUI / Like Service)
             self.settings["currency_name"] = self.entry_name.get()
             for k, e in self.entries.items():
                 val = e.get().replace(",", ".")
-                self.settings[k] = val  # Als String speichern, Service wandelt um
+                self.settings[k] = val
             for k, v in self.vars.items():
                 self.settings[k] = v.get()
 
+            # In like_overlay/settings.json speichern
             self.service.settings_manager.save_settings(self.settings)
 
-            # Twitch Service updaten (live)
+            # ---------------------------------------------------------
+            # 2. FIX: Werte auch an den Twitch Service übergeben!
+            # ---------------------------------------------------------
             from services.service_provider import twitch_service_instance
-            twitch_service_instance.currency_name = self.settings["currency_name"]
-            # Trigger Restart für sauberen Reload (optional, aber sicher)
-            twitch_service_instance.update_credentials(twitch_service_instance.username,
-                                                       twitch_service_instance.oauth_token)
 
-            show_toast(self.master, "Währungseinstellungen gespeichert!")
+            # Aktuelle Twitch-Settings laden
+            tw_settings = twitch_service_instance.get_settings()
+
+            # Währungsdaten rüberkopieren
+            tw_settings["currency_name"] = self.settings["currency_name"]
+            tw_settings["currency_per_message"] = self.settings.get("currency_per_message", "0")
+            tw_settings["currency_per_bit"] = self.settings.get("currency_per_bit", "0")
+            tw_settings["currency_per_sub"] = self.settings.get("currency_per_sub", "0")
+
+            # Auch die Command-Schalter synchronisieren
+            tw_settings["currency_cmd_score_active"] = self.settings.get("currency_cmd_score_active", True)
+            tw_settings["currency_cmd_send_active"] = self.settings.get("currency_cmd_send_active", True)
+
+            # In twitch_settings.json speichern
+            twitch_service_instance.save_settings(tw_settings)
+
+            # Twitch Neustart auslösen (lädt jetzt die korrekten neuen Werte)
+            twitch_service_instance.update_credentials(
+                twitch_service_instance.username,
+                twitch_service_instance.oauth_token
+            )
+
+            show_toast(self.master, "✅ Währung überall gespeichert!")
             self.destroy()
         except Exception as e:
             messagebox.showerror("Fehler", str(e))
@@ -472,29 +483,38 @@ class TimerGambitSettingsWindow(BaseSettingsWindow):
 
 class WheelSettingsWindow(BaseSettingsWindow):
     def __init__(self, master):
-        super().__init__(master, "Glücksrad Konfiguration", 600, 500)
+        super().__init__(master, "Glücksrad Konfiguration", 600, 550)
         from services.service_provider import wheel_service_instance
         self.service = wheel_service_instance
         self.settings = self.service.get_settings()
 
-        # --- LIMITS ---
-        tk.Label(self, text="Einsatz-Limits", **self.label_header).pack(anchor='w', pady=(20, 5), padx=20)
+        # --- LIMITS & COOLDOWN ---
+        tk.Label(self, text="Regeln & Limits", **self.label_header).pack(anchor='w', pady=(20, 5), padx=20)
         frm_limits = tk.Frame(self, bg=Style.BACKGROUND)
         frm_limits.pack(fill='x', padx=20)
 
+        # Min Einsatz
         tk.Label(frm_limits, text="Min Einsatz:", **self.label_style).pack(side='left')
-        self.entry_min = tk.Entry(frm_limits, **self.entry_style, width=10)
+        self.entry_min = tk.Entry(frm_limits, **self.entry_style, width=8)
         self.entry_min.insert(0, self.settings.get("min_bet", 5))
-        self.entry_min.pack(side='left', padx=10)
+        self.entry_min.pack(side='left', padx=(5, 15))
 
+        # Max Einsatz
         tk.Label(frm_limits, text="Max Einsatz:", **self.label_style).pack(side='left')
-        self.entry_max = tk.Entry(frm_limits, **self.entry_style, width=10)
+        self.entry_max = tk.Entry(frm_limits, **self.entry_style, width=8)
         self.entry_max.insert(0, self.settings.get("max_bet", 1000))
-        self.entry_max.pack(side='left', padx=10)
+        self.entry_max.pack(side='left', padx=(5, 15))
+
+        # NEU: Cooldown
+        tk.Label(frm_limits, text="Cooldown (Sek):", **self.label_style).pack(side='left')
+        self.entry_cooldown = tk.Entry(frm_limits, **self.entry_style, width=8)
+        self.entry_cooldown.insert(0, self.settings.get("cooldown_seconds", 0))
+        self.entry_cooldown.pack(side='left', padx=5)
 
         # --- FELDER ---
-        tk.Label(self, text="Felder (Zahlenreihe)", **self.label_header).pack(anchor='w', pady=(20, 5), padx=20)
-        tk.Label(self, text="Gib die Werte durch Komma getrennt ein.\nDiese werden bei jedem Spin neu gemischt.",
+        tk.Label(self, text="Felder (Multiplikatoren)", **self.label_header).pack(anchor='w', pady=(20, 5), padx=20)
+        tk.Label(self, text="Gib die Multiplikatoren durch Komma getrennt ein (z.B. 0, 2, 5).\n"
+                            "Häufigkeit bestimmt die Wahrscheinlichkeit.",
                  bg=Style.BACKGROUND, fg="#aaa", justify="left").pack(anchor='w', padx=20)
 
         self.txt_fields = tk.Text(self, height=8, **self.entry_style, font=("Consolas", 10))
@@ -502,7 +522,6 @@ class WheelSettingsWindow(BaseSettingsWindow):
 
         # Lade aktuelle Felder in das Textfeld
         current_fields = self.settings.get("fields", [])
-        # Umwandeln in String "1, 2, 7, ..."
         fields_str = ", ".join(map(str, current_fields))
         self.txt_fields.insert("1.0", fields_str)
 
@@ -513,27 +532,26 @@ class WheelSettingsWindow(BaseSettingsWindow):
 
     def save(self):
         try:
-            # 1. Limits speichern
+            # 1. Limits & Cooldown speichern
             self.settings["min_bet"] = int(self.entry_min.get())
             self.settings["max_bet"] = int(self.entry_max.get())
+            self.settings["cooldown_seconds"] = int(self.entry_cooldown.get())
 
             # 2. Felder parsen
             raw_text = self.txt_fields.get("1.0", "end").strip()
-            # Entferne Zeilenumbrüche und splitte am Komma
             str_values = raw_text.replace("\n", ",").split(",")
 
             new_fields = []
             for val in str_values:
                 val = val.strip()
-                if val:  # Leere Einträge ignorieren
-                    # Versuche als Zahl zu speichern (Int oder Float)
+                if val:
                     try:
                         if "." in val:
                             new_fields.append(float(val))
                         else:
                             new_fields.append(int(val))
                     except ValueError:
-                        pass  # Ungültige Eingaben ignorieren
+                        pass
 
             if not new_fields:
                 messagebox.showerror("Fehler", "Die Felder-Liste darf nicht leer sein!")
@@ -547,7 +565,7 @@ class WheelSettingsWindow(BaseSettingsWindow):
             self.destroy()
 
         except ValueError:
-            messagebox.showerror("Fehler", "Bitte gültige Zahlen für die Limits eingeben.")
+            messagebox.showerror("Fehler", "Bitte gültige Zahlen eingeben.")
 # --- LIKE CHALLENGE & COMMANDS (Standard) ---
 class LikeChallengeSettingsWindow(BaseSettingsWindow):
     def __init__(self, master):

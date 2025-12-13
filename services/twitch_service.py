@@ -18,10 +18,9 @@ class TwitchService:
         self.message_timestamps = deque()
         self.connected = False
 
-        # WICHTIG: Eigene Einstellungsdatei nutzen
+        # Einstellungen laden
         self.settings_manager = SettingsManager("twitch_settings.json")
         self.settings = self.settings_manager.load_settings()
-        self.currency_name = self.settings.get("currency_name", "Coins")
 
     def try_auto_start(self):
         """Versucht beim Start automatisch einzuloggen."""
@@ -41,7 +40,6 @@ class TwitchService:
     def save_settings(self, new_settings):
         self.settings_manager.save_settings(new_settings)
         self.settings = new_settings
-        self.currency_name = self.settings.get("currency_name", "Coins")
         server_log.info("Twitch Einstellungen gespeichert.")
 
     def update_credentials(self, username, token):
@@ -49,7 +47,6 @@ class TwitchService:
         self.oauth_token = token if token.startswith("oauth:") else f"oauth:{token}"
         self.channel = self.username
 
-        # Einstellungen aktualisieren und speichern
         self.settings["twitch_username"] = self.username
         self.settings["twitch_token"] = token
         self.save_settings(self.settings)
@@ -84,6 +81,18 @@ class TwitchService:
             server_log.info(f"🤖 Bot: {message}")
         except:
             pass
+
+    def get_currency_name(self):
+        """Holt den aktuellen Währungsnamen sicher aus dem CurrencyService."""
+        try:
+            from services.service_provider import currency_service_instance
+            if hasattr(currency_service_instance, "currency_name"):
+                return currency_service_instance.currency_name
+            if hasattr(currency_service_instance, "settings"):
+                return currency_service_instance.settings.get("currency_name", "Whieties")
+        except:
+            pass
+        return self.settings.get("currency_name", "Whieties")
 
     def _connection_loop(self):
         host = "irc.chat.twitch.tv"
@@ -136,12 +145,19 @@ class TwitchService:
             server_log.error(f"Parse Error: {e}")
 
     def _handle_message(self, line, tags):
-        from services.service_provider import currency_service_instance, subathon_service_instance
+        from services.service_provider import (
+            currency_service_instance,
+            subathon_service_instance,
+            wheel_service_instance,
+            wish_service_instance
+        )
+
+        c_name = self.get_currency_name()
 
         self.message_timestamps.append(time.time())
         user = tags.get("display-name", "Unknown")
 
-        # 1. Subathon Timer (Chat)
+        # 1. Subathon Timer (Chat Aktivität)
         subathon_service_instance.on_twitch_message(user)
 
         # 2. Punkte für Nachricht
@@ -149,18 +165,21 @@ class TwitchService:
         if pts_msg > 0:
             currency_service_instance.add_points(user, pts_msg)
 
-        # 3. Bits
+        # 3. Bits handling
         if "bits" in tags:
-            bits = int(tags["bits"])
-            subathon_service_instance.on_twitch_bits(user, bits)
+            try:
+                bits = int(tags["bits"])
+                server_log.info(f"💎 BITS: {user} - {bits} Bits")
+                subathon_service_instance.on_twitch_bits(user, bits)
+                factor = float(self.settings.get("currency_per_bit", 0))
+                if factor > 0:
+                    amount = int(bits * factor)
+                    currency_service_instance.add_points(user, amount)
+                    self.send_message(f"Danke {user} für {bits} Bits! (+{amount} {c_name})")
+            except Exception as e:
+                server_log.error(f"Bits Error: {e}")
 
-            factor = float(self.settings.get("currency_per_bit", 0))
-            if factor > 0:
-                amount = int(bits * factor)
-                currency_service_instance.add_points(user, amount)
-                self.send_message(f"Danke {user} für {bits} Bits! (+{amount} {self.currency_name})")
-
-        # Commands
+        # 4. Commands Parsing
         parts = line.split("PRIVMSG", 1)
         if len(parts) > 1:
             msg_content = parts[1].split(":", 1)[1].strip()
@@ -169,10 +188,12 @@ class TwitchService:
 
             if cmd == "!version":
                 self.send_message(f"StreamForge Version: {APP_VERSION} 🛠️")
+
             elif cmd in ["!score", "!points", "!cash"]:
                 if self.settings.get("currency_cmd_score_active", True):
                     bal = currency_service_instance.get_balance(user)
-                    self.send_message(f"@{user}, du hast {bal} {self.currency_name}.")
+                    self.send_message(f"@{user}, du hast {bal} {c_name}.")
+
             elif cmd == "!send":
                 if self.settings.get("currency_cmd_send_active", True):
                     if len(args) < 3:
@@ -186,18 +207,37 @@ class TwitchService:
                         except ValueError:
                             self.send_message("Bitte eine gültige Zahl eingeben.")
 
+            # --- WHEEL COMMAND (!spin) ---
+            elif cmd == "!spin":
+                spin_args = args[1:]
+                server_log.info(f"🎰 !spin von {user}")
+                success, result_msg = wheel_service_instance.handle_spin(user, spin_args)
+
+                # FIX: Immer Nachricht senden, wenn result_msg vorhanden ist (Erfolg oder Fehler)
+                if result_msg:
+                    self.send_message(f"@{user} {result_msg}")
+
+            # --- PLACE COMMAND (!place) ---
+            elif cmd == "!place":
+                server_log.info(f"📍 !place von {user}")
+                wish_service_instance.check_user_place(user)
+
     def _handle_usernotice(self, tags):
         from services.service_provider import currency_service_instance, subathon_service_instance
+
+        c_name = self.get_currency_name()
 
         msg_id = tags.get("msg-id")
         user = tags.get("display-name", "Unknown")
         pts_sub = int(self.settings.get("currency_per_sub", 0))
 
+        server_log.info(f"🔔 SUB EVENT: {msg_id} von {user}")
+
         if msg_id in ["sub", "resub"]:
             subathon_service_instance.on_twitch_sub(user, is_gift=False)
             if pts_sub > 0:
                 currency_service_instance.add_points(user, pts_sub)
-                self.send_message(f"Danke für den Sub {user}! (+{pts_sub} {self.currency_name})")
+                self.send_message(f"Danke für den Sub {user}! (+{pts_sub} {c_name})")
 
         elif msg_id == "subgift":
             subathon_service_instance.on_twitch_sub(user, is_gift=True)
@@ -206,12 +246,14 @@ class TwitchService:
 
         elif msg_id == "submysterygift":
             count = int(tags.get("msg-param-mass-gift-count", "1"))
+            server_log.info(f"💣 GiftBomb von {user}: {count} Subs")
             for _ in range(count):
                 subathon_service_instance.on_twitch_sub(user, is_gift=True)
+
             total = count * pts_sub
             if total > 0:
                 currency_service_instance.add_points(user, total)
-                self.send_message(f"WOW! {count} Gift-Subs von {user}! (+{total} {self.currency_name})")
+                self.send_message(f"WOW! {count} Gift-Subs von {user}! (+{total} {c_name})")
 
     def _metrics_loop(self):
         while True:

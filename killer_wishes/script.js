@@ -27,8 +27,8 @@ async function getWishes() {
             }
         } else {
             // Zeige die Leermeldung an
-            wishTextElements[0].textContent = "gib !wish <Killer> ein";
-            wishUserElements[0].textContent = "um deinen Killer zu sehen";
+            wishTextElements[0].textContent = "gib !wish <Charakter-Name> ein";
+            wishUserElements[0].textContent = "um deinen Charakter zu sehen";
             if (wishTextElements[1]) {
                 wishTextElements[1].textContent = '';
                 wishUserElements[1].textContent = '';
