@@ -9,5 +9,15 @@
     "currency_per_sub": "500",
     "currency_per_minute": "4",
     "currency_cmd_score_active": true,
-    "currency_cmd_send_active": false
+    "currency_cmd_send_active": false,
+    "displayTextFormat": "noch {likes_needed}!",
+    "recurringGoalExpression": "x+333333",
+    "initialGoals": [
+        10000,
+        20000,
+        40000,
+        60000,
+        80000,
+        100000
+    ]
 }
