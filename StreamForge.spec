@@ -11,9 +11,10 @@ datas_list = [
     ('gambler_overlay', 'gambler_overlay'),
     ('timer_overlay', 'timer_overlay'),
     ('commands_overlay', 'commands_overlay'),
+    ('wheel_overlay', 'wheel_overlay'),
     ('C:\\Users\\rieck\\AppData\\Local\\ms-playwright', 'ms-playwright') # Pfad ggf. anpassen
 ]
-fileName = 'StreamForge V-2.13'
+fileName = 'StreamForge V-2.14'
 hiddenimports_list = [
     'pygame',
     'pynput.keyboard',

@@ -8,7 +8,7 @@ let isSpinning = false;
 let currentRotation = 0;
 let lastTimestamp = 0;
 
-// Polling Loop
+// Polling Loop: Fragt jede Sekunde den Status beim Bot ab
 setInterval(checkState, 1000);
 
 async function checkState() {
@@ -16,8 +16,8 @@ async function checkState() {
         const res = await fetch('/api/v1/wheel/state');
         const data = await res.json();
 
-        // Wenn Daten da sind und wir noch nicht drehen (oder es ein neuer Spin ist)
-        if (data.timestamp && (!isSpinning || data.timestamp !== lastTimestamp)) {
+        // Wenn Daten da sind (data.timestamp) und es ein NEUER Spin ist
+        if (data && data.timestamp && (!isSpinning || data.timestamp !== lastTimestamp)) {
             if (data.timestamp !== lastTimestamp) {
                 lastTimestamp = data.timestamp;
                 startSpin(data);
@@ -39,53 +39,52 @@ function startSpin(data) {
     const bet = data.bet;
     const winAmount = data.win_amount;
 
-    // Bild laden
+    // Profilbild laden
     const img = new Image();
     img.src = pfpUrl || "https://static-cdn.jtvnw.net/user-default-pictures-uv/cdd517fe-def4-11e9-948e-784f43822e80-profile_image-300x300.png";
     img.crossOrigin = "Anonymous";
 
     // Berechnung der Rotation
-    // Pointer ist OBEN (270 Grad / 1.5 PI).
-    // Wir wollen, dass das Target Segment oben landet.
     const numSegments = segments.length;
     const anglePerSegment = 360 / numSegments;
-    const targetAngle = targetIndex * anglePerSegment + (anglePerSegment / 2); // Mitte des Segments
 
-    // Zufällige volle Drehungen (z.B. 5-8)
+    // Ziel-Winkel berechnen (Mitte des Segments)
+    const targetAngle = targetIndex * anglePerSegment + (anglePerSegment / 2);
+
+    // Pointer ist oben (270°). Wir drehen das Rad so, dass das Ziel bei 270° landet.
+    // Zufällige volle Umdrehungen (5 bis 8)
     const spins = 360 * (5 + Math.floor(Math.random() * 3));
-
-    // Ziel: Pointer (270) - TargetAngle. Da wir Canvas drehen, müssen wir ENTGEGEN drehen oder Ziel berechnen.
-    // Einfacher: Wir drehen das Rad. Damit Segment X oben ist, muss das Rad um (270 - SegmentWinkel) gedreht sein.
     const endRotation = spins + (270 - targetAngle);
 
-    const duration = 5000; // 5 Sekunden
+    const duration = 8000; // 8 Sekunden Drehzeit
     const startTime = performance.now();
-    const startRot = currentRotation % 360;
+    const startRot = currentRotation % 360; // Startposition normalisieren
 
     function animate(now) {
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
 
-        // Easing: Cubic Out
+        // Easing: Cubic Out (schnell starten, langsam enden)
         const ease = 1 - Math.pow(1 - progress, 3);
 
         const currentAngle = startRot + (endRotation - startRot) * ease;
         const currentRad = currentAngle * (Math.PI / 180);
 
+        // Zeichnen mit dem aktuellen Einsatz (bet) für die Anzeige
         drawWheel(segments, currentRad, img, bet);
 
         if (progress < 1) {
             requestAnimationFrame(animate);
         } else {
-            // Fertig
+            // Animation fertig
             currentRotation = currentAngle;
             showWin(winAmount);
 
-            // Nach 3 Sek ausblenden
+            // Overlay nach 5 Sekunden ausblenden
             setTimeout(() => {
                 container.classList.add('hidden');
                 isSpinning = false;
-            }, 3000);
+            }, 5000);
         }
     }
     requestAnimationFrame(animate);
@@ -105,6 +104,7 @@ function drawWheel(segments, rotation, pfpImage, bet) {
     ctx.rotate(rotation);
 
     for (let i = 0; i < num; i++) {
+        // Segment zeichnen
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.arc(0, 0, radius, i * step, (i + 1) * step);
@@ -114,26 +114,32 @@ function drawWheel(segments, rotation, pfpImage, bet) {
         ctx.strokeStyle = "#fff";
         ctx.stroke();
 
-        // Text
+        // Text zeichnen
         ctx.save();
         ctx.rotate(i * step + step / 2);
         ctx.textAlign = "right";
         ctx.fillStyle = "#fff";
-        ctx.font = "bold 24px Arial";
+        ctx.font = "bold 20px Arial";
         ctx.shadowColor = "black";
         ctx.shadowBlur = 4;
 
-        // Zeige entweder Multiplikator oder absoluten Gewinn
-        let label = segments[i].text;
-        // Optional: Zeige potenziellen Gewinn statt "2x"
-        // label = Math.floor(bet * segments[i].value);
+        // --- Logik für Gewinnanzeige ---
+        let label = segments[i].text; // Fallback (z.B. "30x")
 
-        ctx.fillText(label, radius - 30, 10);
+        // Wenn wir den Einsatz kennen, zeige den echten Gewinnbetrag
+        if (typeof bet === 'number' && bet > 0 && segments[i].value !== undefined) {
+            const val = segments[i].value;
+            const potentialWin = Math.floor(bet * val);
+            label = potentialWin.toString();
+        }
+        // -------------------------------
+
+        ctx.fillText(label, radius - 30, 8);
         ctx.restore();
     }
     ctx.restore();
 
-    // Center Image (PFP)
+    // Profilbild in der Mitte
     ctx.save();
     ctx.beginPath();
     ctx.arc(cx, cy, 60, 0, Math.PI * 2);
@@ -146,7 +152,7 @@ function drawWheel(segments, rotation, pfpImage, bet) {
     }
     ctx.restore();
 
-    // Rand ums Bild
+    // Weißer Rand ums Bild
     ctx.beginPath();
     ctx.arc(cx, cy, 60, 0, Math.PI * 2);
     ctx.lineWidth = 5;
@@ -156,5 +162,5 @@ function drawWheel(segments, rotation, pfpImage, bet) {
 
 function showWin(amount) {
     winAmountSpan.innerText = amount;
-    winMsg.classList.remove('hidden');
+
 }

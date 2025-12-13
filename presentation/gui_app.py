@@ -9,7 +9,6 @@ import webbrowser
 from PIL import Image, ImageTk
 
 # Importiere Services und Config
-# WICHTIG: TwitchSubathonSettingsWindow hinzugefügt
 from presentation.settings_windows import (
     SubathonSettingsWindow,
     LikeChallengeSettingsWindow,
@@ -195,8 +194,8 @@ class StreamForgeGUI:
         self.windows_general = []
         self.cards_tiktok = []
         self.windows_tiktok = []
-        self.cards_twitch = [] # Liste für Twitch Karten
-        self.windows_twitch = [] # Liste für Twitch Fenster
+        self.cards_twitch = []  # Liste für Twitch Karten
+        self.windows_twitch = []  # Liste für Twitch Fenster
 
         self.images = {}
 
@@ -309,7 +308,7 @@ class StreamForgeGUI:
 
         self.cards_tiktok.append(DashboardCard(
             self.canvas_tiktok, "SUBATHON TRIGGER",
-            [("Subathon Info", "subathon_overlay/index.html?platform=tiktok")], # Link angepasst
+            [("Subathon Info", "subathon_overlay/index.html?platform=tiktok")],  # Link angepasst
             settings_func=self.open_subathon_settings_window,
             info_key="SUBATHON"))
 
@@ -325,11 +324,11 @@ class StreamForgeGUI:
         # 2. Subathon Trigger (NEU)
         self.cards_twitch.append(DashboardCard(
             self.canvas_twitch, "SUBATHON TRIGGER",
-            [("Overlay (Twitch)", "subathon_overlay/index.html?platform=twitch")], # Link angepasst
+            [("Overlay (Twitch)", "subathon_overlay/index.html?platform=twitch")],  # Link angepasst
             settings_func=self.open_twitch_subathon_settings_window,
             info_key="SUBATHON_TWITCH"
         ))
-        # 2. Spin
+        # 3. Spin
         self.cards_twitch.append(DashboardCard(
             self.canvas_twitch, "Spin",
             [("Overlay (Twitch)", "wheel_overlay/index.html")],  # Link angepasst
@@ -485,8 +484,10 @@ class StreamForgeGUI:
 
     def open_like_challenge_settings_window(self):
         LikeChallengeSettingsWindow(self.root)
+
     def open_twitch_spin_settings_window(self):
         WheelSettingsWindow(self.root)
+
     def open_commands_settings_window(self):
         CommandsSettingsWindow(self.root)
 
@@ -526,12 +527,12 @@ class StreamForgeGUI:
         self.root.mainloop()
 
 
-# --- GLOBAL SETTINGS WINDOW (MIT STATUS UPDATE FIX) ---
+# --- GLOBAL SETTINGS WINDOW (MIT BROWSER LOGIN) ---
 class GlobalSettingsWindow(tk.Toplevel):
     def __init__(self, master):
         super().__init__(master)
         self.title("Global Settings & Accounts")
-        self.geometry("500x650")
+        self.geometry("600x650")
         self.configure(bg=Style.BACKGROUND)
 
         self.update_idletasks()
@@ -540,8 +541,11 @@ class GlobalSettingsWindow(tk.Toplevel):
         y = master.winfo_y() + (master.winfo_height() // 2) - (h // 2)
         self.geometry(f'+{x}+{y}')
 
-        self.settings_mgr = like_service_instance.settings_manager
-        self.current_settings = self.settings_mgr.load_settings()
+        self.tiktok_mgr = like_service_instance.settings_manager
+        self.tiktok_settings = self.tiktok_mgr.load_settings()
+
+        # Twitch Settings vom Service holen
+        self.twitch_settings = twitch_service_instance.get_settings() or {}
 
         notebook = ttk.Notebook(self)
         notebook.pack(fill='both', expand=True, padx=10, pady=10)
@@ -561,7 +565,7 @@ class GlobalSettingsWindow(tk.Toplevel):
                  font=("Segoe UI", 12, "bold")).pack(pady=20)
         tk.Label(f, text="Username:", bg=Style.BACKGROUND, fg="white").pack(anchor='w', padx=20)
         self.tt_user = tk.Entry(f, font=("Segoe UI", 10), bg="#333", fg="white", relief=tk.FLAT)
-        self.tt_user.insert(0, self.current_settings.get("tiktok_unique_id", ""))
+        self.tt_user.insert(0, self.tiktok_settings.get("tiktok_unique_id", ""))
         self.tt_user.pack(fill='x', padx=20, pady=5)
         tk.Button(f, text="💾 TikTok Speichern", command=self.save_tiktok, bg=Style.SUCCESS, fg="white",
                   relief=tk.FLAT).pack(pady=20, fill='x', padx=20)
@@ -569,31 +573,33 @@ class GlobalSettingsWindow(tk.Toplevel):
     def _build_twitch_tab(self):
         f = self.tab_twitch
         tk.Label(f, text="Twitch Authentifizierung", bg=Style.BACKGROUND, fg="#9146FF",
-                 font=("Segoe UI", 12, "bold")).pack(pady=20)
+                 font=("Segoe UI", 12, "bold")).pack(pady=(20, 10))
 
-        info = ("1. Erstelle eine App auf dev.twitch.tv (Name: StreamForge).\n"
-                "2. Setze Redirect URI auf: http://localhost:5000/auth/twitch/callback\n"
-                "3. Kopiere die Client ID hier rein.")
+        info = ("1. Klicke auf 'Login mit Twitch'.\n"
+                "2. Autorisiere die App im Browser.\n"
+                "3. Das Token wird automatisch und dauerhaft gespeichert.")
         tk.Label(f, text=info, bg=Style.BACKGROUND, fg="#aaa", justify="left").pack(pady=(0, 15))
 
-        tk.Label(f, text="Client ID:", bg=Style.BACKGROUND, fg="white").pack(anchor='w', padx=20)
-        self.client_id_var = tk.StringVar(value=self.current_settings.get("twitch_client_id", ""))
-        tk.Entry(f, textvariable=self.client_id_var, bg="#333", fg="white", relief=tk.FLAT).pack(fill='x', padx=20,
-                                                                                                 pady=5)
+        # Client ID Input (Optional)
+        tk.Label(f, text="Client ID (Optional, sonst Standard):", bg=Style.BACKGROUND, fg="white", anchor='w').pack(
+            fill='x', padx=20)
+        self.entry_cid = tk.Entry(f, bg="#333", fg="white", relief=tk.FLAT, font=("Segoe UI", 10))
+        # Client ID laden
+        current_cid = self.twitch_settings.get("twitch_client_id", "")
+        self.entry_cid.insert(0, current_cid)
+        self.entry_cid.pack(fill='x', padx=20, pady=(0, 20))
 
-        tk.Button(f, text="🔑 Login mit Twitch", command=self.do_twitch_login,
-                  bg="#9146FF", fg="white", font=("Segoe UI", 10, "bold"), relief=tk.FLAT).pack(pady=15, fill='x',
-                                                                                                padx=20)
+        # Login Button (RESTORED)
+        tk.Button(f, text="🔑 LOGIN MIT TWITCH", command=self.do_twitch_login,
+                  bg="#9146FF", fg="white", font=("Segoe UI", 11, "bold"), relief=tk.FLAT, height=2).pack(fill='x',
+                                                                                                          padx=20)
 
-        # STATUS LABEL (LIVE)
+        # Status
         self.status_frame = tk.Frame(f, bg=Style.BACKGROUND, highlightbackground="#333", highlightthickness=1)
-        self.status_frame.pack(fill='x', padx=20, pady=10)
-
-        self.status_lbl = tk.Label(self.status_frame, text="Lade Status...", bg=Style.BACKGROUND, fg="#aaa",
+        self.status_frame.pack(fill='x', padx=20, pady=20)
+        self.status_lbl = tk.Label(self.status_frame, text="Status laden...", bg=Style.BACKGROUND, fg="#aaa",
                                    font=("Segoe UI", 10))
         self.status_lbl.pack(pady=10)
-
-        # Startet den Loop, der alle 1s den Status prüft
         self.update_status_loop()
 
     def update_status_loop(self):
@@ -606,27 +612,27 @@ class GlobalSettingsWindow(tk.Toplevel):
             else:
                 self.status_lbl.config(text="❌ NICHT VERBUNDEN", fg=Style.DANGER)
         except Exception as e:
-            # Fehler abfangen, aber GUI nicht crashen lassen
             self.status_lbl.config(text="⚠️ Service lädt...", fg="#ffaa00")
 
         self.after(1000, self.update_status_loop)
 
     def save_tiktok(self):
-        self.current_settings["tiktok_unique_id"] = self.tt_user.get()
-        self.settings_mgr.save_settings(self.current_settings)
+        self.tiktok_settings["tiktok_unique_id"] = self.tt_user.get()
+        self.tiktok_mgr.save_settings(self.tiktok_settings)
         like_service_instance.update_and_restart(self.tt_user.get())
         show_toast(self.master, "TikTok gespeichert!")
 
     def do_twitch_login(self):
-        cid = self.client_id_var.get().strip()
+        cid = self.entry_cid.get().strip()
         if not cid:
-            messagebox.showerror("Fehler", "Bitte Client ID eingeben!")
-            return
-        self.current_settings["twitch_client_id"] = cid
-        self.settings_mgr.save_settings(self.current_settings)
+            cid = "gp762nuuoqcoxypju8c569th9wz7q5"  # Default StreamForge ID
+
+        # Client ID sofort speichern (im neuen Service), damit sie vorhanden ist
+        self.twitch_settings["twitch_client_id"] = cid
+        twitch_service_instance.save_settings(self.twitch_settings)
 
         redirect = "http://localhost:5000/auth/twitch/callback"
-        scope = "chat:read+chat:edit"
+        scope = "chat:read+chat:edit+channel:read:subscriptions+bits:read"
         url = (f"https://id.twitch.tv/oauth2/authorize?response_type=token"
                f"&client_id={cid}&redirect_uri={redirect}&scope={scope}")
 

@@ -472,13 +472,13 @@ class TimerGambitSettingsWindow(BaseSettingsWindow):
 
 class WheelSettingsWindow(BaseSettingsWindow):
     def __init__(self, master):
-        super().__init__(master, "Glücksrad Konfiguration", 700, 600)
+        super().__init__(master, "Glücksrad Konfiguration", 600, 500)
         from services.service_provider import wheel_service_instance
         self.service = wheel_service_instance
         self.settings = self.service.get_settings()
 
+        # --- LIMITS ---
         tk.Label(self, text="Einsatz-Limits", **self.label_header).pack(anchor='w', pady=(20, 5), padx=20)
-
         frm_limits = tk.Frame(self, bg=Style.BACKGROUND)
         frm_limits.pack(fill='x', padx=20)
 
@@ -492,48 +492,62 @@ class WheelSettingsWindow(BaseSettingsWindow):
         self.entry_max.insert(0, self.settings.get("max_bet", 1000))
         self.entry_max.pack(side='left', padx=10)
 
-        tk.Label(self, text="Felder Konfiguration", **self.label_header).pack(anchor='w', pady=(20, 5), padx=20)
+        # --- FELDER ---
+        tk.Label(self, text="Felder (Zahlenreihe)", **self.label_header).pack(anchor='w', pady=(20, 5), padx=20)
+        tk.Label(self, text="Gib die Werte durch Komma getrennt ein.\nDiese werden bei jedem Spin neu gemischt.",
+                 bg=Style.BACKGROUND, fg="#aaa", justify="left").pack(anchor='w', padx=20)
 
-        # Treeview für Segmente
-        tree_frame = tk.Frame(self, bg=Style.BACKGROUND)
-        tree_frame.pack(fill='both', expand=True, padx=20, pady=5)
+        self.txt_fields = tk.Text(self, height=8, **self.entry_style, font=("Consolas", 10))
+        self.txt_fields.pack(fill='both', expand=True, padx=20, pady=10)
 
-        self.tree = ttk.Treeview(tree_frame, columns=("Text", "Multi", "Gewicht", "Farbe"), show='headings', height=8)
-        self.tree.heading("Text", text="Text")
-        self.tree.heading("Multi", text="Multiplikator")
-        self.tree.heading("Gewicht", text="Gewicht (Chance)")
-        self.tree.heading("Farbe", text="Farbe")
+        # Lade aktuelle Felder in das Textfeld
+        current_fields = self.settings.get("fields", [])
+        # Umwandeln in String "1, 2, 7, ..."
+        fields_str = ", ".join(map(str, current_fields))
+        self.txt_fields.insert("1.0", fields_str)
 
-        self.tree.column("Text", width=100)
-        self.tree.column("Multi", width=80)
-        self.tree.column("Gewicht", width=80)
-        self.tree.column("Farbe", width=80)
-
-        self.tree.pack(side='left', fill='both', expand=True)
-
-        # Buttons zum Editieren (vereinfacht: Nur Speichern der Limits für dieses Beispiel,
-        # komplettes Editing der Segmente benötigt mehr Code. Hier laden wir die Liste nur zur Ansicht
-        # und Speichern die Limits.)
-
-        self.load_segments()
-
-        tk.Button(self, text="💾 SPEICHERN", command=self.save,
+        # --- SAVE BUTTON ---
+        tk.Button(self, text="💾 EINSTELLUNGEN SPEICHERN", command=self.save,
                   bg=Style.SUCCESS, fg="white", font=("Segoe UI", 11, "bold"), relief="flat").pack(fill='x', padx=20,
                                                                                                    pady=20)
 
-    def load_segments(self):
-        for s in self.settings.get("segments", []):
-            self.tree.insert("", "end", values=(s["text"], s["value"], s["weight"], s["color"]))
-
     def save(self):
         try:
+            # 1. Limits speichern
             self.settings["min_bet"] = int(self.entry_min.get())
             self.settings["max_bet"] = int(self.entry_max.get())
+
+            # 2. Felder parsen
+            raw_text = self.txt_fields.get("1.0", "end").strip()
+            # Entferne Zeilenumbrüche und splitte am Komma
+            str_values = raw_text.replace("\n", ",").split(",")
+
+            new_fields = []
+            for val in str_values:
+                val = val.strip()
+                if val:  # Leere Einträge ignorieren
+                    # Versuche als Zahl zu speichern (Int oder Float)
+                    try:
+                        if "." in val:
+                            new_fields.append(float(val))
+                        else:
+                            new_fields.append(int(val))
+                    except ValueError:
+                        pass  # Ungültige Eingaben ignorieren
+
+            if not new_fields:
+                messagebox.showerror("Fehler", "Die Felder-Liste darf nicht leer sein!")
+                return
+
+            self.settings["fields"] = new_fields
+
+            # Speichern
             self.service.update_settings(self.settings)
-            show_toast(self.master, "Glücksrad Einstellungen gespeichert!")
+            show_toast(self.master, "✅ Glücksrad Einstellungen gespeichert!")
             self.destroy()
+
         except ValueError:
-            messagebox.showerror("Fehler", "Bitte gültige Zahlen eingeben.")
+            messagebox.showerror("Fehler", "Bitte gültige Zahlen für die Limits eingeben.")
 # --- LIKE CHALLENGE & COMMANDS (Standard) ---
 class LikeChallengeSettingsWindow(BaseSettingsWindow):
     def __init__(self, master):

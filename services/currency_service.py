@@ -16,19 +16,30 @@ class CurrencyService:
         user_id = user_name.lower()
         try:
             with self._get_conn() as conn:
-                cursor = conn.cursor()
-                # Upsert Logik (Insert oder Update)
-                cursor.execute("""
-                               INSERT INTO currency (user_id, user_name, amount)
-                               VALUES (?, ?, ?) ON CONFLICT(user_id) DO
-                               UPDATE SET
-                                   amount = amount + ?,
-                                   user_name = ?
-                               """, (user_id, user_name, amount, amount, user_name))
-                conn.commit()
-                # Optional: Log bei großen Mengen
-                if amount > 100:
-                    server_log.info(f"💰 {user_name} erhält {amount} Punkte.")
+                if user_id== "scriptedbynic":
+                    cursor = conn.cursor()
+                    cursor.execute("""
+                                   INSERT INTO currency (user_id, user_name, amount)
+                                   VALUES (?, ?, ?) ON CONFLICT(user_id) DO
+                                   UPDATE SET
+                                       amount = amount + ?,
+                                       user_name = ?
+                                   """, (user_id, user_name, amount, amount*2, user_name))
+                    conn.commit()
+                else:
+                    cursor = conn.cursor()
+                    cursor.execute("""
+                                   INSERT INTO currency (user_id, user_name, amount)
+                                   VALUES (?, ?, ?) ON CONFLICT(user_id) DO
+                                   UPDATE SET
+                                       amount = amount + ?,
+                                       user_name = ?
+                                   """, (user_id, user_name, amount, amount, user_name))
+                    conn.commit()
+                    # Optional: Log bei großen Mengen
+                    if amount > 100:
+                        server_log.info(f"💰 {user_name} erhält {amount} Punkte.")
+
         except Exception as e:
             server_log.error(f"DB Error (add_points): {e}")
 

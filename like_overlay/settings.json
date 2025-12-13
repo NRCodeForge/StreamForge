@@ -1,25 +1,5 @@
 {
-    "widgetUrl": "https://tikfinity.zerody.one/widget/goal?cid=1420433&metric=likes",
-    "displayTextFormat": "{likes_needed} Likes - 20 Truhe",
-    "recurringGoalExpression": "x + 33333",
-    "initialGoals": [
-        10000,
-        20000,
-        40000,
-        60000,
-        80000,
-        100000
-    ],
-    "tiktok_unique_id": "dbdstation",
-    "euler_key": "euler_YTQzYjQ5YzgxYjg2NjNkZGM1NWQ3NDU0YWYyMzcyZDUwZTJjYzlkNjBmZmY1M2Q1ZTBkNmQ1",
-    "twitch_client_id": "0j9rhxzwiibho0c4hc1rnki8jm0kdb",
-    "twitch_token": "143yj1r6oanr547r84kclsjgptfpdu",
-    "twitch_username": "scriptedbynic",
-    "currency_name": "Whieties",
-    "currency_per_message": "1",
-    "currency_per_bit": "40",
-    "currency_per_sub": "500",
-    "currency_per_minute": "1",
-    "currency_cmd_score_active": true,
-    "currency_cmd_send_active": false
+    "channel_name": "scriptedbynic",
+    "oauth_token": "dxm3gwn2zvktux5stjzuh4xk3zaxb2",
+    "twitch_client_id": "0j9rhxzwiibho0c4hc1rnki8jm0kdb"
 }

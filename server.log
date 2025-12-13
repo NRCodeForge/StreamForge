@@ -2553,3 +2553,1465 @@ durch den Hostcomputer abgebrochen
 2025-12-11 17:20:48,722 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
 2025-12-11 17:20:49,002 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
 2025-12-11 17:21:02,936 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json gespeichert.
+2025-12-11 17:24:22,911 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:24:22,911 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:24:23,000 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:24:23,000 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:24:23,000 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:24:23,000 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:24:23,001 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:24:23,001 - INFO - SettingsManager für wheel_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:24:23,158 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:24:23,158 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 17:24:23,159 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 17:24:23,159 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 17:24:23,160 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:24:23,160 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:24:23,782 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 17:24:23,783 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:24:24,003 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 17:24:27,243 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:24:30,801 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:24:31,020 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 17:24:46,065 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 2 deinem Konto hinzugefügt.
+2025-12-11 17:24:53,846 - INFO - 🤖 Bot: @ScriptedByNic, du hast 32 Whieties.
+2025-12-11 17:25:12,131 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 2 deinem Konto hinzugefügt.
+2025-12-11 17:25:14,857 - INFO - 🤖 Bot: @ScriptedByNic, du hast 31 Whieties.
+2025-12-11 17:29:56,063 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:29:56,063 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:29:56,173 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:29:56,173 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:29:56,173 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:29:56,173 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:29:56,174 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:29:56,174 - INFO - SettingsManager für wheel_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:29:56,310 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:29:56,310 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 17:29:56,310 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 17:29:56,311 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 17:29:56,312 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:29:56,312 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:29:56,873 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 17:29:56,874 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:29:57,176 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 17:30:01,805 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:30:04,357 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:30:04,582 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 17:30:23,720 - INFO - 🤖 Bot: @ScriptedByNic Leider nichts gewonnen. Viel Glück beim nächsten Mal!
+2025-12-11 17:30:35,813 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 10 Whieties gewonnen!
+2025-12-11 17:30:49,156 - INFO - 🤖 Bot: @ScriptedByNic Leider nichts gewonnen. Viel Glück beim nächsten Mal!
+2025-12-11 17:30:52,614 - INFO - 🤖 Bot: @ScriptedByNic, du hast 5 Whieties.
+2025-12-11 17:34:16,169 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:34:16,170 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:34:16,267 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:34:16,268 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:34:16,268 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:34:16,268 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:34:16,269 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:34:16,269 - INFO - SettingsManager für wheel_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:34:16,417 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:34:16,417 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 17:34:16,417 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 17:34:16,417 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 17:34:16,419 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:34:16,419 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:34:17,036 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 17:34:17,037 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:34:17,270 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 17:34:20,358 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:34:23,222 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:34:23,441 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 17:34:40,147 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 6 Whieties gewonnen!
+2025-12-11 17:35:07,242 - INFO - 🤖 Bot: @ScriptedByNic Leider nichts gewonnen. Viel Glück beim nächsten Mal!
+2025-12-11 17:35:14,024 - INFO - 🤖 Bot: @ScriptedByNic Du hast nicht genug Punkte! (Benötigt: 5, Aktuell: 4)
+2025-12-11 17:35:35,641 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 2 Whieties gewonnen!
+2025-12-11 17:37:55,640 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:37:55,640 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:37:55,757 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:37:55,757 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:37:55,757 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:37:55,757 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:37:55,758 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:37:55,758 - INFO - SettingsManager für wheel_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_settings.json
+2025-12-11 17:37:55,906 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:37:55,906 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 17:37:55,906 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 17:37:55,907 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 17:37:55,908 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:37:55,908 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:37:56,529 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 17:37:56,530 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:37:56,760 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 17:38:00,215 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:38:03,118 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:38:03,340 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 17:38:17,388 - INFO - 🤖 Bot: @ScriptedByNic, du hast 37 Whieties.
+2025-12-11 17:38:29,618 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 5 Whieties gewonnen!
+2025-12-11 17:49:21,696 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:49:21,696 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:49:21,801 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:49:21,801 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:49:21,801 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:49:21,801 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:49:21,802 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:49:21,803 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 17:49:21,803 - ERROR - Fehler beim Parsen der JSON-Datei C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json: Expecting value: line 1 column 1 (char 0)
+2025-12-11 17:49:44,480 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 17:49:44,481 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 17:49:44,592 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 17:49:44,592 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 17:49:44,592 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 17:49:44,593 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 17:49:44,593 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 17:49:44,594 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 17:49:44,594 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json gespeichert.
+2025-12-11 17:49:44,747 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:49:44,747 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 17:49:44,747 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 17:49:44,747 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 17:49:44,749 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:49:44,749 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 17:49:45,324 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 17:49:45,325 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 17:49:45,596 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 17:49:49,695 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json gespeichert.
+2025-12-11 17:49:53,774 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:49:55,736 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 17:49:55,952 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 17:50:13,723 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 5 deinem Konto hinzugefügt.
+2025-12-11 18:23:58,566 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:23:58,567 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:23:58,659 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:23:58,659 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:23:58,659 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:23:58,659 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:23:58,660 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:23:58,660 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:23:58,836 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:23:58,836 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:23:58,837 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:23:58,838 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:23:58,839 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:23:58,839 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:23:59,556 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:23:59,556 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:23:59,662 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:24:03,912 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 18:24:06,767 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 18:24:06,981 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:24:22,591 - INFO - 🤖 Bot: @ScriptedByNic, du hast 40 Whieties.
+2025-12-11 18:24:35,459 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 10 deinem Konto hinzugefügt.
+2025-12-11 18:24:50,086 - INFO - 🤖 Bot: @ScriptedByNic, du hast 47 Whieties.
+2025-12-11 18:28:56,468 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:28:56,469 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:28:56,562 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:28:56,562 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:28:56,562 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:28:56,562 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:28:56,563 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:28:56,563 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:28:56,735 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:28:56,735 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:28:56,735 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:28:56,735 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:28:56,737 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:28:56,738 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:28:57,385 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:28:57,388 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:28:57,565 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:29:01,999 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 18:29:04,868 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 18:29:05,076 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:29:18,079 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 150 deinem Konto hinzugefügt.
+2025-12-11 18:29:21,407 - INFO - 🤖 Bot: @ScriptedByNic, du hast 4000000047 Whieties.
+2025-12-11 18:29:31,528 - INFO - 🤖 Bot: @ScriptedByNic, du hast 5000000047 Whieties.
+2025-12-11 18:30:35,734 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:30:35,735 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:30:35,837 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:30:35,838 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:30:35,838 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:30:35,838 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:30:35,838 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:30:35,839 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:30:36,007 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:30:36,007 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:30:36,007 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:30:36,007 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:30:36,009 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:30:36,009 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:30:36,665 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:30:36,666 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:30:36,840 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:33:48,972 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:33:48,973 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:33:49,065 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:33:49,065 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:33:49,065 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:33:49,065 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:33:49,066 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:33:49,066 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 18:33:49,066 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:33:49,216 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:33:49,216 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:33:49,216 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:33:49,217 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:33:49,218 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:33:49,218 - WARNING - Einstellungsdatei nicht gefunden: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:33:49,867 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:33:49,868 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:33:50,069 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:34:51,532 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:34:51,533 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:34:51,620 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:34:51,620 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:34:51,620 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:34:51,620 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:34:51,621 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:34:51,621 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 18:34:51,621 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:34:51,777 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:34:51,777 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:34:51,777 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:34:51,777 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:34:51,778 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:34:52,412 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:34:52,413 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:34:52,622 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:34:55,154 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 18:34:57,885 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 18:34:58,092 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:35:09,361 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:35:09,362 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:35:09,461 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:35:09,462 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:35:09,462 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:35:09,462 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:35:09,463 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:35:09,463 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 18:35:09,463 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:35:09,623 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:35:09,623 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:35:09,623 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:35:09,624 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:35:09,625 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:35:10,219 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:35:10,220 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:35:10,465 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:39:33,279 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:39:33,279 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:39:33,382 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:39:33,382 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:39:33,382 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:39:33,382 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:39:33,383 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:39:33,383 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 18:39:33,384 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:39:33,553 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:39:33,554 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:39:33,554 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:39:33,554 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:39:33,555 - INFO - SettingsManager für settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\settings.json
+2025-12-11 18:39:34,124 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:39:34,125 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:39:34,385 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:39:37,930 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 18:39:40,624 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 18:39:40,838 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:41:05,962 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:41:05,962 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:41:06,063 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:41:06,064 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:41:06,064 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:41:06,064 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:41:06,065 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:41:06,065 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 18:41:06,066 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:41:06,241 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:41:06,241 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:41:06,241 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:41:06,242 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:41:06,884 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:41:06,884 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:41:07,067 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:42:54,021 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-11 18:43:06,543 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-11 18:43:06,544 - INFO - Twitch Service gestoppt.
+2025-12-11 18:43:33,263 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-11 18:43:33,263 - INFO - Twitch Service gestoppt.
+2025-12-11 18:43:34,480 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:43:45,039 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:43:55,587 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:44:06,147 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:44:16,703 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:44:27,261 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:44:37,852 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:44:48,410 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:44:58,970 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:45:09,517 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:45:20,069 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:45:30,628 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:45:41,205 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:45:54,211 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:45:54,212 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:45:54,337 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:45:54,337 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:45:54,337 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:45:54,337 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:45:54,338 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:45:54,338 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 18:45:54,338 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:45:54,490 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:45:54,490 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:45:54,491 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:45:54,491 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:45:55,084 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:45:55,085 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:45:55,340 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:45:58,618 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 18:46:03,010 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-11 18:46:03,210 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:48:43,784 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:48:43,784 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:48:43,906 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:48:43,906 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:48:43,907 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:48:43,907 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:48:43,907 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:48:43,908 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 18:48:43,908 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:48:44,066 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:48:44,067 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:48:44,067 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:48:44,067 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:48:44,629 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:48:44,630 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:48:44,910 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:49:02,574 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-11 18:49:02,777 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:49:09,622 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-11 18:49:09,624 - ERROR - Twitch Verbindung verloren: [WinError 10053] Eine bestehende Verbindung wurde softwaregesteuert
+durch den Hostcomputer abgebrochen
+2025-12-11 18:49:09,624 - INFO - Twitch Service gestoppt.
+2025-12-11 18:49:10,819 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:49:14,809 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:50:07,650 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:50:07,650 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:50:07,765 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:50:07,765 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:50:07,765 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:50:07,765 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:50:07,766 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:50:07,766 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 18:50:07,766 - INFO - 💾 Gespeicherte Twitch-Daten gefunden für: scriptedbynic
+2025-12-11 18:50:07,767 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:50:07,956 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:50:07,956 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:50:07,957 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:50:07,957 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:50:08,032 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:50:08,557 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:50:08,558 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:50:08,770 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:52:33,386 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 18:52:33,386 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 18:52:33,483 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 18:52:33,483 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 18:52:33,483 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 18:52:33,483 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 18:52:33,484 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 18:52:33,484 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 18:52:33,485 - INFO - 💾 Gespeicherte Twitch-Daten geladen: scriptedbynic
+2025-12-11 18:52:33,486 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 18:52:33,653 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:52:33,653 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 18:52:33,653 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 18:52:33,653 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 18:52:33,724 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 18:52:34,272 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 18:52:34,272 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 18:52:34,489 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 18:53:06,565 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 10 deinem Konto hinzugefügt.
+2025-12-11 18:53:21,815 - INFO - 🤖 Bot: @ScriptedByNic Glückwunsch! 7000 deinem Konto hinzugefügt.
+2025-12-11 18:53:39,888 - INFO - 🤖 Bot: @ScriptedByNic, du hast 5000012073 Whieties.
+2025-12-11 19:08:37,441 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 19:08:37,441 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 19:08:37,549 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 19:08:37,549 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 19:08:37,550 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 19:08:37,550 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 19:08:37,550 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 19:08:37,551 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 19:08:37,551 - INFO - 💾 Gespeicherte Twitch-Daten geladen: scriptedbynic
+2025-12-11 19:08:37,552 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 19:08:37,722 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 19:08:37,722 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 19:08:37,722 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 19:08:37,723 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 19:08:37,795 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 19:08:38,297 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 19:08:38,298 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 19:08:38,553 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 19:08:53,572 - INFO - 🤖 Bot: Fehler: Keine Segmente konfiguriert.
+2025-12-11 19:09:06,939 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json gespeichert.
+2025-12-11 19:09:13,330 - INFO - 🤖 Bot: Fehler: Keine Segmente konfiguriert.
+2025-12-11 19:10:31,017 - INFO - 🤖 Bot: Fehler: Keine Segmente konfiguriert.
+2025-12-11 19:12:21,832 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 19:12:21,832 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 19:12:22,026 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 19:12:22,027 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 19:12:22,027 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 19:12:22,027 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 19:12:22,029 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 19:12:22,032 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 19:12:22,033 - INFO - 💾 Gespeicherte Twitch-Daten geladen: scriptedbynic
+2025-12-11 19:12:22,035 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 19:12:22,260 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 19:12:22,448 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 19:12:22,448 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 19:12:22,449 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 19:12:22,450 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 19:12:23,039 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 19:12:23,514 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 19:12:23,515 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 19:12:58,759 - INFO - 🤖 Bot: Fehler: Keine Segmente konfiguriert.
+2025-12-11 19:14:27,215 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 19:14:27,215 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 19:14:27,319 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 19:14:27,320 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 19:14:27,320 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 19:14:27,320 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 19:14:27,320 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 19:14:27,321 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 19:14:27,321 - INFO - 💾 Gespeicherte Twitch-Daten geladen: scriptedbynic
+2025-12-11 19:14:27,322 - INFO - SettingsManager für wheel_overlay\settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 19:14:27,486 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 19:14:27,487 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 19:14:27,487 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 19:14:27,487 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 19:14:27,563 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 19:14:28,053 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 19:14:28,054 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 19:14:28,323 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 19:14:39,012 - ERROR - Parse Error: 'int' object has no attribute 'get'
+2025-12-11 19:15:05,438 - ERROR - Parse Error: 'int' object has no attribute 'get'
+2025-12-11 19:15:15,253 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:15:19,438 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:15:22,755 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:15:24,466 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:15:31,094 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:16:04,863 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:16:12,443 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:16:20,723 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:16:22,353 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:16:23,198 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:16:23,979 - INFO - ADD: +0.1s (Base:0.06, Hype:x1.0, LS:x1.0)
+2025-12-11 19:16:35,677 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:16:39,894 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:16:41,578 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:16:57,446 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:00,888 - INFO - ADD: +0.1s (Base:0.12, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:09,933 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:14,007 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:18,988 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:40,689 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:44,093 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:47,441 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:50,644 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:54,066 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:54,066 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:17:57,356 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:00,656 - INFO - ADD: +0.1s (Base:0.06, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:03,997 - INFO - ADD: +0.7s (Base:0.72, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:12,398 - INFO - ADD: +60.0s (Base:60.0, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:14,041 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:14,890 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:17,419 - INFO - ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:24,892 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:25,748 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:29,106 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:32,454 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:32,454 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:34,156 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:35,795 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:36,653 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:37,498 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:51,504 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:54,748 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:18:58,101 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:00,646 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:02,312 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:04,870 - INFO - ADD: +0.7s (Base:0.72, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:19,106 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:21,600 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:21,600 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:23,205 - INFO - ADD: +0.5s (Base:0.48, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:31,364 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:33,083 - INFO - ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:33,907 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:33,909 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:37,219 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:38,942 - INFO - ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:44,743 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:45,471 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:47,986 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:47,987 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:50,422 - INFO - ADD: +0.7s (Base:0.6599999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:56,202 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:19:58,696 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:02,891 - INFO - ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:07,830 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:12,051 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:12,051 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:17,099 - INFO - ADD: +0.4s (Base:0.42, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:19,688 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:22,202 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:24,587 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:25,472 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:27,952 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:30,442 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:33,697 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:34,589 - INFO - ADD: +0.8s (Base:0.84, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:36,243 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:38,741 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:41,992 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:44,446 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:47,704 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:51,057 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:53,550 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:56,064 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:56,843 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:20:59,351 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:00,167 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:01,863 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:02,655 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:05,203 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:07,647 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:10,163 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:12,938 - ERROR - Parse Error: 'int' object has no attribute 'get'
+2025-12-11 19:21:13,502 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:16,009 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:17,608 - INFO - ADD: +0.5s (Base:0.48, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:20,048 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:21,789 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:25,030 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:26,707 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:27,506 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:30,810 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:34,020 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:34,020 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:36,433 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:36,434 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:37,300 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:39,609 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:42,857 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:46,281 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:48,772 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:48,772 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:52,074 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:55,306 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:57,814 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:21:59,461 - INFO - ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:01,935 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:04,467 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:08,579 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:09,426 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:13,625 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:17,026 - INFO - ADD: +0.8s (Base:0.84, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:21,228 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:22,921 - INFO - ADD: +0.1s (Base:0.06, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:36,831 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:37,681 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:40,174 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:41,842 - INFO - ADD: +0.4s (Base:0.36, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:45,021 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:46,731 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:47,521 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:49,224 - INFO - ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:50,878 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:53,387 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:54,257 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:55,037 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:55,878 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:58,383 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:22:59,277 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:00,893 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:00,894 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:01,803 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:01,804 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:03,464 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:04,283 - INFO - ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:05,042 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:08,287 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:10,698 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:11,536 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:14,044 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:16,492 - INFO - ADD: +0.7s (Base:0.6599999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:17,349 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:17,349 - INFO - ADD: +0.2s (Base:0.24, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:18,143 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:19,021 - INFO - ADD: +0.4s (Base:0.36, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:20,642 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:21,514 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:22,290 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:22,291 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:24,784 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:24,785 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:28,056 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:28,057 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:28,905 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:30,598 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:33,044 - INFO - ADD: +0.7s (Base:0.72, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:33,897 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:35,589 - INFO - ADD: +0.7s (Base:0.6599999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:38,760 - INFO - ADD: +0.8s (Base:0.78, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:40,438 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:42,853 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:43,703 - INFO - ADD: +0.4s (Base:0.36, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:45,245 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:46,983 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:47,818 - INFO - ADD: +0.4s (Base:0.4, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:48,608 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:51,963 - INFO - ADD: +0.8s (Base:0.84, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:51,964 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:54,360 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:54,361 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:58,500 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:23:59,351 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:01,756 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:04,102 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:04,915 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:07,354 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:10,712 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:12,342 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:13,200 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:16,497 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:19,017 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:20,702 - INFO - ADD: +0.6s (Base:0.6, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:22,381 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:24,876 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:26,459 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:27,325 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:30,521 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:30,522 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:33,924 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:37,276 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:39,784 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:41,554 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:43,148 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:46,324 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:48,678 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:51,975 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:52,823 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:54,470 - INFO - ADD: +0.6s (Base:0.6, Hype:x1.0, LS:x1.0)
+2025-12-11 19:24:56,995 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:00,326 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:01,982 - INFO - ADD: +0.6s (Base:0.6, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:03,687 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:05,374 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:06,171 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:09,487 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 19:25:09,487 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 19:25:09,587 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 19:25:09,587 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 19:25:09,587 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 19:25:09,587 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 19:25:09,588 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 19:25:09,588 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 19:25:09,588 - INFO - 💾 Gespeicherte Twitch-Daten geladen: scriptedbynic
+2025-12-11 19:25:09,589 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 19:25:09,742 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 19:25:09,742 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 19:25:09,742 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 19:25:09,743 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 19:25:09,818 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 19:25:10,398 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 19:25:10,399 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 19:25:10,590 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 19:25:28,305 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,306 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,307 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,308 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,308 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,309 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,310 - INFO - ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,383 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,383 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,384 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,385 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,385 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,385 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:28,387 - INFO - ADD: +0.2s (Base:0.18, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:31,120 - INFO - ADD: +0.1s (Base:0.1, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:31,852 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:32,699 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:34,082 - INFO - 🤖 Bot: @ScriptedByNic Gewonnen! +45 Punkte.
+2025-12-11 19:25:35,956 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:37,682 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:37,683 - INFO - ADD: +0.6s (Base:0.6, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:40,021 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:42,453 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:44,154 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:45,007 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:54,559 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-11 19:25:54,560 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-11 19:25:54,658 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-11 19:25:54,658 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-11 19:25:54,658 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-11 19:25:54,658 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-11 19:25:54,659 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-11 19:25:54,659 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-11 19:25:54,659 - INFO - 💾 Gespeicherte Twitch-Daten geladen: scriptedbynic
+2025-12-11 19:25:54,660 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-11 19:25:54,816 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 19:25:54,816 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-11 19:25:54,816 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-11 19:25:54,816 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-11 19:25:54,892 - INFO - Twitch Connected als scriptedbynic
+2025-12-11 19:25:55,416 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-11 19:25:55,417 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-11 19:25:55,661 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-11 19:25:59,623 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,624 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,625 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,626 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,626 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,628 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,629 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,711 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,711 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,712 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,712 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,713 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,714 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:25:59,716 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:00,152 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:01,725 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:03,323 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:04,888 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:05,727 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:08,173 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:11,574 - INFO - ADD: +0.7s (Base:0.72, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:11,866 - INFO - 🤖 Bot: @ScriptedByNic Gewonnen! +25 Punkte.
+2025-12-11 19:26:13,082 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:14,815 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:18,141 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:20,572 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-11 19:26:21,430 - INFO - ADD: +0.9s (Base:0.8999999999999999, Hype:x1.0, LS:x1.0)
+2025-12-11 19:31:18,726 - INFO - ADD: +0.3s (Base:0.3, Hype:x1.0, LS:x1.0)
+2025-12-12 05:28:12,461 - ERROR - Twitch Verbindung verloren: [WinError 10053] Eine bestehende Verbindung wurde softwaregesteuert
+durch den Hostcomputer abgebrochen
+2025-12-12 05:28:17,463 - ERROR - Twitch Verbindung verloren: [Errno 11001] getaddrinfo failed
+2025-12-12 11:31:18,682 - ERROR - Twitch Verbindung verloren: [Errno 11001] getaddrinfo failed
+2025-12-12 11:31:23,731 - ERROR - Twitch Verbindung verloren: [WinError 10051] Ein Socketvorgang bezog sich auf ein nicht verfügbares Netzwerk
+2025-12-13 13:57:18,065 - INFO - Twitch Connected als scriptedbynic
+2025-12-13 13:57:52,887 - INFO - 🤖 Bot: @ScriptedByNic Gewonnen! +45 Punkte.
+2025-12-13 13:59:07,222 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 13:59:07,224 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 13:59:07,394 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 13:59:07,395 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 13:59:07,395 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 13:59:07,396 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 13:59:07,399 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 13:59:07,400 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-13 13:59:07,400 - INFO - 💾 Gespeicherte Twitch-Daten geladen: scriptedbynic
+2025-12-13 13:59:07,404 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 13:59:07,644 - INFO - Twitch Connected als scriptedbynic
+2025-12-13 13:59:07,715 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 13:59:07,716 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 13:59:07,716 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-13 13:59:07,716 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-13 13:59:08,407 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 13:59:08,941 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 13:59:08,942 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 13:59:32,549 - INFO - 🤖 Bot: @ScriptedByNic Gewonnen! +40 Punkte.
+2025-12-13 13:59:50,057 - INFO - 🤖 Bot: @ScriptedByNic Leider nichts gewonnen.
+2025-12-13 14:02:17,166 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:02:17,167 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:02:17,270 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:02:17,270 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:02:17,270 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:02:17,270 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:02:17,271 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:02:17,271 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-13 14:02:17,272 - INFO - 💾 Gespeicherte Twitch-Daten geladen: scriptedbynic
+2025-12-13 14:02:17,273 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:02:17,495 - INFO - Twitch Connected als scriptedbynic
+2025-12-13 14:02:17,498 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:02:17,499 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:02:17,499 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-13 14:02:17,499 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-13 14:02:18,275 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:02:18,276 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:02:18,276 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 14:02:35,792 - INFO - 🤖 Bot: @ScriptedByNic Gewonnen! +20 Punkte.
+2025-12-13 14:02:56,243 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:02:56,244 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:02:56,340 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:02:56,340 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:02:56,340 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:02:56,341 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:02:56,341 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:02:56,342 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-13 14:02:56,342 - INFO - 💾 Gespeicherte Twitch-Daten geladen: scriptedbynic
+2025-12-13 14:02:56,344 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:02:56,545 - INFO - Twitch Connected als scriptedbynic
+2025-12-13 14:02:56,653 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:02:56,653 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:02:56,653 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-13 14:02:56,654 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-13 14:02:57,348 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 14:02:57,973 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:02:57,974 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:03:14,090 - INFO - 🤖 Bot: @ScriptedByNic Gewonnen! +35 Punkte.
+2025-12-13 14:04:58,785 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:04:58,786 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:04:58,918 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:04:58,918 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:04:58,918 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:04:58,918 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:04:58,919 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:04:58,920 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-13 14:04:58,920 - INFO - 💾 Gespeicherte Twitch-Daten geladen: scriptedbynic
+2025-12-13 14:04:58,921 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:04:59,131 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:04:59,132 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:04:59,132 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-13 14:04:59,132 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-13 14:04:59,246 - INFO - Twitch Connected als scriptedbynic
+2025-12-13 14:04:59,923 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 14:05:00,061 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:05:00,062 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:05:12,559 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json gespeichert.
+2025-12-13 14:05:12,559 - INFO - Command 60716f66-8647-47d5-9817-1f116bcf7600 aktualisiert.
+2025-12-13 14:14:25,205 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:14:25,205 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:14:25,331 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:14:25,332 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:14:25,332 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:14:25,332 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:14:25,360 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:14:25,397 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:14:25,566 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:14:25,566 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:14:25,566 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-13 14:14:25,567 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-13 14:14:26,633 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 14:14:27,358 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:14:27,359 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:16:07,724 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:16:07,725 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:16:07,821 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:16:07,822 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:16:07,822 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:16:07,822 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:16:07,823 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:16:07,823 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:16:07,988 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:16:07,988 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:16:07,989 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-13 14:16:07,989 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-13 14:16:08,617 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:16:08,618 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:16:08,824 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 14:17:32,107 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:17:32,107 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:17:32,197 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:17:32,197 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:17:32,197 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:17:32,197 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:17:32,198 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:17:32,198 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:17:32,346 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:17:32,346 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:17:32,346 - INFO - ⚙️ Autostart gefunden für: dbdstation
+2025-12-13 14:17:32,346 - INFO - 🚀 START: TikTok API Verbindung zu @dbdstation
+2025-12-13 14:17:33,052 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:17:33,053 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:17:33,199 - INFO - 🔌 Subathon: Klinke mich in TikTok-API ein...
+2025-12-13 14:17:36,581 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-13 14:17:36,581 - INFO - Twitch Einstellungen gespeichert.
+2025-12-13 14:17:40,620 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json gespeichert.
+2025-12-13 14:17:40,620 - INFO - Twitch Einstellungen gespeichert.
+2025-12-13 14:17:40,826 - INFO - Twitch Connected als 
+2025-12-13 14:17:41,193 - INFO - Twitch Connected als 
+2025-12-13 14:17:41,559 - INFO - Twitch Connected als 
+2025-12-13 14:17:41,927 - INFO - Twitch Connected als 
+2025-12-13 14:17:42,293 - INFO - Twitch Connected als 
+2025-12-13 14:17:42,664 - INFO - Twitch Connected als 
+2025-12-13 14:17:43,034 - INFO - Twitch Connected als 
+2025-12-13 14:17:43,409 - INFO - Twitch Connected als 
+2025-12-13 14:17:43,783 - INFO - Twitch Connected als 
+2025-12-13 14:17:44,153 - INFO - Twitch Connected als 
+2025-12-13 14:17:44,540 - INFO - Twitch Connected als 
+2025-12-13 14:17:44,906 - INFO - Twitch Connected als 
+2025-12-13 14:17:45,279 - INFO - Twitch Connected als 
+2025-12-13 14:17:45,650 - INFO - Twitch Connected als 
+2025-12-13 14:17:46,018 - INFO - Twitch Connected als 
+2025-12-13 14:17:46,384 - INFO - Twitch Connected als 
+2025-12-13 14:17:46,769 - INFO - Twitch Connected als 
+2025-12-13 14:17:47,137 - INFO - Twitch Connected als 
+2025-12-13 14:17:47,505 - INFO - Twitch Connected als 
+2025-12-13 14:17:47,873 - INFO - Twitch Connected als 
+2025-12-13 14:17:48,240 - INFO - Twitch Connected als 
+2025-12-13 14:17:48,634 - INFO - Twitch Connected als 
+2025-12-13 14:17:49,005 - INFO - Twitch Connected als 
+2025-12-13 14:17:49,371 - INFO - Twitch Connected als 
+2025-12-13 14:17:49,739 - INFO - Twitch Connected als 
+2025-12-13 14:17:50,106 - INFO - Twitch Connected als 
+2025-12-13 14:17:50,479 - INFO - Twitch Connected als 
+2025-12-13 14:17:50,846 - INFO - Twitch Connected als 
+2025-12-13 14:17:51,213 - INFO - Twitch Connected als 
+2025-12-13 14:17:51,582 - INFO - Twitch Connected als 
+2025-12-13 14:17:51,953 - INFO - Twitch Connected als 
+2025-12-13 14:17:52,321 - INFO - Twitch Connected als 
+2025-12-13 14:17:52,684 - INFO - Twitch Connected als 
+2025-12-13 14:17:53,051 - INFO - Twitch Connected als 
+2025-12-13 14:17:53,420 - INFO - Twitch Connected als 
+2025-12-13 14:17:53,787 - INFO - Twitch Connected als 
+2025-12-13 14:17:54,162 - INFO - Twitch Connected als 
+2025-12-13 14:17:54,527 - INFO - Twitch Connected als 
+2025-12-13 14:17:54,902 - INFO - Twitch Connected als 
+2025-12-13 14:17:55,269 - INFO - Twitch Connected als 
+2025-12-13 14:17:55,637 - INFO - Twitch Connected als 
+2025-12-13 14:17:56,011 - INFO - Twitch Connected als 
+2025-12-13 14:17:56,379 - INFO - Twitch Connected als 
+2025-12-13 14:17:56,747 - INFO - Twitch Connected als 
+2025-12-13 14:17:57,116 - INFO - Twitch Connected als 
+2025-12-13 14:17:57,485 - INFO - Twitch Connected als 
+2025-12-13 14:17:57,862 - INFO - Twitch Connected als 
+2025-12-13 14:17:58,232 - INFO - Twitch Connected als 
+2025-12-13 14:17:58,602 - INFO - Twitch Connected als 
+2025-12-13 14:17:58,973 - INFO - Twitch Connected als 
+2025-12-13 14:17:59,339 - INFO - Twitch Connected als 
+2025-12-13 14:17:59,706 - INFO - Twitch Connected als 
+2025-12-13 14:18:00,078 - INFO - Twitch Connected als 
+2025-12-13 14:18:00,443 - INFO - Twitch Connected als 
+2025-12-13 14:18:00,815 - INFO - Twitch Connected als 
+2025-12-13 14:18:01,191 - INFO - Twitch Connected als 
+2025-12-13 14:18:01,564 - INFO - Twitch Connected als 
+2025-12-13 14:18:01,937 - INFO - Twitch Connected als 
+2025-12-13 14:18:02,305 - INFO - Twitch Connected als 
+2025-12-13 14:18:02,676 - INFO - Twitch Connected als 
+2025-12-13 14:18:03,047 - INFO - Twitch Connected als 
+2025-12-13 14:18:09,558 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:18:09,559 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:18:09,668 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:18:09,668 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:18:09,668 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:18:09,668 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:18:09,669 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:18:09,669 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:18:09,827 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:18:09,827 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:18:09,828 - WARNING - ⚠️ Autostart: Kein TikTok-User in Settings gefunden.
+2025-12-13 14:18:10,417 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:18:10,417 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:20:55,265 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:20:55,265 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:20:55,340 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:20:55,340 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:20:55,340 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:20:55,340 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:20:55,341 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:20:55,341 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-13 14:20:55,375 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:20:55,497 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:20:55,497 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:20:55,497 - WARNING - ⚠️ Autostart: Kein TikTok-User in Settings gefunden.
+2025-12-13 14:20:56,024 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:20:56,025 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:20:59,387 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-13 14:20:59,387 - INFO - Twitch Einstellungen gespeichert (twitch_settings.json).
+2025-12-13 14:21:02,961 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-13 14:21:02,961 - INFO - Twitch Einstellungen gespeichert (twitch_settings.json).
+2025-12-13 14:21:03,163 - INFO - Twitch Connected als 
+2025-12-13 14:21:03,526 - INFO - Twitch Connected als 
+2025-12-13 14:21:03,893 - INFO - Twitch Connected als 
+2025-12-13 14:21:04,263 - INFO - Twitch Connected als 
+2025-12-13 14:21:04,634 - INFO - Twitch Connected als 
+2025-12-13 14:21:04,998 - INFO - Twitch Connected als 
+2025-12-13 14:21:05,366 - INFO - Twitch Connected als 
+2025-12-13 14:21:05,736 - INFO - Twitch Connected als 
+2025-12-13 14:21:06,102 - INFO - Twitch Connected als 
+2025-12-13 14:21:06,469 - INFO - Twitch Connected als 
+2025-12-13 14:21:06,838 - INFO - Twitch Connected als 
+2025-12-13 14:21:07,204 - INFO - Twitch Connected als 
+2025-12-13 14:21:07,600 - INFO - Twitch Connected als 
+2025-12-13 14:21:07,965 - INFO - Twitch Connected als 
+2025-12-13 14:21:08,326 - INFO - Twitch Connected als 
+2025-12-13 14:21:08,693 - INFO - Twitch Connected als 
+2025-12-13 14:21:09,055 - INFO - Twitch Connected als 
+2025-12-13 14:21:09,426 - INFO - Twitch Connected als 
+2025-12-13 14:21:09,792 - INFO - Twitch Connected als 
+2025-12-13 14:21:10,156 - INFO - Twitch Connected als 
+2025-12-13 14:21:10,524 - INFO - Twitch Connected als 
+2025-12-13 14:21:10,894 - INFO - Twitch Connected als 
+2025-12-13 14:21:11,258 - INFO - Twitch Connected als 
+2025-12-13 14:21:11,626 - INFO - Twitch Connected als 
+2025-12-13 14:21:11,997 - INFO - Twitch Connected als 
+2025-12-13 14:21:12,362 - INFO - Twitch Connected als 
+2025-12-13 14:21:12,731 - INFO - Twitch Connected als 
+2025-12-13 14:21:13,096 - INFO - Twitch Connected als 
+2025-12-13 14:21:13,463 - INFO - Twitch Connected als 
+2025-12-13 14:21:13,829 - INFO - Twitch Connected als 
+2025-12-13 14:21:14,192 - INFO - Twitch Connected als 
+2025-12-13 14:21:14,563 - INFO - Twitch Connected als 
+2025-12-13 14:21:14,930 - INFO - Twitch Connected als 
+2025-12-13 14:21:15,316 - INFO - Twitch Connected als 
+2025-12-13 14:21:15,682 - INFO - Twitch Connected als 
+2025-12-13 14:21:16,052 - INFO - Twitch Connected als 
+2025-12-13 14:21:16,422 - INFO - Twitch Connected als 
+2025-12-13 14:21:16,786 - INFO - Twitch Connected als 
+2025-12-13 14:21:17,153 - INFO - Twitch Connected als 
+2025-12-13 14:21:17,516 - INFO - Twitch Connected als 
+2025-12-13 14:21:17,886 - INFO - Twitch Connected als 
+2025-12-13 14:21:18,252 - INFO - Twitch Connected als 
+2025-12-13 14:21:18,621 - INFO - Twitch Connected als 
+2025-12-13 14:21:21,635 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:21:21,635 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:21:21,740 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:21:21,740 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:21:21,740 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:21:21,740 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:21:21,742 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:21:21,742 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-13 14:21:21,743 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:21:21,897 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:21:21,897 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:21:21,898 - WARNING - ⚠️ Autostart: Kein TikTok-User in Settings gefunden.
+2025-12-13 14:21:22,501 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:21:22,502 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:21:26,290 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-13 14:21:26,290 - INFO - Twitch Einstellungen gespeichert (twitch_settings.json).
+2025-12-13 14:21:30,805 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-13 14:21:30,805 - INFO - Twitch Einstellungen gespeichert (twitch_settings.json).
+2025-12-13 14:21:30,989 - INFO - Twitch Connected als 
+2025-12-13 14:21:31,359 - INFO - Twitch Connected als 
+2025-12-13 14:21:31,728 - INFO - Twitch Connected als 
+2025-12-13 14:21:32,099 - INFO - Twitch Connected als 
+2025-12-13 14:21:32,462 - INFO - Twitch Connected als 
+2025-12-13 14:21:32,826 - INFO - Twitch Connected als 
+2025-12-13 14:21:33,197 - INFO - Twitch Connected als 
+2025-12-13 14:21:33,566 - INFO - Twitch Connected als 
+2025-12-13 14:21:33,940 - INFO - Twitch Connected als 
+2025-12-13 14:21:34,308 - INFO - Twitch Connected als 
+2025-12-13 14:21:34,681 - INFO - Twitch Connected als 
+2025-12-13 14:21:35,048 - INFO - Twitch Connected als 
+2025-12-13 14:21:35,415 - INFO - Twitch Connected als 
+2025-12-13 14:21:35,776 - INFO - Twitch Connected als 
+2025-12-13 14:21:36,148 - INFO - Twitch Connected als 
+2025-12-13 14:21:36,526 - INFO - Twitch Connected als 
+2025-12-13 14:21:36,897 - INFO - Twitch Connected als 
+2025-12-13 14:21:37,262 - INFO - Twitch Connected als 
+2025-12-13 14:21:37,635 - INFO - Twitch Connected als 
+2025-12-13 14:21:38,002 - INFO - Twitch Connected als 
+2025-12-13 14:21:38,365 - INFO - Twitch Connected als 
+2025-12-13 14:21:38,731 - INFO - Twitch Connected als 
+2025-12-13 14:21:39,105 - INFO - Twitch Connected als 
+2025-12-13 14:21:39,473 - INFO - Twitch Connected als 
+2025-12-13 14:21:39,837 - INFO - Twitch Connected als 
+2025-12-13 14:21:40,207 - INFO - Twitch Connected als 
+2025-12-13 14:21:40,570 - INFO - Twitch Connected als 
+2025-12-13 14:21:40,941 - INFO - Twitch Connected als 
+2025-12-13 14:21:41,307 - INFO - Twitch Connected als 
+2025-12-13 14:21:41,674 - INFO - Twitch Connected als 
+2025-12-13 14:21:42,039 - INFO - Twitch Connected als 
+2025-12-13 14:21:42,412 - INFO - Twitch Connected als 
+2025-12-13 14:21:42,782 - INFO - Twitch Connected als 
+2025-12-13 14:21:43,150 - INFO - Twitch Connected als 
+2025-12-13 14:21:43,523 - INFO - Twitch Connected als 
+2025-12-13 14:21:43,889 - INFO - Twitch Connected als 
+2025-12-13 14:21:44,254 - INFO - Twitch Connected als 
+2025-12-13 14:21:44,618 - INFO - Twitch Connected als 
+2025-12-13 14:21:44,991 - INFO - Twitch Connected als 
+2025-12-13 14:21:45,363 - INFO - Twitch Connected als 
+2025-12-13 14:21:45,726 - INFO - Twitch Connected als 
+2025-12-13 14:21:46,098 - INFO - Twitch Connected als 
+2025-12-13 14:21:46,470 - INFO - Twitch Connected als 
+2025-12-13 14:21:46,840 - INFO - Twitch Connected als 
+2025-12-13 14:21:47,207 - INFO - Twitch Connected als 
+2025-12-13 14:21:47,571 - INFO - Twitch Connected als 
+2025-12-13 14:21:47,937 - INFO - Twitch Connected als 
+2025-12-13 14:21:48,302 - INFO - Twitch Connected als 
+2025-12-13 14:21:48,666 - INFO - Twitch Connected als 
+2025-12-13 14:21:49,044 - INFO - Twitch Connected als 
+2025-12-13 14:21:49,410 - INFO - Twitch Connected als 
+2025-12-13 14:21:49,778 - INFO - Twitch Connected als 
+2025-12-13 14:21:50,147 - INFO - Twitch Connected als 
+2025-12-13 14:21:50,520 - INFO - Twitch Connected als 
+2025-12-13 14:21:50,888 - INFO - Twitch Connected als 
+2025-12-13 14:21:51,258 - INFO - Twitch Connected als 
+2025-12-13 14:21:51,625 - INFO - Twitch Connected als 
+2025-12-13 14:21:51,992 - INFO - Twitch Connected als 
+2025-12-13 14:21:52,355 - INFO - Twitch Connected als 
+2025-12-13 14:21:52,718 - INFO - Twitch Connected als 
+2025-12-13 14:21:53,082 - INFO - Twitch Connected als 
+2025-12-13 14:21:53,447 - INFO - Twitch Connected als 
+2025-12-13 14:21:53,810 - INFO - Twitch Connected als 
+2025-12-13 14:21:54,176 - INFO - Twitch Connected als 
+2025-12-13 14:21:54,543 - INFO - Twitch Connected als 
+2025-12-13 14:21:54,909 - INFO - Twitch Connected als 
+2025-12-13 14:21:55,271 - INFO - Twitch Connected als 
+2025-12-13 14:21:55,638 - INFO - Twitch Connected als 
+2025-12-13 14:21:56,004 - INFO - Twitch Connected als 
+2025-12-13 14:21:56,373 - INFO - Twitch Connected als 
+2025-12-13 14:21:56,747 - INFO - Twitch Connected als 
+2025-12-13 14:21:57,116 - INFO - Twitch Connected als 
+2025-12-13 14:21:57,483 - INFO - Twitch Connected als 
+2025-12-13 14:21:57,851 - INFO - Twitch Connected als 
+2025-12-13 14:21:58,218 - INFO - Twitch Connected als 
+2025-12-13 14:21:58,588 - INFO - Twitch Connected als 
+2025-12-13 14:21:58,951 - INFO - Twitch Connected als 
+2025-12-13 14:21:59,316 - INFO - Twitch Connected als 
+2025-12-13 14:21:59,694 - INFO - Twitch Connected als 
+2025-12-13 14:22:00,076 - INFO - Twitch Connected als 
+2025-12-13 14:22:00,447 - INFO - Twitch Connected als 
+2025-12-13 14:22:00,813 - INFO - Twitch Connected als 
+2025-12-13 14:22:01,178 - INFO - Twitch Connected als 
+2025-12-13 14:22:01,544 - INFO - Twitch Connected als 
+2025-12-13 14:22:01,909 - INFO - Twitch Connected als 
+2025-12-13 14:22:02,275 - INFO - Twitch Connected als 
+2025-12-13 14:22:02,642 - INFO - Twitch Connected als 
+2025-12-13 14:22:03,006 - INFO - Twitch Connected als 
+2025-12-13 14:22:03,384 - INFO - Twitch Connected als 
+2025-12-13 14:22:03,750 - INFO - Twitch Connected als 
+2025-12-13 14:22:04,124 - INFO - Twitch Connected als 
+2025-12-13 14:22:04,489 - INFO - Twitch Connected als 
+2025-12-13 14:22:04,865 - INFO - Twitch Connected als 
+2025-12-13 14:22:05,230 - INFO - Twitch Connected als 
+2025-12-13 14:22:05,598 - INFO - Twitch Connected als 
+2025-12-13 14:22:05,965 - INFO - Twitch Connected als 
+2025-12-13 14:22:06,332 - INFO - Twitch Connected als 
+2025-12-13 14:22:06,691 - INFO - Twitch Connected als 
+2025-12-13 14:22:07,055 - INFO - Twitch Connected als 
+2025-12-13 14:22:07,420 - INFO - Twitch Connected als 
+2025-12-13 14:22:07,790 - INFO - Twitch Connected als 
+2025-12-13 14:22:08,159 - INFO - Twitch Connected als 
+2025-12-13 14:22:08,527 - INFO - Twitch Connected als 
+2025-12-13 14:22:08,891 - INFO - Twitch Connected als 
+2025-12-13 14:22:09,255 - INFO - Twitch Connected als 
+2025-12-13 14:22:09,618 - INFO - Twitch Connected als 
+2025-12-13 14:22:09,982 - INFO - Twitch Connected als 
+2025-12-13 14:22:10,349 - INFO - Twitch Connected als 
+2025-12-13 14:22:10,715 - INFO - Twitch Connected als 
+2025-12-13 14:22:11,081 - INFO - Twitch Connected als 
+2025-12-13 14:22:11,449 - INFO - Twitch Connected als 
+2025-12-13 14:22:11,815 - INFO - Twitch Connected als 
+2025-12-13 14:22:12,184 - INFO - Twitch Connected als 
+2025-12-13 14:22:12,546 - INFO - Twitch Connected als 
+2025-12-13 14:22:12,912 - INFO - Twitch Connected als 
+2025-12-13 14:22:13,277 - INFO - Twitch Connected als 
+2025-12-13 14:22:13,645 - INFO - Twitch Connected als 
+2025-12-13 14:22:14,016 - INFO - Twitch Connected als 
+2025-12-13 14:22:14,383 - INFO - Twitch Connected als 
+2025-12-13 14:22:14,752 - INFO - Twitch Connected als 
+2025-12-13 14:22:15,119 - INFO - Twitch Connected als 
+2025-12-13 14:22:15,485 - INFO - Twitch Connected als 
+2025-12-13 14:22:15,851 - INFO - Twitch Connected als 
+2025-12-13 14:22:16,216 - INFO - Twitch Connected als 
+2025-12-13 14:22:16,579 - INFO - Twitch Connected als 
+2025-12-13 14:22:16,947 - INFO - Twitch Connected als 
+2025-12-13 14:22:17,314 - INFO - Twitch Connected als 
+2025-12-13 14:22:17,681 - INFO - Twitch Connected als 
+2025-12-13 14:22:18,053 - INFO - Twitch Connected als 
+2025-12-13 14:22:18,424 - INFO - Twitch Connected als 
+2025-12-13 14:22:18,798 - INFO - Twitch Connected als 
+2025-12-13 14:22:19,162 - INFO - Twitch Connected als 
+2025-12-13 14:22:19,528 - INFO - Twitch Connected als 
+2025-12-13 14:22:19,909 - INFO - Twitch Connected als 
+2025-12-13 14:22:20,278 - INFO - Twitch Connected als 
+2025-12-13 14:22:20,642 - INFO - Twitch Connected als 
+2025-12-13 14:22:21,006 - INFO - Twitch Connected als 
+2025-12-13 14:22:21,373 - INFO - Twitch Connected als 
+2025-12-13 14:22:21,737 - INFO - Twitch Connected als 
+2025-12-13 14:22:22,103 - INFO - Twitch Connected als 
+2025-12-13 14:22:22,474 - INFO - Twitch Connected als 
+2025-12-13 14:22:22,842 - INFO - Twitch Connected als 
+2025-12-13 14:22:23,210 - INFO - Twitch Connected als 
+2025-12-13 14:22:23,575 - INFO - Twitch Connected als 
+2025-12-13 14:22:23,949 - INFO - Twitch Connected als 
+2025-12-13 14:22:24,317 - INFO - Twitch Connected als 
+2025-12-13 14:22:24,681 - INFO - Twitch Connected als 
+2025-12-13 14:22:25,044 - INFO - Twitch Connected als 
+2025-12-13 14:22:25,407 - INFO - Twitch Connected als 
+2025-12-13 14:22:25,772 - INFO - Twitch Connected als 
+2025-12-13 14:22:26,139 - INFO - Twitch Connected als 
+2025-12-13 14:22:26,507 - INFO - Twitch Connected als 
+2025-12-13 14:22:26,875 - INFO - Twitch Connected als 
+2025-12-13 14:22:27,245 - INFO - Twitch Connected als 
+2025-12-13 14:22:27,609 - INFO - Twitch Connected als 
+2025-12-13 14:22:27,978 - INFO - Twitch Connected als 
+2025-12-13 14:22:28,343 - INFO - Twitch Connected als 
+2025-12-13 14:22:28,716 - INFO - Twitch Connected als 
+2025-12-13 14:22:29,091 - INFO - Twitch Connected als 
+2025-12-13 14:22:29,457 - INFO - Twitch Connected als 
+2025-12-13 14:22:29,822 - INFO - Twitch Connected als 
+2025-12-13 14:22:30,185 - INFO - Twitch Connected als 
+2025-12-13 14:22:30,561 - INFO - Twitch Connected als 
+2025-12-13 14:22:30,935 - INFO - Twitch Connected als 
+2025-12-13 14:22:31,301 - INFO - Twitch Connected als 
+2025-12-13 14:22:31,663 - INFO - Twitch Connected als 
+2025-12-13 14:22:32,027 - INFO - Twitch Connected als 
+2025-12-13 14:22:32,394 - INFO - Twitch Connected als 
+2025-12-13 14:22:32,761 - INFO - Twitch Connected als 
+2025-12-13 14:22:33,132 - INFO - Twitch Connected als 
+2025-12-13 14:22:33,497 - INFO - Twitch Connected als 
+2025-12-13 14:22:33,864 - INFO - Twitch Connected als 
+2025-12-13 14:22:34,230 - INFO - Twitch Connected als 
+2025-12-13 14:22:34,598 - INFO - Twitch Connected als 
+2025-12-13 14:22:34,965 - INFO - Twitch Connected als 
+2025-12-13 14:22:35,338 - INFO - Twitch Connected als 
+2025-12-13 14:22:35,704 - INFO - Twitch Connected als 
+2025-12-13 14:22:36,070 - INFO - Twitch Connected als 
+2025-12-13 14:22:36,440 - INFO - Twitch Connected als 
+2025-12-13 14:22:36,807 - INFO - Twitch Connected als 
+2025-12-13 14:22:37,175 - INFO - Twitch Connected als 
+2025-12-13 14:22:37,541 - INFO - Twitch Connected als 
+2025-12-13 14:22:37,908 - INFO - Twitch Connected als 
+2025-12-13 14:22:38,282 - INFO - Twitch Connected als 
+2025-12-13 14:22:38,647 - INFO - Twitch Connected als 
+2025-12-13 14:22:39,013 - INFO - Twitch Connected als 
+2025-12-13 14:22:39,380 - INFO - Twitch Connected als 
+2025-12-13 14:22:39,751 - INFO - Twitch Connected als 
+2025-12-13 14:22:40,131 - INFO - Twitch Connected als 
+2025-12-13 14:22:40,503 - INFO - Twitch Connected als 
+2025-12-13 14:22:40,871 - INFO - Twitch Connected als 
+2025-12-13 14:22:41,238 - INFO - Twitch Connected als 
+2025-12-13 14:22:41,607 - INFO - Twitch Connected als 
+2025-12-13 14:22:41,973 - INFO - Twitch Connected als 
+2025-12-13 14:22:42,340 - INFO - Twitch Connected als 
+2025-12-13 14:22:42,709 - INFO - Twitch Connected als 
+2025-12-13 14:22:43,075 - INFO - Twitch Connected als 
+2025-12-13 14:22:43,448 - INFO - Twitch Connected als 
+2025-12-13 14:22:43,815 - INFO - Twitch Connected als 
+2025-12-13 14:22:44,178 - INFO - Twitch Connected als 
+2025-12-13 14:22:44,544 - INFO - Twitch Connected als 
+2025-12-13 14:22:44,917 - INFO - Twitch Connected als 
+2025-12-13 14:22:45,279 - INFO - Twitch Connected als 
+2025-12-13 14:22:45,651 - INFO - Twitch Connected als 
+2025-12-13 14:22:46,017 - INFO - Twitch Connected als 
+2025-12-13 14:22:46,382 - INFO - Twitch Connected als 
+2025-12-13 14:22:46,751 - INFO - Twitch Connected als 
+2025-12-13 14:22:47,120 - INFO - Twitch Connected als 
+2025-12-13 14:22:47,495 - INFO - Twitch Connected als 
+2025-12-13 14:22:47,860 - INFO - Twitch Connected als 
+2025-12-13 14:22:48,222 - INFO - Twitch Connected als 
+2025-12-13 14:22:48,593 - INFO - Twitch Connected als 
+2025-12-13 14:22:48,963 - INFO - Twitch Connected als 
+2025-12-13 14:22:49,331 - INFO - Twitch Connected als 
+2025-12-13 14:22:49,697 - INFO - Twitch Connected als 
+2025-12-13 14:22:50,060 - INFO - Twitch Connected als 
+2025-12-13 14:22:50,429 - INFO - Twitch Connected als 
+2025-12-13 14:22:50,799 - INFO - Twitch Connected als 
+2025-12-13 14:22:51,165 - INFO - Twitch Connected als 
+2025-12-13 14:22:51,533 - INFO - Twitch Connected als 
+2025-12-13 14:22:51,900 - INFO - Twitch Connected als 
+2025-12-13 14:22:52,267 - INFO - Twitch Connected als 
+2025-12-13 14:22:52,632 - INFO - Twitch Connected als 
+2025-12-13 14:22:53,002 - INFO - Twitch Connected als 
+2025-12-13 14:22:53,368 - INFO - Twitch Connected als 
+2025-12-13 14:22:53,731 - INFO - Twitch Connected als 
+2025-12-13 14:22:54,095 - INFO - Twitch Connected als 
+2025-12-13 14:22:54,462 - INFO - Twitch Connected als 
+2025-12-13 14:22:54,828 - INFO - Twitch Connected als 
+2025-12-13 14:22:55,198 - INFO - Twitch Connected als 
+2025-12-13 14:22:55,568 - INFO - Twitch Connected als 
+2025-12-13 14:22:55,935 - INFO - Twitch Connected als 
+2025-12-13 14:22:56,313 - INFO - Twitch Connected als 
+2025-12-13 14:22:56,680 - INFO - Twitch Connected als 
+2025-12-13 14:22:57,047 - INFO - Twitch Connected als 
+2025-12-13 14:22:57,415 - INFO - Twitch Connected als 
+2025-12-13 14:22:57,783 - INFO - Twitch Connected als 
+2025-12-13 14:22:58,155 - INFO - Twitch Connected als 
+2025-12-13 14:22:58,527 - INFO - Twitch Connected als 
+2025-12-13 14:22:58,897 - INFO - Twitch Connected als 
+2025-12-13 14:22:59,266 - INFO - Twitch Connected als 
+2025-12-13 14:22:59,630 - INFO - Twitch Connected als 
+2025-12-13 14:22:59,996 - INFO - Twitch Connected als 
+2025-12-13 14:23:00,364 - INFO - Twitch Connected als 
+2025-12-13 14:23:00,729 - INFO - Twitch Connected als 
+2025-12-13 14:23:01,099 - INFO - Twitch Connected als 
+2025-12-13 14:23:01,468 - INFO - Twitch Connected als 
+2025-12-13 14:23:01,847 - INFO - Twitch Connected als 
+2025-12-13 14:23:02,214 - INFO - Twitch Connected als 
+2025-12-13 14:23:02,580 - INFO - Twitch Connected als 
+2025-12-13 14:23:02,950 - INFO - Twitch Connected als 
+2025-12-13 14:23:03,338 - INFO - Twitch Connected als 
+2025-12-13 14:23:03,707 - INFO - Twitch Connected als 
+2025-12-13 14:23:04,072 - INFO - Twitch Connected als 
+2025-12-13 14:23:04,434 - INFO - Twitch Connected als 
+2025-12-13 14:23:04,803 - INFO - Twitch Connected als 
+2025-12-13 14:23:05,171 - INFO - Twitch Connected als 
+2025-12-13 14:23:05,533 - INFO - Twitch Connected als 
+2025-12-13 14:23:05,895 - INFO - Twitch Connected als 
+2025-12-13 14:23:06,257 - INFO - Twitch Connected als 
+2025-12-13 14:23:06,622 - INFO - Twitch Connected als 
+2025-12-13 14:23:06,995 - INFO - Twitch Connected als 
+2025-12-13 14:23:07,367 - INFO - Twitch Connected als 
+2025-12-13 14:23:07,731 - INFO - Twitch Connected als 
+2025-12-13 14:23:08,097 - INFO - Twitch Connected als 
+2025-12-13 14:23:08,470 - INFO - Twitch Connected als 
+2025-12-13 14:23:08,835 - INFO - Twitch Connected als 
+2025-12-13 14:23:09,209 - INFO - Twitch Connected als 
+2025-12-13 14:23:09,576 - INFO - Twitch Connected als 
+2025-12-13 14:23:09,944 - INFO - Twitch Connected als 
+2025-12-13 14:23:10,310 - INFO - Twitch Connected als 
+2025-12-13 14:23:10,673 - INFO - Twitch Connected als 
+2025-12-13 14:23:11,036 - INFO - Twitch Connected als 
+2025-12-13 14:23:11,404 - INFO - Twitch Connected als 
+2025-12-13 14:23:11,772 - INFO - Twitch Connected als 
+2025-12-13 14:23:12,139 - INFO - Twitch Connected als 
+2025-12-13 14:23:12,504 - INFO - Twitch Connected als 
+2025-12-13 14:23:12,867 - INFO - Twitch Connected als 
+2025-12-13 14:23:13,233 - INFO - Twitch Connected als 
+2025-12-13 14:23:13,599 - INFO - Twitch Connected als 
+2025-12-13 14:23:13,966 - INFO - Twitch Connected als 
+2025-12-13 14:23:14,336 - INFO - Twitch Connected als 
+2025-12-13 14:23:14,704 - INFO - Twitch Connected als 
+2025-12-13 14:23:15,067 - INFO - Twitch Connected als 
+2025-12-13 14:23:15,438 - INFO - Twitch Connected als 
+2025-12-13 14:23:15,814 - INFO - Twitch Connected als 
+2025-12-13 14:23:16,177 - INFO - Twitch Connected als 
+2025-12-13 14:23:16,547 - INFO - Twitch Connected als 
+2025-12-13 14:23:16,911 - INFO - Twitch Connected als 
+2025-12-13 14:23:17,273 - INFO - Twitch Connected als 
+2025-12-13 14:23:17,637 - INFO - Twitch Connected als 
+2025-12-13 14:23:18,011 - INFO - Twitch Connected als 
+2025-12-13 14:23:18,375 - INFO - Twitch Connected als 
+2025-12-13 14:23:18,742 - INFO - Twitch Connected als 
+2025-12-13 14:23:19,129 - INFO - Twitch Connected als 
+2025-12-13 14:23:19,496 - INFO - Twitch Connected als 
+2025-12-13 14:23:19,859 - INFO - Twitch Connected als 
+2025-12-13 14:23:20,225 - INFO - Twitch Connected als 
+2025-12-13 14:23:20,596 - INFO - Twitch Connected als 
+2025-12-13 14:23:20,962 - INFO - Twitch Connected als 
+2025-12-13 14:23:21,328 - INFO - Twitch Connected als 
+2025-12-13 14:23:21,699 - INFO - Twitch Connected als 
+2025-12-13 14:23:22,062 - INFO - Twitch Connected als 
+2025-12-13 14:23:22,425 - INFO - Twitch Connected als 
+2025-12-13 14:23:22,792 - INFO - Twitch Connected als 
+2025-12-13 14:23:23,160 - INFO - Twitch Connected als 
+2025-12-13 14:23:23,525 - INFO - Twitch Connected als 
+2025-12-13 14:23:23,891 - INFO - Twitch Connected als 
+2025-12-13 14:23:24,260 - INFO - Twitch Connected als 
+2025-12-13 14:23:24,634 - INFO - Twitch Connected als 
+2025-12-13 14:23:25,000 - INFO - Twitch Connected als 
+2025-12-13 14:23:25,367 - INFO - Twitch Connected als 
+2025-12-13 14:23:25,732 - INFO - Twitch Connected als 
+2025-12-13 14:23:26,101 - INFO - Twitch Connected als 
+2025-12-13 14:23:26,473 - INFO - Twitch Connected als 
+2025-12-13 14:23:26,843 - INFO - Twitch Connected als 
+2025-12-13 14:23:27,213 - INFO - Twitch Connected als 
+2025-12-13 14:23:27,583 - INFO - Twitch Connected als 
+2025-12-13 14:23:27,963 - INFO - Twitch Connected als 
+2025-12-13 14:23:28,331 - INFO - Twitch Connected als 
+2025-12-13 14:23:28,699 - INFO - Twitch Connected als 
+2025-12-13 14:23:29,068 - INFO - Twitch Connected als 
+2025-12-13 14:23:29,436 - INFO - Twitch Connected als 
+2025-12-13 14:23:29,802 - INFO - Twitch Connected als 
+2025-12-13 14:23:30,166 - INFO - Twitch Connected als 
+2025-12-13 14:23:30,529 - INFO - Twitch Connected als 
+2025-12-13 14:23:30,901 - INFO - Twitch Connected als 
+2025-12-13 14:23:31,271 - INFO - Twitch Connected als 
+2025-12-13 14:23:31,643 - INFO - Twitch Connected als 
+2025-12-13 14:23:32,011 - INFO - Twitch Connected als 
+2025-12-13 14:23:32,378 - INFO - Twitch Connected als 
+2025-12-13 14:23:32,743 - INFO - Twitch Connected als 
+2025-12-13 14:23:33,105 - INFO - Twitch Connected als 
+2025-12-13 14:23:33,468 - INFO - Twitch Connected als 
+2025-12-13 14:23:33,845 - INFO - Twitch Connected als 
+2025-12-13 14:23:34,216 - INFO - Twitch Connected als 
+2025-12-13 14:23:34,583 - INFO - Twitch Connected als 
+2025-12-13 14:23:34,948 - INFO - Twitch Connected als 
+2025-12-13 14:23:35,314 - INFO - Twitch Connected als 
+2025-12-13 14:23:35,678 - INFO - Twitch Connected als 
+2025-12-13 14:23:36,041 - INFO - Twitch Connected als 
+2025-12-13 14:23:36,410 - INFO - Twitch Connected als 
+2025-12-13 14:23:36,775 - INFO - Twitch Connected als 
+2025-12-13 14:23:37,142 - INFO - Twitch Connected als 
+2025-12-13 14:23:37,506 - INFO - Twitch Connected als 
+2025-12-13 14:23:37,874 - INFO - Twitch Connected als 
+2025-12-13 14:23:38,244 - INFO - Twitch Connected als 
+2025-12-13 14:23:38,606 - INFO - Twitch Connected als 
+2025-12-13 14:23:38,973 - INFO - Twitch Connected als 
+2025-12-13 14:23:39,336 - INFO - Twitch Connected als 
+2025-12-13 14:23:39,701 - INFO - Twitch Connected als 
+2025-12-13 14:23:40,067 - INFO - Twitch Connected als 
+2025-12-13 14:23:40,439 - INFO - Twitch Connected als 
+2025-12-13 14:23:40,802 - INFO - Twitch Connected als 
+2025-12-13 14:23:41,164 - INFO - Twitch Connected als 
+2025-12-13 14:23:41,527 - INFO - Twitch Connected als 
+2025-12-13 14:23:41,897 - INFO - Twitch Connected als 
+2025-12-13 14:23:42,263 - INFO - Twitch Connected als 
+2025-12-13 14:23:42,628 - INFO - Twitch Connected als 
+2025-12-13 14:23:42,995 - INFO - Twitch Connected als 
+2025-12-13 14:23:43,364 - INFO - Twitch Connected als 
+2025-12-13 14:23:43,736 - INFO - Twitch Connected als 
+2025-12-13 14:23:44,109 - INFO - Twitch Connected als 
+2025-12-13 14:23:44,479 - INFO - Twitch Connected als 
+2025-12-13 14:23:44,848 - INFO - Twitch Connected als 
+2025-12-13 14:23:45,218 - INFO - Twitch Connected als 
+2025-12-13 14:23:45,586 - INFO - Twitch Connected als 
+2025-12-13 14:23:45,959 - INFO - Twitch Connected als 
+2025-12-13 14:23:46,342 - INFO - Twitch Connected als 
+2025-12-13 14:23:46,707 - INFO - Twitch Connected als 
+2025-12-13 14:23:47,072 - INFO - Twitch Connected als 
+2025-12-13 14:23:47,440 - INFO - Twitch Connected als 
+2025-12-13 14:23:47,806 - INFO - Twitch Connected als 
+2025-12-13 14:23:48,172 - INFO - Twitch Connected als 
+2025-12-13 14:23:48,538 - INFO - Twitch Connected als 
+2025-12-13 14:23:48,903 - INFO - Twitch Connected als 
+2025-12-13 14:23:49,267 - INFO - Twitch Connected als 
+2025-12-13 14:23:49,632 - INFO - Twitch Connected als 
+2025-12-13 14:23:49,997 - INFO - Twitch Connected als 
+2025-12-13 14:23:50,363 - INFO - Twitch Connected als 
+2025-12-13 14:23:50,729 - INFO - Twitch Connected als 
+2025-12-13 14:23:51,093 - INFO - Twitch Connected als 
+2025-12-13 14:23:51,461 - INFO - Twitch Connected als 
+2025-12-13 14:23:51,829 - INFO - Twitch Connected als 
+2025-12-13 14:23:52,195 - INFO - Twitch Connected als 
+2025-12-13 14:23:52,560 - INFO - Twitch Connected als 
+2025-12-13 14:23:52,923 - INFO - Twitch Connected als 
+2025-12-13 14:23:53,300 - INFO - Twitch Connected als 
+2025-12-13 14:23:53,667 - INFO - Twitch Connected als 
+2025-12-13 14:23:54,032 - INFO - Twitch Connected als 
+2025-12-13 14:23:54,395 - INFO - Twitch Connected als 
+2025-12-13 14:23:54,759 - INFO - Twitch Connected als 
+2025-12-13 14:23:55,123 - INFO - Twitch Connected als 
+2025-12-13 14:23:55,516 - INFO - Twitch Connected als 
+2025-12-13 14:23:55,879 - INFO - Twitch Connected als 
+2025-12-13 14:23:56,244 - INFO - Twitch Connected als 
+2025-12-13 14:23:59,524 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:23:59,524 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:23:59,629 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:23:59,629 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:23:59,629 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:23:59,629 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:23:59,630 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:23:59,630 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-13 14:23:59,631 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:23:59,776 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:23:59,776 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:23:59,776 - WARNING - ⚠️ Autostart: Kein TikTok-User in Settings gefunden.
+2025-12-13 14:24:00,372 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:24:00,373 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:24:03,456 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-13 14:24:03,456 - INFO - Twitch Einstellungen gespeichert (twitch_settings.json).
+2025-12-13 14:24:06,967 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json gespeichert.
+2025-12-13 14:24:06,968 - INFO - Twitch Einstellungen gespeichert (twitch_settings.json).
+2025-12-13 14:24:06,977 - INFO - Twitch Login erfolgreich: scriptedbynic
+2025-12-13 14:24:07,176 - INFO - Twitch Connected als scriptedbynic
+2025-12-13 14:24:18,205 - INFO - SettingsManager für like_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\like_overlay\settings.json
+2025-12-13 14:24:18,206 - INFO - SettingsManager für subathon_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\subathon_overlay\settings.json
+2025-12-13 14:24:18,323 - INFO - Pygame Mixer erfolgreich initialisiert.
+2025-12-13 14:24:18,323 - INFO - SettingsManager für commands_overlay/commands.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\commands.json
+2025-12-13 14:24:18,323 - INFO - SettingsManager für commands_overlay/active.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json
+2025-12-13 14:24:18,323 - INFO - SettingsManager für commands_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\settings.json
+2025-12-13 14:24:18,324 - INFO - Einstellungen erfolgreich in C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\commands_overlay\active.json gespeichert.
+2025-12-13 14:24:18,324 - INFO - SettingsManager für twitch_settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\twitch_settings.json
+2025-12-13 14:24:18,325 - INFO - SettingsManager für wheel_overlay/settings.json initialisiert: C:\Users\rieck\Interne-Structure\Own-Projekts\StreamForge_sys\wheel_overlay\settings.json
+2025-12-13 14:24:18,496 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.
+2025-12-13 14:24:18,496 - INFO - Datenbankpfad: C:\Users\rieck\Interne-Structure\Own-Projekts\database.db
+2025-12-13 14:24:18,496 - WARNING - ⚠️ Autostart: Kein TikTok-User in Settings gefunden.
+2025-12-13 14:24:19,030 - INFO - Hotkey-Listener-Thread gestartet.
+2025-12-13 14:24:19,031 - INFO - Datenbank und Tabellen (Wishes & Currency) erfolgreich geprüft.

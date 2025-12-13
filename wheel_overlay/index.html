@@ -2,15 +2,24 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>StreamForge Wheel</title>
+    <title>StreamForge Wheel - DBD Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Nosifer&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="wheel-container" class="hidden">
-        <div class="pointer">▼</div>
-        <canvas id="wheelCanvas" width="600" height="600"></canvas>
-        <div id="winner-msg" class="hidden">GEWINN: <span id="win-amount">0</span></div>
+        <div class="pointer-container">
+            <div class="dbd-pointer"></div>
+        </div>
+        <canvas id="wheelCanvas" width="800" height="800"></canvas>
     </div>
+
+    <div id="winner-msg" class="hidden">
+        <h1><span id="win-amount">0</span> GEWONNEN!</h1>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

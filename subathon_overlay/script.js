@@ -1,145 +1,181 @@
-let currentConfigSignature = "";
+const canvas = document.getElementById('wheelCanvas');
+const ctx = canvas.getContext('2d');
+const container = document.getElementById('wheel-container');
 
-document.addEventListener('DOMContentLoaded', async () => {
-    // Initial Load
-    await loadAndRender();
+// KONFIGURATION: Wo ist der Pfeil?
+// 0   = Rechts (3 Uhr)
+// 90  = Unten (6 Uhr)
+// 180 = Links (9 Uhr)
+// 270 = Oben (12 Uhr) -> Standard
+const POINTER_ANGLE = 270;
 
-    // Polling alle 2 Sekunden
-    setInterval(loadAndRender, 2000);
-});
+let isSpinning = false;
+let currentRotation = 0;
+let lastTimestamp = 0;
 
-async function loadAndRender() {
-    const settings = await getSettings();
-    const urlParams = new URLSearchParams(window.location.search);
-    const platformFilter = urlParams.get('platform'); // 'tiktok', 'twitch' oder null
+// Polling Loop
+setInterval(checkState, 1000);
 
-    // Generiere eine "Signatur" der relevanten Settings, um Änderungen zu erkennen
-    const newSignature = generateConfigSignature(settings, platformFilter);
-
-    // Wenn sich nichts geändert hat, brechen wir ab (kein DOM Update)
-    if (newSignature === currentConfigSignature) return;
-
-    // Wenn es die erste Ladung ist oder sich was geändert hat:
-    if (currentConfigSignature !== "" && currentConfigSignature !== newSignature) {
-        // Falls wir eine robuste Methode hätten, würden wir nur Text updaten.
-        // Da sich die Animation aber auf die Anzahl der Elemente stützt: Reload ist am sichersten.
-        window.location.reload();
-        return;
-    }
-
-    currentConfigSignature = newSignature;
-    updateRules(settings, platformFilter);
-}
-
-function generateConfigSignature(settings, platform) {
-    // Erstellt einen String aus den Werten und Active-States der Regeln
-    const keysToCheck = [
-        "subscribe", "follow", "coins", "share", "like", "chat",
-        "twitch_sub", "twitch_gift", "twitch_msg", "twitch_bits"
-    ];
-    let sig = "";
-    keysToCheck.forEach(key => {
-        let val = 0;
-        let act = false;
-
-        if (settings[key] && typeof settings[key] === 'object') {
-            val = settings[key].value;
-            act = settings[key].active;
-        } else if (settings[key + "_value"] !== undefined) {
-            val = settings[key + "_value"];
-            act = settings[key + "_active"];
-        }
-
-        // Füge zur Signatur hinzu, wenn es für die Plattform relevant ist
-        // Einfacher: Immer alles prüfen, da eine Änderung in Twitch settings nicht TikTok overlay stört
-        // Aber für den Reload Trigger müssen wir spezifisch sein? Nein, settings.json ist global.
-        sig += `${key}:${val}:${act}|`;
-    });
-    return sig + (settings.animations_time || "5");
-}
-
-function updateRules(settings, platformFilter) {
-    const allRules = document.querySelectorAll('.rule-item');
-    const activeRules = [];
-
-    const rulesConfig = [
-        { id: 'subscribe',  platform: 'tiktok', label: " pro TikTok Abo" },
-        { id: 'follow',     platform: 'tiktok', label: " pro Follow" },
-        { id: 'coins',      platform: 'tiktok', label: " pro Münze" },
-        { id: 'share',      platform: 'tiktok', label: " pro Teilen" },
-        { id: 'like',       platform: 'tiktok', label: " pro Like" },
-        { id: 'chat',       platform: 'tiktok', label: " pro Nachricht" },
-        { id: 'twitch_sub', platform: 'twitch', label: " pro Twitch Sub" },
-        { id: 'twitch_gift',platform: 'twitch', label: " pro Gift Sub" },
-        { id: 'twitch_msg', platform: 'twitch', label: " pro Nachricht" },
-        { id: 'twitch_bits',platform: 'twitch', label: " pro Bit" }
-    ];
-
-    rulesConfig.forEach(rule => {
-        if (platformFilter && rule.platform !== platformFilter) return;
-
-        let isActive = false;
-        let value = 0;
-
-        if (settings[rule.id] && typeof settings[rule.id] === 'object') {
-            isActive = settings[rule.id].active === true || settings[rule.id].visible === true;
-            value = settings[rule.id].value;
-        } else if (settings[`${rule.id}_active`] !== undefined) {
-            isActive = settings[`${rule.id}_active`] === true || settings[`${rule.id}_active`] === 1;
-            value = settings[`${rule.id}_value`];
-        }
-
-        const ruleElement = document.querySelector(`.rule-item[data-rule="${rule.id}"]`);
-
-        if (isActive && ruleElement && parseFloat(value) > 0) {
-            let displayVal = value.toString().split(" ")[0];
-            ruleElement.textContent = `+ ${displayVal} Sek.${rule.label}`;
-            activeRules.push(ruleElement);
-        }
-    });
-
-    allRules.forEach(element => {
-        if (!activeRules.includes(element)) element.style.display = 'none';
-        else element.style.display = 'block'; // Sicherstellen, dass sie sichtbar sind
-    });
-
-    if (activeRules.length > 0) {
-        const animTime = parseFloat(settings.animations_time) || 5;
-        animateRules(activeRules, animTime * 1000);
-    } else {
-        const container = document.querySelector('.rules-container');
-        let fallbackText = "Subathon";
-        if (platformFilter === 'tiktok') fallbackText = "Warte auf TikTok Events...";
-        if (platformFilter === 'twitch') fallbackText = "Warte auf Twitch Events...";
-
-        container.innerHTML = `<div class="rule-item show" style="position:static; font-size: 0.8em; opacity: 0.7;">${fallbackText}</div>`;
-    }
-}
-
-async function getSettings() {
+async function checkState() {
     try {
-        const r = await fetch('settings.json?t=' + new Date().getTime());
-        if (!r.ok) return {};
-        return await r.json();
-    } catch { return {}; }
+        const res = await fetch('/api/v1/wheel/state');
+        const data = await res.json();
+
+        if (data.timestamp && (!isSpinning || data.timestamp !== lastTimestamp)) {
+            if (data.timestamp !== lastTimestamp) {
+                lastTimestamp = data.timestamp;
+                startSpin(data);
+            }
+        }
+    } catch (e) {
+        console.error("Polling error", e);
+    }
 }
 
-function animateRules(rules, duration) {
-    let index = 0;
-    rules.forEach(r => { r.classList.remove('show'); r.classList.add('hide'); });
+function startSpin(data) {
+    isSpinning = true;
+    container.classList.remove('hidden');
 
-    function cycle() {
-        if (rules.length === 0) return;
-        const prev = (index === 0) ? rules.length - 1 : index - 1;
-        rules[prev].classList.remove('show');
-        rules[prev].classList.add('hide');
+    const segments = data.segments;
+    const targetIndex = data.target_index; // Index im Array
+    const pfpUrl = data.pfp;
+    const bet = data.bet;
 
-        const curr = rules[index];
-        curr.classList.remove('hide');
-        curr.classList.add('show');
+    // Debugging Ausgabe in die Konsole (F12 im Browser drücken)
+    console.log("Ziel Index:", targetIndex, "Wert:", segments[targetIndex].text);
 
-        index = (index + 1) % rules.length;
-        setTimeout(cycle, duration);
+    // Bild laden
+    const img = new Image();
+    img.src = pfpUrl || "https://static-cdn.jtvnw.net/user-default-pictures-uv/cdd517fe-def4-11e9-948e-784f43822e80-profile_image-300x300.png";
+    img.crossOrigin = "Anonymous";
+
+    // --- BERECHNUNG DER ROTATION ---
+    const numSegments = segments.length;
+    const anglePerSegment = 360 / numSegments;
+
+    // Wir berechnen den Winkel zur Mitte des Ziel-Segments
+    // Wichtig: Segmente werden im Uhrzeigersinn gezeichnet (Index 0 startet bei 0°)
+    const segmentCenterAngle = (targetIndex * anglePerSegment) + (anglePerSegment / 2);
+
+    // Ziel: Das Rad muss so gedreht sein, dass 'segmentCenterAngle' genau auf 'POINTER_ANGLE' liegt.
+    // Formel: Neuer_Winkel = (Pointer_Pos - Segment_Pos)
+    // Beispiel: Ziel bei 15°, Pointer bei 270°. Drehung = 270 - 15 = 255°.
+    let targetRotation = POINTER_ANGLE - segmentCenterAngle;
+
+    // Füge viele Umdrehungen hinzu für den Spin-Effekt (mindestens 5 volle)
+    const spins = 360 * (5 + Math.floor(Math.random() * 3));
+    const endRotation = spins + targetRotation;
+
+    const duration = 6000; // Etwas länger drehen (6s)
+    const startTime = performance.now();
+
+    // Startwinkel sauber modulo 360 halten, damit er nicht unendlich wächst
+    const startRot = currentRotation % 360;
+
+    function animate(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing: Cubic Out (schnell start, langsam ende)
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        const currentAngle = startRot + (endRotation - startRot) * ease;
+
+        // Umrechnung in Radians für Canvas
+        const currentRad = currentAngle * (Math.PI / 180);
+
+        drawWheel(segments, currentRad, img, bet);
+
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            // Spin beendet
+            currentRotation = currentAngle;
+
+            // Debugging: Prüfen ob es optisch stimmt
+            console.log("Fertig. Angezeigter Wert sollte sein:", segments[targetIndex].text);
+
+            // Nach 3 Sek ausblenden
+            setTimeout(() => {
+                container.classList.add('hidden');
+                isSpinning = false;
+            }, 3000);
+        }
     }
-    cycle();
+    requestAnimationFrame(animate);
+}
+
+function drawWheel(segments, rotation, pfpImage, bet) {
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const radius = cx - 20; // Etwas Rand lassen
+    const num = segments.length;
+    const step = (2 * Math.PI) / num;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(rotation);
+
+    for (let i = 0; i < num; i++) {
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.arc(0, 0, radius, i * step, (i + 1) * step);
+        ctx.fillStyle = segments[i].color;
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#fff"; // Weißer Rand zwischen Segmenten
+        ctx.stroke();
+
+        // Text zeichnen
+        ctx.save();
+        ctx.rotate(i * step + step / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 20px Arial"; // Schriftgröße etwas angepasst
+
+        // Textschatten für bessere Lesbarkeit
+        ctx.shadowColor = "rgba(0,0,0,0.5)";
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+
+        let label = segments[i].text;
+        // Text etwas weiter innen positionieren (radius - 40)
+        ctx.fillText(label, radius - 40, 8);
+        ctx.restore();
+    }
+    ctx.restore();
+
+    // Profilbild in der Mitte
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(cx, cy, 60, 0, Math.PI * 2);
+    ctx.clip();
+
+    // Hintergrund für PFP falls transparent
+    ctx.fillStyle = "#2c3e50";
+    ctx.fill();
+
+    try {
+        ctx.drawImage(pfpImage, cx - 60, cy - 60, 120, 120);
+    } catch(e) {
+        // Fallback
+    }
+    ctx.restore();
+
+    // Goldener Rand ums Bild
+    ctx.beginPath();
+    ctx.arc(cx, cy, 60, 0, Math.PI * 2);
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = "#f1c40f"; // Gold/Gelb
+    ctx.stroke();
+
+    // Äußerer Rand des Rades
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "#ecf0f1";
+    ctx.stroke();
 }

@@ -1,10 +1,10 @@
 import socket
 import threading
 import time
-import re
 from collections import deque
 from utils import server_log
 from config import APP_VERSION
+from external.settings_manager import SettingsManager
 
 
 class TwitchService:
@@ -18,24 +18,46 @@ class TwitchService:
         self.message_timestamps = deque()
         self.connected = False
 
-        # Lazy Import für Settings beim Start
-        from services.service_provider import like_service_instance
-        self.settings = like_service_instance.settings_manager.load_settings()
+        # WICHTIG: Eigene Einstellungsdatei nutzen
+        self.settings_manager = SettingsManager("twitch_settings.json")
+        self.settings = self.settings_manager.load_settings()
         self.currency_name = self.settings.get("currency_name", "Coins")
+
+    def try_auto_start(self):
+        """Versucht beim Start automatisch einzuloggen."""
+        user = self.settings.get("twitch_username", "")
+        token = self.settings.get("twitch_token", "")
+
+        if user and token:
+            server_log.info(f"Twitch Auto-Login gefunden für: {user}")
+            self.update_credentials(user, token)
+        else:
+            server_log.info("Kein Twitch Auto-Login konfiguriert.")
+
+    def get_settings(self):
+        self.settings = self.settings_manager.load_settings()
+        return self.settings
+
+    def save_settings(self, new_settings):
+        self.settings_manager.save_settings(new_settings)
+        self.settings = new_settings
+        self.currency_name = self.settings.get("currency_name", "Coins")
+        server_log.info("Twitch Einstellungen gespeichert.")
 
     def update_credentials(self, username, token):
         self.username = username.lower()
         self.oauth_token = token if token.startswith("oauth:") else f"oauth:{token}"
         self.channel = self.username
 
-        # Settings neu laden (Lazy Import)
-        from services.service_provider import like_service_instance
-        self.settings = like_service_instance.settings_manager.load_settings()
-        self.currency_name = self.settings.get("currency_name", "Coins")
+        # Einstellungen aktualisieren und speichern
+        self.settings["twitch_username"] = self.username
+        self.settings["twitch_token"] = token
+        self.save_settings(self.settings)
 
         if self.running:
             self.stop()
             time.sleep(1)
+
         if self.username and "oauth:" in self.oauth_token:
             self.start()
 
@@ -114,27 +136,31 @@ class TwitchService:
             server_log.error(f"Parse Error: {e}")
 
     def _handle_message(self, line, tags):
-        # Lazy Import hier, damit der Service Provider schon fertig geladen ist
-        from services.service_provider import currency_service_instance
+        from services.service_provider import currency_service_instance, subathon_service_instance
 
         self.message_timestamps.append(time.time())
         user = tags.get("display-name", "Unknown")
 
-        # --- 1. PUNKTE FÜR NACHRICHT ---
+        # 1. Subathon Timer (Chat)
+        subathon_service_instance.on_twitch_message(user)
+
+        # 2. Punkte für Nachricht
         pts_msg = int(self.settings.get("currency_per_message", 0))
         if pts_msg > 0:
             currency_service_instance.add_points(user, pts_msg)
 
-        # --- 2. BITS ---
+        # 3. Bits
         if "bits" in tags:
             bits = int(tags["bits"])
+            subathon_service_instance.on_twitch_bits(user, bits)
+
             factor = float(self.settings.get("currency_per_bit", 0))
             if factor > 0:
                 amount = int(bits * factor)
                 currency_service_instance.add_points(user, amount)
                 self.send_message(f"Danke {user} für {bits} Bits! (+{amount} {self.currency_name})")
 
-        # --- COMMANDS ---
+        # Commands
         parts = line.split("PRIVMSG", 1)
         if len(parts) > 1:
             msg_content = parts[1].split(":", 1)[1].strip()
@@ -143,14 +169,10 @@ class TwitchService:
 
             if cmd == "!version":
                 self.send_message(f"StreamForge Version: {APP_VERSION} 🛠️")
-
-            # !score / !points
             elif cmd in ["!score", "!points", "!cash"]:
                 if self.settings.get("currency_cmd_score_active", True):
                     bal = currency_service_instance.get_balance(user)
                     self.send_message(f"@{user}, du hast {bal} {self.currency_name}.")
-
-            # !send <user> <amount>
             elif cmd == "!send":
                 if self.settings.get("currency_cmd_send_active", True):
                     if len(args) < 3:
@@ -165,27 +187,27 @@ class TwitchService:
                             self.send_message("Bitte eine gültige Zahl eingeben.")
 
     def _handle_usernotice(self, tags):
-        from services.service_provider import currency_service_instance
+        from services.service_provider import currency_service_instance, subathon_service_instance
 
         msg_id = tags.get("msg-id")
         user = tags.get("display-name", "Unknown")
-
-        # --- PUNKTE FÜR SUBS ---
         pts_sub = int(self.settings.get("currency_per_sub", 0))
 
         if msg_id in ["sub", "resub"]:
+            subathon_service_instance.on_twitch_sub(user, is_gift=False)
             if pts_sub > 0:
                 currency_service_instance.add_points(user, pts_sub)
                 self.send_message(f"Danke für den Sub {user}! (+{pts_sub} {self.currency_name})")
 
         elif msg_id == "subgift":
-            # Gifter bekommt Punkte
+            subathon_service_instance.on_twitch_sub(user, is_gift=True)
             if pts_sub > 0:
                 currency_service_instance.add_points(user, pts_sub)
 
         elif msg_id == "submysterygift":
-            # Giftbomb
             count = int(tags.get("msg-param-mass-gift-count", "1"))
+            for _ in range(count):
+                subathon_service_instance.on_twitch_sub(user, is_gift=True)
             total = count * pts_sub
             if total > 0:
                 currency_service_instance.add_points(user, total)

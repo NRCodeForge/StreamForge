@@ -1,61 +1,99 @@
 body {
-    margin: 0;
-    overflow: hidden;
+    background-color: transparent; /* Wichtig für OBS */
+    /* Optional: Ein dunkler Hintergrund zum Testen im Browser */
+    /* background: #1a1a1a radial-gradient(circle, #330000 0%, #000000 80%); */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: transparent;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Metal Mania', cursive; /* Standard Schrift */
 }
 
+/* Container für das Rad */
 #wheel-container {
     position: relative;
-    width: 600px;
-    height: 600px;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s;
-    opacity: 1;
-    transform: scale(1);
+    width: 800px;
+    height: 800px;
+    /* Ein leichter düsterer Schein hinter dem Rad */
+    filter: drop-shadow(0 0 20px rgba(255, 69, 0, 0.3));
+    transition: opacity 0.5s;
 }
 
-#wheel-container.hidden {
-    opacity: 0;
-    transform: scale(0);
-}
-
-.pointer {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 50px;
-    color: #e74c3c;
-    z-index: 10;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
-
-canvas {
+/* Das Canvas selbst */
+#wheelCanvas {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    /* Leichte Rotation, damit es nicht perfekt gerade aussieht (optional) */
+    transform: rotate(0.5deg);
 }
 
+/* --- DER DBD POINTER (Haken) --- */
+.pointer-container {
+    position: absolute;
+    top: -30px; /* Etwas höher positionieren */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.8));
+}
+
+/* Wir bauen einen Haken mit CSS-Tricks, damit wir kein Bild brauchen */
+.dbd-pointer {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    /* Rostiges Orange/Rot */
+    border-top: 60px solid #8B0000;
+    position: relative;
+}
+
+/* Ein zweites Element, um dem Haken eine metallische Spitze zu geben */
+.dbd-pointer::after {
+    content: '';
+    position: absolute;
+    top: -65px;
+    left: -15px;
+    width: 30px;
+    height: 15px;
+    background: linear-gradient(to bottom, #5a2d2d, #2a1a1a);
+    border-radius: 5px 5px 0 0;
+    border: 2px solid #1a0a0a;
+}
+
+/* --- GEWINN NACHRICHT --- */
 #winner-msg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.8);
-    color: #f1c40f;
-    padding: 20px 40px;
-    border-radius: 10px;
-    font-size: 30px;
-    font-weight: bold;
-    border: 3px solid #f1c40f;
-    z-index: 20;
     text-align: center;
+    z-index: 20;
+    pointer-events: none;
 }
 
-#winner-msg.hidden {
-    display: none;
+#winner-msg h1 {
+    font-family: 'Nosifer', cursive; /* Die "blutige" Schrift */
+    font-size: 6em;
+    color: #ff3300; /* Helles Blutrot */
+    margin: 0;
+    /* Doppelter Text-Schatten für extremen Glüheffekt */
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #8B0000,
+        0 0 40px #000000;
+
+    animation: pulseIt 1.5s infinite alternate;
+}
+
+@keyframes pulseIt {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.1); filter: brightness(1.3); }
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
 }

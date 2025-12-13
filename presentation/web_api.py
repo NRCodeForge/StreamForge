@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, send_from_directory, request, render_template_string
 import os
+import requests  # WICHTIG: requests importieren
 
 # Importiere Service Layer
 from services.service_provider import (
@@ -7,7 +8,8 @@ from services.service_provider import (
     like_service_instance,
     subathon_service_instance,
     command_service_instance,
-    twitch_service_instance  # WICHTIG: Auch den Twitch Service importieren
+    twitch_service_instance,  # WICHTIG
+    wheel_service_instance
 )
 
 # Importiere Infrastruktur
@@ -17,11 +19,11 @@ from config import (
     LIKE_CHALLENGE_ENDPOINT, COMMANDS_ENDPOINT, COMMANDS_TRIGGER_ENDPOINT
 )
 from utils import server_log
-from services.service_provider import wheel_service_instance
+
 app = Flask(__name__)
 
 
-# --- TWITCH AUTH CALLBACK (NEU & KORRIGIERT) ---
+# --- TWITCH AUTH CALLBACK ---
 @app.route('/auth/twitch/callback')
 def twitch_callback():
     """
@@ -71,36 +73,42 @@ def twitch_callback():
 def save_twitch_token():
     data = request.json
     token = data.get('access_token')
-    if token:
-        # 1. User Info von Twitch holen, um den Namen zu bekommen
-        import requests
 
-        # Versuche Client-ID aus Settings zu laden
-        settings = like_service_instance.settings_manager.load_settings()
+    if token:
+        # 1. Settings vom Twitch Service laden (nicht Like Service!)
+        settings = twitch_service_instance.get_settings()
         client_id = settings.get("twitch_client_id", "")
 
+        # Fallback: Falls ClientID leer ist, im Log warnen (sollte durch GUI gesetzt sein)
+        if not client_id:
+            server_log.warning("Twitch Client ID fehlt in den Einstellungen!")
+
+        # 2. User Info von Twitch holen
         headers = {
             "Authorization": f"Bearer {token}",
             "Client-Id": client_id
         }
         try:
             r = requests.get("https://api.twitch.tv/helix/users", headers=headers)
+
             if r.status_code == 200:
                 user_data = r.json()['data'][0]
                 username = user_data['login']
 
-                # 2. Speichern & Service starten
+                # 3. Speichern in twitch_settings.json (via Twitch Service)
                 settings["twitch_token"] = token
                 settings["twitch_username"] = username
-                like_service_instance.settings_manager.save_settings(settings)
+                twitch_service_instance.save_settings(settings)
 
-                # Service updaten
+                # 4. Service sofort updaten & starten
                 twitch_service_instance.update_credentials(username, token)
 
+                server_log.info(f"Twitch Login erfolgreich: {username}")
                 return jsonify({"status": "ok", "user": username})
             else:
-                server_log.error(f"Twitch API Fehler: {r.text}")
-                return jsonify({"status": "error", "message": "Twitch API validierung fehlgeschlagen"}), 400
+                server_log.error(f"Twitch API Fehler ({r.status_code}): {r.text}")
+                return jsonify(
+                    {"status": "error", "message": "Twitch Validierung fehlgeschlagen. Client-ID korrekt?"}), 400
         except Exception as e:
             server_log.error(f"Twitch Validation Error: {e}")
             return jsonify({"status": "error", "message": str(e)}), 500
@@ -286,17 +294,20 @@ def trigger_freezer():
     subathon_service_instance.trigger_freezer(180)
     return jsonify({'message': 'Freezer gestartet'}), 200
 
+
 @app.route('/api/v1/wheel/state', methods=['GET'])
 def get_wheel_state():
     state = wheel_service_instance.get_current_state()
     if state:
         return jsonify(state)
-    return jsonify({}) # Leeres JSON wenn inaktiv
+    return jsonify({})  # Leeres JSON wenn inaktiv
+
 
 @app.route('/wheel_overlay/<path:path>')
 def serve_wheel_overlay(path):
     directory = get_path('wheel_overlay')
     return send_from_directory(directory, path)
+
 
 # --- Statische Datei-Endpunkte ---
 @app.route('/like_progress_bar/<path:path>')
