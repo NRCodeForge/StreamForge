@@ -1,37 +1,45 @@
 const API_URL = 'http://127.0.0.1:5000/api/v1/like_challenge';
 const challengeTextElement = document.getElementById('challenge-text');
+// Falls du eine Progress-Bar im HTML hast (optional):
+const progressBarElement = document.getElementById('progress-bar');
 
 async function updateChallenge() {
     try {
         const response = await fetch(API_URL);
         const data = await response.json();
 
-        // Fehlerbehandlung vom Server
         if (data.error) {
-            challengeTextElement.textContent = data.error;
+            console.error("Server Error:", data.error);
             return;
         }
 
-        // KORREKTUR: Daten aus den richtigen Feldern lesen
-        // Python sendet: { "current_likes": 123, "goal": 10000, ... }
-        const currentLikes = data.current_likes || 0;
-        const goal = data.goal || 10000;
+        // 1. TEXT ANZEIGEN
+        // Wir prüfen, ob der Server uns einen formatierten Text ("display_text") schickt.
+        // Falls ja, nehmen wir den. Falls nein, bauen wir einen Fallback.
+        if (data.display_text) {
+            challengeTextElement.textContent = data.display_text;
+        } else {
+            // Fallback, falls "display_text" fehlt
+            const current = data.current_likes || 0;
+            const goal = data.goal || 1;
+            challengeTextElement.textContent = `${current} / ${goal}`;
+        }
 
-        // Anzeige aktualisieren (Format: "150 / 10000 Likes")
-        challengeTextElement.textContent = `${currentLikes} / ${goal} Likes`;
+        // 2. PROGRESS BAR (Falls vorhanden)
+        if (progressBarElement) {
+            const current = data.current_likes || 0;
+            const goal = data.goal || 1;
+            const percent = Math.min((current / goal) * 100, 100);
+            progressBarElement.style.width = percent + "%";
+        }
 
-        // Falls du eine Progress-Bar hast, kannst du hier die Breite setzen:
-        // const percent = Math.min((currentLikes / goal) * 100, 100);
-        // document.getElementById('deine-bar-id').style.width = percent + "%";
+        // Optional: Automatische Reload bei neuem Ziel (Sound wird vom Python-Backend abgespielt)
 
     } catch (error) {
-        console.error("Fehler beim Abrufen der Challenge-Daten:", error);
-        // Bei Fehler nichts überschreiben oder "Offline" anzeigen
+        console.error("Verbindungsfehler:", error);
     }
 }
 
-// Initialer Aufruf
+// Starten
 updateChallenge();
-
-// Alle 2 Sekunden aktualisieren (5s ist für Likes oft etwas langsam)
-setInterval(updateChallenge, 2000);
+setInterval(updateChallenge, 1000); // Jede Sekunde aktualisieren

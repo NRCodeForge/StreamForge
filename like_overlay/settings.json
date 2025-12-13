@@ -1,16 +1,7 @@
 {
-    "channel_name": "scriptedbynic",
-    "oauth_token": "dxm3gwn2zvktux5stjzuh4xk3zaxb2",
-    "twitch_client_id": "0j9rhxzwiibho0c4hc1rnki8jm0kdb",
+    "like_goal": 60000,
     "tiktok_unique_id": "p33t25",
-    "currency_name": "Whieties",
-    "currency_per_message": "1",
-    "currency_per_bit": "4",
-    "currency_per_sub": "500",
-    "currency_per_minute": "4",
-    "currency_cmd_score_active": true,
-    "currency_cmd_send_active": false,
-    "displayTextFormat": "noch {likes_needed}!",
+    "displayTextFormat": "noch {likes_needed} Likes!",
     "recurringGoalExpression": "x+333333",
     "initialGoals": [
         10000,
