@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, send_from_directory, request, render_template_string
 import os
-import requests  # WICHTIG: requests importieren
+import requests
 
 # Importiere Service Layer
 from services.service_provider import (
@@ -8,13 +8,14 @@ from services.service_provider import (
     like_service_instance,
     subathon_service_instance,
     command_service_instance,
-    twitch_service_instance,  # WICHTIG
+    twitch_service_instance,
     wheel_service_instance
 )
 
 # Importiere Infrastruktur
+# WICHTIG: get_persistent_path hinzugefügt!
 from config import (
-    get_path, BASE_HOST, BASE_PORT, API_ROOT,
+    get_path, get_persistent_path, BASE_HOST, BASE_PORT, API_ROOT,
     WISHES_ENDPOINT, NEXT_WISH_ENDPOINT, RESET_WISHES_ENDPOINT,
     LIKE_CHALLENGE_ENDPOINT, COMMANDS_ENDPOINT, COMMANDS_TRIGGER_ENDPOINT
 )
@@ -23,13 +24,25 @@ from utils import server_log
 app = Flask(__name__)
 
 
+# --- HILFSFUNKTION FÜR OVERLAYS ---
+def serve_overlay_file(folder_name, filename):
+    """
+    Sucht die Datei erst im Benutzer-Ordner (gespeicherte Settings),
+    und falls dort nicht vorhanden, im Programm-Ordner (Originale).
+    """
+    # 1. Suche im externen/persistenten Ordner (wo deine Settings gespeichert werden)
+    persistent_dir = get_persistent_path(folder_name)
+    if os.path.exists(os.path.join(persistent_dir, filename)):
+        return send_from_directory(persistent_dir, filename)
+
+    # 2. Fallback: Nimm die Datei aus dem internen Programm-Ordner (Assets)
+    bundled_dir = get_path(folder_name)
+    return send_from_directory(bundled_dir, filename)
+
+
 # --- TWITCH AUTH CALLBACK ---
 @app.route('/auth/twitch/callback')
 def twitch_callback():
-    """
-    Twitch leitet hierher um. Das Token steht im URL Hash (#).
-    Wir senden eine kleine HTML-Seite, die das Token per JS extrahiert und an /save sendet.
-    """
     return render_template_string("""
     <html>
         <head>
@@ -40,7 +53,6 @@ def twitch_callback():
             <h1>StreamForge: Authorizing...</h1>
             <p id="status">Verarbeite Token...</p>
             <script>
-                // Hash auslesen (#access_token=...&scope=...)
                 const hash = window.location.hash.substring(1); 
                 const params = new URLSearchParams(hash);
                 const token = params.get('access_token');
@@ -75,15 +87,12 @@ def save_twitch_token():
     token = data.get('access_token')
 
     if token:
-        # 1. Settings vom Twitch Service laden (nicht Like Service!)
         settings = twitch_service_instance.get_settings()
         client_id = settings.get("twitch_client_id", "")
 
-        # Fallback: Falls ClientID leer ist, im Log warnen (sollte durch GUI gesetzt sein)
         if not client_id:
             server_log.warning("Twitch Client ID fehlt in den Einstellungen!")
 
-        # 2. User Info von Twitch holen
         headers = {
             "Authorization": f"Bearer {token}",
             "Client-Id": client_id
@@ -95,12 +104,9 @@ def save_twitch_token():
                 user_data = r.json()['data'][0]
                 username = user_data['login']
 
-                # 3. Speichern in twitch_settings.json (via Twitch Service)
                 settings["twitch_token"] = token
                 settings["twitch_username"] = username
                 twitch_service_instance.save_settings(settings)
-
-                # 4. Service sofort updaten & starten
                 twitch_service_instance.update_credentials(username, token)
 
                 server_log.info(f"Twitch Login erfolgreich: {username}")
@@ -116,7 +122,7 @@ def save_twitch_token():
     return jsonify({"status": "error", "message": "Kein Token"}), 400
 
 
-# --- Wishlist API Endpunkte ---
+# --- Wishlist API ---
 @app.route(WISHES_ENDPOINT, methods=['GET'])
 def get_killer_wishes_data():
     try:
@@ -164,7 +170,6 @@ def add_killerwunsch():
 
 @app.route('/api/v1/wishes/check_place', methods=['POST'])
 def trigger_place_check():
-    """Löst den Check für einen User aus (z.B. durch !place)."""
     if not request.json or 'user_name' not in request.json:
         return jsonify({'error': 'user_name fehlt'}), 400
 
@@ -177,7 +182,7 @@ def trigger_place_check():
         return jsonify({'message': 'User nicht gefunden', 'place': -1}), 404
 
 
-# --- Like Challenge API Endpunkt ---
+# --- Like Challenge API ---
 @app.route(LIKE_CHALLENGE_ENDPOINT, methods=['GET'])
 def get_like_challenge_data():
     try:
@@ -209,7 +214,7 @@ def trigger_command():
         return jsonify({'error': str(e)}), 500
 
 
-# --- SUBATHON & GAMBIT ---
+# --- SUBATHON & GAMBIT API ---
 @app.route('/api/v1/events/gambler/next', methods=['GET'])
 def get_next_gambit():
     event = subathon_service_instance.pop_next_gambit_event()
@@ -303,56 +308,51 @@ def get_wheel_state():
     return jsonify({})  # Leeres JSON wenn inaktiv
 
 
+# --- STATISCHE DATEIEN (OVERLAYS) ---
+# Hier nutzen wir jetzt die clevere Funktion 'serve_overlay_file',
+# die erst nach gespeicherten Dateien sucht.
+
 @app.route('/wheel_overlay/<path:path>')
 def serve_wheel_overlay(path):
-    directory = get_path('wheel_overlay')
-    return send_from_directory(directory, path)
+    return serve_overlay_file('wheel_overlay', path)
 
 
-# --- Statische Datei-Endpunkte ---
 @app.route('/like_progress_bar/<path:path>')
 def serve_like_progress_bar(path):
-    directory = get_path('like_progress_bar')
-    return send_from_directory(directory, path)
+    return serve_overlay_file('like_progress_bar', path)
 
 
 @app.route('/killer_wishes/<path:path>')
 def serve_killer_wishes(path):
-    directory = get_path('killer_wishes')
-    return send_from_directory(directory, path)
+    return serve_overlay_file('killer_wishes', path)
 
 
 @app.route('/timer_overlay/<path:path>')
 def timer_overlay_index(path):
-    directory = get_path('timer_overlay')
-    return send_from_directory(directory, path)
+    return serve_overlay_file('timer_overlay', path)
 
 
 @app.route('/subathon_overlay/<path:path>')
 def serve_subathon_overlay(path):
-    directory = get_path('subathon_overlay')
-    return send_from_directory(directory, path)
+    # Das fixt dein Problem mit dem Subathon Trigger!
+    return serve_overlay_file('subathon_overlay', path)
 
 
 @app.route('/like_overlay/<path:path>')
 def serve_like_overlay(path):
-    directory = get_path('like_overlay')
-    return send_from_directory(directory, path)
+    return serve_overlay_file('like_overlay', path)
 
 
 @app.route('/commands/<path:path>')
 def serve_commands_overlay(path):
-    directory = get_path('commands_overlay')
-    return send_from_directory(directory, path)
+    return serve_overlay_file('commands_overlay', path)
 
 
 @app.route('/place_overlay/<path:path>')
 def serve_place_overlay(path):
-    directory = get_path('place_overlay')
-    return send_from_directory(directory, path)
+    return serve_overlay_file('place_overlay', path)
 
 
 @app.route('/gambler_overlay/<path:path>')
 def serve_gambler_overlay(path):
-    directory = get_path('gambler_overlay')
-    return send_from_directory(directory, path)
+    return serve_overlay_file('gambler_overlay', path)

@@ -1,36 +1,4 @@
 {
-    "animations_time": "4.0",
-    "coins": {
-        "value": "0.4",
-        "active": true
-    },
-    "subscribe": {
-        "value": "180",
-        "active": true
-    },
-    "follow": {
-        "value": "5",
-        "active": true
-    },
-    "share": {
-        "value": "0.1",
-        "active": true
-    },
-    "like": {
-        "value": "0.06",
-        "active": true
-    },
-    "chat": {
-        "value": "0.3",
-        "active": true,
-        "visible": false
-    },
-    "twitch_sub": {
-        "value": "180",
-        "active": true,
-        "visible": true
-    },
-    "start_time_seconds": "65",
     "gambit_outcomes": [
         {
             "text": "+ 5 MIN",
@@ -45,6 +13,18 @@
             "color": "#DE0B32"
         },
         {
+            "text": "+ 25%",
+            "type": "time_multi_add",
+            "value": 0.25,
+            "color": "#00FF7F"
+        },
+        {
+            "text": "- 25%",
+            "type": "time_multi_sub",
+            "value": 0.25,
+            "color": "#DE0B32"
+        },
+        {
             "text": "BRILLE AB",
             "type": "text",
             "value": 0,
@@ -55,30 +35,42 @@
             "type": "text",
             "value": 0,
             "color": "#888888"
-        },
-        {
-            "text": "+ 25%",
-            "type": "time_multi_add",
-            "value": 1.25,
-            "color": "#00FF7F"
-        },
-        {
-            "text": "- 25%",
-            "type": "time_multi_sub",
-            "value": 1.25,
-            "color": "#DE0B32"
         }
     ],
-    "duration_freezer": "180",
-    "duration_warp": "60",
-    "duration_blind": "120",
-    "duration_hype": "300",
-    "twitch_msg_value": "1",
-    "twitch_msg_active": true,
-    "twitch_sub_value": "180",
-    "twitch_sub_active": true,
-    "twitch_gift_value": "180",
-    "twitch_gift_active": true,
-    "twitch_bits_value": "0.4",
-    "twitch_bits_active": true
+    "coins": {
+        "value": "4",
+        "active": true
+    },
+    "like": {
+        "value": "1",
+        "active": true
+    },
+    "share": {
+        "value": "5",
+        "active": true
+    },
+    "follow": {
+        "value": "5",
+        "active": true
+    },
+    "subscribe": {
+        "value": "300",
+        "active": true
+    },
+    "twitch_msg": {
+        "value": "5",
+        "active": true
+    },
+    "twitch_sub": {
+        "value": "300",
+        "active": true
+    },
+    "twitch_gift": {
+        "value": "300",
+        "active": true
+    },
+    "twitch_bits": {
+        "value": "5",
+        "active": true
+    }
 }

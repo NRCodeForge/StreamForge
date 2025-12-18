@@ -1,9 +1,15 @@
 const settingsUrl = 'settings.json';
-const container = document.querySelector('.rules-container');
+const track = document.getElementById('rules-track');
 
-// Mapping für schönere Anzeige-Namen
+// URL Parameter (?platform=twitch oder ?platform=tiktok)
+const urlParams = new URLSearchParams(window.location.search);
+const platform = urlParams.get('platform');
+
+const tiktokKeys = ["subscribe", "follow", "coins", "share", "like", "chat"];
+const twitchKeys = ["twitch_sub", "twitch_gift", "twitch_msg", "twitch_bits"];
+
 const labels = {
-    "subscribe": "TikTok Abo",
+    "subscribe": "Superfan",
     "follow": "Follow",
     "coins": "1 Coin",
     "share": "Share",
@@ -17,8 +23,7 @@ const labels = {
 
 async function loadRules() {
     try {
-        const response = await fetch(settingsUrl);
-        // Cache-Busting, damit Änderungen sofort sichtbar sind
+        const response = await fetch(settingsUrl + '?t=' + new Date().getTime());
         const settings = await response.json();
         updateDisplay(settings);
     } catch (error) {
@@ -27,40 +32,73 @@ async function loadRules() {
 }
 
 function updateDisplay(settings) {
-    // Gehe alle HTML-Elemente durch, die eine Regel sein sollen
-    document.querySelectorAll('.rule-item').forEach(item => {
-        const key = item.getAttribute('data-rule');
-        const config = settings[key];
+    const moveContainer = document.querySelector('.ticker-move');
 
-        if (config && config.active) {
-            // Element anzeigen
-            item.style.display = 'flex';
+    // Wir sammeln erst alle HTML-Fragmente in einer Liste
+    let activeItemsHTML = [];
 
-            // Name und Wert holen
+    // Alle möglichen Regeln durchgehen (Reihenfolge wie im HTML definiert wäre besser,
+    // aber da wir hier neu bauen, nehmen wir eine feste Reihenfolge oder iterieren über Keys)
+    // Wir nutzen hier die Keys aus Labels, um eine feste Reihenfolge zu haben:
+    const allKeys = Object.keys(labels);
+
+    allKeys.forEach(key => {
+        // 1. Plattform Check
+        let isForCurrentPlatform = true;
+        if (platform === 'twitch') {
+            if (!twitchKeys.includes(key)) isForCurrentPlatform = false;
+        } else if (platform === 'tiktok') {
+            if (!tiktokKeys.includes(key)) isForCurrentPlatform = false;
+        }
+
+        if (!isForCurrentPlatform) return;
+
+        // 2. Aktiv Check
+        let config = settings[key];
+        let isActive = false;
+        let value = 0;
+
+        if (config && typeof config === 'object' && config.active !== undefined) {
+             isActive = config.active;
+             value = config.value;
+        } else if (settings[key + "_active"]) {
+             isActive = settings[key + "_active"];
+             value = settings[key + "_value"];
+        }
+
+        if (isActive) {
             let name = labels[key] || key;
-            let value = config.value;
-
-            // Spezial-Formatierung für Likes (optional, z.B. wenn man kleine Werte hat)
-            if (key === 'like' && parseFloat(value) < 1) {
-                // Beispiel: Zeige an was 100 Likes bringen, wenn 1 Like zu wenig ist
-                // item.innerText = `${name} (100x): +${(value * 100).toFixed(0)}s`;
-                // Aber wir bleiben erst mal beim Standard:
-                item.innerText = `${name}: +${value}s`;
-            } else {
-                item.innerText = `${name}: +${value}s`;
-            }
-
-            // Falls du CSS-Klassen für Styling brauchst:
-            item.classList.add('active-rule');
-        } else {
-            // Verstecken wenn inaktiv
-            item.style.display = 'none';
+            // HTML Bauen
+            activeItemsHTML.push(
+                `<div class="rule-item" data-rule="${key}">` +
+                `${name}: <span class="highlight">+${value}s</span>` +
+                `</div>`
+            );
         }
     });
+
+    if (activeItemsHTML.length === 0) {
+        moveContainer.innerHTML = '';
+        moveContainer.style.animation = 'none';
+        return;
+    }
+
+    // 3. TRICK: Inhalt verdoppeln für nahtlosen Loop!
+    // Wir fügen die Liste ZWEIMAL ein.
+    // [Regel A] [Regel B] ... [Regel A] [Regel B]
+    const content = activeItemsHTML.join('') + activeItemsHTML.join('');
+
+    // Nur aktualisieren, wenn sich was geändert hat (verhindert Flackern)
+    if (moveContainer.innerHTML !== content) {
+        moveContainer.innerHTML = content;
+
+        // Animation sicherstellen
+        moveContainer.style.animation = 'none';
+        moveContainer.offsetHeight; /* Trigger Reflow */
+        // Die Dauer (40s) kannst du anpassen, je nachdem wie schnell es laufen soll
+        moveContainer.style.animation = 'ticker 40s linear infinite';
+    }
 }
 
-// Initial laden
 loadRules();
-
-// Alle 10 Sekunden prüfen, ob sich Settings geändert haben
-setInterval(loadRules, 10000);
+setInterval(loadRules, 5000);

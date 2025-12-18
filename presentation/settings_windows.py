@@ -32,7 +32,7 @@ class BaseSettingsWindow(tk.Toplevel):
                           "font": ("Segoe UI", 9, "bold")}
 
 
-# --- 1. TIKTOK SUBATHON SETTINGS (Nur TikTok) ---
+# --- 1. TIKTOK SUBATHON SETTINGS ---
 class SubathonSettingsWindow(BaseSettingsWindow):
     def __init__(self, master):
         super().__init__(master, "TikTok Trigger Konfiguration", 600, 500)
@@ -127,9 +127,17 @@ class TwitchSubathonSettingsWindow(BaseSettingsWindow):
             tk.Label(grid_frm, text=name, width=20, anchor='w', font=("Segoe UI", 10, "bold"), **self.label_style).grid(
                 row=idx, column=0, pady=5, padx=5)
 
-            # Subathon Settings laden (flache Struktur für Twitch)
-            val = self.settings.get(f"{k}_value", 0)
-            active = self.settings.get(f"{k}_active", False)
+            # --- KORREKTUR: Laden von gruppierten Daten ODER Fallback auf alte flache Keys ---
+            # Versuche erst, das neue Objekt zu laden: {"value": 10, "active": true}
+            data = self.settings.get(k)
+
+            # Falls nicht vorhanden oder kein Dict, versuche alte flache Keys
+            if not isinstance(data, dict):
+                val = self.settings.get(f"{k}_value", 0)
+                active = self.settings.get(f"{k}_active", False)
+            else:
+                val = data.get("value", 0)
+                active = data.get("active", False)
 
             e = tk.Entry(grid_frm, **self.entry_style, width=8, justify='center')
             e.insert(0, val)
@@ -147,7 +155,6 @@ class TwitchSubathonSettingsWindow(BaseSettingsWindow):
             side='bottom', fill='x', padx=20, pady=20)
 
     def restart_twitch(self):
-        # Speichert nur Credentials und startet neu
         new_s = {
             "channel_name": self.tw_channel.get().strip(),
             "oauth_token": self.tw_token.get().strip()
@@ -159,13 +166,17 @@ class TwitchSubathonSettingsWindow(BaseSettingsWindow):
     def save_twitch(self):
         try:
             # 1. Trigger speichern (in subathon_overlay/settings.json)
-            # Wir laden die aktuellen Settings neu, um Konflikte zu vermeiden
             current = self.service.get_current_settings()
-            for k, w in self.twitch_widgets.items():
-                current[f"{k}_value"] = w["entry"].get()
-                current[f"{k}_active"] = w["var"].get()
-            self.service.update_settings(current)
 
+            for k, w in self.twitch_widgets.items():
+                # --- KORREKTUR: Als Objekt speichern, genau wie TikTok! ---
+                current[k] = {"value": w["entry"].get(), "active": w["var"].get()}
+
+                # Aufräumen: Alte flache Keys löschen, falls vorhanden
+                if f"{k}_value" in current: del current[f"{k}_value"]
+                if f"{k}_active" in current: del current[f"{k}_active"]
+
+            self.service.update_settings(current)
 
             show_toast(self.master, "✅ Twitch & Trigger gespeichert!")
             self.destroy()
@@ -241,31 +252,19 @@ class CurrencySettingsWindow(BaseSettingsWindow):
             for k, v in self.vars.items():
                 self.settings[k] = v.get()
 
-            # In like_overlay/settings.json speichern
             self.service.settings_manager.save_settings(self.settings)
 
-            # ---------------------------------------------------------
-            # 2. FIX: Werte auch an den Twitch Service übergeben!
-            # ---------------------------------------------------------
+            # 2. Werte auch an den Twitch Service übergeben
             from services.service_provider import twitch_service_instance
-
-            # Aktuelle Twitch-Settings laden
             tw_settings = twitch_service_instance.get_settings()
-
-            # Währungsdaten rüberkopieren
             tw_settings["currency_name"] = self.settings["currency_name"]
             tw_settings["currency_per_message"] = self.settings.get("currency_per_message", "0")
             tw_settings["currency_per_bit"] = self.settings.get("currency_per_bit", "0")
             tw_settings["currency_per_sub"] = self.settings.get("currency_per_sub", "0")
-
-            # Auch die Command-Schalter synchronisieren
             tw_settings["currency_cmd_score_active"] = self.settings.get("currency_cmd_score_active", True)
             tw_settings["currency_cmd_send_active"] = self.settings.get("currency_cmd_send_active", True)
 
-            # In twitch_settings.json speichern
             twitch_service_instance.save_settings(tw_settings)
-
-            # Twitch Neustart auslösen (lädt jetzt die korrekten neuen Werte)
             twitch_service_instance.update_credentials(
                 twitch_service_instance.username,
                 twitch_service_instance.oauth_token
@@ -275,7 +274,8 @@ class CurrencySettingsWindow(BaseSettingsWindow):
             self.destroy()
         except Exception as e:
             messagebox.showerror("Fehler", str(e))
-# --- 3. TIMER & GAMBIT SETTINGS (General) ---
+
+
 class TimerGambitSettingsWindow(BaseSettingsWindow):
     def __init__(self, master):
         super().__init__(master, "Timer & Gambit Einstellungen", 800, 700)
@@ -566,7 +566,8 @@ class WheelSettingsWindow(BaseSettingsWindow):
 
         except ValueError:
             messagebox.showerror("Fehler", "Bitte gültige Zahlen eingeben.")
-# --- LIKE CHALLENGE & COMMANDS (Standard) ---
+
+
 class LikeChallengeSettingsWindow(BaseSettingsWindow):
     def __init__(self, master):
         super().__init__(master, "Like Challenge Einstellungen", 600, 450)
@@ -690,8 +691,9 @@ class CommandsSettingsWindow(BaseSettingsWindow):
 
     def save_duration(self):
         try:
-            self.service.save_settings({"display_duration_seconds": int(self.duration_var.get())}); show_toast(self,
-                                                                                                               "Dauer gespeichert!")
+            self.service.save_settings({"display_duration_seconds": int(self.duration_var.get())});
+            show_toast(self,
+                       "Dauer gespeichert!")
         except:
             messagebox.showerror("Fehler", "Zahl erwartet.")
 
@@ -725,7 +727,8 @@ class CommandsSettingsWindow(BaseSettingsWindow):
     def add(self):
         try:
             self.service.add_command(self.entry_text_var.get(), self.entry_costs_var.get(),
-                                     self.superfan_var.get()); self.load_commands()
+                                     self.superfan_var.get());
+            self.load_commands()
         except Exception as e:
             messagebox.showerror("Fehler", str(e))
 
@@ -733,7 +736,8 @@ class CommandsSettingsWindow(BaseSettingsWindow):
         if self.selected_command_id:
             try:
                 self.service.update_command(self.selected_command_id, self.entry_text_var.get(),
-                                            self.entry_costs_var.get(), self.superfan_var.get()); self.load_commands()
+                                            self.entry_costs_var.get(), self.superfan_var.get());
+                self.load_commands()
             except Exception as e:
                 messagebox.showerror("Fehler", str(e))
 

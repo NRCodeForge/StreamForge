@@ -9,7 +9,10 @@ Spec run task: pyinstaller StreamForge.spec --clean --noconfirm
 ---
 # Todo´s
 - Blackout verbessen
-- 
+- commamds fixen
+- Likes Neon (Positiv) Grün 
+- Likes als Sum im Timer
+- bits in Twitch testen 
 # on approval
 - Steve
 - 

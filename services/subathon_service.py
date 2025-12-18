@@ -92,6 +92,24 @@ class SubathonService:
         except (ValueError, TypeError):
             return default
 
+    # --- HELPER: EINSTELLUNGEN HOLEN (Kombiniert neue & alte Struktur) ---
+    def _get_cfg(self, settings, key):
+        """
+        Holt Einstellungen sicher ab.
+        Unterstützt:
+        1. Neue Struktur: settings[key] = {'value': 10, 'active': True}
+        2. Alte Struktur (Fallback): settings[key + '_value']
+        """
+        # Versuch 1: Nested Object (Das ist das Ziel!)
+        if key in settings and isinstance(settings[key], dict):
+            return settings[key]
+
+        # Versuch 2: Fallback auf flache Keys
+        return {
+            "value": settings.get(f"{key}_value", 0),
+            "active": settings.get(f"{key}_active", False)
+        }
+
     # --- API HOOK (Unverändert wichtig) ---
     def _ensure_api_hook(self):
         try:
@@ -114,9 +132,8 @@ class SubathonService:
             reason = ""
 
             def get_cfg(key):
-                return settings.get(key, {"value": "0", "active": False})
+                return self._get_cfg(settings, key)
 
-            # Nutze jetzt die sichere Parse-Funktion
             if isinstance(event, GiftEvent):
                 c = get_cfg("coins")
                 if c.get("active"):
@@ -295,15 +312,16 @@ class SubathonService:
         elif d.get("event") == "sub":
             self.trigger_hype_mode()
 
-    # --- TWITCH EVENTS (NEU & KORRIGIERT) ---
+    # --- TWITCH EVENTS (KORRIGIERT & VEREINHEITLICHT) ---
     def on_twitch_message(self, username):
         """Wird bei jeder Chat-Nachricht aufgerufen."""
         s = self.get_current_settings()
+        cfg = self._get_cfg(s, "twitch_msg")
 
         # Check ob aktiv
-        if not s.get("twitch_msg_active", False): return
+        if not cfg.get("active", False): return
 
-        val = self._safe_float(s.get("twitch_msg_value", 0))
+        val = self._safe_float(cfg.get("value", 0))
         if val > 0:
             self.add_time(val)
             self.timer_logger.info(f"TWITCH: Msg ({username}) -> +{val}s")
@@ -314,22 +332,26 @@ class SubathonService:
 
         if is_gift:
             # Gift Sub
-            if s.get("twitch_gift_active", False):
-                val = self._safe_float(s.get("twitch_gift_value", 0))
+            cfg = self._get_cfg(s, "twitch_gift")
+            if cfg.get("active", False):
+                val = self._safe_float(cfg.get("value", 0))
                 self.add_time(val)
                 self.timer_logger.info(f"TWITCH: Gift Sub ({username}) -> +{val}s")
         else:
             # Normaler Sub (Prime, Tier 1-3)
-            if s.get("twitch_sub_active", False):
-                val = self._safe_float(s.get("twitch_sub_value", 0))
+            cfg = self._get_cfg(s, "twitch_sub")
+            if cfg.get("active", False):
+                val = self._safe_float(cfg.get("value", 0))
                 self.add_time(val)
                 self.timer_logger.info(f"TWITCH: Sub ({username}) -> +{val}s")
 
     def on_twitch_bits(self, username, amount):
         """Wird bei Bits aufgerufen."""
         s = self.get_current_settings()
-        if s.get("twitch_bits_active", False):
-            factor = self._safe_float(s.get("twitch_bits_value", 0))  # Zeit pro 1 Bit
+        cfg = self._get_cfg(s, "twitch_bits")
+
+        if cfg.get("active", False):
+            factor = self._safe_float(cfg.get("value", 0))  # Zeit pro 1 Bit
             total_time = amount * factor
             if total_time > 0:
                 self.add_time(total_time)

@@ -18,8 +18,8 @@ class TwitchService:
         self.message_timestamps = deque()
         self.connected = False
 
-        # Einstellungen laden
-        self.settings_manager = SettingsManager("twitch_settings.json")
+        # ÄNDERUNG: Speichert API-Daten jetzt im 'external' Ordner!
+        self.settings_manager = SettingsManager("external/twitch_settings.json")
         self.settings = self.settings_manager.load_settings()
 
     def try_auto_start(self):
@@ -211,16 +211,7 @@ class TwitchService:
             elif cmd == "!spin":
                 spin_args = args[1:]
                 server_log.info(f"🎰 !spin von {user}")
-                success, result_msg = wheel_service_instance.handle_spin(user, spin_args)
-
-                # ANPASSUNG: Verzögerung bei Erfolg, Sofortnachricht bei Fehler
-                if result_msg:
-                    if success:
-                        # Animation dauert 8s, wir warten 8.5s
-                        threading.Timer(8.5, self.send_message, args=[f"@{user} {result_msg}"]).start()
-                    else:
-                        # Fehler (Cooldown, zu wenig Geld etc.) sofort senden
-                        self.send_message(f"@{user} {result_msg}")
+                wheel_service_instance.handle_spin(user, spin_args)
 
             # --- PLACE COMMAND (!place) ---
             elif cmd == "!place":
