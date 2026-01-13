@@ -1,6 +1,7 @@
 # PyInstaller build artifacts
 /dist/
 /build/
+/.idea/
 
 # Optional: PyInstaller .spec file (manchmal will man die auch nicht versionieren)
 # *.spec
