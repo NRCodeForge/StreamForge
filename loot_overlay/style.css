@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent; /* Wichtig für OBS */
+    font-family: 'Arial', sans-serif;
+}
+
+#overlay-container {
+    display: none; /* Erst anzeigen, wenn getriggert */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 450px;
+}
+
+#loot-video {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    display: block;
+}
+
+#prompt-text {
+    /* Absolute Positionierung innerhalb des Containers */
+    position: absolute;
+    /* Positioniert den Text im unteren Bereich des Videos */
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Breite anpassen, damit es gut aussieht */
+    width: 85%;
+
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #000;
+
+    /* Stil des Textfeldes */
+    background: rgba(0, 0, 0, 0.65);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Dezente Gold-Umrandung */
+
+    z-index: 10;
+    pointer-events: none;
+}

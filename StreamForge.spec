@@ -14,18 +14,24 @@ datas_list = [
     ('timer_overlay', 'timer_overlay'),
     ('commands_overlay', 'commands_overlay'),
     ('wheel_overlay', 'wheel_overlay'),
+    ('loot_overlay', 'loot_overlay'),
     # Pfad ggf. prüfen, ob Playwright wirklich notwendig ist (ist sehr groß)
+    # Falls Playwright genutzt wird, ist dieser Pfad für die EXE essenziell:
     ('C:\\Users\\rieck\\AppData\\Local\\ms-playwright', 'ms-playwright')
 ]
 
-fileName = 'StreamForge V-2.14'
+fileName = 'StreamForge V-2.16'
 
+# Hier liegen die entscheidenden Ergänzungen für SocketIO und Flask
 hiddenimports_list = [
     'pygame',
     'pynput.keyboard',
     'PIL',
     'numpy',
-    'playwright.sync_api'
+    'playwright.sync_api',
+    'flask_socketio',
+    'engineio.async_drivers.threading', # Fix für den "Invalid async_mode" Fehler
+    'jinja2.ext'                         # Oft von Flask benötigt in der EXE
 ]
 
 # --- ANALYSE ---
@@ -44,15 +50,17 @@ a = Analysis(
     cipher=block_cipher,
     noarchive=False,
 )
+
+# Optimierung: Entferne unnötige Module, um die EXE kleiner zu machen (optional)
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 # --- EXE (Der Starter) ---
 exe = EXE(
     pyz,
     a.scripts,
-    [], # WICHTIG: Hier keine Binaries übergeben!
-    exclude_binaries=True, # <--- WICHTIG: Auf True setzen für Folder-Mode!
-    name=fileName,         # Name der .exe Datei im Ordner
+    [],
+    exclude_binaries=True,
+    name=fileName,
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -63,7 +71,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='assets/icon.ico'
+    icon='assets/icon.ico' # Stelle sicher, dass icon.ico im assets Ordner liegt
 )
 
 # --- COLLECT (Der Ordner) ---
@@ -75,5 +83,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name=fileName # Name des Ausgabe-Ordners
+    name=fileName
 )

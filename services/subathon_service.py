@@ -1,9 +1,11 @@
 import time
 import threading
 import random
-import json
 import os
 import logging
+
+from TikTokLive.events.custom_events import SuperFanEvent
+
 from external.settings_manager import SettingsManager
 from utils import server_log
 from config import get_path
@@ -15,6 +17,7 @@ class SubathonService:
         self.timer_logger = self._setup_timer_logger()
         self.timer_logger.info("--- SUBATHON SERVICE RELOADED ---")
 
+        self.end_sound_played = False
         self.settings_manager = SettingsManager('subathon_overlay/settings.json')
 
         self.timer_seconds = 0
@@ -148,15 +151,24 @@ class SubathonService:
                 c = get_cfg("share")
                 if c.get("active"): added = self._safe_float(c["value"]); reason = "Share"
 
-            elif isinstance(event, SubscribeEvent):
-                c = get_cfg("subscribe")
-                if c.get("active"): added = self._safe_float(c["value"]); reason = "Sub"
+            elif isinstance(event, SuperFanEvent):
+                c = get_cfg("SuperFan")
+                if c.get("active"): added = self._safe_float(c["value"]); reason = "SuperFan"
+
+
+            # In services/subathon_service.py
 
             elif isinstance(event, LikeEvent):
+
                 c = get_cfg("like")
+
                 if c.get("active"):
-                    added = event.count * self._safe_float(c["value"])
-                    if added > 0: reason = f"{event.count} Likes"
+                    diff = getattr(event, 'calculated_diff', event.count)
+
+                    added = diff * self._safe_float(c["value"])
+
+                    if added > 0:
+                        reason = f"{diff} Likes (Total Diff)"
 
             elif isinstance(event, CommentEvent):
                 if not event.comment.startswith("!"):
@@ -223,11 +235,49 @@ class SubathonService:
 
     # --- RESTLICHE LOGIK (Timer Loop etc.) ---
     def _timer_loop(self):
+        """Haupt-Loop des Timers."""
         while True:
             self._ensure_api_hook()
-            if not self.is_paused and not self.is_frozen and self.timer_seconds > 0:
-                self.timer_seconds = max(0, self.timer_seconds - (1 * self.speed_multiplier))
+
+            # Nur verarbeiten, wenn nicht pausiert und nicht eingefroren
+            if not self.is_paused and not self.is_frozen:
+                if self.timer_seconds > 0:
+                    # Normaler Countdown
+                    # Wir ziehen die Zeit ab (unter Berücksichtigung des Multiplikators)
+                    self.timer_seconds -= (1 * self.speed_multiplier)
+
+                    # Falls wir jetzt 0 oder weniger erreicht haben:
+                    if self.timer_seconds <= 0:
+                        self.timer_seconds = 0
+                        self.is_paused = True  # WICHTIG: Timer pausieren, damit er bei 0 bleibt!
+
+                        if not self.end_sound_played:
+                            self.end_sound_played = True
+                            self._trigger_end_audio()
+                else:
+                    # Der Timer ist bereits 0, aber der Sound wurde vielleicht noch nicht gespielt
+                    # (Falls der Timer z.B. manuell auf 0 gesetzt wurde)
+                    if not self.end_sound_played:
+                        self.end_sound_played = True
+                        self.is_paused = True
+                        self._trigger_end_audio()
+
+            # Falls der Streamer manuell Zeit hinzufügt (z.B. durch ein Gift),
+            # setzen wir die Sound-Sperre zurück, damit er beim nächsten Ablauf wieder spielt.
+            if self.timer_seconds > 0:
+                self.end_sound_played = False
+
             time.sleep(1)
+
+    def _trigger_end_audio(self):
+        """Löst das Abspielen des Paulchen Panther Sounds aus."""
+        try:
+            from services.service_provider import audio_service_instance
+            # Stellt sicher, dass die Methode im AudioService 'play_end_sound' heißt
+            audio_service_instance.play_end_sound()
+            server_log.info("📢 Subathon abgelaufen: End-Sound (Paulchen Panther) gestartet.")
+        except Exception as e:
+            server_log.error(f"Fehler beim Starten des End-Audios: {e}")
 
     def _process_gambit_queue(self):
         while True:
@@ -240,10 +290,9 @@ class SubathonService:
 
     def add_time(self, seconds):
         # Last Stand Logik
-        ls_multi = 3.0 if self.timer_seconds < 60 else 1.0
-        final = seconds * self.add_multiplier * ls_multi
+        final = seconds * self.add_multiplier
         self.timer_seconds += final
-        server_log.info(f"ADD: +{final:.1f}s (Base:{seconds}, Hype:x{self.add_multiplier}, LS:x{ls_multi})")
+        server_log.info(f"ADD: +{final:.1f}s (Base:{seconds}, Hype:x{self.add_multiplier})")
 
     # --- TRIGGER METHODEN FÜR EVENTS (Konfigurierbar) ---
     def _get_duration(self, key, default):

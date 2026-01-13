@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, send_from_directory, request, render_template_string
+from flask_socketio import SocketIO
 import os
 import requests
 
@@ -13,7 +14,7 @@ from services.service_provider import (
 )
 
 # Importiere Infrastruktur
-# WICHTIG: get_persistent_path hinzugefügt!
+
 from config import (
     get_path, get_persistent_path, BASE_HOST, BASE_PORT, API_ROOT,
     WISHES_ENDPOINT, NEXT_WISH_ENDPOINT, RESET_WISHES_ENDPOINT,
@@ -23,6 +24,7 @@ from utils import server_log
 
 app = Flask(__name__)
 
+socketio = SocketIO(app, async_mode='threading', cors_allowed_origins="*")
 
 # --- HILFSFUNKTION FÜR OVERLAYS ---
 def serve_overlay_file(folder_name, filename):
@@ -263,7 +265,12 @@ def timer_control():
 @app.route('/api/v1/timer/state', methods=['GET'])
 def get_timer_state():
     return jsonify(subathon_service_instance.get_state())
-
+# In web_api.py
+@app.route('/assets/videos/<path:filename>')
+def serve_video(filename):
+    # Sicherstellen, dass Flask im richtigen Root-Ordner sucht
+    video_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'assets', 'videos')
+    return send_from_directory(video_dir, filename)
 
 @app.route('/api/v1/like_challenge/test', methods=['POST'])
 def trigger_test_likes():
@@ -317,6 +324,27 @@ def serve_wheel_overlay(path):
     return serve_overlay_file('wheel_overlay', path)
 
 
+# In deiner presentation/web_api.py hinzufügen:
+
+@app.route('/api/v1/treasure/test', methods=['POST'])
+def test_treasure():
+    try:
+        # Wir simulieren exakt das Paket aus deinem on_treasure
+        nickname = "Test_Streamer"
+        diamond_count = 500
+
+        data = {
+            "mode": "superfan",  # Behalte deinen Tippfehler bei, falls er im JS auch so steht!
+            "prompt": f"{nickname} hat eine Truhe mit {diamond_count} Münzen geworfen.\n Immer schön Danke sagen :)"
+        }
+
+        # WICHTIG: Socket.io nutzen, um es an das Overlay zu pushen
+        socketio.emit('loot_event', data)
+
+        server_log.info(f"TEST: Treasure Event an Web-Overlay gesendet")
+        return {"status": "success"}, 200
+    except Exception as e:
+        return {"status": "error", "message": str(e)}, 500
 @app.route('/like_progress_bar/<path:path>')
 def serve_like_progress_bar(path):
     return serve_overlay_file('like_progress_bar', path)
@@ -325,6 +353,10 @@ def serve_like_progress_bar(path):
 @app.route('/killer_wishes/<path:path>')
 def serve_killer_wishes(path):
     return serve_overlay_file('killer_wishes', path)
+
+@app.route('/loot_overlay/<path:path>')
+def serve_loot_overlay(path):
+    return serve_overlay_file('loot_overlay', path)
 
 
 @app.route('/timer_overlay/<path:path>')

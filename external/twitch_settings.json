@@ -1,1 +1,10 @@
-{}
+{
+    "currency_name": "Whieties",
+    "currency_per_message": "1",
+    "currency_per_bit": "1.0",
+    "currency_per_sub": "500",
+    "currency_cmd_score_active": true,
+    "currency_cmd_send_active": false,
+    "twitch_username": "",
+    "twitch_token": ""
+}

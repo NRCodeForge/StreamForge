@@ -35,42 +35,59 @@
             "type": "text",
             "value": 0,
             "color": "#888888"
+        },
+        {
+            "text": "Jackpot",
+            "type": "time_multi_add",
+            "value": 1.0,
+            "color": "#ff8000"
+        },
+        {
+            "text": "Ups Redis Jackpot",
+            "type": "time_multi_sub",
+            "value": 0.5,
+            "color": "#ff0000"
         }
     ],
     "coins": {
-        "value": "4",
+        "value": "0.4",
         "active": true
     },
     "like": {
-        "value": "1",
+        "value": "0.2",
         "active": true
     },
     "share": {
-        "value": "5",
+        "value": "0.5",
         "active": true
     },
     "follow": {
-        "value": "5",
+        "value": "10",
         "active": true
     },
     "subscribe": {
-        "value": "300",
+        "value": "90000000",
         "active": true
     },
     "twitch_msg": {
-        "value": "5",
+        "value": "0.4",
         "active": true
     },
     "twitch_sub": {
-        "value": "300",
+        "value": "180",
         "active": true
     },
     "twitch_gift": {
-        "value": "300",
+        "value": "180",
         "active": true
     },
     "twitch_bits": {
         "value": "5",
-        "active": true
-    }
+        "active": false
+    },
+    "start_time_seconds": "10",
+    "duration_freezer": "180",
+    "duration_warp": "60",
+    "duration_blind": "120",
+    "duration_hype": "300"
 }

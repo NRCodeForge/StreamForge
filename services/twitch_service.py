@@ -2,6 +2,8 @@ import socket
 import threading
 import time
 from collections import deque
+
+from external.Twitch_API import twitch_log
 from utils import server_log
 from config import APP_VERSION
 from external.settings_manager import SettingsManager
@@ -208,10 +210,14 @@ class TwitchService:
                             self.send_message("Bitte eine gültige Zahl eingeben.")
 
             # --- WHEEL COMMAND (!spin) ---
+
             elif cmd == "!spin":
-                spin_args = args[1:]
-                server_log.info(f"🎰 !spin von {user}")
-                wheel_service_instance.handle_spin(user, spin_args)
+                        spin_args = args[1:]
+                        server_log.info(f"🎰 !spin von {user}")
+                        # ÄNDERUNG: Rückgabewerte auffangen und senden
+                        success, msg = wheel_service_instance.handle_spin(user, spin_args)
+                        if msg:
+                            self.send_message(msg)
 
             # --- PLACE COMMAND (!place) ---
             elif cmd == "!place":
@@ -262,3 +268,17 @@ class TwitchService:
 
     def get_status(self):
         return {"connected": self.connected, "username": self.username}
+
+    def handle_spin_command(self, username, args):
+        try:
+            from services.service_provider import wheel_service_instance
+
+            # Logik ausführen
+            success, msg = wheel_service_instance.handle_spin(username, args)
+
+            # WICHTIG: Die Nachricht IMMER senden, wenn eine vorhanden ist
+            if msg:
+                self.send_message(msg)
+
+        except Exception as e:
+            twitch_log.error(f"Fehler bei !spin: {e}")

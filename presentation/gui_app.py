@@ -35,56 +35,77 @@ INFO_TEXTS = {
         "LIKE SYSTEM\n\n"
         "Steuert die Like-Challenge & Progress-Bar.\n"
         "Verbindet automatisch zu TikTok.\n"
-        "Test: Sendet 100 Fake-Likes zum Testen der Animation."
+        "API-Endpunkte:\n"
+        "• GET /api/v1/like_challenge - Status abrufen.\n"
+        "• POST /api/v1/like_challenge/test - Fügt 100 Test-Likes hinzu."
     ),
     "SUBATHON": (
         "SUBATHON TRIGGER (TIKTOK)\n\n"
-        "Hier definieren Sie die Trigger für TikTok:\n"
-        "Coins, Likes, Follows -> Zeit.\n"
-        "Link: .../index.html?platform=tiktok\n"
-        "Einstellungen: Zahnrad klicken."
+        "Trigger für TikTok: Coins (Gifts), Likes, Follows, Shares, Subs & Chat -> Zeit.\n"
+        "Logik: Zeit = (Ereignis-Menge * Konfigurations-Wert) * Multiplikator.\n"
+        "Besonderheit: 'Last Stand' gewährt 3x Zeit, wenn der Timer unter 60s fällt.\n"
+        "Link: .../subathon_overlay/index.html?platform=tiktok"
     ),
     "SUBATHON_TWITCH": (
         "SUBATHON TRIGGER (TWITCH)\n\n"
-        "Hier definieren Sie die Trigger für Twitch:\n"
-        "Subs, Bits, Chat -> Zeit.\n"
-        "Link: .../index.html?platform=twitch\n"
-        "Einstellungen: Zahnrad klicken."
+        "Trigger für Twitch: Subs (Normal/Gift), Bits & Chat-Nachrichten -> Zeit.\n"
+        "Logik: Zeit = (Menge * Zeit-pro-Einheit).\n"
+        "Voraussetzung: Twitch-Login in den Globalen Einstellungen.\n"
+        "Link: .../subathon_overlay/index.html?platform=twitch"
     ),
     "TIMER": (
         "TIMER & GAMBIT\n\n"
-        "Timer: Startzeit & Event-Dauer konfigurieren.\n"
-        "Gambit: Das Glücksrad konfigurieren.\n"
-        "Einstellungen: Zahnrad klicken."
+        "Verwaltet Countdown & Event-Steuerung.\n"
+        "API-Event-Trigger (POST):\n"
+        "• /api/v1/events/gambler - Startet das Gambit-Roulette.\n"
+        "• /api/v1/events/time_warp - 2x Ablaufgeschwindigkeit.\n"
+        "• /api/v1/events/freezer - Stoppt den Countdown.\n"
+        "• /api/v1/events/blackout - Versteckt den Timer (Blind-Mode).\n"
+        "Gambit-Effekte: Zeit +/- , Multiplikator +/- , Hype-Mode (2x Zeitgewinn)."
     ),
     "WISHES": (
         "KILLER WISHES\n\n"
-        "Wünsche für Killer/Survivor.\n"
-        "Hotkey 'Bild Runter': Nächster Wunsch.\n"
-        "!place NAME: Zeigt Platzierung im Overlay."
+        "Warteschlange für Zuschauer-Wünsche.\n"
+        "Hotkey 'Bild Runter': Nächster Wunsch (Offset +1).\n"
+        "API-Endpunkte:\n"
+        "• GET /api/v1/wishes - Liste der Wünsche.\n"
+        "• POST /api/v1/wishes/check_place - Prüft Position eines Users.\n"
+        "Command: !place [Name] zeigt die Position im Overlay an."
     ),
     "COMMANDS": (
         "COMMAND OVERLAY\n\n"
-        "Zeigt große Medien-Overlays (Bilder/GIFs) an."
+        "Zeigt konfigurierbare Medien-Sequenzen (Bilder/GIFs) an.\n"
+        "API-Trigger: POST /api/v1/commands/trigger - Startet die Sequenz."
     ),
     "CURRENCY": (
         "TWITCH WÄHRUNG\n\n"
-        "Verwaltet Punkte für Chat-Aktivität, Bits und Subs.\n"
-        "Commands: !score (Stand), !send (Überweisen).\n"
-        "Einstellungen: Zahnrad klicken."
+        "System für Chat-Punkte, Bits-Umrechnung und Subs.\n"
+        "User-Commands:\n"
+        "• !score / !points - Zeigt aktuellen Kontostand.\n"
+        "• !send [User] [Betrag] - Überweist Punkte an andere Zuschauer."
+    ),
+    "SPIN": (
+        "GLÜCKSRAD (WHEEL)\n\n"
+        "Einsatzbasierter Gewinn-Multiplikator für Zuschauer.\n"
+        "Command: !spin [Einsatz] oder !spin all.\n"
+        "Einstellbar: Min/Max Einsatz, Cooldown und Gewinnfelder."
+    ),
+    "LOOT": (
+        "TREASURE LOOT\n\n"
+        "Interaktives Schatztruhen-System für TikTok.\n"
+        "Events (Gifts) können Truhen im Overlay spawnen lassen.\n"
+        "Inhalt und Wahrscheinlichkeiten sind in der Config anpassbar.\n"
+        "Link: .../loot_overlay/index.html"
     )
 }
-
 
 class DashboardCard(tk.Frame):
     """
     Einheitliches Modul für das Grid-Layout.
     """
-
     def __init__(self, parent, title, items, settings_func=None, test_func=None, reset_func=None, info_key=None,
                  test_label="TEST", custom_buttons=None):
         card_bg = "#1a1a1a"
-        # highlightbackground für den Rahmen
         super().__init__(parent, bg=card_bg, highlightbackground=Style.BORDER, highlightthickness=1)
         self.parent_root = parent.winfo_toplevel()
         self.info_key = info_key
@@ -98,7 +119,6 @@ class DashboardCard(tk.Frame):
         tk.Label(header, text=title, font=font.Font(family=Style.FONT_FAMILY, size=12, weight="bold"),
                  bg=card_bg, fg=Style.ACCENT_BLUE).pack(side=tk.LEFT)
 
-        # Icons rechts
         btn_frame = tk.Frame(header, bg=card_bg)
         btn_frame.pack(side=tk.RIGHT)
 
@@ -113,10 +133,8 @@ class DashboardCard(tk.Frame):
         for name, path in items:
             row = tk.Frame(content, bg=card_bg)
             row.pack(fill=tk.X, pady=4)
-
             tk.Label(row, text=name, font=("Segoe UI", 10), bg=card_bg, fg="#cccccc").pack(side=tk.LEFT)
-
-            if path:  # Nur anzeigen wenn Pfad vorhanden
+            if path:
                 url = BASE_URL.rstrip('/') + '/' + path.lstrip('/')
                 tk.Button(row, text="❐", command=lambda u=url: self.copy_to_clipboard(u),
                           bg=card_bg, fg=Style.ACCENT_PURPLE, relief=tk.FLAT, bd=0, cursor="hand2").pack(side=tk.RIGHT)
@@ -178,48 +196,34 @@ class StreamForgeGUI:
         self.root.configure(bg=Style.BACKGROUND)
         self.root.minsize(800, 600)
 
-        # Styles für Notebook (Tabs)
         self.setup_styles()
 
         icon_path = get_path("assets/icon.ico")
         if os.path.exists(icon_path):
-            try:
-                self.root.iconbitmap(icon_path)
-            except:
-                pass
+            try: self.root.iconbitmap(icon_path)
+            except: pass
 
         self.is_server_running = [False]
-        # Listen für Karten-Management pro Tab
         self.cards_general = []
         self.windows_general = []
         self.cards_tiktok = []
         self.windows_tiktok = []
-        self.cards_twitch = []  # Liste für Twitch Karten
-        self.windows_twitch = []  # Liste für Twitch Fenster
+        self.cards_twitch = []
+        self.windows_twitch = []
 
         self.images = {}
-
         self.setup_ui()
         self.setup_callbacks()
         start_hotkey_listener(self.is_server_running)
-
-        # Startet den Status-Check Loop
         self.update_status_loop()
 
     def setup_styles(self):
         style = ttk.Style()
         style.theme_use('clam')
-
-        # Notebook (Tab-Container) Style
         style.configure("TNotebook", background=Style.BACKGROUND, borderwidth=0)
-        style.configure("TNotebook.Tab",
-                        background="#222222",
-                        foreground="#888888",
-                        padding=[15, 8],
-                        font=("Segoe UI", 10, "bold"),
-                        borderwidth=0)
-        style.map("TNotebook.Tab",
-                  background=[("selected", Style.ACCENT_PURPLE), ("active", "#333333")],
+        style.configure("TNotebook.Tab", background="#222222", foreground="#888888",
+                        padding=[15, 8], font=("Segoe UI", 10, "bold"), borderwidth=0)
+        style.map("TNotebook.Tab", background=[("selected", Style.ACCENT_PURPLE), ("active", "#333333")],
                   foreground=[("selected", "white"), ("active", "white")])
 
     def setup_ui(self):
@@ -234,47 +238,39 @@ class StreamForgeGUI:
                 pil_icon.thumbnail((240, 135), Image.Resampling.LANCZOS)
                 self.images['header_icon'] = ImageTk.PhotoImage(pil_icon)
                 tk.Label(header, image=self.images['header_icon'], bg=Style.BACKGROUND).pack(side=tk.LEFT, padx=(0, 15))
-            except:
-                pass
+            except: pass
 
-        tk.Label(header, text="STREAMFORGE", font=("Impact", 32),
-                 bg=Style.BACKGROUND, fg=Style.FOREGROUND).pack(side=tk.LEFT)
+        tk.Label(header, text="STREAMFORGE", font=("Impact", 32), bg=Style.BACKGROUND, fg=Style.FOREGROUND).pack(side=tk.LEFT)
 
-        # --- STATUS CONTROLS (RECHTS) ---
         controls = tk.Frame(header, bg=Style.BACKGROUND)
         controls.pack(side=tk.RIGHT)
 
-        # 1. TIKTOK STATUS
-        tk.Label(controls, text="TIKTOK", bg=Style.BACKGROUND, fg="#666666", font=("Arial", 8, "bold")).pack(
-            side=tk.LEFT, padx=(0, 5))
+        # Status TikTok
+        tk.Label(controls, text="TIKTOK", bg=Style.BACKGROUND, fg="#666666", font=("Arial", 8, "bold")).pack(side=tk.LEFT, padx=(0, 5))
         self.tt_canvas = tk.Canvas(controls, width=16, height=16, bg=Style.BACKGROUND, highlightthickness=0)
         self.tt_canvas.pack(side=tk.LEFT)
         self.tt_indicator = self.tt_canvas.create_oval(2, 2, 14, 14, fill="#444444", outline="")
 
         tk.Frame(controls, width=1, height=20, bg="#333").pack(side=tk.LEFT, padx=10)
 
-        # 2. TWITCH STATUS (NEU)
-        tk.Label(controls, text="TWITCH", bg=Style.BACKGROUND, fg="#666666", font=("Arial", 8, "bold")).pack(
-            side=tk.LEFT, padx=(0, 5))
+        # Status Twitch
+        tk.Label(controls, text="TWITCH", bg=Style.BACKGROUND, fg="#666666", font=("Arial", 8, "bold")).pack(side=tk.LEFT, padx=(0, 5))
         self.tw_canvas = tk.Canvas(controls, width=16, height=16, bg=Style.BACKGROUND, highlightthickness=0)
         self.tw_canvas.pack(side=tk.LEFT)
         self.tw_indicator = self.tw_canvas.create_oval(2, 2, 14, 14, fill="#444444", outline="")
 
         tk.Frame(controls, width=1, height=20, bg="#333").pack(side=tk.LEFT, padx=10)
 
-        # 3. SERVER STATUS
-        tk.Label(controls, text="SERVER", bg=Style.BACKGROUND, fg="#666666", font=("Arial", 8, "bold")).pack(
-            side=tk.LEFT, padx=(0, 5))
+        # Status Server
+        tk.Label(controls, text="SERVER", bg=Style.BACKGROUND, fg="#666666", font=("Arial", 8, "bold")).pack(side=tk.LEFT, padx=(0, 5))
         self.status_canvas = tk.Canvas(controls, width=16, height=16, bg=Style.BACKGROUND, highlightthickness=0)
         self.status_canvas.pack(side=tk.LEFT)
         self.status_indicator = self.status_canvas.create_oval(2, 2, 14, 14, fill=Style.DANGER, outline="")
 
-        # 4. USER SETTINGS BUTTON
-        tk.Button(controls, text="👤", command=self.open_global_settings,
-                  bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE, relief=tk.FLAT,
-                  font=("Arial", 20), bd=0, cursor="hand2").pack(side=tk.LEFT, padx=(25, 0))
+        tk.Button(controls, text="👤", command=self.open_global_settings, bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE,
+                  relief=tk.FLAT, font=("Arial", 20), bd=0, cursor="hand2").pack(side=tk.LEFT, padx=(25, 0))
 
-        # --- TABS (NOTEBOOK) ---
+        # --- TABS ---
         self.notebook = ttk.Notebook(self.root)
         self.notebook.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0, 10))
 
@@ -286,18 +282,9 @@ class StreamForgeGUI:
         self.notebook.add(self.tab_tiktok, text="TIKTOK")
         self.notebook.add(self.tab_twitch, text="TWITCH")
 
-        # --- FOOTER ---
-        footer = tk.Frame(self.root, bg="#111111", height=40)
-        footer.pack(fill=tk.X, side=tk.BOTTOM)
-        f_content = tk.Frame(footer, bg="#111111")
-        f_content.pack(fill=tk.BOTH, padx=20, pady=8)
-        tk.Label(f_content, text="v2.3  |  FORGED FOR STREAMERS", font=("Segoe UI", 10, "bold"),
-                 bg="#111111", fg="#666666").pack(side=tk.LEFT)
-
-        # --- SETUP CONTENT FOR TABS ---
         self.canvas_general = self.create_scrollable_tab(self.tab_general, "general")
         self.canvas_tiktok = self.create_scrollable_tab(self.tab_tiktok, "tiktok")
-        self.canvas_twitch = self.create_scrollable_tab(self.tab_twitch, "twitch")  # Scrollbarer Twitch Tab
+        self.canvas_twitch = self.create_scrollable_tab(self.tab_twitch, "twitch")
 
         # --- POPULATE TIKTOK TAB ---
         self.cards_tiktok.append(DashboardCard(
@@ -308,40 +295,38 @@ class StreamForgeGUI:
 
         self.cards_tiktok.append(DashboardCard(
             self.canvas_tiktok, "SUBATHON TRIGGER",
-            [("Subathon Info", "subathon_overlay/index.html?platform=tiktok")],  # Link angepasst
+            [("Subathon Info", "subathon_overlay/index.html?platform=tiktok")],
             settings_func=self.open_subathon_settings_window,
             info_key="SUBATHON"))
 
+        # NEU: TREASURE LOOT im TikTok Tab
+        self.cards_tiktok.append(DashboardCard(
+            self.canvas_tiktok, "Video Overlay",
+            [("Overlay (TikTok)", "loot_overlay/index.html")],
+            test_func=self.test_treasure_action, test_label="TEST TREASURE", info_key="LOOT"))
+
         # --- POPULATE TWITCH TAB ---
-        # 1. Währungssystem
         self.cards_twitch.append(DashboardCard(
             self.canvas_twitch, "TWITCH WÄHRUNG",
             [("Commands: !score, !send", "")],
-            settings_func=self.open_currency_settings,
-            info_key="CURRENCY"
-        ))
+            settings_func=self.open_currency_settings, info_key="CURRENCY"))
 
-        # 2. Subathon Trigger (NEU)
         self.cards_twitch.append(DashboardCard(
             self.canvas_twitch, "SUBATHON TRIGGER",
-            [("Overlay (Twitch)", "subathon_overlay/index.html?platform=twitch")],  # Link angepasst
-            settings_func=self.open_twitch_subathon_settings_window,
-            info_key="SUBATHON_TWITCH"
-        ))
-        # 3. Spin
+            [("Overlay (Twitch)", "subathon_overlay/index.html?platform=twitch")],
+            settings_func=self.open_twitch_subathon_settings_window, info_key="SUBATHON_TWITCH"))
+
         self.cards_twitch.append(DashboardCard(
-            self.canvas_twitch, "Spin",
-            [("Overlay (Twitch)", "wheel_overlay/index.html")],  # Link angepasst
+            self.canvas_twitch, "GLÜCKSRAD (SPIN)",
+            [("Overlay (Twitch)", "wheel_overlay/index.html")],
             settings_func=self.open_twitch_spin_settings_window,
-            info_key="None"
-        ))
+            test_func=self.test_spin_action, test_label="TEST SPIN", info_key="SPIN"))
+
         # --- POPULATE GENERAL TAB ---
         self.cards_general.append(DashboardCard(
             self.canvas_general, "TIMER & GAMBIT",
-            [("Timer Overlay", "timer_overlay/index.html"),
-             ("Gambit Overlay", "gambler_overlay/index.html")],
-            settings_func=self.open_timer_gambit_settings,
-            info_key="TIMER",
+            [("Timer Overlay", "timer_overlay/index.html"), ("Gambit Overlay", "gambler_overlay/index.html")],
+            settings_func=self.open_timer_gambit_settings, info_key="TIMER",
             custom_buttons=[("START", lambda: self.control_timer("start"), Style.SUCCESS),
                             ("PAUSE", lambda: self.control_timer("pause"), Style.ACCENT_BLUE),
                             ("RESET", lambda: self.control_timer("reset"), Style.DANGER),
@@ -349,7 +334,7 @@ class StreamForgeGUI:
 
         self.cards_general.append(DashboardCard(
             self.canvas_general, "KILLER WISHES",
-            [("Wishlist Overlay", "killer_wishes/index.html"), ("Place Overlay (!place)", "place_overlay/index.html")],
+            [("Wishlist Overlay", "killer_wishes/index.html"), ("Place Overlay", "place_overlay/index.html")],
             reset_func=self.reset_database_action, info_key="WISHES",
             custom_buttons=[("ADD +1", self.test_wish_action, Style.ACCENT_PURPLE),
                             ("CHECK PLACE", self.test_place_action, Style.ACCENT_BLUE)]))
@@ -360,13 +345,9 @@ class StreamForgeGUI:
             settings_func=self.open_commands_settings_window,
             test_func=self.test_command_action, test_label="FIRE SEQUENZ", info_key="COMMANDS"))
 
-        # Binds für automatisches Resizing der Karten
-        self.tab_general.bind("<Configure>", lambda e: self.on_resize(e, self.canvas_general, self.cards_general,
-                                                                      self.windows_general))
-        self.tab_tiktok.bind("<Configure>",
-                             lambda e: self.on_resize(e, self.canvas_tiktok, self.cards_tiktok, self.windows_tiktok))
-        self.tab_twitch.bind("<Configure>",
-                             lambda e: self.on_resize(e, self.canvas_twitch, self.cards_twitch, self.windows_twitch))
+        self.tab_general.bind("<Configure>", lambda e: self.on_resize(e, self.canvas_general, self.cards_general, self.windows_general))
+        self.tab_tiktok.bind("<Configure>", lambda e: self.on_resize(e, self.canvas_tiktok, self.cards_tiktok, self.windows_tiktok))
+        self.tab_twitch.bind("<Configure>", lambda e: self.on_resize(e, self.canvas_twitch, self.cards_twitch, self.windows_twitch))
 
     def create_scrollable_tab(self, parent_frame, tag):
         canvas = tk.Canvas(parent_frame, bg=Style.BACKGROUND, highlightthickness=0)
@@ -378,29 +359,18 @@ class StreamForgeGUI:
         canvas.bind("<Leave>", lambda _: canvas.unbind_all("<MouseWheel>"))
         return canvas
 
-    # --- STATUS LOOP (NEU MIT TWITCH) ---
     def update_status_loop(self):
-        # 1. TikTok Status
         tt_color = "#444444"
         if hasattr(like_service_instance, 'api_client') and like_service_instance.api_client:
-            if like_service_instance.api_client.is_connected:
-                tt_color = Style.SUCCESS
-            else:
-                tt_color = Style.DANGER
+            tt_color = Style.SUCCESS if like_service_instance.api_client.is_connected else Style.DANGER
         self.tt_canvas.itemconfig(self.tt_indicator, fill=tt_color)
 
-        # 2. Twitch Status
         tw_color = "#444444"
         try:
             ts = twitch_service_instance.get_status()
-            if ts.get("connected"):
-                tw_color = "#9146FF"  # Twitch Purple
-            else:
-                tw_color = "#444444"
-        except:
-            pass
+            if ts.get("connected"): tw_color = "#9146FF"
+        except: pass
         self.tw_canvas.itemconfig(self.tw_indicator, fill=tw_color)
-
         self.root.after(1000, self.update_status_loop)
 
     def on_resize(self, event, canvas, cards, windows_list):
@@ -422,88 +392,70 @@ class StreamForgeGUI:
         canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
 
     # --- ACTIONS ---
-    def test_gambit_action(self):
+    def test_treasure_action(self):
         if self.is_server_running[0]:
-            requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/events/gambler")
-            show_toast(self.root, "Gambit gestartet!", "#d4af37")
-        else:
-            show_toast(self.root, "Server offline", Style.DANGER)
+            try:
+                requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/treasure/test")
+                show_toast(self.root, "Treasure Test ausgelöst!")
+            except: show_toast(self.root, "Fehler beim Treasure Test", Style.DANGER)
+        else: show_toast(self.root, "Server offline", Style.DANGER)
+
+    def test_spin_action(self):
+        if self.is_server_running[0]:
+            try:
+                requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wheel/test")
+                show_toast(self.root, "Spin Test ausgelöst!")
+            except: show_toast(self.root, "Fehler beim Spin", Style.DANGER)
+        else: show_toast(self.root, "Server offline", Style.DANGER)
+
+    def test_gambit_action(self):
+        if self.is_server_running[0]: requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/events/gambler"); show_toast(self.root, "Gambit gestartet!", "#d4af37")
+        else: show_toast(self.root, "Server offline", Style.DANGER)
 
     def test_likes_action(self):
-        if self.is_server_running[0]: requests.post(
-            f"http://{BASE_HOST}:{BASE_PORT}/api/v1/like_challenge/test"); show_toast(self.root, "100 Likes")
+        if self.is_server_running[0]: requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/like_challenge/test"); show_toast(self.root, "100 Likes")
 
     def test_wish_action(self):
-        if self.is_server_running[0]: requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes",
-                                                    json={"wunsch": "Test", "user_name": "Tester"}); show_toast(
-            self.root, "+1 Wunsch")
+        if self.is_server_running[0]: requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes", json={"wunsch": "Test", "user_name": "Tester"}); show_toast(self.root, "+1 Wunsch")
 
     def test_place_action(self):
         if not self.is_server_running[0]: return
-
         def t():
             try:
                 r = requests.get(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes")
                 u = "TestUser"
                 if not r.json():
-                    requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes",
-                                  json={"wunsch": "T", "user_name": u});
+                    requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes", json={"wunsch": "T", "user_name": u})
                     time.sleep(0.2)
-                else:
-                    u = r.json()[0]['user_name']
+                else: u = r.json()[0]['user_name']
                 requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/wishes/check_place", json={"user_name": u})
                 self.root.after(0, lambda: show_toast(self.root, f"Place Check: {u}"))
-            except:
-                pass
-
+            except: pass
         threading.Thread(target=t, daemon=True).start()
 
     def test_command_action(self):
-        if self.is_server_running[0]: requests.post(
-            f"http://{BASE_HOST}:{BASE_PORT}{COMMANDS_TRIGGER_ENDPOINT}"); show_toast(self.root, "Command Fire")
+        if self.is_server_running[0]: requests.post(f"http://{BASE_HOST}:{BASE_PORT}{COMMANDS_TRIGGER_ENDPOINT}"); show_toast(self.root, "Command Fire")
 
     def control_timer(self, a):
-        if self.is_server_running[0]: requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/timer/control",
-                                                    json={"action": a}); show_toast(self.root, f"Timer {a}")
+        if self.is_server_running[0]: requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/v1/timer/control", json={"action": a}); show_toast(self.root, f"Timer {a}")
 
     def reset_database_action(self):
-        if self.is_server_running[0] and messagebox.askyesno("Reset", "Sicher?"): requests.post(
-            f"http://{BASE_HOST}:{BASE_PORT}{RESET_WISHES_ENDPOINT}"); show_toast(self.root, "Reset")
+        if self.is_server_running[0] and messagebox.askyesno("Reset", "Sicher?"): requests.post(f"http://{BASE_HOST}:{BASE_PORT}{RESET_WISHES_ENDPOINT}"); show_toast(self.root, "Reset")
 
-    def open_global_settings(self):
-        GlobalSettingsWindow(self.root)
-
-    def open_subathon_settings_window(self):
-        SubathonSettingsWindow(self.root)
-
-    def open_twitch_subathon_settings_window(self):
-        TwitchSubathonSettingsWindow(self.root)
-
-    def open_timer_gambit_settings(self):
-        TimerGambitSettingsWindow(self.root)
-
-    def open_like_challenge_settings_window(self):
-        LikeChallengeSettingsWindow(self.root)
-
-    def open_twitch_spin_settings_window(self):
-        WheelSettingsWindow(self.root)
-
-    def open_commands_settings_window(self):
-        CommandsSettingsWindow(self.root)
-
-    # NEU: Währungseinstellungen
-    def open_currency_settings(self):
-        CurrencySettingsWindow(self.root)
+    def open_global_settings(self): GlobalSettingsWindow(self.root)
+    def open_subathon_settings_window(self): SubathonSettingsWindow(self.root)
+    def open_twitch_subathon_settings_window(self): TwitchSubathonSettingsWindow(self.root)
+    def open_timer_gambit_settings(self): TimerGambitSettingsWindow(self.root)
+    def open_like_challenge_settings_window(self): LikeChallengeSettingsWindow(self.root)
+    def open_twitch_spin_settings_window(self): WheelSettingsWindow(self.root)
+    def open_commands_settings_window(self): CommandsSettingsWindow(self.root)
+    def open_currency_settings(self): CurrencySettingsWindow(self.root)
 
     def start_webserver(self):
         if self.is_server_running[0]: return
-
         def r():
-            try:
-                flask_app.run(host=BASE_HOST, port=BASE_PORT, debug=False, use_reloader=False)
-            except:
-                self.status_canvas.itemconfig(self.status_indicator, fill=Style.DANGER)
-
+            try: flask_app.run(host=BASE_HOST, port=BASE_PORT, debug=False, use_reloader=False)
+            except: self.status_canvas.itemconfig(self.status_indicator, fill=Style.DANGER)
         threading.Thread(target=r, daemon=True).start()
         self.is_server_running[0] = True
         self.status_canvas.itemconfig(self.status_indicator, fill=Style.SUCCESS)
@@ -513,11 +465,9 @@ class StreamForgeGUI:
 
     def on_app_close(self):
         if hasattr(like_service_instance, 'api_client') and like_service_instance.api_client:
-            try:
-                like_service_instance.api_client.stop()
-            except:
-                pass
-        self.root.destroy();
+            try: like_service_instance.api_client.stop()
+            except: pass
+        self.root.destroy()
         sys.exit(0)
 
     def start(self):
@@ -527,14 +477,12 @@ class StreamForgeGUI:
         self.root.mainloop()
 
 
-# --- GLOBAL SETTINGS WINDOW (MIT BROWSER LOGIN) ---
 class GlobalSettingsWindow(tk.Toplevel):
     def __init__(self, master):
         super().__init__(master)
         self.title("Global Settings & Accounts")
         self.geometry("600x650")
         self.configure(bg=Style.BACKGROUND)
-
         self.update_idletasks()
         w, h = self.winfo_width(), self.winfo_height()
         x = master.winfo_x() + (master.winfo_width() // 2) - (w // 2)
@@ -543,16 +491,12 @@ class GlobalSettingsWindow(tk.Toplevel):
 
         self.tiktok_mgr = like_service_instance.settings_manager
         self.tiktok_settings = self.tiktok_mgr.load_settings()
-
-        # Twitch Settings vom Service holen
         self.twitch_settings = twitch_service_instance.get_settings() or {}
 
         notebook = ttk.Notebook(self)
         notebook.pack(fill='both', expand=True, padx=10, pady=10)
-
         self.tab_tiktok = tk.Frame(notebook, bg=Style.BACKGROUND)
         self.tab_twitch = tk.Frame(notebook, bg=Style.BACKGROUND)
-
         notebook.add(self.tab_tiktok, text="TikTok Live")
         notebook.add(self.tab_twitch, text="Twitch Bot")
 
@@ -561,59 +505,36 @@ class GlobalSettingsWindow(tk.Toplevel):
 
     def _build_tiktok_tab(self):
         f = self.tab_tiktok
-        tk.Label(f, text="TikTok Konfiguration", bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE,
-                 font=("Segoe UI", 12, "bold")).pack(pady=20)
+        tk.Label(f, text="TikTok Konfiguration", bg=Style.BACKGROUND, fg=Style.ACCENT_BLUE, font=("Segoe UI", 12, "bold")).pack(pady=20)
         tk.Label(f, text="Username:", bg=Style.BACKGROUND, fg="white").pack(anchor='w', padx=20)
         self.tt_user = tk.Entry(f, font=("Segoe UI", 10), bg="#333", fg="white", relief=tk.FLAT)
         self.tt_user.insert(0, self.tiktok_settings.get("tiktok_unique_id", ""))
         self.tt_user.pack(fill='x', padx=20, pady=5)
-        tk.Button(f, text="💾 TikTok Speichern", command=self.save_tiktok, bg=Style.SUCCESS, fg="white",
-                  relief=tk.FLAT).pack(pady=20, fill='x', padx=20)
+        tk.Button(f, text="💾 TikTok Speichern", command=self.save_tiktok, bg=Style.SUCCESS, fg="white", relief=tk.FLAT).pack(pady=20, fill='x', padx=20)
 
     def _build_twitch_tab(self):
         f = self.tab_twitch
-        tk.Label(f, text="Twitch Authentifizierung", bg=Style.BACKGROUND, fg="#9146FF",
-                 font=("Segoe UI", 12, "bold")).pack(pady=(20, 10))
-
-        info = ("1. Klicke auf 'Login mit Twitch'.\n"
-                "2. Autorisiere die App im Browser.\n"
-                "3. Das Token wird automatisch und dauerhaft gespeichert.")
+        tk.Label(f, text="Twitch Authentifizierung", bg=Style.BACKGROUND, fg="#9146FF", font=("Segoe UI", 12, "bold")).pack(pady=(20, 10))
+        info = "1. Klicke auf 'Login mit Twitch'.\n2. Autorisiere die App.\n3. Token wird automatisch gespeichert."
         tk.Label(f, text=info, bg=Style.BACKGROUND, fg="#aaa", justify="left").pack(pady=(0, 15))
-
-        # Client ID Input (Optional)
-        tk.Label(f, text="Client ID (Optional, sonst Standard):", bg=Style.BACKGROUND, fg="white", anchor='w').pack(
-            fill='x', padx=20)
+        tk.Label(f, text="Client ID (Optional):", bg=Style.BACKGROUND, fg="white", anchor='w').pack(fill='x', padx=20)
         self.entry_cid = tk.Entry(f, bg="#333", fg="white", relief=tk.FLAT, font=("Segoe UI", 10))
-        # Client ID laden
-        current_cid = self.twitch_settings.get("twitch_client_id", "")
-        self.entry_cid.insert(0, current_cid)
+        self.entry_cid.insert(0, self.twitch_settings.get("twitch_client_id", ""))
         self.entry_cid.pack(fill='x', padx=20, pady=(0, 20))
-
-        # Login Button (RESTORED)
-        tk.Button(f, text="🔑 LOGIN MIT TWITCH", command=self.do_twitch_login,
-                  bg="#9146FF", fg="white", font=("Segoe UI", 11, "bold"), relief=tk.FLAT, height=2).pack(fill='x',
-                                                                                                          padx=20)
-
-        # Status
+        tk.Button(f, text="🔑 LOGIN MIT TWITCH", command=self.do_twitch_login, bg="#9146FF", fg="white", font=("Segoe UI", 11, "bold"), relief=tk.FLAT, height=2).pack(fill='x', padx=20)
         self.status_frame = tk.Frame(f, bg=Style.BACKGROUND, highlightbackground="#333", highlightthickness=1)
         self.status_frame.pack(fill='x', padx=20, pady=20)
-        self.status_lbl = tk.Label(self.status_frame, text="Status laden...", bg=Style.BACKGROUND, fg="#aaa",
-                                   font=("Segoe UI", 10))
+        self.status_lbl = tk.Label(self.status_frame, text="Status laden...", bg=Style.BACKGROUND, fg="#aaa", font=("Segoe UI", 10))
         self.status_lbl.pack(pady=10)
         self.update_status_loop()
 
     def update_status_loop(self):
         if not self.winfo_exists(): return
-
         try:
             status = twitch_service_instance.get_status()
-            if status.get("connected"):
-                self.status_lbl.config(text=f"✅ VERBUNDEN als: {status.get('username')}", fg=Style.SUCCESS)
-            else:
-                self.status_lbl.config(text="❌ NICHT VERBUNDEN", fg=Style.DANGER)
-        except Exception as e:
-            self.status_lbl.config(text="⚠️ Service lädt...", fg="#ffaa00")
-
+            if status.get("connected"): self.status_lbl.config(text=f"✅ VERBUNDEN als: {status.get('username')}", fg=Style.SUCCESS)
+            else: self.status_lbl.config(text="❌ NICHT VERBUNDEN", fg=Style.DANGER)
+        except: self.status_lbl.config(text="⚠️ Service lädt...", fg="#ffaa00")
         self.after(1000, self.update_status_loop)
 
     def save_tiktok(self):
@@ -623,18 +544,13 @@ class GlobalSettingsWindow(tk.Toplevel):
         show_toast(self.master, "TikTok gespeichert!")
 
     def do_twitch_login(self):
-        cid = self.entry_cid.get().strip()
-        if not cid:
-            cid = "gp762nuuoqcoxypju8c569th9wz7q5"  # Default StreamForge ID
-
-        # Client ID sofort speichern (im neuen Service), damit sie vorhanden ist
+        cid = self.entry_cid.get().strip() or "gp762nuuoqcoxypju8c569th9wz7q5"
         self.twitch_settings["twitch_client_id"] = cid
         twitch_service_instance.save_settings(self.twitch_settings)
-
-        redirect = "http://localhost:5000/auth/twitch/callback"
-        scope = "chat:read+chat:edit+channel:read:subscriptions+bits:read"
-        url = (f"https://id.twitch.tv/oauth2/authorize?response_type=token"
-               f"&client_id={cid}&redirect_uri={redirect}&scope={scope}")
-
+        url = f"https://id.twitch.tv/oauth2/authorize?response_type=token&client_id={cid}&redirect_uri=http://localhost:5000/auth/twitch/callback&scope=chat:read+chat:edit+channel:read:subscriptions+bits:read"
         webbrowser.open(url)
-        show_toast(self.master, "Browser geöffnet! Bitte einloggen.")
+        show_toast(self.master, "Browser geöffnet!")
+
+if __name__ == "__main__":
+    app = StreamForgeGUI()
+    app.start()

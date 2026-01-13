@@ -1,8 +1,8 @@
 {
-    "like_goal": 60000,
-    "tiktok_unique_id": "p33t25",
+    "like_goal": 199999,
+    "tiktok_unique_id": "waltraud.sackgesicht",
     "displayTextFormat": "noch {likes_needed} Likes!",
-    "recurringGoalExpression": "x+333333",
+    "recurringGoalExpression": "x+33333",
     "initialGoals": [
         10000,
         20000,
@@ -10,5 +10,12 @@
         60000,
         80000,
         100000
-    ]
+    ],
+    "currency_name": "Whieties",
+    "currency_per_message": "1",
+    "currency_per_bit": "1.0",
+    "currency_per_sub": "500",
+    "currency_per_minute": "4",
+    "currency_cmd_score_active": true,
+    "currency_cmd_send_active": false
 }

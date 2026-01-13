@@ -42,29 +42,24 @@ class LikeChallengeService:
         self.start_tiktok_connection()
 
     def get_challenge_status(self):
-        """
-        Diese Funktion wird von der Webseite (script.js) aufgerufen.
-        Hier bauen wir die Daten zusammen.
-        """
         current_likes = 0
         if self.api_client:
             current_likes = self.api_client.current_likes
 
         settings = self.settings_manager.load_settings()
 
-        # Ziel laden (Fallback auf 10000)
-        goal = int(settings.get("like_goal", 10000))
-        if "like_goal" not in settings:
+        # NEU: Das passende Ziel basierend auf den Likes ermitteln
+        goal = self._get_appropriate_goal(current_likes, settings)
+
+        # Optional: Das Ziel in der settings.json synchronisieren,
+        # damit es auch in der Datei aktuell bleibt
+        if settings.get("like_goal") != goal:
             self._save_new_goal(goal)
 
-        # TEXT FORMATIEREN (Das hat gefehlt!)
-        # Wir holen das Format aus den Settings (z.B. "Noch {likes_needed}!")
         fmt = settings.get("displayTextFormat", "{current} / {goal}")
-
         likes_needed = max(0, goal - current_likes)
 
         try:
-            # Platzhalter im Text ersetzen
             display_text = fmt.format(
                 likes_needed=likes_needed,
                 current=current_likes,
@@ -76,7 +71,7 @@ class LikeChallengeService:
         return {
             "current_likes": current_likes,
             "goal": goal,
-            "display_text": display_text,  # <--- Das ist der Schlüssel für dein Overlay!
+            "display_text": display_text,
             "tiktok_user": settings.get("tiktok_unique_id", "")
         }
 
@@ -137,3 +132,33 @@ class LikeChallengeService:
         s = self.settings_manager.load_settings()
         s["like_goal"] = new_goal
         self.settings_manager.save_settings(s)
+
+    def _get_appropriate_goal(self, current_likes, settings):
+        """Findet das kleinste Ziel, das über den aktuellen Likes liegt."""
+        initial_goals = settings.get("initialGoals", [])
+
+        # 1. Sortierte Liste der initialen Ziele prüfen
+        sorted_goals = sorted([int(g) for g in initial_goals])
+        for goal in sorted_goals:
+            if goal > current_likes:
+                return goal
+
+        # 2. Falls wir über allen initialen Zielen liegen, Formel anwenden
+        current_g = sorted_goals[-1] if sorted_goals else 0
+        expression = settings.get("recurringGoalExpression", "x + 10000")
+
+        # Wir wenden die Formel an, bis wir ein Ziel finden, das > current_likes ist
+        # (Sicherheitshalber auf 100 Iterationen begrenzt)
+        for _ in range(100):
+            try:
+                next_g = int(eval(str(expression), {"x": current_g}))
+                if next_g <= current_g:  # Verhindert Endlosschleife
+                    next_g = current_g + 10000
+                current_g = next_g
+            except:
+                current_g += 10000
+
+            if current_g > current_likes:
+                return current_g
+
+        return current_g

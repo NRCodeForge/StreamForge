@@ -31,14 +31,14 @@ class WheelService:
         return self.current_state
 
     def handle_spin(self, user, args):
-        from services.service_provider import currency_service_instance, twitch_service_instance
+        from services.service_provider import currency_service_instance
+        # Wir entfernen den Import von twitch_service_instance hier drin!
 
         # 1. Cooldown Check
         settings = self.get_settings()
         cooldown = settings.get("cooldown_seconds", 0)
         if time.time() - self.last_spin_time < cooldown:
-            twitch_service_instance.send_message(f"@{user} Warte noch kurz! ⏳")
-            return False, "Cooldown"
+            return False, f"@{user} Warte noch kurz! ⏳"
 
         # 2. Einsatz parsen
         bet = 0
@@ -50,30 +50,25 @@ class WheelService:
             else:
                 bet = int(args[0])
         except:
-            twitch_service_instance.send_message(f"@{user} Nutzung: !spin <Einsatz>")
-            return False, "Usage Error"
+            return False, f"@{user} Nutzung: !spin <Einsatz>"
 
         # 3. Limits prüfen
         min_bet = settings.get("min_bet", 5)
         max_bet = settings.get("max_bet", 1000)
 
         if bet < min_bet:
-            twitch_service_instance.send_message(f"@{user} Min. Einsatz ist {min_bet}.")
-            return False, "Min Bet"
+            return False, f"@{user} Min. Einsatz ist {min_bet}."
         if bet > max_bet:
-            twitch_service_instance.send_message(f"@{user} Max. Einsatz ist {max_bet}.")
-            return False, "Max Bet"
+            return False, f"@{user} Max. Einsatz ist {max_bet}."
 
         # 4. Geld abziehen
         if not currency_service_instance.remove_points(user, bet):
-            twitch_service_instance.send_message(f"@{user} Zu wenig Punkte!")
-            return False, "No Money"
+            return False, f"@{user} Zu wenig Punkte!"
 
         # 5. Drehen!
         self.last_spin_time = time.time()
         fields = settings.get("fields", [0, 2, 0, 1.5])
         multiplier = random.choice(fields)
-
         win_amount = int(bet * multiplier)
 
         # State für Overlay setzen
@@ -85,17 +80,13 @@ class WheelService:
             "timestamp": time.time()
         }
 
-        server_log.info(f"🎡 SPIN: {user} setzt {bet} -> x{multiplier} = {win_amount}")
-
-        # Gewinn auszahlen (verzögert, damit Animation passt? Hier sofort logisch, Nachricht später)
         if win_amount > 0:
             currency_service_instance.add_points(user, win_amount)
 
-        # Ergebnis-Nachricht baut der TwitchService (verzögert) oder hier direkt
-        # Wir geben es zurück, damit TwitchService es senden kann
+        # Nachricht zurückgeben
         if multiplier > 1:
-            return True, f"Glückwunsch! x{multiplier} -> +{win_amount} Coins! 🎉"
+            return True, f"@{user} Glückwunsch! x{multiplier} -> +{win_amount} Coins! 🎉"
         elif multiplier == 1:
-            return True, f"Einsatz zurück. Nichts passiert."
+            return True, f"@{user} Einsatz zurück. Nichts passiert."
         else:
-            return True, f"Leider verloren. Viel Glück beim nächsten Mal!"
+            return True, f"@{user} Leider verloren. Viel Glück beim nächsten Mal!"

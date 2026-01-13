@@ -1,4 +1,4 @@
-import sqlite3  # <--- Dieser Import hat gefehlt!
+import sqlite3
 from config import DATABASE_PATH
 from utils import server_log
 
