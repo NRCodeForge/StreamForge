@@ -11,6 +11,8 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.mp4
+*.mp3
 
 # IDE specific files (Beispiele)
 .idea/
