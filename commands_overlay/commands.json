@@ -1,3 +1,88 @@
 {
-    "list": []
+    "list": [
+        {
+            "id": "bf5bdfdd-9e83-4da5-a8df-8a01cb79a848",
+            "text": "!abo",
+            "costs": "0",
+            "is_superfan": false
+        },
+        {
+            "id": "049d3f99-a315-4399-81e6-0efae56f84b6",
+            "text": "!sparen",
+            "costs": "0",
+            "is_superfan": false
+        },
+        {
+            "id": "1eaacc36-b010-43d1-b282-b5a8c3b059f6",
+            "text": "!trinken",
+            "costs": "100",
+            "is_superfan": false
+        },
+        {
+            "id": "d9ac9fc3-aabe-4f22-b4e9-138150cbf24b",
+            "text": "!l\u00fcge",
+            "costs": "100",
+            "is_superfan": false
+        },
+        {
+            "id": "e4107c61-f5c5-4dd2-b151-327757ab2c49",
+            "text": "!boom",
+            "costs": "100",
+            "is_superfan": false
+        },
+        {
+            "id": "86d6afc3-c4cc-416e-beba-1b27d2779056",
+            "text": "!niclas",
+            "costs": "100",
+            "is_superfan": false
+        },
+        {
+            "id": "2af0de2a-963a-48f2-a9fd-1abbddbb0a21",
+            "text": "!mimimi",
+            "costs": "100",
+            "is_superfan": false
+        },
+        {
+            "id": "dac8e8b9-f7b4-473e-943a-1ab5095a69e4",
+            "text": "!wish",
+            "costs": "300",
+            "is_superfan": false
+        },
+        {
+            "id": "8dfd0483-ab21-4201-8a0c-c73422b037fe",
+            "text": "!superspin",
+            "costs": "0",
+            "is_superfan": true
+        },
+        {
+            "id": "5fe063cf-6f99-4c1b-bde7-b379928d55d0",
+            "text": "!freewish",
+            "costs": "0",
+            "is_superfan": true
+        },
+        {
+            "id": "97254af7-8b30-48b8-999d-e73efcee40db",
+            "text": "!moin",
+            "costs": "100",
+            "is_superfan": true
+        },
+        {
+            "id": "12aa0189-c334-4cec-ba11-8c7b793bd4c5",
+            "text": "!blind",
+            "costs": "500",
+            "is_superfan": true
+        },
+        {
+            "id": "1fd84c4a-530e-4cb7-8116-d846c18245bd",
+            "text": "!roulette",
+            "costs": "2500",
+            "is_superfan": true
+        },
+        {
+            "id": "b4f2e085-150b-472f-9b2e-044a1ea19ef8",
+            "text": "!listen",
+            "costs": "100",
+            "is_superfan": false
+        }
+    ]
 }

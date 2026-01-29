@@ -11,7 +11,10 @@ class WheelService:
         # ÄNDERUNG: Explizit in den wheel_overlay Ordner
         self.settings_manager = SettingsManager('wheel_overlay/settings.json')
         self.current_state = None  # {winner: ..., rotation: ...}
-        self.last_spin_time = 0
+
+        # ÄNDERUNG: Dictionary für User-spezifische Cooldowns
+        # Speichert { "username": timestamp_letzter_spin }
+        self.user_cooldowns = {}
 
         # Initiale Settings laden/erstellen
         s = self.settings_manager.load_settings()
@@ -34,11 +37,15 @@ class WheelService:
         from services.service_provider import currency_service_instance
         # Wir entfernen den Import von twitch_service_instance hier drin!
 
-        # 1. Cooldown Check
+        # 1. Cooldown Check (PRO USER)
         settings = self.get_settings()
         cooldown = settings.get("cooldown_seconds", 0)
-        if time.time() - self.last_spin_time < cooldown:
-            return False, f"@{user} Warte noch kurz! ⏳"
+
+        last_time = self.user_cooldowns.get(user, 0)
+        remaining = int(cooldown - (time.time() - last_time))
+
+        if remaining > 0:
+            return False, f"@{user} Warte noch {remaining}s! ⏳"
 
         # 2. Einsatz parsen
         bet = 0
@@ -66,7 +73,9 @@ class WheelService:
             return False, f"@{user} Zu wenig Punkte!"
 
         # 5. Drehen!
-        self.last_spin_time = time.time()
+        # Cooldown für diesen User setzen
+        self.user_cooldowns[user] = time.time()
+
         fields = settings.get("fields", [0, 2, 0, 1.5])
         multiplier = random.choice(fields)
         win_amount = int(bet * multiplier)

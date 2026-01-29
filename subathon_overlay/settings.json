@@ -1,18 +1,6 @@
 {
     "gambit_outcomes": [
         {
-            "text": "+ 5 MIN",
-            "type": "time_add",
-            "value": 300,
-            "color": "#00FF7F"
-        },
-        {
-            "text": "- 2 MIN",
-            "type": "time_sub",
-            "value": 120,
-            "color": "#DE0B32"
-        },
-        {
             "text": "+ 25%",
             "type": "time_multi_add",
             "value": 0.25,
@@ -25,28 +13,112 @@
             "color": "#DE0B32"
         },
         {
-            "text": "BRILLE AB",
-            "type": "text",
-            "value": 0,
-            "color": "#00BFFF"
+            "text": "- 2 %",
+            "type": "time_multi_sub",
+            "value": 0.02,
+            "color": "#DE0B32"
         },
         {
-            "text": "BOHNE",
+            "text": "Feuergummi",
             "type": "text",
-            "value": 0,
-            "color": "#888888"
-        },
-        {
-            "text": "Jackpot",
-            "type": "time_multi_add",
-            "value": 1.0,
+            "value": 0.0,
             "color": "#ff8000"
         },
         {
-            "text": "Ups Redis Jackpot",
+            "text": "Ekelbohne",
+            "type": "text",
+            "value": 0.0,
+            "color": "#ff8000"
+        },
+        {
+            "text": "Feuerchip",
+            "type": "text",
+            "value": 0.0,
+            "color": "#888888"
+        },
+        {
+            "text": "+20 %",
+            "type": "time_multi_add",
+            "value": 0.2,
+            "color": "#888888"
+        },
+        {
+            "text": "+15 %",
+            "type": "time_multi_add",
+            "value": 0.15,
+            "color": "#888888"
+        },
+        {
+            "text": "+10 %",
+            "type": "time_multi_add",
+            "value": 0.1,
+            "color": "#888888"
+        },
+        {
+            "text": "+7 %",
+            "type": "time_multi_add",
+            "value": 0.07,
+            "color": "#888888"
+        },
+        {
+            "text": "+6 %",
+            "type": "time_multi_add",
+            "value": 0.06,
+            "color": "#888888"
+        },
+        {
+            "text": "+5 %",
+            "type": "time_multi_add",
+            "value": 0.05,
+            "color": "#888888"
+        },
+        {
+            "text": "+ 1 min",
+            "type": "time_add",
+            "value": 60.0,
+            "color": "#00FF7F"
+        },
+        {
+            "text": "+ 9%",
+            "type": "time_multi_add",
+            "value": 0.09,
+            "color": "#00FF7F"
+        },
+        {
+            "text": "Autsch Verzockt",
             "type": "time_multi_sub",
             "value": 0.5,
             "color": "#ff0000"
+        },
+        {
+            "text": "Kronenrunde",
+            "type": "text",
+            "value": 0.0,
+            "color": "#FFFFFF"
+        },
+        {
+            "text": "10.000 whities",
+            "type": "text",
+            "value": 0.0,
+            "color": "#FFFFFF"
+        },
+        {
+            "text": "- 20%",
+            "type": "time_multi_sub",
+            "value": 0.2,
+            "color": "#FFFFFF"
+        },
+        {
+            "text": "Autsch Verzockt",
+            "type": "time_multi_sub",
+            "value": 0.5,
+            "color": "#FFFFFF"
+        },
+        {
+            "text": "+20 min",
+            "type": "time_add",
+            "value": 1200.0,
+            "color": "#ff8000"
         }
     ],
     "coins": {
@@ -54,7 +126,7 @@
         "active": true
     },
     "like": {
-        "value": "0.2",
+        "value": "0.04",
         "active": true
     },
     "share": {
@@ -62,15 +134,15 @@
         "active": true
     },
     "follow": {
-        "value": "10",
+        "value": "25",
         "active": true
     },
     "subscribe": {
-        "value": "90000000",
+        "value": "600",
         "active": true
     },
     "twitch_msg": {
-        "value": "0.4",
+        "value": "0.04",
         "active": true
     },
     "twitch_sub": {
@@ -78,16 +150,16 @@
         "active": true
     },
     "twitch_gift": {
-        "value": "180",
+        "value": "150",
         "active": true
     },
     "twitch_bits": {
         "value": "5",
         "active": false
     },
-    "start_time_seconds": "10",
-    "duration_freezer": "180",
-    "duration_warp": "60",
-    "duration_blind": "120",
-    "duration_hype": "300"
+    "start_time_seconds": "600",
+    "duration_freezer": "120",
+    "duration_warp": "480",
+    "duration_blind": "180",
+    "duration_hype": "60"
 }

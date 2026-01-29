@@ -152,8 +152,8 @@ class SubathonService:
                 if c.get("active"): added = self._safe_float(c["value"]); reason = "Share"
 
             elif isinstance(event, SuperFanEvent):
-                c = get_cfg("SuperFan")
-                if c.get("active"): added = self._safe_float(c["value"]); reason = "SuperFan"
+                c = get_cfg("subscribe")
+                if c.get("active"): added = self._safe_float(c["value"]); reason = "SuperFanAbo"
 
 
             # In services/subathon_service.py

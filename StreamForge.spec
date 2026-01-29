@@ -20,7 +20,7 @@ datas_list = [
     ('C:\\Users\\rieck\\AppData\\Local\\ms-playwright', 'ms-playwright')
 ]
 
-fileName = 'StreamForge V-2.16'
+fileName = 'StreamForge V-2.17'
 
 # Hier liegen die entscheidenden Ergänzungen für SocketIO und Flask
 hiddenimports_list = [

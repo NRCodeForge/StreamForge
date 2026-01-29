@@ -1,93 +1,98 @@
-import os
-import sys
-import io
-import json
-import asyncio
-from datetime import datetime
-from TikTokLive import TikTokLiveClient
-from TikTokLive.client.web.web_settings import WebDefaults
+from selenium import webdriver
+from os import system, name
+import chromedriver_binary
+from time import time, strftime, gmtime, sleep
+import pyfiglet, os, threading
+import chromedriver_autoinstaller
 
-# --- SYSTEM SETUP ---
-os.environ['WHITELIST_AUTHENTICATED_SESSION_ID_HOST'] = 'tiktok.eulerstream.com'
-
-if sys.platform == "win32":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', line_buffering=True)
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-
-# --- KONFIGURATION ---
-UNIQUE_ID = "kai8594_yt"
-EULER_KEY = "euler_ODBmYTc0ZWZjMmU0NmIyNzU4YjM3MmI4YzUwYmMxZWYwNjllNmVhZjI1MjBiN2ViMjE1YzRh"
-SESSION_ID = "f7b226fdfbd1537165e6650b8fdb9897"
-SAMPLE_FILE = "event_samples.json"
-
-WebDefaults.tiktok_sign_api_key = EULER_KEY
+# Check if the current version of chromedriver exists and, if it doesn't exist, download it automatically
+chromedriver_autoinstaller.install()
 
 
-def now(): return datetime.now().strftime("%H:%M:%S")
+def clear_terminal():
+    if name == 'nt':
+        _ = system('cls')
+    else:
+        _ = system('clear')
 
 
-# --- DYNAMISCHER IMPORT DER EVENTS ---
-# Wir importieren nur, was wirklich da ist, um Abstürze zu verhindern
-import TikTokLive.events as events
+clear_terminal()
+system('title TikTok Engagement Bot')
 
-event_map = {}
+print(pyfiglet.figlet_format("TikTok Bot", font="slant"))
+print("=" * 50)
+print("Welcome to TikTok Engagement Bot!")
+print("=" * 50)
+print("1. Increase Video Views")
+print("2. Increase Video Likes")
+print("3. Increase Followers")
+print("4. Increase Video Shares")
+print("5. View Credits")
+print("\nNote: Please paste the TikTok URL when prompted.\n")
 
-potential_events = [
-    'ConnectEvent', 'CommentEvent', 'GiftEvent', 'LikeEvent',
-    'RankUpdateEvent', 'WeeklyRankRewardEvent', 'MemberEvent',
-    'FollowEvent', 'ShareEvent', 'GoalUpdateEvent', 'RoomViewerCountEvent'
-]
+try:
+    mode = int(input("Enter your choice (1-5): "))
+    if not 1 <= mode <= 5:
+        raise ValueError
+except ValueError:
+    print("Please enter a valid number between 1 and 5!")
+    exit(1)
 
-for e_name in potential_events:
-    if hasattr(events, e_name):
-        event_map[e_name] = getattr(events, e_name)
+if mode == 5:
+    print("\nTikTok Engagement Bot")
+    print("Created by: vdutts7")
+    print("GitHub: https://github.com/vdutts7/tiktok-bot")
+    exit(0)
 
+if 1 <= mode <= 4:
+    url = input("URL: ")
 
-class ScalperV31:
-    def __init__(self, target_id):
-        self.client = TikTokLiveClient(unique_id=target_id)
-        self.client.web.cookies.set("sessionid", SESSION_ID)
-        self.captured_types = set()
+    start = time()
+    time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
 
-    def start_scalping(self):
-        print(f"[{now()}] 🔍 Suche nach Events: {', '.join(event_map.keys())}")
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--mute-audio")
+    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-        # Registriere alle gefundenen Events
-        for name, cls in event_map.items():
-            @self.client.on(cls)
-            async def on_event(event, event_name=name):
-                if event_name not in self.captured_types:
-                    self.captured_types.add(event_name)
-                    self.save_event(event_name, event)
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.set_window_size(1024, 650)
 
-    def save_event(self, name, event):
-        try:
-            # Wir holen uns das __dict__ und machen es JSON-sicher
-            raw_dict = {str(k): str(v) for k, v in event.__dict__.items()}
-
-            output = {
-                "timestamp": now(),
-                "event": name,
-                "dict_data": raw_dict
-            }
-
-            with open(SAMPLE_FILE, "a", encoding="utf-8") as f:
-                f.write(json.dumps(output, ensure_ascii=False) + "\n")
-
-            print(f"\n[⭐] NEUES PAKET: {name} gespeichert!")
-        except Exception as e:
-            print(f"Fehler beim Speichern von {name}: {e}")
-
-    def run(self):
-        self.start_scalping()
-        print(f"[{now()}] 🚀 Scalper läuft auf @{UNIQUE_ID}...")
-        # Bypass-Start
-        self.client.run(fetch_room_info=False, fetch_live_check=False)
+    metric1 = 0
+    metric2 = 10
+    metric3 = 100
 
 
-if __name__ == "__main__":
-    # Datei leeren für neuen Scan
-    with open(SAMPLE_FILE, "w") as f: pass
+def beautify(arg):
+    return format(arg, ',d').replace(',', '.')
 
-    bot = ScalperV31(UNIQUE_ID)
-    bot.run()
+
+def update_title1():  # Update the title for video views
+    global metric1
+
+    while True:
+        time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
+        system(f'title TikTok Bot ^| Views Generated: {beautify(metric1)} ^| Elapsed Time: {time_elapsed}')
+
+
+def update_title2():  # Update the title for video likes
+    global metric2
+
+    while True:
+        time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
+        system(f'title TikTok Bot ^| Likes Generated: {beautify(metric2)} ^| Elapsed Time: {time_elapsed}')
+
+
+def update_title3():  # Update the title for followers
+    global metric3
+
+    while True:
+        time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
+        system(f'title TikTok Bot ^| Followers Generated: {beautify(metric3)} ^| Elapsed Time: {time_elapsed}')
+
+
+def update_title4():  # Update the title for shares
+    global metric3
+
+    while True:
+        time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
+        system(f'title TikTok Bot ^| Shares Generated: {beautify(metric3)} ^| Elapsed Time: {time_elapsed}')
